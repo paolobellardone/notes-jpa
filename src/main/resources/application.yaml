@@ -1,0 +1,11 @@
+server:
+    port: 8081
+javax:
+    sql:
+        DataSource:
+            noteDataSource:
+                dataSourceClassName: oracle.jdbc.pool.OracleDataSource
+                dataSource:
+                    url: jdbc:oracle:thin:@//localhost:1521/orclpdb1
+                    user: sandbox
+                    password: Welcome1

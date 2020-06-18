@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>OpenShift & Helidon CI/CD Workshop App</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/wingcss/0.1.9/wing.min.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/notes_controller.js"></script>
+    <script src="js/custom.js"></script>
+  </head>
+
+  <body ng-app="NotesManagement" ng-controller="NotesManagementController">
+    <div class="container" id="container">
+        <div id="flip"><img src="images/oracle-logo.png"/></div>
+        <div id="panel">
+            <h1>Simple CRUD Notes</h1>
+            <p>
+                This application demonstrates how a Helidon application implements a CRUD endpoint to manage simple notes.
+                This simple frontend interacts via REST APIs with the Helidon Backend.
+            </p>
+            <p>Behind the scenes, we have:
+                <ul>
+                    <li>EclipseLink ORM taking care of all CRUD operations</li>
+                    <li>JAX-RS powering the REST API</li>
+                    <li>CDI based dependency injection framework</li>
+                    <li>HikariCP for datasource implementation</li>
+                    <li>Kubernetes as a Container Platform</li>
+                    <li>Jenkins for CI/CD</li>
+                    <li>Oracle for Database persistence</li>
+                </ul>
+            </p>
+        </div>
+
+        <div id="notes">
+                <h3>Published Notes List</h3>
+                <div class="row">
+                    <div class="col-2">Name</div>
+                    <div class="col-3">Contents</div>
+                </div>
+                <div class="row" ng-repeat="note in notes">
+                    <div class="col-2">{{ note.name }}</div>
+                    <div class="col-3">{{ note.contents }}</div>
+                    <div class="col-4"><a ng-click="edit( note )" class="btn">Edit</a> <a ng-click="remove( note )" class="btn">Remove</a>
+                    </div>
+                </div>
+
+                <h3>Add a new Note or Edit an existing one</h3>
+                <form ng-submit="update()">
+                    <div class="row">
+                        <div class="col-4"><input type="text" placeholder="Name" ng-model="form.name" size="30"/></div>
+                        <div class="col-5"><input type="text" placeholder="Contents" ng-model="form.contents" size="90"/></div>
+                        <div class="col-3"><input type="submit" value="Save"/></div>
+                    </div>
+                </form>
+        </div>
+
+        <div class="footer">
+            <h1>Powered By: </h1>
+            <img src="images/helidon-logo.png" style="width:35%;"/>
+            <span style="display:inline-block; width: 50px;"></span>
+            <img src="images/kubernetes-logo.png" style="width:10%;"/>
+            <div>
+                <span style="display:inline-block; height: 25px;"></span>
+            </div>
+        </div>
+    </div>
+  </body>
+
+</html>
