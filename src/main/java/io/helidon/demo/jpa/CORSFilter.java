@@ -21,12 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package io.helidon.demo.jpa;
 
-$(document).ready(function() {
-    $("#flip").click(function() {
-        $("#panel").slideToggle("slow");
-    });
-    // Uncomment the following line to expand the info panel at startup
-    //$("#panel").slideDown("slow");
-    $("#notes").show("slow");
-});
+import java.io.IOException;
+
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+
+import javax.ws.rs.ext.Provider;
+
+/**
+ * CORSFilter, enable the implemented REST APIs to be called from any domain.
+ *
+ * @version 1.0 22 Jun 2020
+ * @author PaoloB
+ */
+@Provider
+public class CORSFilter implements ContainerResponseFilter {
+
+    @Override
+    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
+            throws IOException {
+        responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");
+        responseContext.getHeaders().add("Access-Control-Allow-Headers", "*");
+        responseContext.getHeaders().add("Access-Control-Allow-Credentials", "true");
+        responseContext.getHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        responseContext.getHeaders().add("Access-Control-Max-Age", "1209600");
+    }
+
+}
