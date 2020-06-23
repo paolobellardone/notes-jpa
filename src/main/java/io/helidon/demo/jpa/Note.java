@@ -46,7 +46,7 @@ public class Note {
     @Id
     @Column(name = "ID",
             unique = true)
-    @SequenceGenerator(name = "noteSeq", sequenceName = "notes_id_seq", allocationSize = 1, initialValue = 1)
+    @SequenceGenerator(name = "noteSeq", sequenceName = "NOTES_ID_SEQ", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "noteSeq")
     private Long id;
 
