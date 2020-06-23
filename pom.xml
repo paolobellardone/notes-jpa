@@ -62,7 +62,7 @@
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc10</artifactId>
             <version>19.3.0.0</version>
-          </dependency>
+        </dependency>
         <dependency>
             <groupId>io.helidon.integrations.cdi</groupId>
             <artifactId>helidon-integrations-cdi-datasource-hikaricp</artifactId>
@@ -101,7 +101,7 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
             <scope>runtime</scope>
-          </dependency>
+        </dependency>
     </dependencies>
 
     <build>
