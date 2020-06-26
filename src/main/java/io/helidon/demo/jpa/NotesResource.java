@@ -26,8 +26,7 @@ package io.helidon.demo.jpa;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.Dependent;
-
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import javax.ws.rs.Consumes;
@@ -51,7 +50,8 @@ import io.helidon.demo.jpa.exceptions.NoteNotExistsException;
  * @version 1.0 18 Jun 2020
  * @author PaoloB
  */
-@Dependent
+//@Dependent
+@RequestScoped
 @Path("/notes")
 public class NotesResource {
 

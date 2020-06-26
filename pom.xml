@@ -102,6 +102,19 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- JUnit test support-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- rest-assured framework for test support-->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.3.0</version>
+            <scope>test</scope>
+          </dependency>
     </dependencies>
 
     <build>

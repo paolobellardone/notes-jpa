@@ -21,10 +21,18 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 -- SOFTWARE.
 
+-- Create table
 CREATE TABLE notes (
    id NUMBER NOT NULL,
 	name VARCHAR2(100),
 	contents VARCHAR2(1000)
    );
 
+-- Create sequence
 CREATE SEQUENCE notes_id_seq;
+
+-- Insert seed values used to test the application
+INSERT INTO notes(id, contents, name) VALUES (999, 'i am some content', 'test note 1');
+INSERT INTO notes(id, contents, name) VALUES (1000, 'yup, contents galore','test note 2');
+INSERT INTO notes(id, contents, name) VALUES (1001, 'hey look here!', 'test note 3');
+INSERT INTO notes(id, contents, name) VALUES (1002, 'buy some books plz','test note 4');

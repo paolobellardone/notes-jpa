@@ -45,7 +45,7 @@ import io.helidon.demo.jpa.exceptions.MalformedNoteException;
 @ApplicationScoped
 public class NotesService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "note")
     private EntityManager em;
 
     @Transactional
