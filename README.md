@@ -1,5 +1,7 @@
 # helidon-jpa
+
 ## A Simple CRUD Notes application written in Java and using Helidon Micro-Profile framework
+
 This is a simple note-taking application written in Java using Helidon MP as backend framework and AngularJS as UI framework.
 
 It has to be considered no more than a demo or an exercise to demonstrate Helidon capabilities such as REST APIs development, configuration, JPA persistence and so on.
@@ -7,13 +9,15 @@ It has to be considered no more than a demo or an exercise to demonstrate Helido
 ![Screenshot](/docs/images/screenshot.png)
 
 ## Pre-requisites
+
 1. Java JDK 11 or later
 2. Maven
 3. Oracle Database (Cloud or on-premises)
 
 ## Build
+
 1. Download or clone the repository to your local enviroment
-   > git clone https://github.com/paolobellardone/helidon-jpa.git
+   > git clone <https://github.com/paolobellardone/helidon-jpa.git>
 2. Build the maven project
    > mvn clean package
 3. Prepare the database by running the create_datamodel.sql into a database schema
@@ -21,18 +25,20 @@ It has to be considered no more than a demo or an exercise to demonstrate Helido
    > @sql/create_datamodel.sql
 
 ## Run
+
 To run the built application use the following command:
 > java -jar target/helidon-jpa.jar
 
-The application UI is available at http://localhost:8081
+The application UI is available at <http://localhost:8081>
 
-The REST API endpoint is http://localhost:8081/notes, for example you can see all existing notes at http://localhost:8081/notes/all
+The REST API endpoint is <http://localhost:8081/notes>, for example you can see all existing notes at <http://localhost:8081/notes/all>
 
 You can configure the listening port and the data source by modifing the application.yaml file.
 
-Please see Helidon documentation at http://helidon.io for further details.
+Please see Helidon documentation at <http://helidon.io> for further details.
 
 ## License
+
 MIT License
 
 Copyright (c) 2020 PaoloB
@@ -54,4 +60,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
