@@ -26,7 +26,6 @@ package io.helidon.demo.jpa;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
-
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

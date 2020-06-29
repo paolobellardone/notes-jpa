@@ -23,28 +23,35 @@
  */
 package io.helidon.demo.jpa;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
-import io.helidon.common.CollectionsHelper;
+import javax.ws.rs.core.Application;
 
 /**
  * NotesApplication, a simple Helidon application to implement a set of REST APIs to interact with an Oracle Database to manage simple notes.
  *
- * @version 1.1 22 Jun 2020
+ * @version 2.0 29 Jun 2020
  * @author PaoloB
  */
 @ApplicationScoped
-@ApplicationPath("/")
 public class NotesApplication extends Application {
+
+    private final Set<Class<?>> classes;
+
+    public NotesApplication() {
+        super();
+        final Set<Class<?>> classes = new HashSet<>();
+        classes.add(NotesResource.class);
+        this.classes = Collections.unmodifiableSet(classes);
+    }
 
     @Override
     public Set<Class<?>> getClasses() {
-        /** Added the registration of the CORSFilter class */
-        return CollectionsHelper.setOf(NotesResource.class, CORSFilter.class);
+        return this.classes;
     }
 
 }

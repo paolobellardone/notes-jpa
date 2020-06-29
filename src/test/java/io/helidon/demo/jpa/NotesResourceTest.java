@@ -45,7 +45,7 @@ public class NotesResourceTest {
     @Test
     public void testNotesGetByIdEndpoint() {
         /** Test to search for a specific note by Id */
-        Long noteId = new Long(1002);
+        Long noteId = Long.valueOf(1002);
         given().
             pathParam("itemId", noteId).
             when().

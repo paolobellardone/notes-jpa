@@ -31,6 +31,7 @@ import javax.inject.Inject;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.DELETE;
@@ -39,6 +40,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import io.helidon.microprofile.cors.CrossOrigin;
 
 import io.helidon.demo.jpa.exceptions.MalformedNoteException;
 import io.helidon.demo.jpa.exceptions.NoteExistsException;
@@ -50,7 +53,7 @@ import io.helidon.demo.jpa.exceptions.NoteNotExistsException;
  * @version 1.0 18 Jun 2020
  * @author PaoloB
  */
-//@Dependent
+
 @RequestScoped
 @Path("/notes")
 public class NotesResource {
@@ -76,6 +79,12 @@ public class NotesResource {
         return Response.ok(results).status(200).build();
     }
 
+    @OPTIONS
+    @CrossOrigin()
+    @Path("/all")
+    public void optionsForGetAllNotes() {
+    }
+
     @GET
     @Path("/{itemId}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -86,6 +95,12 @@ public class NotesResource {
             return Response.status(404).build();
         }
         return Response.ok(noteService.getNoteById(itemId)).status(200).build();
+    }
+
+    @OPTIONS
+    @CrossOrigin()
+    @Path("/{itemId}")
+    public void optionsForOperationsById() {
     }
 
     @POST
@@ -111,6 +126,12 @@ public class NotesResource {
         }
 
         return Response.ok(inserted.getId()).status(200).build();
+    }
+
+    @OPTIONS
+    @CrossOrigin()
+    @Path("/publish")
+    public void optionsForPublishNote() {
     }
 
     @PUT
