@@ -2,7 +2,7 @@
 
 ## A Simple CRUD Notes application written in Java and using Helidon Micro-Profile framework
 
-This is a simple note-taking application written in Java using Helidon MP as backend framework and AngularJS as UI framework.
+This is a simple note-taking application written in Java using Helidon MP 2.0 as backend framework and AngularJS as UI framework.
 
 It has to be considered no more than a demo or an exercise to demonstrate Helidon capabilities such as REST APIs development, configuration, JPA persistence and so on.
 
