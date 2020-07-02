@@ -39,7 +39,11 @@ public class NotesResourceTest {
                 get(getConnectionString("/notes/all")).
             then().
                 statusCode(200).
-                body(equalTo("[{\"id\":999,\"name\":\"test note 1\",\"contents\":\"i am some content\"},{\"id\":1000,\"name\":\"test note 2\",\"contents\":\"yup, contents galore\"},{\"id\":1001,\"name\":\"test note 3\",\"contents\":\"hey look here!\"},{\"id\":1002,\"name\":\"test note 4\",\"contents\":\"buy some books plz\"}]"));
+                //body(equalTo("[{\"id\":999,\"name\":\"test note 1\",\"contents\":\"i am some content\"},{\"id\":1000,\"name\":\"test note 2\",\"contents\":\"yup, contents galore\"},{\"id\":1001,\"name\":\"test note 3\",\"contents\":\"hey look here!\"},{\"id\":1002,\"name\":\"test note 4\",\"contents\":\"buy some books plz\"}]"));
+                body(containsString("test note 1"),
+                     containsString("test note 2"),
+                     containsString("test note 3"),
+                     containsString("test note 4"));
     }
 
     @Test
