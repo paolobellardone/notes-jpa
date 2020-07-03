@@ -35,7 +35,7 @@ import javax.persistence.Table;
 /**
  * Note, a simple entity representation of a note with a generated Id, a name and a content.
  *
- * @version 1.0 18 Jun 2020
+ * @version 1.1 03 Jul 2020
  * @author PaoloB
  */
 @Entity(name = "Notes")
@@ -46,8 +46,9 @@ public class Note {
     @Id
     @Column(name = "ID",
             unique = true)
-    @SequenceGenerator(name = "noteSeq", sequenceName = "NOTES_ID_SEQ", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "noteSeq")
+    // Voglio mantenere il controllo sugli ID per poter usare Oracle Jet con common model standard
+    //@SequenceGenerator(name = "noteSeq", sequenceName = "NOTES_ID_SEQ", allocationSize = 1, initialValue = 1)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "noteSeq")
     private Long id;
 
     @Column(name = "NAME",

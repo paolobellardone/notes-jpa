@@ -1,5 +1,8 @@
 package io.helidon.demo.jpa;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import java.util.Random;
 import java.util.UUID;
 
@@ -36,10 +39,9 @@ public class NotesResourceTest {
         /** Test to search for all notes */
         given().
             when().
-                get(getConnectionString("/notes/all")).
+                get(getConnectionString("/notes")).
             then().
                 statusCode(200).
-                //body(equalTo("[{\"id\":999,\"name\":\"test note 1\",\"contents\":\"i am some content\"},{\"id\":1000,\"name\":\"test note 2\",\"contents\":\"yup, contents galore\"},{\"id\":1001,\"name\":\"test note 3\",\"contents\":\"hey look here!\"},{\"id\":1002,\"name\":\"test note 4\",\"contents\":\"buy some books plz\"}]"));
                 body(containsString("test note 1"),
                      containsString("test note 2"),
                      containsString("test note 3"),
@@ -76,40 +78,48 @@ public class NotesResourceTest {
     @Test
     public void testNotesPublishEndpoint() {
         /** Test to publish a new note using random data and then delete it */
+        Integer newId = Integer.valueOf(new Random().nextInt(9999));
         String newName = UUID.randomUUID().toString();
         String newContents = UUID.randomUUID().toString();
 
         // Create the note...
-        String requestBody = "{\"name\": \"NAME_HOLDER\", \"contents\": \"CONTENT_HOLDER\"}";
+        String requestBody = "{\"id\": \"ID_HOLDER\", \"name\": \"NAME_HOLDER\", \"contents\": \"CONTENT_HOLDER\"}";
         Response result = given().
                                 when().
                                     body(requestBody.
+                                        replace("ID_HOLDER", newId.toString()).
                                         replace("NAME_HOLDER", newName).
                                         replace("CONTENT_HOLDER", newContents)
                                     ).
                                     contentType("application/json").
-                                    post(getConnectionString("/notes/publish")).
+                                    post(getConnectionString("/notes/" + newId.toString())).
                                     then().
-                                        statusCode(200).
+                                        statusCode(201).
                                         extract().
                                         response();
+
+        String path = "";
+        try {
+            URL url = new URL(result.getHeader("Location"));
+            path = url.getPath();
+        }
+        catch (MalformedURLException e) {
+        }
 
         // ... check that the note is successfully created...
         given().
             when().
-                pathParam("itemId", result.getBody().asString()).
-                get(getConnectionString("/notes/{itemId}")).
+                get(getConnectionString(path)).
             then().statusCode(200).
                 body(
-                    containsString(newContents),
-                    containsString(newName)
+                    containsString(newName),
+                    containsString(newContents)
                 );
 
         // ... then remove the note
         given().
-            pathParam("itemId", result.getBody().asString()).
             when().
-                delete(getConnectionString("/notes/{itemId}")).
+                delete(getConnectionString(path)).
             then().
                 statusCode(200);
 
@@ -118,67 +128,77 @@ public class NotesResourceTest {
     @Test
     public void testNotesUpdateEndpoint() {
         /** Test to publish a new note and update it using random data and then delete it */
-
+        Integer newId = Integer.valueOf(new Random().nextInt(9999));
         String newName = UUID.randomUUID().toString();
         String newContents = UUID.randomUUID().toString();
 
         // Create the note...
-        String requestBody = "{\"name\": \"NAME_HOLDER\", \"contents\": \"CONTENT_HOLDER\"}";
+        String requestBody = "{\"id\": \"ID_HOLDER\", \"name\": \"NAME_HOLDER\", \"contents\": \"CONTENT_HOLDER\"}";
         Response result = given().
                                 when().
                                 body(requestBody.
+                                        replace("ID_HOLDER", newId.toString()).
                                         replace("NAME_HOLDER", newName).
                                         replace("CONTENT_HOLDER", newContents)
                                 ).
                                 contentType("application/json").
-                                post(getConnectionString("/notes/publish")).
+                                post(getConnectionString("/notes/" + newId.toString())).
                                 then().
-                                    statusCode(200).
+                                    statusCode(201).
                                     extract().
                                     response();
 
-        String updatedContent = UUID.randomUUID().toString();
+        String path = "";
+        try {
+            URL url = new URL(result.getHeader("Location"));
+            path = url.getPath();
+        }
+        catch (MalformedURLException e) {
+        }
+
+        requestBody = "{\"name\": \"NAME_HOLDER\", \"contents\": \"CONTENT_HOLDER\"}";
         String updatedName = UUID.randomUUID().toString();
+        String updatedContent = UUID.randomUUID().toString();
 
         // ... then update the note...
         given().
-            pathParam("itemId", result.getBody().asString()).
             when().
                 body(requestBody.
                         replace("NAME_HOLDER", updatedName).
                         replace("CONTENT_HOLDER", updatedContent)
                 ).
                 contentType("application/json").
-                put(getConnectionString("/notes/{itemId}")).
+                put(getConnectionString(path)).
                 then().
                     statusCode(200);
 
         // ... check for the updated values are successfully written...
         given().
-            pathParam("itemId", result.getBody().asString()).
             when().
-                get(getConnectionString("/notes/{itemId}")).
+                get(getConnectionString(path)).
             then().
                 statusCode(200).
                 body(
-                    containsString(updatedContent),
-                    containsString(updatedName)
+                    containsString(updatedName),
+                    containsString(updatedContent)
                 );
 
         // ... check by getting all notes...
-        given()
-            .when().get(getConnectionString("/notes/all"))
-            .then().statusCode(200)
-            .body(
-                not(containsString(newName)),
-                not(containsString(newContents))
+        given().
+            when().
+                get(getConnectionString("/notes")).
+            then().
+                statusCode(200).
+                body(
+                    not(containsString(newName)),
+                    not(containsString(newContents))
             );
 
         // ... then finally remove the note
         given()
-            .pathParam("itemId", result.getBody().asString())
-            .when().delete(getConnectionString("/notes/{itemId}"))
-            .then()
+            .when().
+                delete(getConnectionString(path)).
+            then()
                 .statusCode(200);
     }
 

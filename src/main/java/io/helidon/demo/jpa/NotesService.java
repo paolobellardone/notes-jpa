@@ -38,7 +38,7 @@ import io.helidon.demo.jpa.exceptions.MalformedNoteException;
 /**
  * NotesService, persistence implementation with EclipseLink JPA.
  *
- * @version 1.0 18 Jun 2020
+ * @version 1.1 03 Jul 2020
  * @author PaoloB
  */
 @ApplicationScoped
@@ -50,7 +50,7 @@ public class NotesService {
     @Transactional
     public Note publishNote(Note newNote) throws NoteExistsException, MalformedNoteException {
         try {
-            return createNoteWithData(newNote.getName(), newNote.getContents());
+            return createNoteWithData(newNote.getId(), newNote.getName(), newNote.getContents());
         } catch (NoteExistsException e) {
             throw new NoteExistsException("Called method NotesService.createNoteWithData() threw an exception:" + e.getMessage());
         } catch (MalformedNoteException e) {
@@ -59,9 +59,10 @@ public class NotesService {
     }
 
     @Transactional
-    public Note createNoteWithData(String noteName, String noteContents) throws NoteExistsException, MalformedNoteException {
+    public Note createNoteWithData(Long noteId, String noteName, String noteContents) throws NoteExistsException, MalformedNoteException {
         try {
             Note newNote = new Note();
+            newNote.setId(noteId);
             newNote.setName(noteName);
             newNote.setContents(noteContents);
             em.persist(newNote);
@@ -88,8 +89,8 @@ public class NotesService {
         if (persistedNote == null) {
             return null;
         }
-        persistedNote.setContents(updatedNote.getContents());
         persistedNote.setName(updatedNote.getName());
+        persistedNote.setContents(updatedNote.getContents());
 
         return persistedNote;
     }
