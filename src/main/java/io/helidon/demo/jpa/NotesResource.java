@@ -44,6 +44,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+
 import io.helidon.microprofile.cors.CrossOrigin;
 
 import io.helidon.demo.jpa.exceptions.MalformedNoteException;
@@ -53,7 +59,7 @@ import io.helidon.demo.jpa.exceptions.NoteNotExistsException;
 /**
  * NotesResource, REST APIs implementation.
  *
- * @version 1.1 03 Jul 2020
+ * @version 1.2 07 Jul 2020
  * @author PaoloB
  */
 
@@ -67,7 +73,11 @@ public class NotesResource {
     private static final Logger LOGGER = Logger.getLogger(NotesResource.class.getPackage().getName());
 
     @GET
-    //@Path("/")
+    @Operation(summary = "Returns all notes",
+               description ="This API returns all notes persisted inside the database.")
+    @APIResponse(description = "JSON collection of all JSON objects representing the notes persisted in the database.",
+                 content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Note.class)))
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllNotes() {
         /** Get all notes - URI http://server:port/notes/ */
@@ -86,6 +96,11 @@ public class NotesResource {
 
     @GET
     @Path("/{itemId}")
+    @Operation(summary = "Returns a specific note",
+               description ="This API returns fron the database a specific note, identified by its id.")
+    @APIResponse(description = "A JSON objects representing the requested note.",
+                 content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Note.class)))
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("itemId") Long itemId) {
         /** Get single note - URI http://server:port/notes/itemId */
@@ -103,6 +118,12 @@ public class NotesResource {
 
     @POST
     @Path("/{itemId}")
+    @Operation(summary = "Persist a new note inside the database.",
+               description = "This API persist a new note inside the database using the values specified in the payload.")
+    @RequestBody(name = "note",
+                 description = "The values representing the content of the new note.",
+                 content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Note.class)))
     @Consumes(MediaType.APPLICATION_JSON)
     public Response publishNote(@PathParam("itemId") Long itemId, Note newNote) {
         /** Create a note - URI http://server:port/notes/itemId */
@@ -131,12 +152,17 @@ public class NotesResource {
         }
 
         URI uri = UriBuilder.fromPath("/notes/{id}").build(inserted.getId());
-        //return Response.ok(inserted.getId()).status(201).build();
         return Response.created(uri).build();
     }
 
     @PUT
     @Path("/{itemId}")
+    @Operation(summary = "Update a note inside the database.",
+               description = "This API updates a note inside the database using the values specified in the payload.")
+    @RequestBody(name = "note",
+                 description = "The values representing the content of the new note.",
+                 content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = Note.class)))
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateNote(@PathParam("itemId") Long itemId, Note updatedNote) {
         if ((updatedNote.getName() == null) || (updatedNote.getContents() == null)) {
@@ -152,6 +178,8 @@ public class NotesResource {
 
     @DELETE
     @Path("/{itemId}")
+    @Operation(summary = "Delete a note from the database",
+               description ="This API deletes a note persisted inside the database.")
     public Response deleteNote(@PathParam("itemId") Long itemId) {
         try {
             LOGGER.info("Deleting note: " + itemId);
@@ -169,7 +197,6 @@ public class NotesResource {
 
     @OPTIONS
     @CrossOrigin()
-    //@Path("/")
     public void optionsForRootRequests() {
         /** Set headers if needed */
     }
