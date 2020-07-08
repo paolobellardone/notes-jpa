@@ -117,7 +117,7 @@ public class NotesResource {
     }
 
     @POST
-    @Path("/{itemId}")
+    //@Path("/{itemId}")
     @Operation(summary = "Persist a new note inside the database.",
                description = "This API persist a new note inside the database using the values specified in the payload.")
     @RequestBody(name = "note",
@@ -125,8 +125,9 @@ public class NotesResource {
                  content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = Note.class)))
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response publishNote(@PathParam("itemId") Long itemId, Note newNote) {
-        /** Create a note - URI http://server:port/notes/itemId */
+    //public Response publishNote(@PathParam("itemId") Long itemId, Note newNote) {
+    public Response publishNote(Note newNote) {
+            /** Create a note - URI http://server:port/notes */
 
         /*  Preferisco specificare anche l'id... capire poi se usarlo oppure no o usare la sequenza...
         if (newNote.getId() != null) {
@@ -138,8 +139,9 @@ public class NotesResource {
         Note inserted;
 
         try {
-            LOGGER.info("Creating note with id [" + itemId + "] in the database.");
-            newNote.setId(itemId); // controllare se serve...
+            //LOGGER.info("Creating note with id [" + itemId + "] in the database.");
+            LOGGER.info("Creating note with id [" + newNote.getId() + "] in the database.");
+            //newNote.setId(itemId); // controllare se serve...
             inserted = noteService.publishNote(newNote);
         } catch (NoteExistsException e) {
             /** A note with the same id is already in the database */
@@ -152,7 +154,7 @@ public class NotesResource {
         }
 
         URI uri = UriBuilder.fromPath("/notes/{id}").build(inserted.getId());
-        return Response.created(uri).build();
+        return Response.created(uri).entity(inserted).build();
     }
 
     @PUT
@@ -196,13 +198,13 @@ public class NotesResource {
     }
 
     @OPTIONS
-    @CrossOrigin()
+    @CrossOrigin(exposeHeaders = {"*"})
     public void optionsForRootRequests() {
         /** Set headers if needed */
     }
 
     @OPTIONS
-    @CrossOrigin()
+    @CrossOrigin(exposeHeaders = {"*"})
     @Path("/{itemId}")
     public void optionsForByIdRequests() {
         /** Set headers if needed */

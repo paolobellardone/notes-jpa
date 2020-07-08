@@ -48,7 +48,8 @@ app.controller("NotesManagementController", function ($scope, $http) {
       // Id is absent so add the new note - POST operation
       method = "POST";
       $scope.form.id = Math.floor((Math.random() * 2000) + 1); // Generate a random integer
-      url = '/notes/' + $scope.form.id;
+      url = '/notes';
+      data.id = $scope.form.id;
       data.name = $scope.form.name;
       data.contents = $scope.form.contents;
     } else {
@@ -94,7 +95,7 @@ app.controller("NotesManagementController", function ($scope, $http) {
     }).then(function successCallback(response) {
       $scope.notes = angular.fromJson(response.data);
     }, function errorCallback(response) {
-      console.log(response.statusText);
+      //console.log(response.statusText);
     });
   }
 

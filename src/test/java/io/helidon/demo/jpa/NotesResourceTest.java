@@ -92,7 +92,7 @@ public class NotesResourceTest {
                                         replace("CONTENT_HOLDER", newContents)
                                     ).
                                     contentType("application/json").
-                                    post(getConnectionString("/notes/" + newId.toString())).
+                                    post(getConnectionString("/notes")).
                                     then().
                                         statusCode(201).
                                         extract().
@@ -142,7 +142,7 @@ public class NotesResourceTest {
                                         replace("CONTENT_HOLDER", newContents)
                                 ).
                                 contentType("application/json").
-                                post(getConnectionString("/notes/" + newId.toString())).
+                                post(getConnectionString("/notes")).
                                 then().
                                     statusCode(201).
                                     extract().
