@@ -47,7 +47,8 @@ app.controller("NotesManagementController", function ($scope, $http) {
     if ($scope.form.id == -1) {
       // Id is absent so add the new note - POST operation
       method = "POST";
-      url = '/notes/publish';
+      $scope.form.id = Math.floor((Math.random() * 2000) + 1); // Generate a random integer
+      url = '/notes/' + $scope.form.id;
       data.name = $scope.form.name;
       data.contents = $scope.form.contents;
     } else {
@@ -78,9 +79,9 @@ app.controller("NotesManagementController", function ($scope, $http) {
 
   // In case of an edit opetation, populate form with note data
   $scope.edit = function (note) {
+    $scope.form.id = note.id;
     $scope.form.name = note.name;
     $scope.form.contents = note.contents;
-    $scope.form.id = note.id;
   };
 
   /* Private Methods */
@@ -89,7 +90,7 @@ app.controller("NotesManagementController", function ($scope, $http) {
   function _refreshPageData() {
     $http({
       method: 'GET',
-      url: '/notes/all'
+      url: '/notes'
     }).then(function successCallback(response) {
       $scope.notes = angular.fromJson(response.data);
     }, function errorCallback(response) {
@@ -108,8 +109,8 @@ app.controller("NotesManagementController", function ($scope, $http) {
 
   // Clear the form
   function _clearForm() {
+    $scope.form.id = -1;
     $scope.form.name = "";
     $scope.form.contents = "";
-    $scope.form.id = -1;
   }
 });
