@@ -1,44 +1,11 @@
-input[type="number"] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: 0;
-    font-family: "Open Sans", serif;
-}
-
-#flip {
-    padding: 5px;
+h1, h2, h3 {
     text-align: center;
 }
 
-#panel {
-    padding: 50px;
-    display: none;
-    border: solid 1px #c3c3c3;
-    color: #ffffff;
-    background-color: #333030;
-    border-radius: 4px;
-}
-
-#notes {
-    border-radius: 0px;
-}
-
-#container {
-    border: solid 1px #c3c3c3;
-    border-radius: 6px;
-}
-
-h1, h3 {
+.footer {
     text-align: center;
 }
 
-.row, .footer {
-    text-align: center;
+#table {
+    width: 100%
 }
