@@ -1,0 +1,2 @@
+define(['exports', 'preact/hooks', './useResizeObserver-abeb3c36'], (function(e,o,s){"use strict";e.useSize=(e,r={box:"content-box"})=>{const[t,i]=o.useState();return s.useResizeObserver({ref:e,callback:o.useCallback((e=>{const o="border-box"===r.box?e.borderBoxSize:e.contentBoxSize,s=o[0].inlineSize,t=o[0].blockSize;i({width:s,height:t})}),[r]),resizeObserverOptions:r}),t}}));
+//# sourceMappingURL=useSize-7b273e4f.js.map

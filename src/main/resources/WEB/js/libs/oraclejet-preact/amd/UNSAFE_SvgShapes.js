@@ -1,0 +1,2 @@
+define(['exports', './SvgSymbol-f4f5f094', './Marker-4fd75a2e', 'preact/jsx-runtime', './classNames-49c3ba27', './UNSAFE_SvgShapes/themes/SvgShapesStyles.css', 'css!./SvgShapesStyles.styles.css'], (function(e,s,S,a,r,t,l){"use strict";e.SvgSymbol=s.SvgSymbol,e.MARKER_PADDING=S.MARKER_PADDING,e.Marker=S.Marker,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=UNSAFE_SvgShapes.js.map

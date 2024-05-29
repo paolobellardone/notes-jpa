@@ -1,0 +1,13 @@
+# Directories to ignore
+.git/
+.settings/
+.vscode/
+ObjectStore/
+PutObjectStoreDirHere/
+target/
+
+# Files to ignore
+.DS_Store
+.classpath
+.project
+.helidon
