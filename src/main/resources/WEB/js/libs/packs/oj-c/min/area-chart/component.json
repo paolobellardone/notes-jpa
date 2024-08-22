@@ -1,7 +1,7 @@
 {
   "name": "area-chart",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Area Chart",
   "main": "oj-c/area-chart",
   "help": "oj-c.AreaChart.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -27,15 +33,16 @@
       "uxSpecs": [
         "area-chart"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/AreaChartWebElement.html"
     }
   },
   "propertyLayout": [
     {
       "propertyGroup": "common",
       "items": [
-        "type",
         "orientation",
-        "legend.title",
         "legend.position",
         "legend.rendered",
         "stack",
@@ -202,8 +209,8 @@
               },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
@@ -268,8 +275,8 @@
               },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
@@ -427,8 +434,8 @@
               },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
@@ -493,8 +500,8 @@
               },
               "enumValues": [
                 "dashed",
-                "dotted",
-                "solid"
+                "solid",
+                "dotted"
               ]
             },
             "lineWidth": {
@@ -555,6 +562,25 @@
               "enumValues": [
                 "off",
                 "on"
+              ]
+            },
+            "rotation": {
+              "type": "string",
+              "description": "Whether the ticklabels can be rotated.",
+              "displayName": "Rotation",
+              "propertyEditorValues": {
+                "none": {
+                  "description": "The axis labels will not be rotated.",
+                  "displayName": "On"
+                },
+                "off": {
+                  "description": "The axis labels might be rotated in order to fit more labels.",
+                  "displayName": "auto"
+                }
+              },
+              "enumValues": [
+                "auto",
+                "none"
               ]
             },
             "style": {
@@ -772,6 +798,19 @@
       "help": "#hiddenCategories",
       "writeback": true,
       "value": []
+    },
+    "dragMode": {
+      "type": "string",
+      "description": "The action that is performed when a drag occurs on the chart.",
+      "displayName": "Drag Mode",
+      "help": "#dragMode",
+      "enumValues": [
+        "pan",
+        "select",
+        "off",
+        "user",
+        "zoom"
+      ]
     },
     "highlightedCategories": {
       "type": "Array<string>",

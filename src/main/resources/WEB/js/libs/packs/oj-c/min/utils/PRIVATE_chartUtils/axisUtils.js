@@ -18,6 +18,7 @@ define(["require", "exports"], function (require, exports) {
         }
         newProps['isRendered'] = tickLabel?.rendered != 'off';
         newProps['style'] = tickLabel?.style;
+        newProps['rotation'] = tickLabel?.rotation != 'none' ? 'autoRotate' : 'none';
         return { tickLabel: newProps, ...rest };
     };
     exports.getPreactAxisProps = getPreactAxisProps;

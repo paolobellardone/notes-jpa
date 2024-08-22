@@ -28,9 +28,15 @@
       }
     ],
     "since": "16.1.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojmodule": "tab-bar-mixed"
   },
@@ -45,7 +51,7 @@
     "description": "Specifies the data definitions for the dynamics tabs (the collection of tabs that are removable).",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "type": {
       "names": [
@@ -71,7 +77,7 @@
     "description": "Specifies whether the dynamic tabs are displayed inside a conveyor belt or a popup.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojvalues": [
       {
@@ -113,7 +119,7 @@
     "description": "Specifies the icon used on the overflow tab when dynamicTabsOverflow is set to 'popup'.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "type": {
       "names": [
@@ -139,7 +145,7 @@
     "description": "Specifies the size of the TabBarMixed.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojvalues": [
       {
@@ -182,7 +188,7 @@
     "description": "The key of the currently selected tab.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "type": {
       "names": [
@@ -208,7 +214,7 @@
     "description": "The padding around the vertical divider that seperates collections of tabs.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "type": {
       "names": [
@@ -227,7 +233,7 @@
     "description": "Specifies the data definitions for the static tabs (the collection of tabs that are non-removable).",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "type": {
       "names": [
@@ -253,7 +259,7 @@
     "description": "Whether to display both the label and icons (\"standard\") or just the icons (\"icons\").\nIn the latter case, the label is displayed in a tooltip instead.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojvalues": [
       {
@@ -293,7 +299,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "params": [
@@ -327,7 +333,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "params": [
@@ -356,7 +362,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "params": [
@@ -385,7 +391,7 @@
     "description": "Triggered before user selects a tab which includes user gestures or selection is changed programmatically.",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "properties": [
@@ -396,15 +402,7 @@
           "names": [
             "function"
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "(param: Promise<void>) => void",
-            "for": "accept",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
         "name": "key",
@@ -434,7 +432,7 @@
     "description": "Triggered when user performs a remove gesture on a tab.  The remove gestures include:\n<ul>\n  <li>User clicks the remove icon in a tab</li>\n  <li>User presses Delete key on a tab</li>\n</ul>",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "properties": [
@@ -466,7 +464,7 @@
     "description": "Triggered when user performs a selection action gesture on a tab.  The action gestures include:\n<ul>\n  <li>User clicks anywhere in a tab</li>\n  <li>User taps anywhere in a tab</li>\n  <li>User pressed spacebar or enter key on a tab</li>\n</ul>",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "scope": "instance",
     "properties": [
@@ -515,7 +513,7 @@
     "memberof": "oj-c.TabBarMixed",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojfragment": true
   },
@@ -528,7 +526,7 @@
     "memberof": "oj-c.TabBarMixed",
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "ojfragment": true
   },
@@ -552,7 +550,7 @@
     },
     "meta": {
       "filename": "tab-bar-mixed.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tab-bar-mixed"
+      "path": "web/components/oj-c/tab-bar-mixed"
     },
     "properties": [
       {
@@ -571,7 +569,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "for": "icon",
+            "jsdocOverride": true
+          }
+        ]
       },
       {
         "name": "itemKey",
@@ -580,7 +586,15 @@
           "names": [
             "any"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "itemKey",
+            "jsdocOverride": true
+          }
+        ]
       },
       {
         "name": "label",

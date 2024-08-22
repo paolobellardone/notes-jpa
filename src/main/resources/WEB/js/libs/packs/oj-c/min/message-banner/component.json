@@ -1,7 +1,7 @@
 {
   "name": "message-banner",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -27,6 +27,9 @@
       "defaultColumns": "2",
       "minColumns": "1",
       "module": "oj-c/message-banner"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/MessageBannerWebElement.html"
     }
   },
   "propertyLayout": [
@@ -96,7 +99,29 @@
       "description": "The function that determines the detail template for the current row.",
       "displayName": "Current Detail Template",
       "help": "#detailTemplateValue",
-      "dynamicSlotDef": "MessageBannerTemplateContext"
+      "dynamicSlotDef": "MessageBannerTemplateContext",
+      "templateSlotRenderType": "RenderDetailTemplate"
+    },
+    "sorting": {
+      "type": "string",
+      "description": "Specifies how to sort the messages from the dataprovider.",
+      "displayName": "Sorting",
+      "help": "#sorting",
+      "propertyEditorValues": {
+        "severity": {
+          "description": "Sort the messages in the decreasing order of severity: error, warning, info, confirmation, and none. Then sort the messages of the same severity in reverse chronological order using the timestamp property.",
+          "displayName": "Severity"
+        },
+        "off": {
+          "description": "Messages appear in the order they are supplied with no additional sorting.",
+          "displayName": "Off"
+        }
+      },
+      "enumValues": [
+        "off",
+        "severity"
+      ],
+      "value": "severity"
     }
   },
   "dynamicSlots": {

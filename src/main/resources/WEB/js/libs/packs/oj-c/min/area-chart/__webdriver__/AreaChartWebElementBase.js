@@ -163,6 +163,15 @@ class AreaChartWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('hiddenCategories');
     }
     /**
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
+     *
+     */
+    getDragMode() {
+        return this.getProperty('dragMode');
+    }
+    /**
      * Sets the value of <code>highlightedCategories</code> property.
      * An array of category string used for highlighting.
      * @param highlightedCategories The value to set for <code>highlightedCategories</code>

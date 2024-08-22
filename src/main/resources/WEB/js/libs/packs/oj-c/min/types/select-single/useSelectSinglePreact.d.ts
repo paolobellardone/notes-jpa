@@ -1,15 +1,12 @@
 import { ValueUpdateDetail } from '@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail';
-import { ComponentProps } from 'preact';
-import type { SelectSingle } from './select-single';
-type SelectSingleProps = ComponentProps<typeof SelectSingle>;
-type V = string | number;
-export declare function useSelectSinglePreact({ advancedSearch, data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, messagesCustom, placeholder, readonly, requiredMessageDetail: propRequiredMessageDetail, required, textAlign, userAssistanceDensity, value: propValue, valueItem: propValueItem, virtualKeyboard, onMessagesCustomChanged, onOjAdvancedSearchAction, onOjValueAction, onValidChanged, onValueChanged, onValueItemChanged, ...otherProps }: SelectSingleProps, addBusyState: (desc?: string) => () => void): {
+import type { SelectSingleProps } from './select-single';
+export declare function useSelectSinglePreact<V extends string | number, D extends Record<string, any>>({ advancedSearch, data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, matchBy: propMatchBy, messagesCustom, placeholder, readonly, requiredMessageDetail: propRequiredMessageDetail, required, textAlign, userAssistanceDensity, value: propValue, valueItem: propValueItem, virtualKeyboard, onMessagesCustomChanged, onOjAdvancedSearchAction, onOjValueAction, onValidChanged, onValueChanged, onValueItemChanged, ...otherProps }: SelectSingleProps<V, D>, addBusyState: (desc?: string) => () => void): {
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    selectSingleProps: Omit<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
+    selectSingleProps: import("preact/compat").PropsWithoutRef<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
         addToList?: "off" | "on" | undefined;
         advancedSearch?: "off" | "on" | undefined;
         'aria-describedby'?: string | undefined;
@@ -60,10 +57,9 @@ export declare function useSelectSinglePreact({ advancedSearch, data: propData, 
             searchText?: string | undefined;
         }) => void) | undefined;
         onLoadRange?: ((range: import("@oracle/oraclejet-preact/UNSAFE_Collection").Range) => void) | undefined;
-    }, "ref"> & {
+    }> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
     _doAdvancedSearchAction: (searchText: string) => void;
     _selectItemByValue: (value: V | null) => Promise<void>;
 };
-export {};

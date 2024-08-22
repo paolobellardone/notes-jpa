@@ -6,7 +6,7 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
         const keys = selectedKeys.keys;
         const selected = (keys.all
             ? keys.deletedKeys.size > 0
-                ? 'partial-all'
+                ? 'partial'
                 : 'all'
             : keys.keys.size > 0
                 ? 'partial'

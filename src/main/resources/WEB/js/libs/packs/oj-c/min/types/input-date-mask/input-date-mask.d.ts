@@ -37,9 +37,9 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     validators?: (AsyncValidator<DateISOStr> | Validator<DateISOStr>)[] | null;
     value?: DateISOStr | null;
     onMessagesCustomChanged?: PropertyChanged<PreactInputDateMaskProps['messages']>;
-    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarDate>;
+    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarDate | undefined>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<string>;
+    onValueChanged?: PropertyChanged<string | null>;
 };
 type InputDateMaskHandle = {
     blur: () => void;
@@ -48,7 +48,7 @@ type InputDateMaskHandle = {
     reset: () => void;
     validate: () => Promise<'valid' | 'invalid'>;
 };
-declare const InputDateMaskImpl: ({ columnSpan, disabled, displayOptions, help, helpHints, messagesCustom, readonly, required, userAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputDateMaskHandle>) => import("preact").JSX.Element;
+declare const InputDateMaskImpl: ({ columnSpan, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, labelWrapping: propLabelWrapping, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputDateMaskHandle>) => import("preact").JSX.Element;
 export declare const InputDateMask: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputDateMaskImpl>>>;
 export type InputDateMaskProps = Props;
 export {};

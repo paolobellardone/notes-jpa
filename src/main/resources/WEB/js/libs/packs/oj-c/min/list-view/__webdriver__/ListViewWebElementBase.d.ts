@@ -48,6 +48,20 @@ export declare class ListViewWebElementBase extends OjWebElement {
      *
      */
     getSelectionMode(): Promise<string>;
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig(): Promise<ContextMenuConfig>;
+    /**
+     * Gets the value of <code>reorderable</code> property.
+     * Specify the item reordering functionality.
+     * @return The value of <code>reorderable</code> property.
+     *
+     */
+    getReorderable(): Promise<Reorderable>;
 }
 export interface Gridlines {
     /**
@@ -72,4 +86,16 @@ export interface ScrollPolicyOptions {
      *
      */
     scroller: string;
+}
+export interface ContextMenuConfig {
+    /**
+     *
+     */
+    accessibleLabel: string;
+}
+export interface Reorderable {
+    /**
+     *
+     */
+    items: string;
 }

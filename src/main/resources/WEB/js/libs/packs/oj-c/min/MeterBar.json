@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "ojmodule": "meter-bar"
   },
@@ -54,7 +54,7 @@
     "description": "Integer value specifying the maximum value of the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": 100,
     "type": {
@@ -74,7 +74,7 @@
     "description": "Integer value specifying the minimum value of the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": 0,
     "type": {
@@ -94,7 +94,7 @@
     "description": "Defines whether the value of the meter bar can be changed by the end user.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": false,
     "type": {
@@ -115,7 +115,7 @@
     "description": "The value of the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": 0,
     "type": {
@@ -135,7 +135,7 @@
     "description": "Specifies the increment by which values can be changed by the end user when readonly is false. The step must be a positive value that is smaller than the difference between the min and max.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": 1,
     "type": {
@@ -155,7 +155,7 @@
     "description": "Specifies the color of the meter bar indicator. Only applies when thresholdDisplay is not set to indicator.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "tsdeprecated": [],
     "type": {
@@ -175,7 +175,7 @@
     "description": "Specifies the ratio of relative thickness of the indicator to the plot area.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "tsdeprecated": [],
     "defaultvalue": 1,
@@ -196,7 +196,7 @@
     "description": "Specifies the plot area of the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -222,7 +222,7 @@
     "description": "Specifies the orientation of the meter bar to render.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": "\"horizontal\"",
     "type": {
@@ -243,7 +243,7 @@
     "description": "Specifies the array of objects defining the reference lines for the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -269,7 +269,7 @@
     "description": "Controls whether the current threshold is displayed on the indicator, in the plot area, or if all the thresholds are displayed in the plot area.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "defaultvalue": "\"indicator\"",
     "type": {
@@ -291,7 +291,7 @@
     "description": "An array of objects defining the thresholds for the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -314,10 +314,10 @@
     "longname": "oj-c.MeterBar#describedBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nTo facilitate correct screen reader behavior, the described-by attribute is\ncopied to the aria-describedby attribute on the component's dom.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-bar together for accessibility.\nThe oj-label element has a label-id, which is used by the described-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -333,10 +333,10 @@
     "longname": "oj-c.MeterBar#labelledBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which a text in a div or some other HTML element, and the oj-c-meter-bar together for accessibility.\nThe label element has an id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-bar together for accessibility.\nThe oj-label element has a label-id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -355,7 +355,7 @@
     "description": "Specifies the size of the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "ojvalues": [
       {
@@ -387,6 +387,16 @@
             "string"
           ]
         }
+      },
+      {
+        "name": "fit",
+        "description": "Meter Bar that fits the available space",
+        "displayName": "Fit",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ],
     "defaultvalue": "\"md\"",
@@ -394,7 +404,8 @@
       "names": [
         "\"sm\"",
         "\"md\"",
-        "\"lg\""
+        "\"lg\"",
+        "\"fit\""
       ]
     }
   },
@@ -409,7 +420,7 @@
     "description": "The function that returns a custom datatip string for given value of meter bar. The function is called with DatatipContext as context. If datatip is undefined,\nmeter bar will use the default datatip. If the returned value of the function is null, no datatip is shown.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -437,7 +448,7 @@
     "description": "A read-only property for retrieving the transient value from the meter bar. It is triggered when dragging over the meter bar.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "type": {
       "names": [
@@ -454,7 +465,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "scope": "instance",
     "params": [
@@ -488,7 +499,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "scope": "instance",
     "params": [
@@ -517,7 +528,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "scope": "instance",
     "params": [
@@ -546,7 +557,7 @@
     "memberof": "oj-c.MeterBar",
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "ojfragment": true
   },
@@ -565,7 +576,7 @@
     },
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "properties": [
       {
@@ -606,7 +617,7 @@
     },
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "properties": [
       {
@@ -686,7 +697,7 @@
     },
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "properties": [
       {
@@ -765,7 +776,7 @@
     },
     "meta": {
       "filename": "meter-bar.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-bar"
+      "path": "web/components/oj-c/meter-bar"
     },
     "properties": [
       {

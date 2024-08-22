@@ -1,7 +1,7 @@
 {
   "name": "legend",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Legend",
   "main": "oj-c/legend",
   "help": "oj-c.Legend.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "legend"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/LegendWebElement.html"
     }
   },
   "propertyLayout": [
@@ -307,6 +316,9 @@
       "displayName": "itemTemplate",
       "help": "#itemTemplate",
       "maxItems": 1,
+      "preferredContent": [
+        "CLegendItemElement"
+      ],
       "data": {
         "data": {
           "type": "any"
@@ -330,6 +342,9 @@
       "displayName": "sectionTemplate",
       "help": "#sectionTemplate",
       "maxItems": 1,
+      "preferredContent": [
+        "CLegendSectionElement"
+      ],
       "data": {
         "data": {
           "type": "any"

@@ -190,15 +190,6 @@ class InputPasswordWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('textAlign');
     }
     /**
-     * Gets the value of <code>unsafe_labelledBy</code> property.
-     *
-     * @return The value of <code>unsafe_labelledBy</code> property.
-     *
-     */
-    getUnsafeLabelledBy() {
-        return this.getProperty('unsafe_labelledBy');
-    }
-    /**
      * Gets the value of <code>userAssistanceDensity</code> property.
      * Specifies the density of the form component's user assistance presentation.
      * @return The value of <code>userAssistanceDensity</code> property.

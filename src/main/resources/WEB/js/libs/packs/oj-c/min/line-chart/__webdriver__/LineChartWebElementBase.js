@@ -145,6 +145,15 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('selection');
     }
     /**
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
+     *
+     */
+    getDragMode() {
+        return this.getProperty('dragMode');
+    }
+    /**
      * Sets the value of <code>hiddenCategories</code> property.
      * An array of category strings used for filtering.
      * @param hiddenCategories The value to set for <code>hiddenCategories</code>

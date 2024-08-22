@@ -1,7 +1,7 @@
 {
   "name": "radioset",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -34,6 +34,9 @@
       "uxSpecs": [
         "radioset"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/RadiosetWebElement.html"
     }
   },
   "propertyLayout": [
@@ -296,8 +299,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -320,15 +322,15 @@
       "help": "#userAssistanceDensity",
       "propertyEditorValues": {
         "reflow": {
-          "description": "Messages, help, hints, and required are all shown inline under the field with no reserved space.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with no reserved space.",
           "displayName": "Reflow"
         },
         "efficient": {
-          "description": "Messages, help, hints, and required are all shown inline under the field with reserved space.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
           "displayName": "Efficient"
         },
         "compact": {
-          "description": "Messages, help, hints, and required will not be shown inline; they will show in a mode that keeps the screen more compact, like a popup for the messages, and a required icon to indicate Required.",
+          "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
           "displayName": "Compact"
         }
       },
@@ -341,8 +343,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "value": {
       "type": "any",

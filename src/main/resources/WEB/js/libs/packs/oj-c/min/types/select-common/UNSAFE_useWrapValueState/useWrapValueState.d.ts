@@ -1,10 +1,10 @@
 import { ValueState } from 'oj-c/editable-value/UNSAFE_useValue/useValue';
-import { StateUpdater } from 'preact/hooks';
+import { Dispatch, StateUpdater } from 'preact/hooks';
 type Props<ValueItemType> = {
     arItemContexts?: ValueItemType;
     isLoading?: boolean;
     preactValueItems?: ValueItemType;
-    setPreactValueItems: StateUpdater<ValueItemType | undefined>;
+    setPreactValueItems: Dispatch<StateUpdater<ValueItemType | undefined>>;
 };
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 export declare function useWrapValueState<ValueType, ValueItemType>({ arItemContexts, isLoading, preactValueItems, setPreactValueItems }: Props<ValueItemType>): {
@@ -15,9 +15,9 @@ export declare function useWrapValueState<ValueType, ValueItemType>({ arItemCont
         transientValue: ValueType;
         value: ValueType;
         setValueAfterValidation: (value: ValueType) => void;
-        setDisplayValue: StateUpdater<string>;
-        setTransientValue: StateUpdater<ValueType>;
-        setValue: StateUpdater<ValueType>;
+        setDisplayValue: Dispatch<StateUpdater<string>>;
+        setTransientValue: Dispatch<StateUpdater<ValueType>>;
+        setValue: Dispatch<StateUpdater<ValueType>>;
     };
 };
 export {};

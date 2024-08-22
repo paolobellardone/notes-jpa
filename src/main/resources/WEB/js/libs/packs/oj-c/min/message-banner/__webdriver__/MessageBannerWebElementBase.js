@@ -27,6 +27,15 @@ class MessageBannerWebElementBase extends elements_1.OjWebElement {
     getDetailTemplateValue() {
         return this.getProperty('detailTemplateValue');
     }
+    /**
+     * Gets the value of <code>sorting</code> property.
+     * Specifies how to sort the messages from the dataprovider.
+     * @return The value of <code>sorting</code> property.
+     *
+     */
+    getSorting() {
+        return this.getProperty('sorting');
+    }
 }
 exports.MessageBannerWebElementBase = MessageBannerWebElementBase;
 //# sourceMappingURL=MessageBannerWebElementBase.js.map

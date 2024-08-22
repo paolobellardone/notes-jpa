@@ -1,4 +1,4 @@
-import { StateUpdater } from 'preact/hooks';
+import { Dispatch, StateUpdater } from 'preact/hooks';
 import { ConverterErrorSymbol } from '../UNSAFE_useConverter/useConverter';
 import { ValidState } from '../UNSAFE_useValidators/useValidators';
 export type ValueState<V> = {
@@ -7,9 +7,9 @@ export type ValueState<V> = {
     value: V;
     getValueForValidation: (valid: ValidState) => V | typeof ConverterErrorSymbol;
     setValueAfterValidation: (value: V) => void;
-    setDisplayValue: StateUpdater<string>;
-    setTransientValue: StateUpdater<V>;
-    setValue: StateUpdater<V>;
+    setDisplayValue: Dispatch<StateUpdater<string>>;
+    setTransientValue: Dispatch<StateUpdater<V>>;
+    setValue: Dispatch<StateUpdater<V>>;
     refreshDisplayValue: () => void;
 };
 export type UseValueProps<V> = {

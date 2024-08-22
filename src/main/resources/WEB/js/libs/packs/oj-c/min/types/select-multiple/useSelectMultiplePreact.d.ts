@@ -1,14 +1,12 @@
 import { ValueUpdateDetail } from '@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail';
-import { ComponentProps } from 'preact';
-import type { SelectMultiple } from './select-multiple';
-type SelectMultipleProps = ComponentProps<typeof SelectMultiple>;
-export declare function useSelectMultiplePreact<K extends string | number, D extends Record<string, any>>({ data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, messagesCustom, placeholder, readonly, required, requiredMessageDetail: propRequiredMessageDetail, textAlign, userAssistanceDensity, value: propValue, valueItems: propValueItems, virtualKeyboard, onMessagesCustomChanged, onValidChanged, onValueChanged, onValueItemsChanged, ...otherProps }: SelectMultipleProps, addBusyState: (desc?: string) => () => void): {
+import type { SelectMultipleProps } from './select-multiple';
+export declare function useSelectMultiplePreact<K extends string | number, D extends Record<string, any>>({ data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, matchBy: propMatchBy, messagesCustom, placeholder, readonly, required, requiredMessageDetail: propRequiredMessageDetail, textAlign, userAssistanceDensity, value: propValue, valueItems: propValueItems, virtualKeyboard, onMessagesCustomChanged, onValidChanged, onValueChanged, onValueItemsChanged, ...otherProps }: SelectMultipleProps<K, D>, addBusyState: (desc?: string) => () => void): {
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    selectMultipleProps: Omit<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
+    selectMultipleProps: import("preact/compat").PropsWithoutRef<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
         addToList?: "off" | "on" | undefined;
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
@@ -41,9 +39,8 @@ export declare function useSelectMultiplePreact<K extends string | number, D ext
             searchText?: string | undefined;
         }) => void) | undefined;
         onLoadRange?: ((range: import("@oracle/oraclejet-preact/UNSAFE_Collection").Range) => void) | undefined;
-    }, "ref"> & {
+    }> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
     _selectItemsByValue: (value: Set<K> | null) => Promise<void>;
 };
-export {};

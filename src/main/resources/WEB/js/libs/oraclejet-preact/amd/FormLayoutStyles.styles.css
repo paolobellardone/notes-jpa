@@ -7,7 +7,8 @@
 }
 .FormLayoutStyles_baseRowDirectionStyle__1h1o9fy2 {
   display: grid;
-  grid-gap: var(--columnGapWidthSm__pa4rfz2);
+  grid-column-gap: var(--columnGapWidthSm__pa4rfz2);
+  grid-row-gap: var(--rowGapWidth__pa4rfz3);
 }
 .FormLayoutStyles_baseColumnDirectionStyle__1h1o9fy3 {
   -moz-column-gap: var(--columnGapWidthSm__pa4rfz2);

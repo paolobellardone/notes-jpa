@@ -4,9 +4,9 @@ import 'ojs/oj-jsx-interfaces';
 import { SelectSingle as PreactSelectSingle } from '@oracle/oraclejet-preact/UNSAFE_SelectSingle';
 import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
 import { ItemContext } from 'ojs/ojcommontypes';
-import { DataProvider, Item } from 'ojs/ojdataprovider';
+import { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
 import { Action, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType } from 'preact';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import 'css!oj-c/select-single/select-single-styles.css';
@@ -36,13 +36,13 @@ type Props<V extends string | number, D extends Record<string, any>> = ObservedG
     labelHint: string;
     labelStartWidth?: Size;
     labelWrapping?: 'truncate' | 'wrap';
+    matchBy?: Array<TextFilter<D>['matchBy']> | null;
     messagesCustom?: PreactSelectSingleProps['messages'];
     placeholder?: string;
     readonly?: boolean;
     required?: boolean;
     requiredMessageDetail?: string;
     textAlign?: PreactSelectSingleProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactSelectSingleProps['userAssistanceDensity'];
     value?: V | null;
     valueItem?: ItemContext<V, D> | null;
@@ -54,22 +54,7 @@ type Props<V extends string | number, D extends Record<string, any>> = ObservedG
     onOjAdvancedSearchAction?: Action<AdvancedSearchActionPayload>;
     onOjValueAction?: Action<ValueActionPayload<V, D>>;
 };
-export declare class SelectSingle<V extends string | number, D extends Record<string, any>> extends Component<ExtendGlobalProps<Props<V, D>>> {
-    static defaultProps: Pick<Props<any, any>, 'advancedSearch' | 'columnSpan' | 'data' | 'disabled' | 'displayOptions' | 'help' | 'helpHints' | 'messagesCustom' | 'readonly' | 'required' | 'requiredMessageDetail' | 'userAssistanceDensity' | 'value' | 'valueItem' | 'virtualKeyboard'>;
-    private busyContextRef;
-    private selectSingleRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props<V, D>>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-    _doAdvancedSearchAction(searchText: string): void | undefined;
-    _selectItemByValue(value: V | null): Promise<void> | undefined;
-}
+export declare const SelectSingle: ComponentType<ExtendGlobalProps<Props<string | number, Record<string, any>>>>;
 export type SelectSingleProps<V extends string | number, D extends Record<string, any>> = Props<V, D>;
 export {};
 export interface CSelectSingleElement<V extends string | number, D extends Record<string, any>> extends JetElement<CSelectSingleElementSettableProperties<V, D>>, CSelectSingleElementSettableProperties<V, D> {
@@ -81,13 +66,13 @@ export interface CSelectSingleElement<V extends string | number, D extends Recor
     setProperty<T extends keyof CSelectSingleElementSettableProperties<V, D>>(property: T, value: CSelectSingleElementSettableProperties<V, D>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CSelectSingleElementSettableProperties<V, D>>): void;
     setProperties(properties: CSelectSingleElementSettablePropertiesLenient<V, D>): void;
-    _doAdvancedSearchAction: SelectSingle<V, D>['_doAdvancedSearchAction'];
-    _selectItemByValue: SelectSingle<V, D>['_selectItemByValue'];
-    blur: SelectSingle<V, D>['blur'];
-    focus: SelectSingle<V, D>['focus'];
-    reset: SelectSingle<V, D>['reset'];
-    showMessages: SelectSingle<V, D>['showMessages'];
-    validate: SelectSingle<V, D>['validate'];
+    _doAdvancedSearchAction: (searchText: string) => void;
+    _selectItemByValue: (value: V | null) => Promise<void>;
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CSelectSingleElement {
     interface ojAdvancedSearchAction extends CustomEvent<{
@@ -109,18 +94,19 @@ export namespace CSelectSingleElement {
     type labelHintChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelHint']>;
     type labelStartWidthChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelStartWidth']>;
     type labelWrappingChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelWrapping']>;
+    type matchByChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['matchBy']>;
     type messagesCustomChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['messagesCustom']>;
     type placeholderChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['placeholder']>;
     type readonlyChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['readonly']>;
     type requiredChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['required']>;
     type requiredMessageDetailChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['requiredMessageDetail']>;
     type textAlignChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['textAlign']>;
-    type unsafe_labelledByChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['unsafe_labelledBy']>;
     type userAssistanceDensityChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['userAssistanceDensity']>;
     type validChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['valid']>;
     type valueChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['value']>;
     type valueItemChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['valueItem']>;
     type virtualKeyboardChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['virtualKeyboard']>;
+    type RenderItemTemplate<V extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<V, D>>;
 }
 export interface CSelectSingleElementEventMap<V extends string | number, D extends Record<string, any>> extends HTMLElementEventMap {
     'ojAdvancedSearchAction': CSelectSingleElement.ojAdvancedSearchAction;
@@ -138,13 +124,13 @@ export interface CSelectSingleElementEventMap<V extends string | number, D exten
     'labelHintChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelHint']>;
     'labelStartWidthChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelStartWidth']>;
     'labelWrappingChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['labelWrapping']>;
+    'matchByChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['matchBy']>;
     'messagesCustomChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['messagesCustom']>;
     'placeholderChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['placeholder']>;
     'readonlyChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['readonly']>;
     'requiredChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['required']>;
     'requiredMessageDetailChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['requiredMessageDetail']>;
     'textAlignChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['textAlign']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['valid']>;
     'valueChanged': JetElementCustomEventStrict<CSelectSingleElement<V, D>['value']>;
@@ -165,13 +151,13 @@ export interface CSelectSingleElementSettableProperties<V extends string | numbe
     labelHint: Props<V, D>['labelHint'];
     labelStartWidth?: Props<V, D>['labelStartWidth'];
     labelWrapping?: Props<V, D>['labelWrapping'];
+    matchBy?: Props<V, D>['matchBy'];
     messagesCustom?: Props<V, D>['messagesCustom'];
     placeholder?: Props<V, D>['placeholder'];
     readonly?: Props<V, D>['readonly'];
     required?: Props<V, D>['required'];
     requiredMessageDetail?: Props<V, D>['requiredMessageDetail'];
     textAlign?: Props<V, D>['textAlign'];
-    unsafe_labelledBy?: Props<V, D>['unsafe_labelledBy'];
     userAssistanceDensity?: Props<V, D>['userAssistanceDensity'];
     value?: Props<V, D>['value'];
     valueItem?: Props<V, D>['valueItem'];
@@ -198,13 +184,13 @@ export interface SelectSingleIntrinsicProps extends Partial<Readonly<CSelectSing
     onlabelHintChanged?: (value: CSelectSingleElementEventMap<any, any>['labelHintChanged']) => void;
     onlabelStartWidthChanged?: (value: CSelectSingleElementEventMap<any, any>['labelStartWidthChanged']) => void;
     onlabelWrappingChanged?: (value: CSelectSingleElementEventMap<any, any>['labelWrappingChanged']) => void;
+    onmatchByChanged?: (value: CSelectSingleElementEventMap<any, any>['matchByChanged']) => void;
     onmessagesCustomChanged?: (value: CSelectSingleElementEventMap<any, any>['messagesCustomChanged']) => void;
     onplaceholderChanged?: (value: CSelectSingleElementEventMap<any, any>['placeholderChanged']) => void;
     onreadonlyChanged?: (value: CSelectSingleElementEventMap<any, any>['readonlyChanged']) => void;
     onrequiredChanged?: (value: CSelectSingleElementEventMap<any, any>['requiredChanged']) => void;
     onrequiredMessageDetailChanged?: (value: CSelectSingleElementEventMap<any, any>['requiredMessageDetailChanged']) => void;
     ontextAlignChanged?: (value: CSelectSingleElementEventMap<any, any>['textAlignChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CSelectSingleElementEventMap<any, any>['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CSelectSingleElementEventMap<any, any>['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CSelectSingleElementEventMap<any, any>['validChanged']) => void;
     onvalueChanged?: (value: CSelectSingleElementEventMap<any, any>['valueChanged']) => void;

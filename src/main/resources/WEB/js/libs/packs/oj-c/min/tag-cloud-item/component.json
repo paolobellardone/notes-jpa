@@ -1,7 +1,7 @@
 {
   "name": "tag-cloud-item",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -14,6 +14,12 @@
   "displayName": "TagCloudItem",
   "main": "oj-c/tag-cloud-item",
   "help": "oj-c.TagCloudItem.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"

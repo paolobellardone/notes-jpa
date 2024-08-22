@@ -3,13 +3,13 @@ import type { InputPassword } from 'oj-c/input-password';
 type InputPasswordProps = ComponentProps<typeof InputPassword>;
 export declare function useInputPasswordPreact({ autocomplete, autofocus, clearIcon, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, maskIcon, messagesCustom, placeholder, readonly, required, requiredMessageDetail, textAlign, userAssistanceDensity, validators, value: propValue, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, ...otherProps }: InputPasswordProps, addBusyState?: (desc?: string) => () => void): {
     value: string | null;
-    setValue: import("preact/hooks").StateUpdater<string | null>;
+    setValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<string | null>>;
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    inputPasswordProps: Omit<{
+    inputPasswordProps: import("preact/compat").PropsWithoutRef<{
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
         autoComplete?: string | undefined;
@@ -34,7 +34,7 @@ export declare function useInputPasswordPreact({ autocomplete, autofocus, clearI
         variant?: "default" | "embedded" | undefined;
         onCommit?: ((detail: import("@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail").ValueUpdateDetail<string>) => void) | undefined;
         onInput: ((detail: import("@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail").ValueUpdateDetail<string>) => void) | undefined;
-    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps, "ref"> & {
+    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

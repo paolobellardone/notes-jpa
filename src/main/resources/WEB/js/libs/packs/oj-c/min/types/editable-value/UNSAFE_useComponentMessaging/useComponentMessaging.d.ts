@@ -1,5 +1,5 @@
 import { ComponentMessageItem } from '@oracle/oraclejet-preact/UNSAFE_ComponentMessage';
-import { StateUpdater } from 'preact/hooks';
+import { Dispatch, StateUpdater } from 'preact/hooks';
 export type ComponentMessagingState = {
     componentMessages: ComponentMessageItem[];
     deferredComponentMessages: ComponentMessageItem[];
@@ -13,8 +13,8 @@ export type ComponentMessagingState = {
     hasCustomErrorMessages: () => boolean;
     hasHiddenMessages: () => boolean;
     hasNoErrorMessages: () => boolean;
-    setComponentMessages: StateUpdater<ComponentMessageItem[]>;
-    setDeferredComponentMessages: StateUpdater<ComponentMessageItem[]>;
+    setComponentMessages: Dispatch<StateUpdater<ComponentMessageItem[]>>;
+    setDeferredComponentMessages: Dispatch<StateUpdater<ComponentMessageItem[]>>;
     showHiddenMessages: () => void;
 };
 export type UseComponentMessagingProps = {

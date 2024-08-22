@@ -112,6 +112,13 @@ export declare class LineChartWebElementBase extends OjWebElement {
      */
     getSelection(): Promise<Array<any>>;
     /**
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
+     *
+     */
+    getDragMode(): Promise<string>;
+    /**
      * Sets the value of <code>hiddenCategories</code> property.
      * An array of category strings used for filtering.
      * @param hiddenCategories The value to set for <code>hiddenCategories</code>
@@ -363,6 +370,10 @@ export interface XAxisTickLabel {
      * Whether the tick labels are rendered or not.
      */
     rendered: string;
+    /**
+     * Whether the ticklabels can be rotated.
+     */
+    rotation: string;
     /**
      * The style of the tick labels.
      */

@@ -118,6 +118,15 @@ class SelectMultipleWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('labelWrapping');
     }
     /**
+     * Gets the value of <code>matchBy</code> property.
+     * List of text filter matching behaviors to use when filtering.
+     * @return The value of <code>matchBy</code> property.
+     *
+     */
+    getMatchBy() {
+        return this.getProperty('matchBy');
+    }
+    /**
      * Sets the value of <code>messagesCustom</code> property.
      * List of custom component messages
      * @param messagesCustom The value to set for <code>messagesCustom</code>
@@ -179,15 +188,6 @@ class SelectMultipleWebElementBase extends elements_1.OjWebElement {
      */
     getTextAlign() {
         return this.getProperty('textAlign');
-    }
-    /**
-     * Gets the value of <code>unsafe_labelledBy</code> property.
-     *
-     * @return The value of <code>unsafe_labelledBy</code> property.
-     *
-     */
-    getUnsafeLabelledBy() {
-        return this.getProperty('unsafe_labelledBy');
     }
     /**
      * Gets the value of <code>userAssistanceDensity</code> property.

@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojmodule": "meter-circle"
   },
@@ -54,7 +54,7 @@
     "description": "Integer value specifying the maximum value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 100,
     "type": {
@@ -74,7 +74,7 @@
     "description": "Integer value specifying the minimum value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 0,
     "type": {
@@ -94,7 +94,7 @@
     "description": "Defines whether the value of the meter circle can be changed by the end user.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": false,
     "type": {
@@ -115,7 +115,7 @@
     "description": "The value of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 0,
     "type": {
@@ -135,7 +135,7 @@
     "description": "Specifies the increment by which values can be changed by the end user when readonly is false. The step must be a positive value that is smaller than the difference between the min and max.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 1,
     "type": {
@@ -155,7 +155,7 @@
     "description": "Specifies the color of the meter circle indicator. Only applies when thresholdDisplay is not set to indicator.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "type": {
@@ -175,7 +175,7 @@
     "description": "Specifies the ratio of relative thickness of the indicator to the plot area.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "defaultvalue": 1,
@@ -196,7 +196,7 @@
     "description": "Specifies the inner radius, defined by the ratio of the distance from the center of the gauge to the innermost edge of the indicator to plot area. Valid values are ratios from 0 to 1. Depends on the size of the gauge and theme.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "tsdeprecated": [],
     "type": {
@@ -216,7 +216,7 @@
     "description": "Specifies the plot area of the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -242,7 +242,7 @@
     "description": "Specifies the angle extent of a meter circle. Value should be provided in degrees.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 360,
     "type": {
@@ -262,7 +262,7 @@
     "description": "Specifies the start angle of the plot area relative to the positive x axis. Value should be provided in degrees.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": 90,
     "type": {
@@ -282,7 +282,7 @@
     "description": "Specifies the array of objects defining the reference lines for the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -308,7 +308,7 @@
     "description": "Controls whether the current threshold is displayed on the indicator, in the plot area, or if all the thresholds are displayed in the plot area.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "defaultvalue": "\"indicator\"",
     "type": {
@@ -330,7 +330,7 @@
     "description": "An array of objects defining the thresholds for the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -353,10 +353,10 @@
     "longname": "oj-c.MeterCircle#describedBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nTo facilitate correct screen reader behavior, the described-by attribute is\ncopied to the aria-describedby attribute on the component's dom.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe oj-label element has a label-id, which is used by the described-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -372,10 +372,10 @@
     "longname": "oj-c.MeterCircle#labelledBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe label element has an id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-meter-circle together for accessibility.\nThe oj-label element has a label-id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -394,7 +394,7 @@
     "description": "Specifies the size of the meter var.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojvalues": [
       {
@@ -426,6 +426,16 @@
             "string"
           ]
         }
+      },
+      {
+        "name": "fit",
+        "description": "Meter Circle that fills available width and height.",
+        "displayName": "Fit",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ],
     "defaultvalue": "\"md\"",
@@ -433,7 +443,8 @@
       "names": [
         "\"sm\"",
         "\"md\"",
-        "\"lg\""
+        "\"lg\"",
+        "\"fit\""
       ]
     }
   },
@@ -448,7 +459,7 @@
     "description": "The function that returns a custom datatip string for given value of meter circle. The function is called with DatatipContext as context. If datatip is undefined,\nmeter circle will use the default datatip. If the returned value of the function is null, no datatip is shown.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -476,7 +487,7 @@
     "description": "A read-only property for retrieving the transient value from the meter circle. It is triggered when dragging over the meter circle.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "type": {
       "names": [
@@ -493,7 +504,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -527,7 +538,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -556,7 +567,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "params": [
@@ -585,7 +596,7 @@
     "description": "The centerTemplate slot is used to specify center content. When the template is executed, the component's binding context is extended with the following properties:",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "scope": "instance",
     "ojchild": false,
@@ -648,7 +659,7 @@
     "memberof": "oj-c.MeterCircle",
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "ojfragment": true
   },
@@ -667,7 +678,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -708,7 +719,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -777,7 +788,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -856,7 +867,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {
@@ -886,7 +897,7 @@
     },
     "meta": {
       "filename": "meter-circle.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/meter-circle"
+      "path": "web/components/oj-c/meter-circle"
     },
     "properties": [
       {

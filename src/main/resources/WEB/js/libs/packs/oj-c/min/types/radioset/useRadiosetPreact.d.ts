@@ -7,7 +7,7 @@ export declare function useRadiosetPreact({ direction, disabled, displayOptions,
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    radiosetProps: Omit<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
+    radiosetProps: import("preact/compat").PropsWithoutRef<import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps & {
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
         children: import("preact").ComponentChildren;
@@ -25,7 +25,7 @@ export declare function useRadiosetPreact({ direction, disabled, displayOptions,
         onCommit: (detail: import("@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail").ValueUpdateDetail<string | number | undefined>) => void;
         userAssistanceDensity?: import("@oracle/oraclejet-preact/UNSAFE_UserAssistance").UserAssistanceDensityType | undefined;
         value?: string | number | undefined;
-    }, "ref"> & {
+    }> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

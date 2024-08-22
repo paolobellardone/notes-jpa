@@ -26,10 +26,10 @@ export type UseEditableValueProps<V> = PickedComponentMessagingProps & PickedCon
 };
 export declare function useEditableValue<V>({ ariaDescribedBy, converter, disabled, displayOptions, implicitComponentValidator, labelHint, messagesCustom, readonly, required, requiredMessageDetail, shouldNormalizeValueOnCommit, validators, value: valueProp, addBusyState, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, onTransientValueChanged, wrapValueState }: UseEditableValueProps<V>): {
     value: V;
-    setValue: import("preact/hooks").StateUpdater<V>;
+    setValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<V>>;
     displayValue: string;
-    setDisplayValue: import("preact/hooks").StateUpdater<string>;
-    setTransientValue: import("preact/hooks").StateUpdater<V>;
+    setDisplayValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<string>>;
+    setTransientValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<V>>;
     methods: {
         reset: () => void;
         validate: () => Promise<'valid' | 'invalid'>;
@@ -45,5 +45,6 @@ export declare function useEditableValue<V>({ ariaDescribedBy, converter, disabl
     onCommitValue: (value: V, doCommitOnValid?: boolean) => Promise<ValidationResult>;
     format: (value: V, shouldSuppressError?: boolean) => string | null | undefined;
     normalizeAndParseValue: (value: string) => typeof ConverterErrorSymbol | V | null;
+    validateValueOnExternalChange: (value: V) => ValidationResult;
 };
 export {};

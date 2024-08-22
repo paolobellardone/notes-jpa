@@ -20,4 +20,11 @@ export declare class MessageBannerWebElementBase extends OjWebElement {
      *
      */
     getDetailTemplateValue(): Promise<string | null>;
+    /**
+     * Gets the value of <code>sorting</code> property.
+     * Specifies how to sort the messages from the dataprovider.
+     * @return The value of <code>sorting</code> property.
+     *
+     */
+    getSorting(): Promise<string>;
 }

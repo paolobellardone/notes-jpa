@@ -19,7 +19,7 @@ export declare class SplitMenuButtonWebElementBase extends OjWebElement {
      * @return The value of <code>items</code> property.
      *
      */
-    getItems(): Promise<Array<object>>;
+    getItems(): Promise<Array<Items>>;
     /**
      * Gets the value of <code>tooltip</code> property.
      * Text to show in the tooltip.
@@ -55,4 +55,62 @@ export declare class SplitMenuButtonWebElementBase extends OjWebElement {
      *
      */
     getChroming(): Promise<string>;
+}
+export interface Items {
+    /**
+     * Specifies the type of the menu item.
+     */
+    type: string;
+    /**
+     * Specifies the text to show for the menu item.
+     */
+    label: string;
+    /**
+     * Specifes a key value associated with the menu item.
+     */
+    key: string;
+    /**
+     * Specifies whether the menu item should be disabled.
+     */
+    disabled: boolean;
+    /**
+     * Specifies an icon to show at the start position of the menu item.
+     */
+    startIcon: ItemsStartIcon;
+    /**
+     * Specifies an icon to show at the end position of the menu item.
+     */
+    endIcon: ItemsEndIcon;
+    /**
+     * Specifies styling for the menu item based upon its associated action.
+     */
+    variant: string;
+}
+export interface ItemsStartIcon {
+    /**
+     *
+     */
+    type: string;
+    /**
+     *
+     */
+    class: string;
+    /**
+     *
+     */
+    src: string;
+}
+export interface ItemsEndIcon {
+    /**
+     *
+     */
+    type: string;
+    /**
+     *
+     */
+    class: string;
+    /**
+     *
+     */
+    src: string;
 }

@@ -7,7 +7,7 @@ import { LineChartItemProps } from '../line-chart-item/line-chart-item';
 import 'css!oj-c/line-chart/line-chart-styles.css';
 import { Action, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
 import { ChartItemTemplateContext, ChartSeriesTemplateContext, ChartGroupTemplateContext } from '../hooks/UNSAFE_useChartData/useChartData';
-import { Group } from '@oracle/oraclejet-preact/UNSAFE_Axis/axis.types';
+import { Group } from '@oracle/oraclejet-preact/utils/UNSAFE_visTypes/chart';
 import type { ViewPortDetail, PlotArea, YAxis, XAxis, ValueFormats } from '../utils/UNSAFE_vizTypes/chartTypes';
 import type { ChartLegend } from '../utils/UNSAFE_vizTypes';
 import { DataProvider } from 'ojs/ojdataprovider';
@@ -62,6 +62,7 @@ export type LineChartProps<K, D extends LineItem<K> | any> = ObservedGlobalProps
     data?: DataProvider<K, D> | null;
     selectionMode?: 'none' | 'single' | 'multiple';
     selection?: K[];
+    dragMode?: 'user' | 'select' | 'zoom' | 'pan' | 'off';
     onSelectionChanged?: PropertyChanged<(string | number)[]>;
     hiddenCategories?: string[];
     onHiddenCategoriesChanged?: PropertyChanged<string[]>;
@@ -94,6 +95,7 @@ export namespace CLineChartElement {
     interface ojViewportChange extends CustomEvent<ViewPortDetail & {}> {
     }
     type dataChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['data']>;
+    type dragModeChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['dragMode']>;
     type drillingChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['drilling']>;
     type groupComparatorChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['groupComparator']>;
     type hiddenCategoriesChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['hiddenCategories']>;
@@ -113,6 +115,9 @@ export namespace CLineChartElement {
     type xAxisChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['xAxis']>;
     type yAxisChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['yAxis']>;
     type zoomAndScrollChanged<K extends string | number, D extends LineItem<K> | any> = JetElementCustomEventStrict<CLineChartElement<K, D>['zoomAndScroll']>;
+    type RenderItemTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartItemTemplateContext<K, D>>;
+    type RenderSeriesTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartSeriesTemplateContext<K, D>>;
+    type RenderGroupTemplate<K extends string | number, D extends LineItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartGroupTemplateContext<K, D>>;
 }
 export interface CLineChartElementEventMap<K extends string | number, D extends LineItem<K> | any> extends HTMLElementEventMap {
     'ojItemDrill': CLineChartElement.ojItemDrill<K, D>;
@@ -120,6 +125,7 @@ export interface CLineChartElementEventMap<K extends string | number, D extends 
     'ojGroupDrill': CLineChartElement.ojGroupDrill<K>;
     'ojViewportChange': CLineChartElement.ojViewportChange;
     'dataChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['data']>;
+    'dragModeChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['dragMode']>;
     'drillingChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['drilling']>;
     'groupComparatorChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['groupComparator']>;
     'hiddenCategoriesChanged': JetElementCustomEventStrict<CLineChartElement<K, D>['hiddenCategories']>;
@@ -142,6 +148,7 @@ export interface CLineChartElementEventMap<K extends string | number, D extends 
 }
 export interface CLineChartElementSettableProperties<K, D extends LineItem<K> | any> extends JetSettableProperties {
     data?: LineChartProps<K, D>['data'];
+    dragMode?: LineChartProps<K, D>['dragMode'];
     drilling?: LineChartProps<K, D>['drilling'];
     groupComparator?: LineChartProps<K, D>['groupComparator'];
     hiddenCategories?: LineChartProps<K, D>['hiddenCategories'];
@@ -172,6 +179,7 @@ export interface LineChartIntrinsicProps extends Partial<Readonly<CLineChartElem
     onojSeriesDrill?: (value: CLineChartElementEventMap<any, any>['ojSeriesDrill']) => void;
     onojViewportChange?: (value: CLineChartElementEventMap<any, any>['ojViewportChange']) => void;
     ondataChanged?: (value: CLineChartElementEventMap<any, any>['dataChanged']) => void;
+    ondragModeChanged?: (value: CLineChartElementEventMap<any, any>['dragModeChanged']) => void;
     ondrillingChanged?: (value: CLineChartElementEventMap<any, any>['drillingChanged']) => void;
     ongroupComparatorChanged?: (value: CLineChartElementEventMap<any, any>['groupComparatorChanged']) => void;
     onhiddenCategoriesChanged?: (value: CLineChartElementEventMap<any, any>['hiddenCategoriesChanged']) => void;

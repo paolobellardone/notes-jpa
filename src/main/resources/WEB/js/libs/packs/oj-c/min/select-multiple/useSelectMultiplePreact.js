@@ -1,13 +1,16 @@
-define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/hooks/UNSAFE_useListData/useListData", "oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListeners", "oj-c/select-common/UNSAFE_useWrapDataProvider/useWrapDataProvider", "oj-c/select-common/UNSAFE_useWrapValueState/useWrapValueState", "oj-c/select-common/utils/utils", "oj-c/utils/UNSAFE_keyUtils/keySetUtils", "ojs/ojdataprovider", "preact/hooks", "./useSyncValueAndValueItems", "./useValueItems"], function (require, exports, UNSAFE_useTranslationBundle_1, useEditableValue_1, useValidators_1, useListData_1, useDataProviderListeners_1, useWrapDataProvider_1, useWrapValueState_1, utils_1, keySetUtils_1, ojdataprovider_1, hooks_1, useSyncValueAndValueItems_1, useValueItems_1) {
+define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/hooks/UNSAFE_useListData/useListData", "oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListeners", "oj-c/select-common/UNSAFE_useWrapDataProvider/useWrapDataProvider", "oj-c/select-common/UNSAFE_useWrapValueState/useWrapValueState", "oj-c/select-common/utils/utils", "oj-c/utils/UNSAFE_keyUtils/keySetUtils", "preact/hooks", "./useSyncValueAndValueItems", "./useValueItems"], function (require, exports, UNSAFE_useTranslationBundle_1, useEditableValue_1, useValidators_1, useListData_1, useDataProviderListeners_1, useWrapDataProvider_1, useWrapValueState_1, utils_1, keySetUtils_1, hooks_1, useSyncValueAndValueItems_1, useValueItems_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useSelectMultiplePreact = void 0;
-    function useSelectMultiplePreact({ data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, messagesCustom, placeholder, readonly, required, requiredMessageDetail: propRequiredMessageDetail, textAlign, userAssistanceDensity, value: propValue, valueItems: propValueItems, virtualKeyboard, onMessagesCustomChanged, onValidChanged, onValueChanged, onValueItemsChanged, ...otherProps }, addBusyState) {
+    function useSelectMultiplePreact({ data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, matchBy: propMatchBy, messagesCustom, placeholder, readonly, required, requiredMessageDetail: propRequiredMessageDetail, textAlign, userAssistanceDensity, value: propValue, valueItems: propValueItems, virtualKeyboard, onMessagesCustomChanged, onValidChanged, onValueChanged, onValueItemsChanged, ...otherProps }, addBusyState) {
         const [filterCriterion, setFilterCriterion] = (0, hooks_1.useState)(undefined);
         const [isLoading, setIsLoading] = (0, hooks_1.useState)(propData != null &&
             propValue != null &&
             propValue.size > 0 &&
             (propValueItems == null || propValueItems.size === 0));
+        const matchBy = (0, hooks_1.useMemo)(() => {
+            return propMatchBy && propMatchBy.length > 0 ? [...propMatchBy] : undefined;
+        }, [propMatchBy]);
         const { valueItems, setValueItems, preactValueItems: arItemContexts } = (0, useValueItems_1.useValueItems)(propValueItems, onValueItemsChanged);
         const [prevArItemContexts, setPrevArItemContexts] = (0, hooks_1.useState)(arItemContexts);
         const [preactValueItems, setPreactValueItems] = (0, hooks_1.useState)(arItemContexts);
@@ -22,7 +25,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
         });
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const requiredMessageDetail = propRequiredMessageDetail || translations.select_requiredMessageDetail();
-        const { methods, onCommitValue, setValue, textFieldProps, value } = (0, useEditableValue_1.useEditableValue)({
+        const { methods, onCommitValue, setDisplayValue, setValue, textFieldProps, value, validateValueOnExternalChange } = (0, useEditableValue_1.useEditableValue)({
             ariaDescribedBy: otherProps['aria-describedby'],
             disabled,
             displayOptions,
@@ -61,28 +64,41 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
         (0, useSyncValueAndValueItems_1.useSyncValueAndValueItems)({
             addBusyState,
             dataProvider: dataProvider,
+            setDisplayValue: setDisplayValue,
             setIsLoading,
             setValue: setValue,
             setValueItems,
             value: valueToSync,
-            valueItems: valueItemsToSync
+            valueItems: valueItemsToSync,
+            validateValueOnExternalChange
         });
         const [listDataState, onLoadRange] = (0, useListData_1.useListData)(dataProvider, {
             filterCriterion,
             initialRowsFetched: 0
         });
-        const onCommit = (0, hooks_1.useCallback)(async (detail) => {
-            const validationResult = await onCommitValue((detail.value && detail.value.size > 0 ? detail.value : utils_1.DEFAULT_VALUE));
+        const onCommit = (0, hooks_1.useCallback)(async ({ value }) => {
+            const valueToCommit = (value && value.size > 0 ? value : utils_1.DEFAULT_VALUE);
+            setDisplayValue(valueToCommit);
+            const validationResult = await onCommitValue(valueToCommit);
             if (validationResult === useValidators_1.ValidationResult.INVALID) {
                 setPreactValueItems(undefined);
             }
-        }, [onCommitValue]);
+            else if (validationResult === useValidators_1.ValidationResult.VALID) {
+                if (value && value.size > 0 && arItemContexts?.length === value.size) {
+                    const arKeys = Array.from(value);
+                    const allValuesInItemContexts = arKeys.every((key, index) => {
+                        return key === arItemContexts?.[index].key;
+                    });
+                    if (allValuesInItemContexts && preactValueItems !== arItemContexts) {
+                        setPreactValueItems(arItemContexts);
+                    }
+                }
+            }
+        }, [arItemContexts, preactValueItems, onCommitValue, setDisplayValue]);
         const onFilter = (0, hooks_1.useCallback)(({ searchText }) => {
-            const fc = searchText && searchText.length > 0
-                ? ojdataprovider_1.FilterFactory.getFilter({ filterDef: { text: searchText } })
-                : undefined;
+            const fc = (0, utils_1.getFilterCriterion)(dataProvider, searchText, matchBy);
             setFilterCriterion(fc);
-        }, []);
+        }, [dataProvider, matchBy]);
         const prevSelectedKeysRef = (0, hooks_1.useRef)((0, keySetUtils_1.keysToKeySet)({ all: false, keys: new Set() }));
         const itemRenderer = (0, hooks_1.useCallback)(({ data, metadata, searchText, selectedKeys: preactSelectedKeys, onSelectionChange: preactOnSelectionChange }) => {
             const newPreactSelectedKeys = preactSelectedKeys ?? new Set();
@@ -104,8 +120,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
                     selectedKeys,
                     onSelectedKeysChanged,
                     item: {
-                        data,
-                        metadata
+                        data: data,
+                        metadata: metadata
                     },
                     searchText
                 })

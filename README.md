@@ -10,7 +10,7 @@ It has to be considered no more than a demo or an exercise to demonstrate Helido
 
 ## Pre-requisites
 
-1. Java JDK 17 or later, created and tested on JDK 21 - GraalVM is a recommended option :-)
+1. Java JDK 21 or later, created and tested on JDK 21 - GraalVM is a recommended option :-)
 2. Maven
 3. Oracle Database (Cloud or on-premises)
 

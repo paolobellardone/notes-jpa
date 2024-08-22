@@ -98,6 +98,13 @@ export declare class SelectSingleWebElementBase extends OjWebElement {
      */
     getLabelWrapping(): Promise<string>;
     /**
+     * Gets the value of <code>matchBy</code> property.
+     * List of text filter matching behaviors to use when filtering.
+     * @return The value of <code>matchBy</code> property.
+     *
+     */
+    getMatchBy(): Promise<Array<string> | null>;
+    /**
      * Sets the value of <code>messagesCustom</code> property.
      * List of custom component messages
      * @param messagesCustom The value to set for <code>messagesCustom</code>
@@ -146,13 +153,6 @@ export declare class SelectSingleWebElementBase extends OjWebElement {
      *
      */
     getTextAlign(): Promise<string>;
-    /**
-     * Gets the value of <code>unsafe_labelledBy</code> property.
-     *
-     * @return The value of <code>unsafe_labelledBy</code> property.
-     *
-     */
-    getUnsafeLabelledBy(): Promise<string>;
     /**
      * Gets the value of <code>userAssistanceDensity</code> property.
      * Specifies the density of the form component's user assistance presentation.

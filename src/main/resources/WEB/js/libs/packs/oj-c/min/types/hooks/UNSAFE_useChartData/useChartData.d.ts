@@ -40,4 +40,5 @@ export declare function useChartData<K, D>(dataProvider: ArrayDataProvider<K, D>
         accessibleLabel: any;
     })[];
     getDataItem: (seriesIndex: number, groupIndex: number) => any;
+    isLoading: boolean;
 };

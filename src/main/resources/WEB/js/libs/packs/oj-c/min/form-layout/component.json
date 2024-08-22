@@ -1,7 +1,7 @@
 {
   "name": "form-layout",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,9 +10,15 @@
     "CFormLayoutElement"
   ],
   "displayName": "Form Layout",
-  "description": "A form layout will lay out its children responsively in the row or column direction.",
+  "description": "A form layout manages the layout of labels and fields in a form.",
   "help": "oj-c.FormLayout.html",
   "main": "oj-c/form-layout",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "form-layout"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/FormLayoutWebElement.html"
     }
   },
   "propertyLayout": [
@@ -132,8 +141,7 @@
             "name": "labelEdge"
           }
         ]
-      },
-      "value": "inside"
+      }
     },
     "labelStartWidth": {
       "type": "number|string",
@@ -152,8 +160,7 @@
             "name": "labelWidth"
           }
         ]
-      },
-      "value": "33%"
+      }
     },
     "labelWrapping": {
       "type": "string",
@@ -183,8 +190,7 @@
             "name": "labelWrapping"
           }
         ]
-      },
-      "value": "wrap"
+      }
     },
     "maxColumns": {
       "type": "number",
@@ -251,8 +257,7 @@
             "default": "efficient"
           }
         ]
-      },
-      "value": "efficient"
+      }
     }
   },
   "methods": {

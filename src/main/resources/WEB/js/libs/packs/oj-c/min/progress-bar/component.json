@@ -1,7 +1,7 @@
 {
   "name": "progress-bar",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -34,6 +34,9 @@
       "uxSpecs": [
         "progress-indicator"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/ProgressBarWebElement.html"
     }
   },
   "propertyLayout": [

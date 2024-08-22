@@ -1,7 +1,7 @@
 {
   "name": "labelled-link",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "The Labelled Link component displays a readonly field that has a link for its content.",
   "help": "oj-c.LabelledLink.html",
   "main": "oj-c/labelled-link",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -30,6 +36,9 @@
       "uxSpecs": [
         "input-text"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/LabelledLinkWebElement.html"
     }
   },
   "propertyLayout": [
@@ -238,7 +247,7 @@
       "return": "void"
     },
     "focus": {
-      "description": "Sets focus on the link.",
+      "description": "Focuses the link.",
       "return": "void"
     },
     "setProperty": {

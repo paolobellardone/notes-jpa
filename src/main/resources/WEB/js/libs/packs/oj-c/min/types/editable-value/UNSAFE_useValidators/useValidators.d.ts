@@ -1,7 +1,7 @@
 import { ComponentMessageItem } from '@oracle/oraclejet-preact/UNSAFE_ComponentMessage';
 import Validator = require('ojs/ojvalidator');
 import AsyncValidator = require('ojs/ojvalidator-async');
-import { StateUpdater } from 'preact/hooks';
+import { Dispatch, StateUpdater } from 'preact/hooks';
 import { ComponentMessagingState } from '../UNSAFE_useComponentMessaging/useComponentMessaging';
 export declare const ValidationResult: {
     readonly VALID: "VALID";
@@ -16,7 +16,7 @@ export type ValidationOptions = {
 };
 export type ValidationState<V> = {
     valid: ValidState;
-    setValid: StateUpdater<ValidState>;
+    setValid: Dispatch<StateUpdater<ValidState>>;
     deferredValidate: (value: V) => void | ComponentMessageItem[];
     fullValidate: (value: V, options?: ValidationOptions) => Promise<boolean>;
     validateValueOnInternalChange: (value: V, options?: ValidationOptions) => Promise<ValidationResult>;

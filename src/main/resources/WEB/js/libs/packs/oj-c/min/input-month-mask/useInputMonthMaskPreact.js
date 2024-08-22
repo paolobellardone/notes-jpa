@@ -1,4 +1,4 @@
-define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawValueObject/useEditableValueRawValueObject", "./CalendarMonthConverter", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "ojs/ojconverter-preferences", "@oracle/oraclejet-preact/utils/UNSAFE_calendarDateUtils", "./useImplicitCalendarMonthRangeValidator", "oj-c/editable-value/utils/utils", "ojs/ojconfig"], function (require, exports, useEditableValueRawValueObject_1, CalendarMonthConverter_1, hooks_1, UNSAFE_useTranslationBundle_1, ojconverter_preferences_1, UNSAFE_calendarDateUtils_1, useImplicitCalendarMonthRangeValidator_1, utils_1, ojconfig_1) {
+define(["require", "exports", "./CalendarMonthConverter", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "ojs/ojconverter-preferences", "@oracle/oraclejet-preact/utils/UNSAFE_calendarDateUtils", "./useImplicitCalendarMonthRangeValidator", "oj-c/editable-value/utils/utils", "ojs/ojconfig", "oj-c/hooks/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators"], function (require, exports, CalendarMonthConverter_1, hooks_1, UNSAFE_useTranslationBundle_1, ojconverter_preferences_1, UNSAFE_calendarDateUtils_1, useImplicitCalendarMonthRangeValidator_1, utils_1, ojconfig_1, useEditableValue_1, useDeferredValidators_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useInputMonthMaskPreact = void 0;
@@ -30,29 +30,35 @@ define(["require", "exports", "oj-c/editable-value/UNSAFE_useEditableValueRawVal
             max: maxTreatNull,
             min: minTreatNull
         });
-        const { methods, textFieldProps, value, setValue } = (0, useEditableValueRawValueObject_1.useEditableValueRawValueObject)({
+        const combinedValidators = (0, hooks_1.useMemo)(() => {
+            const v1 = implicitComponentValidator ? [implicitComponentValidator] : [];
+            const v2 = validators ? validators : [];
+            return [...v1, ...v2];
+        }, [implicitComponentValidator, validators]);
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const { methods, textFieldProps, value } = (0, useEditableValue_1.useEditableValue)({
+            addBusyState,
             ariaDescribedBy: otherProps['aria-describedby'],
             converter: implicitConverter,
+            defaultDisplayValue: undefined,
+            deferredValidators,
             disabled,
             displayOptions,
-            implicitComponentValidator,
-            labelHint,
             messagesCustom,
-            readonly,
-            required,
-            requiredMessageDetail,
-            validators,
-            value: propValue,
-            addBusyState,
             onMessagesCustomChanged,
             onRawValueChanged,
             onValidChanged,
-            onValueChanged
+            onValueChanged,
+            readonly,
+            validators: combinedValidators,
+            value: propValue
         });
         const hasNoValue = value === undefined || !isPartialDate(textFieldProps.value);
         return {
-            value,
-            setValue,
             methods,
             inputMonthMaskProps: {
                 isDisabled: disabled,

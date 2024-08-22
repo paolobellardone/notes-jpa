@@ -1,7 +1,7 @@
 {
   "name": "message-toast",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -27,6 +27,9 @@
       "uxSpecs": [
         "toast-messages"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/MessageToastWebElement.html"
     }
   },
   "propertyLayout": [
@@ -70,14 +73,16 @@
       "description": "A dynamic template key or a function that determines the detail template for the current row.",
       "displayName": "Current Detail Template",
       "help": "#detailTemplateValue",
-      "dynamicSlotDef": "MessageToastTemplateContext"
+      "dynamicSlotDef": "MessageToastTemplateContext",
+      "templateSlotRenderType": "RenderDetailTemplate"
     },
     "iconTemplateValue": {
       "type": "string|function",
       "description": "A dynamic template key or a function that determines the icon template for the current row.",
       "displayName": "Current Icon Template",
       "help": "#iconTemplateValue",
-      "dynamicSlotDef": "MessageToastTemplateContext"
+      "dynamicSlotDef": "MessageToastTemplateContext",
+      "templateSlotRenderType": "RenderIconTemplate"
     },
     "offset": {
       "type": "number|object",

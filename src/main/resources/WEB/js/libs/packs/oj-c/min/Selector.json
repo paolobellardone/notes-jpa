@@ -51,7 +51,7 @@
     ],
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "ojmodule": "selector"
   },
@@ -66,7 +66,7 @@
     "description": "Specifies the row key of each selector.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "type": {
       "names": [
@@ -93,20 +93,13 @@
     "description": "Specifies the selectedKeys, should be hooked into the collection component.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "type": {
       "names": [
         "object"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "ImmutableKeySet<K>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.Selector",
@@ -119,7 +112,7 @@
     "description": "Specifies if the selector should show the visual partial state.\nThe original checked state of the selector will still be maintained.\nUser selection of checkboxes will remove the indeterminate state and reveal the checkbox state.\nOtherwise, programmatically changing the checkbox state will not change the indeterminate state.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "defaultvalue": false,
     "type": {
@@ -139,7 +132,7 @@
     "description": "Specifies the selection mode ('single', 'multiple'). For selection mode 'all', please refer to oj-c-selector-all component.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "ojvalues": [
       {
@@ -180,7 +173,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [
@@ -214,7 +207,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [
@@ -243,7 +236,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selector.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector"
+      "path": "web/components/oj-c/selector"
     },
     "scope": "instance",
     "params": [

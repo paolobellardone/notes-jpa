@@ -1,7 +1,7 @@
 {
   "name": "input-sensitive-text",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "An Input Sensitive Text displays a field that allows a user to enter sensitive text that will be masked.",
   "help": "oj-c.InputSensitiveText.html",
   "main": "oj-c/input-sensitive-text",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "input-text"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/InputSensitiveTextWebElement.html"
     }
   },
   "propertyLayout": [
@@ -339,8 +348,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -409,8 +417,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",

@@ -1,10 +1,13 @@
-define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNSAFE_useListData/useListData", "oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListeners", "oj-c/select-common/UNSAFE_useWrapDataProvider/useWrapDataProvider", "oj-c/select-common/UNSAFE_useWrapValueState/useWrapValueState", "oj-c/select-common/utils/utils", "ojs/ojdataprovider", "preact/hooks", "./useSyncValueAndValueItem", "./useValueItem"], function (require, exports, UNSAFE_useTranslationBundle_1, useEditableValue_1, useValidators_1, utils_1, useListData_1, useDataProviderListeners_1, useWrapDataProvider_1, useWrapValueState_1, utils_2, ojdataprovider_1, hooks_1, useSyncValueAndValueItem_1, useValueItem_1) {
+define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/editable-value/UNSAFE_useEditableValue/useEditableValue", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNSAFE_useListData/useListData", "oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListeners", "oj-c/select-common/UNSAFE_useWrapDataProvider/useWrapDataProvider", "oj-c/select-common/UNSAFE_useWrapValueState/useWrapValueState", "oj-c/select-common/utils/utils", "preact/hooks", "./useSyncValueAndValueItem", "./useValueItem"], function (require, exports, UNSAFE_useTranslationBundle_1, useEditableValue_1, useValidators_1, utils_1, useListData_1, useDataProviderListeners_1, useWrapDataProvider_1, useWrapValueState_1, utils_2, hooks_1, useSyncValueAndValueItem_1, useValueItem_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useSelectSinglePreact = void 0;
-    function useSelectSinglePreact({ advancedSearch, data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, messagesCustom, placeholder, readonly, requiredMessageDetail: propRequiredMessageDetail, required, textAlign, userAssistanceDensity, value: propValue, valueItem: propValueItem, virtualKeyboard, onMessagesCustomChanged, onOjAdvancedSearchAction, onOjValueAction, onValidChanged, onValueChanged, onValueItemChanged, ...otherProps }, addBusyState) {
+    function useSelectSinglePreact({ advancedSearch, data: propData, disabled, displayOptions, itemTemplate, itemText, labelEdge, labelHint, labelStartWidth, matchBy: propMatchBy, messagesCustom, placeholder, readonly, requiredMessageDetail: propRequiredMessageDetail, required, textAlign, userAssistanceDensity, value: propValue, valueItem: propValueItem, virtualKeyboard, onMessagesCustomChanged, onOjAdvancedSearchAction, onOjValueAction, onValidChanged, onValueChanged, onValueItemChanged, ...otherProps }, addBusyState) {
         const [filterCriterion, setFilterCriterion] = (0, hooks_1.useState)(undefined);
         const [isLoading, setIsLoading] = (0, hooks_1.useState)(propData != null && propValue != null && propValueItem == null);
+        const matchBy = (0, hooks_1.useMemo)(() => {
+            return propMatchBy && propMatchBy.length > 0 ? [...propMatchBy] : undefined;
+        }, [propMatchBy]);
         const { valueItem, setValueItem } = (0, useValueItem_1.useValueItem)(propValueItem, onValueItemChanged);
         const [preactValueItem, setPreactValueItem] = (0, hooks_1.useState)(valueItem);
         (0, hooks_1.useEffect)(() => {
@@ -18,7 +21,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
         });
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const requiredMessageDetail = propRequiredMessageDetail || translations.select_requiredMessageDetail();
-        const { methods, onCommitValue, setValue, textFieldProps, value } = (0, useEditableValue_1.useEditableValue)({
+        const { methods, onCommitValue, setDisplayValue, setValue, textFieldProps, value, validateValueOnExternalChange } = (0, useEditableValue_1.useEditableValue)({
             ariaDescribedBy: otherProps['aria-describedby'],
             disabled,
             displayOptions,
@@ -55,18 +58,22 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
         (0, useSyncValueAndValueItem_1.useSyncValueAndValueItem)({
             addBusyState,
             dataProvider: dataProvider,
+            setDisplayValue,
             setIsLoading,
             setValue,
             setValueItem,
             value: valueToSync,
-            valueItem: valueItemToSync
+            valueItem: valueItemToSync,
+            validateValueOnExternalChange
         });
         const [listDataState, onLoadRange] = (0, useListData_1.useListData)(dataProvider, {
             filterCriterion,
             initialRowsFetched: 0
         });
         const onCommit = (0, hooks_1.useCallback)(async ({ previousValue, value }) => {
-            const validationResult = await onCommitValue(value != null ? value : utils_2.DEFAULT_VALUE);
+            const valueToCommit = value != null ? value : utils_2.DEFAULT_VALUE;
+            setDisplayValue(valueToCommit);
+            const validationResult = await onCommitValue(valueToCommit);
             if (validationResult === useValidators_1.ValidationResult.INVALID) {
                 setPreactValueItem(undefined);
             }
@@ -84,6 +91,9 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
                         previousValue: previousValue ?? utils_2.DEFAULT_VALUE,
                         value
                     });
+                    if (preactValueItem !== valueItem) {
+                        setPreactValueItem(valueItem);
+                    }
                 }
                 else {
                     const data = listDataState.data.data;
@@ -104,19 +114,25 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
                     });
                 }
             }
-        }, [dataProvider, listDataState, valueItem, onCommitValue, onOjValueAction]);
+        }, [
+            dataProvider,
+            listDataState,
+            preactValueItem,
+            valueItem,
+            onCommitValue,
+            onOjValueAction,
+            setDisplayValue
+        ]);
         const onFilter = (0, hooks_1.useCallback)(({ searchText }) => {
-            const fc = searchText && searchText.length > 0
-                ? ojdataprovider_1.FilterFactory.getFilter({ filterDef: { text: searchText } })
-                : undefined;
+            const fc = (0, utils_2.getFilterCriterion)(dataProvider, searchText, matchBy);
             setFilterCriterion(fc);
-        }, []);
+        }, [dataProvider, matchBy]);
         const itemRenderer = (0, hooks_1.useCallback)(({ data, metadata, searchText }) => {
             return itemTemplate
                 ? itemTemplate({
                     item: {
-                        data,
-                        metadata
+                        data: data,
+                        metadata: metadata
                     },
                     searchText
                 })

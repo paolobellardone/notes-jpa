@@ -4,6 +4,7 @@ exports.ListViewWebElement = void 0;
 var ListViewWebElementBase_1 = require("./ListViewWebElementBase");
 var selenium_webdriver_1 = require("selenium-webdriver");
 var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+var oj_module_proxy_1 = require("@oracle/oraclejet-webdriver/lib/oj-module-proxy");
 /**
  * The component WebElement for [oj-c-list-view](../../../oj-c/docs/oj.ListView.html).
  * Do not instantiate this class directly, instead, use
@@ -20,13 +21,9 @@ class ListViewWebElement extends ListViewWebElementBase_1.ListViewWebElementBase
      */
     async changeSelected(selected) {
         await this.whenReady();
-        await this.getDriver().executeScript(`
-        const ele = arguments[0];
-        const selected = arguments[1];
-        require(['ojs/ojkeyset'], (keySet) => {
-          ele.selected = new keySet.KeySetImpl(selected);
-        });
-      `, this, selected);
+        return (0, oj_module_proxy_1.executeWithModules)(this.getDriver(), ['KeySet'], [this, selected], `
+    ({ KeySetImpl }, ele, selected) => ele.selected = new KeySetImpl(selected)
+    `);
     }
     /**
      * Gets the value of "selected" property.

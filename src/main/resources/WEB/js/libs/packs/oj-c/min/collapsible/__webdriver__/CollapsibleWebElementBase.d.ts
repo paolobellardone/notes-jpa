@@ -8,7 +8,7 @@ import { OjWebElement } from '@oracle/oraclejet-webdriver/elements';
 export declare class CollapsibleWebElementBase extends OjWebElement {
     /**
      * Gets the value of <code>disabled</code> property.
-     * Disables the collapsible if set to true
+     * Disables the collapsible if set to true.
      * @return The value of <code>disabled</code> property.
      *
      */

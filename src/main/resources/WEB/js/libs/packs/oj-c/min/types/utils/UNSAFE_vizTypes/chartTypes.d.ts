@@ -22,6 +22,7 @@ export type YAxisTickLabel = {
 export type XAxisTickLabel = {
     converter?: Converter<string> | [Converter<string>, Converter<string>];
     rendered?: 'on' | 'off';
+    rotation?: 'auto' | 'none';
     style?: Partial<CSSStyleDeclaration>;
 };
 export type MajorTick = {

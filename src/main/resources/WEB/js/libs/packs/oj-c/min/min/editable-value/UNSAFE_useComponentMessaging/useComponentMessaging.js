@@ -37,9 +37,9 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useUncontro
             return deferredComponentMessages.length !== 0;
         }, [deferredComponentMessages]);
         const showHiddenMessages = (0, hooks_1.useCallback)(() => {
-            setComponentMessages((prevMessages) => [...prevMessages, ...deferredComponentMessages]);
+            setComponentMessages([...componentMessages, ...deferredComponentMessages]);
             setDeferredComponentMessages([]);
-        }, [deferredComponentMessages]);
+        }, [componentMessages, deferredComponentMessages]);
         (0, hooks_1.useEffect)(() => {
             if (prevMessagesCustomPropRef.current === messagesCustomProp) {
                 return;

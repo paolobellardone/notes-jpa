@@ -1,11 +1,11 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
-import { Button as PreactButton } from '@oracle/oraclejet-preact/UNSAFE_Button';
-import { ComponentProps, Component } from 'preact';
 import { ExtendGlobalProps, Action, Bubbles, ObservedGlobalProps, Slot } from 'ojs/ojvcomponent';
-import 'css!oj-c/button/button-styles.css';
+import { Button as PreactButton } from '@oracle/oraclejet-preact/UNSAFE_Button';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import { ComponentProps, Component } from 'preact';
+import 'css!oj-c/button/button-styles.css';
 type PreactButtonProps = ComponentProps<typeof PreactButton>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     label: string;
@@ -15,7 +15,7 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     disabled?: boolean;
     width?: Size;
     display?: 'all' | 'icons' | 'label';
-    size?: 'sm' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg';
     edge?: PreactButtonProps['edge'];
     chroming?: PreactButtonProps['variant'];
     onOjAction?: Action & Bubbles;
@@ -24,6 +24,7 @@ export declare class Button extends Component<ExtendGlobalProps<Props>> {
     static defaultProps: Partial<Props>;
     private buttonRef;
     render(props: ExtendGlobalProps<Props>): import("preact").JSX.Element;
+    click(): void;
     blur(): void;
     focus(): void;
 }
@@ -37,6 +38,7 @@ export interface CButtonElement extends JetElement<CButtonElementSettablePropert
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CButtonElementSettableProperties>): void;
     setProperties(properties: CButtonElementSettablePropertiesLenient): void;
     blur: Button['blur'];
+    click: Button['click'];
     focus: Button['focus'];
 }
 export namespace CButtonElement {

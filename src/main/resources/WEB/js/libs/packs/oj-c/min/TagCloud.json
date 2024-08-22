@@ -28,9 +28,15 @@
       }
     ],
     "since": "15.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "ojmodule": "tag-cloud"
   },
@@ -45,7 +51,7 @@
     "description": "Specifies the DataProvider for the sections and items of the tag-cloud.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": null,
     "type": {
@@ -72,7 +78,7 @@
     "description": "The tagcloud datatip string.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "type": {
       "names": [
@@ -99,21 +105,14 @@
     "description": "An array of category strings used for highlighting. Data items matching categories in this array will be highlighted.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.TagCloud",
@@ -126,7 +125,7 @@
     "description": "Data visualizations require a press and hold delay before triggering tooltips and rollover effects on mobile devices to avoid interfering with page panning, but these hold delays can make applications seem slower and less responsive. For a better user experience, the application can remove the touch and hold \\delay when data visualizations are used within a non scrolling container or if there is sufficient space outside of the visualization for panning. If touchResponse is touchStart the element will instantly trigger the touch gesture and consume the page pan events. If touchResponse is auto, the element will behave like touchStart if it determines that it is not rendered within scrolling content and if element panning is not available for those elements that support the feature.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "type": {
       "names": [
@@ -146,7 +145,7 @@
     "description": "The matching condition for the highlightedCategories option. By default, highlightMatch is 'all' and only items whose categories match all of the values specified in the highlightedCategories array will be highlighted. If highlightMatch is 'any', then items that match at least one of the highlightedCategories values will be highlighted.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": "\"all\"",
     "type": {
@@ -168,21 +167,14 @@
     "description": "An array of categories that will be highlighted.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": "[]",
     "type": {
       "names": [
         "Array<string>"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Array<string>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.TagCloud",
@@ -195,7 +187,7 @@
     "description": "Defines the behavior applied when hovering over a tagcloud item.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "ojvalues": [
       {
@@ -238,7 +230,7 @@
     "description": "The layout to use for tag display.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "ojvalues": [
       {
@@ -281,7 +273,7 @@
     "description": "The type of selection behavior that is enabled on the tag cloud. This attribute controls the number of selections that can be made via selection gestures at any given time.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": "\"none\"",
     "type": {
@@ -304,7 +296,7 @@
     "description": "An array containing the ids of the initially selected data items.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "defaultvalue": "[]",
     "type": {
@@ -329,7 +321,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "scope": "instance",
     "params": [
@@ -363,7 +355,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "scope": "instance",
     "params": [
@@ -392,7 +384,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "scope": "instance",
     "params": [
@@ -418,10 +410,10 @@
     "name": "itemTemplate",
     "kind": "member",
     "longname": "oj-c.TagCloud#itemTemplate",
-    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items. The slot content must be a single  &lt;template>\n element.\n</p>\n<p>\n When the template is executed for each area, it will have access to the tag cloud's binding context and the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current item.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if as attribute was specified, the value will be used to provide an application-named alias for $current.\n  </li>\n</ul>\n<p>\nThe content of the template should only be one &lt;oj-c-tag-cloud-item> element. See the oj-tag-cloud-item doc for more details.\n</p>",
+    "description": "<p>\n The <code class=\"prettyprint\">itemTemplate</code> slot is used to specify the template for\n creating items. The slot content must be a single  &lt;template>\n element.\n</p>\n<p>\n When the template is executed for each area, it will have access to the tag cloud's binding context and the following properties:\n</p>\n<ul>\n  <li>\n     $current - an object that contains information for the current item.\n     (See the table below for a list of properties available on $current)\n  </li>\n  <li>\n     alias - if data-oj-as attribute was specified, the value will be used to provide an application-named alias for $current.\n  </li>\n</ul>\n<p>\nThe content of the template should only be one &lt;oj-c-tag-cloud-item> element. See the oj-tag-cloud-item doc for more details.\n</p>",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "scope": "instance",
     "ojchild": false,
@@ -484,7 +476,7 @@
     "memberof": "oj-c.TagCloud",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "ojfragment": true
   },
@@ -497,7 +489,7 @@
     "memberof": "oj-c.TagCloud",
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "ojfragment": true
   },
@@ -521,7 +513,7 @@
     },
     "meta": {
       "filename": "tag-cloud.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/tag-cloud"
+      "path": "web/components/oj-c/tag-cloud"
     },
     "properties": [
       {
@@ -532,7 +524,15 @@
           "names": [
             "any"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "for": "id",
+            "jsdocOverride": true
+          }
+        ]
       }
     ]
   }

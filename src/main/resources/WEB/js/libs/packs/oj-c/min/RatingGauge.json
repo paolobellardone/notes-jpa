@@ -39,7 +39,7 @@
     ],
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "ojmodule": "rating-gauge"
   },
@@ -54,7 +54,7 @@
     "description": "Integer value specifying the maximum value of the gauge, which determines the number of items that are displayed.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": 5,
     "type": {
@@ -74,7 +74,7 @@
     "description": "Defines whether the value of the gauge can be changed by the end user.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": false,
     "type": {
@@ -94,7 +94,7 @@
     "description": "Defines whether the gauge is disabled or not. User interaction is prevented and the rating gauge is hidden from screen readers if set to true.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": false,
     "type": {
@@ -115,7 +115,7 @@
     "description": "Whether there has been a value entered by the user even if it is the same as the initial value.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": false,
     "type": {
@@ -136,7 +136,7 @@
     "description": "The value of the Rating Gauge. The element's value attribute is used if it\nis provided, otherwise the default value of 0 is used.\nAny other negative value will default to 0.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": 0,
     "type": {
@@ -156,7 +156,7 @@
     "description": "Specifies the increment by which values can be changed by the end user.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "defaultvalue": 1,
     "type": {
@@ -173,10 +173,10 @@
     "longname": "oj-c.RatingGauge#describedBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nTo facilitate correct screen reader behavior, the described-by attribute is\ncopied to the aria-describedby attribute on the component's dom.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-rating-gauge together for accessibility.\nThe oj-label element has a label-id, which is used by the described-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -192,10 +192,10 @@
     "longname": "oj-c.RatingGauge#labelledBy",
     "optional": true,
     "scope": "instance",
-    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which a text in a div or some other HTML element, and the oj-c-rating-gauge together for accessibility.\nThe label element has an id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
+    "description": "Used to establish a relationship between this component and another element.\nA common use is to tie a label, which can be a text in a div or some other HTML element, and the oj-c-rating-gauge together for accessibility.\nThe oj-label element has a label-id, which is used by the labelled-by attribute to tie the two components together to facilitate correct screen reader behavior.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -214,7 +214,7 @@
     "description": "Specifies the size of the individual rating gauge items.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "ojvalues": [
       {
@@ -268,7 +268,7 @@
     "description": "Specifies the color of the individual rating gauge items.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "ojvalues": [
       {
@@ -311,7 +311,7 @@
     "description": "An array of objects defining the thresholds for the rating gauge.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -337,7 +337,7 @@
     "description": "The rating gauge datatip string. Datatip is only used for interactive rating gauges.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -363,7 +363,7 @@
     "description": "The rating gauge tooltip. Tooltip is only used for read only rating gauges. If aria-label is not specified, tooltip will be used as the aria-label.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -384,7 +384,7 @@
     "description": "A read-only property for retrieving the transient value from the rating gauge. It is updated upon user gestures that cause transient value changes, such as hovering over the rating gauge.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "type": {
       "names": [
@@ -401,7 +401,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "scope": "instance",
     "params": [
@@ -435,7 +435,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "scope": "instance",
     "params": [
@@ -464,7 +464,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "scope": "instance",
     "params": [
@@ -493,7 +493,7 @@
     "memberof": "oj-c.RatingGauge",
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "ojfragment": true
   },
@@ -512,7 +512,7 @@
     },
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "properties": [
       {
@@ -591,7 +591,7 @@
     },
     "meta": {
       "filename": "rating-gauge.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/rating-gauge"
+      "path": "web/components/oj-c/rating-gauge"
     },
     "properties": [
       {

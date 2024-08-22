@@ -73,6 +73,7 @@ export namespace CMeterCircleElement {
     type thresholdsChanged = JetElementCustomEventStrict<CMeterCircleElement['thresholds']>;
     type transientValueChanged = JetElementCustomEventStrict<CMeterCircleElement['transientValue']>;
     type valueChanged = JetElementCustomEventStrict<CMeterCircleElement['value']>;
+    type RenderCenterTemplate = import('ojs/ojvcomponent').TemplateSlot<Context>;
 }
 export interface CMeterCircleElementEventMap extends HTMLElementEventMap {
     'angleExtentChanged': JetElementCustomEventStrict<CMeterCircleElement['angleExtent']>;

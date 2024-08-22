@@ -1,7 +1,7 @@
 {
   "name": "meter-circle",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -34,6 +34,9 @@
       "uxSpecs": [
         "meter-circle"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/MeterCircleWebElement.html"
     }
   },
   "propertyLayout": [
@@ -267,12 +270,17 @@
         "lg": {
           "description": "large Meter circle",
           "displayName": "Large"
+        },
+        "fit": {
+          "description": "Meter Circle that fills available width and height.",
+          "displayName": "Fit"
         }
       },
       "enumValues": [
         "sm",
         "md",
-        "lg"
+        "lg",
+        "fit"
       ],
       "value": "md"
     },

@@ -2,7 +2,7 @@ define(["require", "exports", "preact/jsx-runtime", "./menu-item-icon", "./menu-
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ItemsMenu = void 0;
-    const ItemsMenu = ({ items = [], selection = {}, onSelectionChanged, onOjMenuAction, isSplitMenu = false }) => {
+    const ItemsMenu = ({ items = [], selection = {}, onSelectionChanged, onOjMenuAction, isSplitMenu = false, onOjMenuSelection }) => {
         const getSingleGroupSelection = (key) => {
             const item = selection[key];
             return item && typeof item == 'string' ? item : undefined;
@@ -27,11 +27,13 @@ define(["require", "exports", "preact/jsx-runtime", "./menu-item-icon", "./menu-
                 onOjMenuAction?.({ key });
             };
         };
-        const getCommit = (key, selection) => {
+        function getCommit(key, selection, onSelection) {
             return (detail) => {
+                onSelection?.({ value: detail.value });
+                onOjMenuSelection?.({ value: detail.value });
                 onSelectionChanged?.(setSelectionValue(selection, key, detail.value));
             };
-        };
+        }
         return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: items.map((item) => {
                 switch (item.type) {
                     case 'divider':
@@ -44,12 +46,12 @@ define(["require", "exports", "preact/jsx-runtime", "./menu-item-icon", "./menu-
                         return;
                     case 'selectsingle':
                         if (item.items && item.key && !isSplitMenu) {
-                            return ((0, jsx_runtime_1.jsx)(UNSAFE_Menu_1.SelectSingleMenuGroup, { value: getSingleGroupSelection(item.key), onCommit: getCommit(item.key, selection), children: (0, jsx_runtime_1.jsx)(menu_select_items_1.MenuSelectItems, { items: item.items }) }));
+                            return ((0, jsx_runtime_1.jsx)(UNSAFE_Menu_1.SelectSingleMenuGroup, { value: item.selection || getSingleGroupSelection(item.key), onCommit: getCommit(item.key, selection, item.onSelection), children: (0, jsx_runtime_1.jsx)(menu_select_items_1.MenuSelectItems, { items: item.items }) }));
                         }
                         return;
                     case 'selectmultiple':
                         if (item.items && item.key && !isSplitMenu) {
-                            return ((0, jsx_runtime_1.jsx)(UNSAFE_Menu_1.SelectMultipleMenuGroup, { value: getMultipleGroupSelection(item.key), onCommit: getCommit(item.key, selection), children: (0, jsx_runtime_1.jsx)(menu_select_items_1.MenuSelectItems, { items: item.items }) }));
+                            return ((0, jsx_runtime_1.jsx)(UNSAFE_Menu_1.SelectMultipleMenuGroup, { value: item.selection || getMultipleGroupSelection(item.key), onCommit: getCommit(item.key, selection, item.onSelection), children: (0, jsx_runtime_1.jsx)(menu_select_items_1.MenuSelectItems, { items: item.items }) }));
                         }
                         return;
                     case undefined:

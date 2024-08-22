@@ -1,13 +1,13 @@
 import type { InputSensitiveTextProps } from './input-sensitive-text';
 export declare function useInputSensitiveTextPreact<V extends string = string>({ autofocus, clearIcon, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, length, maskIcon, maskIconLabel, messagesCustom, placeholder, readonly, required, requiredMessageDetail, textAlign, userAssistanceDensity, validators, value: propValue, virtualKeyboard, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, ...otherProps }: InputSensitiveTextProps<V>, addBusyState?: (desc?: string) => () => void): {
     value: V;
-    setValue: import("preact/hooks").StateUpdater<V>;
+    setValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<V>>;
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    inputSensitiveTextProps: Omit<{
+    inputSensitiveTextProps: import("preact/compat").PropsWithoutRef<{
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
         autoFocus?: boolean | undefined;
@@ -35,7 +35,7 @@ export declare function useInputSensitiveTextPreact<V extends string = string>({
         virtualKeyboard?: "number" | "search" | "auto" | "url" | "text" | "email" | "tel" | undefined;
         onCommit?: ((detail: import("@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail").ValueUpdateDetail<string>) => void) | undefined;
         onInput: ((detail: import("@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail").ValueUpdateDetail<string>) => void) | undefined;
-    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps, "ref"> & {
+    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

@@ -1,7 +1,7 @@
 {
   "name": "input-month-mask",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "description": "An input month mask field allows a user to individually edit, step, or spin the values of the month and year fields.",
   "help": "oj-c.InputMonthMask.html",
   "main": "oj-c/input-month-mask",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Forms"
@@ -23,7 +29,13 @@
       "minColumns": 2
     },
     "oracle": {
-      "icon": "oj-ux-ico-date"
+      "icon": "oj-ux-ico-date",
+      "uxSpecs": [
+        "input-month-mask"
+      ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/InputMonthMaskWebElement.html"
     }
   },
   "propertyLayout": [
@@ -282,8 +294,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -352,8 +363,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",

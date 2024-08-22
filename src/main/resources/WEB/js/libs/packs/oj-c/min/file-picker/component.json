@@ -1,7 +1,7 @@
 {
   "name": "file-picker",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -34,19 +34,20 @@
       "uxSpecs": [
         "file-picker"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/FilePickerWebElement.html"
     }
   },
   "propertyLayout": [
     {
       "propertyGroup": "common",
       "items": [
-        "max"
-      ]
-    },
-    {
-      "propertyGroup": "data",
-      "items": [
-        "value"
+        "accept",
+        "selectionMode",
+        "disabled",
+        "primaryText",
+        "secondaryText"
       ]
     }
   ],
@@ -205,16 +206,6 @@
     },
     "blur": {
       "description": "Blurs the file picker.",
-      "return": "void"
-    },
-    "_doSelectHelper": {
-      "description": "This is a private method that should only be called by the webelement API.",
-      "params": [
-        {
-          "name": "fileList",
-          "type": "FileList"
-        }
-      ],
       "return": "void"
     },
     "setProperty": {

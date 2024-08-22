@@ -1,7 +1,7 @@
 {
   "name": "tab-bar-mixed",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,12 +13,21 @@
   "displayName": "Tab Bar Mixed",
   "help": "oj-c.TabBarMixed.html",
   "main": "oj-c/tab-bar-mixed",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Layout & Nav"
     },
     "vbdt": {
       "module": "oj-c/tab-bar-mixed"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TabBarMixedWebElement.html"
     }
   },
   "since": "16.1.0",

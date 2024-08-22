@@ -8,7 +8,7 @@ export declare function useCheckboxsetPreact({ 'aria-describedby': ariaDescribed
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    checkboxsetProps: Omit<{
+    checkboxsetProps: import("preact/compat").PropsWithoutRef<{
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
         children: import("preact").ComponentChildren;
@@ -26,7 +26,7 @@ export declare function useCheckboxsetPreact({ 'aria-describedby': ariaDescribed
         onCommit: (detail: ValueUpdateDetail<Set<string | number>>) => void;
         userAssistanceDensity?: import("@oracle/oraclejet-preact/UNSAFE_UserAssistance").UserAssistanceDensityType | undefined;
         value?: Set<string | number> | undefined;
-    }, "ref"> & {
+    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

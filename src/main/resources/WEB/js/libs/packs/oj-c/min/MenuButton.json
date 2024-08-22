@@ -40,7 +40,7 @@
     ],
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojmodule": "menu-button"
   },
@@ -55,7 +55,7 @@
     "description": "Text to show in the button.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "defaultvalue": "\"\"",
     "type": {
@@ -75,7 +75,7 @@
     "description": "Suffix appended to menu label to indicate last selection.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "type": {
       "names": [
@@ -94,7 +94,7 @@
     "description": "Text to show in the tooltip. This overrides the default tooltip that renders the label when in icon mode.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "type": {
       "names": [
@@ -113,7 +113,7 @@
     "description": "<table>\n<tr><th>Type</th><th>Def</th></tr>\n<tr><td>MenuSeparator</td><td>{ type: 'separator'}</td></tr>\n<tr><td>MenuItem</td><td>{\ntype?: 'item';\nlabel: string;\nkey: string;\ndisabled?: boolean;\nonAction?: () => void;\nstartIcon?: MenuIcon;\nendIcon?: MenuIcon;\nvariant?: 'standard' | 'destructive';\n};</td></tr>\n<tr><td>MenuSubMenu</td><td>{\ntype: 'submenu';\nlabel?: string;\ndisabled?: boolean;\nstartIcon?: string;\nitems?: Array&lt;MenuItems&gt;;\n};</td></tr>\n<tr><td>MenuSelectSingle</td><td>{\ntype: 'selectsingle';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\n};</td></tr>\n<tr><td>MenuSelectMultiple</td><td>{\ntype: 'selectmultiple';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\n};</td></tr>\n<tr><td>MenuIcon</td><td>{\ntype?: 'class';\n    class: string;\n  }\n| {\n    type: 'img';\n   src: string;\n  };</td></tr>\n<tr><td>MenuSelectItem</td><td>{\nlabel: string;\ndisabled?: boolean;\nendIcon?: MenuIcon;\nvalue: string;\n}</td></tr>\n</table>",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "defaultvalue": "[]",
     "type": {
@@ -141,20 +141,13 @@
     "description": "An array containing key/value objects for menu selection groups.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "type": {
       "names": [
         "object"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Readonly<Record<string, MenuSelection>>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.MenuButton",
@@ -167,7 +160,7 @@
     "description": "Display just the label, the icons, or all. Label is used as tooltip and should be set in all cases.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojvalues": [
       {
@@ -221,7 +214,7 @@
     "description": "Specifies that the button element should be disabled.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "defaultvalue": false,
     "type": {
@@ -241,9 +234,19 @@
     "description": "Size of button",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojvalues": [
+      {
+        "name": "xs",
+        "description": "Display an extra small button.  Only suppported for component developers with ghost chroming in icon display mode.",
+        "displayName": "Extra Small",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
       {
         "name": "sm",
         "description": "Display a small button.",
@@ -278,6 +281,7 @@
     "defaultvalue": "\"md\"",
     "type": {
       "names": [
+        "\"xs\"",
         "\"sm\"",
         "\"md\"",
         "\"lg\""
@@ -295,20 +299,13 @@
     "description": "Specifies that the button style width",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "type": {
       "names": [
         "number|string"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "Size",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.MenuButton",
@@ -321,9 +318,19 @@
     "description": "Indicates in what states the button has chromings in background and border.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojvalues": [
+      {
+        "name": "ghost",
+        "description": "Ghost buttons are the least prominent variation. Ghost buttons are useful for performing low-priority tasks, such as manipulating the UI.",
+        "displayName": "Ghost",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
       {
         "name": "borderless",
         "description": "Borderless buttons are a more prominent variation. Borderless buttons are useful for supplemental actions that require minimal emphasis.",
@@ -359,6 +366,7 @@
     "type": {
       "names": [
         "\"solid\"",
+        "\"ghost\"",
         "\"borderless\"",
         "\"outlined\""
       ]
@@ -374,7 +382,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "returns": [
@@ -397,7 +405,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "returns": [
@@ -419,7 +427,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "params": [
@@ -453,7 +461,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "params": [
@@ -482,7 +490,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "params": [
@@ -511,13 +519,13 @@
     "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events. Detail indicates which menu item was clicked.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "properties": [
       {
         "name": "key",
-        "optional": true,
+        "optional": false,
         "type": {
           "names": [
             "string"
@@ -535,7 +543,7 @@
     "description": "The startIcon slot is the button's start icon. The oj-c-menu-button element accepts DOM nodes as children with the startIcon slot.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "ojchild": false,
@@ -550,7 +558,7 @@
     "description": "The endIcon slot is the button's end icon. The oj-c-menu-button element accepts DOM nodes as children with the endIcon slot.",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "scope": "instance",
     "ojchild": false,
@@ -565,7 +573,7 @@
     "memberof": "oj-c.MenuButton",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojfragment": true
   },
@@ -578,7 +586,7 @@
     "memberof": "oj-c.MenuButton",
     "meta": {
       "filename": "menu-button.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/menu-button"
+      "path": "web/components/oj-c/menu-button"
     },
     "ojfragment": true
   }

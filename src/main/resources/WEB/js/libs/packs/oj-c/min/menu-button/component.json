@@ -1,7 +1,7 @@
 {
   "name": "menu-button",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -25,6 +25,9 @@
       "uxSpecs": [
         "menu-button"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/MenuButtonWebElement.html"
     }
   },
   "propertyLayout": [
@@ -32,15 +35,16 @@
       "propertyGroup": "common",
       "items": [
         "label",
-        "suffix",
         "tooltip",
-        "items",
-        "selection",
         "display",
-        "disabled",
+        "chroming",
         "size",
         "width",
-        "chroming"
+        "edge",
+        "disabled",
+        "suffix",
+        "items",
+        "selection"
       ]
     }
   ],
@@ -59,7 +63,6 @@
     "label": {
       "type": "string",
       "description": "Text to show in the button.",
-      "displayName": "label",
       "help": "#label",
       "required": true,
       "translatable": true,
@@ -68,35 +71,30 @@
     "suffix": {
       "type": "string",
       "description": "Suffix appended to menu label to indicate last selection.",
-      "displayName": "suffix",
       "help": "#label",
       "translatable": true
     },
     "tooltip": {
       "type": "string",
       "description": "Text to show in the tooltip. This overrides the default tooltip that renders the label when in icon mode.",
-      "displayName": "tooltip",
       "help": "#tooltip",
       "translatable": true
     },
     "items": {
       "type": "Array<object>",
       "description": "Items describe the menu items rendered by the menu button.",
-      "displayName": "items",
       "help": "#items",
       "value": []
     },
     "selection": {
       "type": "object",
       "description": "An array containing key/value objects for menu selection groups.",
-      "displayName": "Selection",
       "help": "#selection",
       "writeback": true
     },
     "display": {
       "type": "string",
       "description": "Display just the label, the icons, or all. Label is used as tooltip and should be set in all cases.",
-      "displayName": "display",
       "help": "#display",
       "propertyEditorValues": {
         "all": {
@@ -129,9 +127,12 @@
     "size": {
       "type": "string",
       "description": "Size of button",
-      "displayName": "size",
       "help": "#size",
       "propertyEditorValues": {
+        "xs": {
+          "description": "Display an extra small button.  Only suppported for component developers with ghost chroming in icon display mode.",
+          "displayName": "Extra Small"
+        },
         "sm": {
           "description": "Display a small button.",
           "displayName": "Small"
@@ -145,8 +146,8 @@
           "displayName": "Large"
         }
       },
-      "translatable": true,
       "enumValues": [
+        "xs",
         "sm",
         "md",
         "lg"
@@ -165,6 +166,10 @@
       "displayName": "chroming",
       "help": "#chroming",
       "propertyEditorValues": {
+        "ghost": {
+          "description": "Ghost buttons are the least prominent variation. Ghost buttons are useful for performing low-priority tasks, such as manipulating the UI.",
+          "displayName": "Ghost"
+        },
         "borderless": {
           "description": "Borderless buttons are a more prominent variation. Borderless buttons are useful for supplemental actions that require minimal emphasis.",
           "displayName": "Borderless"
@@ -180,6 +185,7 @@
       },
       "enumValues": [
         "solid",
+        "ghost",
         "borderless",
         "outlined"
       ],
@@ -199,7 +205,6 @@
     },
     "endIcon": {
       "description": "The endIcon slot is the button's end icon. The oj-c-menu-button element accepts DOM nodes as children with the endIcon slot.",
-      "displayName": "endIcon",
       "help": "#endIcon"
     }
   },
@@ -208,7 +213,6 @@
       "bubbles": true,
       "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events. Detail indicates which menu item was clicked.",
       "eventGroup": "common",
-      "displayName": "onOjMenuAction",
       "help": "#event:ojMenuAction",
       "detail": {
         "key": {

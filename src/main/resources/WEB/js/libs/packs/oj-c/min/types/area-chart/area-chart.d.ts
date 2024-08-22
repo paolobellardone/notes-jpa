@@ -8,7 +8,7 @@ import { AreaChartItemProps } from '../area-chart-item/area-chart-item';
 import 'css!oj-c/area-chart/area-chart-styles.css';
 import { Action, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
 import { ChartItemTemplateContext, ChartSeriesTemplateContext, ChartGroupTemplateContext } from '../hooks/UNSAFE_useChartData/useChartData';
-import { Group } from '@oracle/oraclejet-preact/UNSAFE_Axis/axis.types';
+import { Group } from '@oracle/oraclejet-preact/utils/UNSAFE_visTypes/chart';
 import type { ViewPortDetail, PlotArea, YAxis, XAxis, ValueFormats } from '../utils/UNSAFE_vizTypes/chartTypes';
 import { AreaChartSeriesProps } from '../area-chart-series/area-chart-series';
 import { ChartLegend } from 'oj-c/utils/UNSAFE_vizTypes/legendTypes';
@@ -16,7 +16,7 @@ type PreactAreaChartProps = ComponentProps<typeof PreactAreaChart>;
 export type AreaItem<K> = {
     id: K;
 } & AreaChartItemProps;
-export type LineChartSeries<K> = {
+export type AreaChartSeries<K> = {
     items: AreaItem<K>[];
 } & AreaChartSeriesProps;
 type ItemDrillDetail<K, D> = {
@@ -25,13 +25,13 @@ type ItemDrillDetail<K, D> = {
     group: K;
     data: AreaItem<K>;
     itemData: D;
-    seriesData: LineChartSeries<K>;
+    seriesData: AreaChartSeries<K>;
     groupData: Group;
 };
 type SeriesDrillDetail<K> = {
     id: K;
     series: K;
-    seriesData: LineChartSeries<K>;
+    seriesData: AreaChartSeries<K>;
     items: AreaItem<K>[];
 };
 type GroupDrillDetail<K> = {
@@ -64,6 +64,7 @@ export type AreaChartProps<K, D extends AreaItem<K> | any> = ObservedGlobalProps
     selection?: K[];
     onSelectionChanged?: PropertyChanged<(string | number)[]>;
     hiddenCategories?: string[];
+    dragMode?: 'user' | 'select' | 'zoom' | 'pan' | 'off';
     onHiddenCategoriesChanged?: PropertyChanged<string[]>;
     highlightedCategories?: string[];
     onHighlightedCategoriesChanged?: PropertyChanged<string[]>;
@@ -94,6 +95,7 @@ export namespace CAreaChartElement {
     interface ojSeriesDrill<K extends string | number> extends CustomEvent<SeriesDrillDetail<K> & {}> {
     }
     type dataChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['data']>;
+    type dragModeChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['dragMode']>;
     type drillingChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['drilling']>;
     type groupComparatorChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['groupComparator']>;
     type hiddenCategoriesChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['hiddenCategories']>;
@@ -113,6 +115,9 @@ export namespace CAreaChartElement {
     type xAxisChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['xAxis']>;
     type yAxisChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['yAxis']>;
     type zoomAndScrollChanged<K extends string | number, D extends AreaItem<K> | any> = JetElementCustomEventStrict<CAreaChartElement<K, D>['zoomAndScroll']>;
+    type RenderItemTemplate<K extends string | number, D extends AreaItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartItemTemplateContext<K, D>>;
+    type RenderSeriesTemplate<K extends string | number, D extends AreaItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartSeriesTemplateContext<K, D>>;
+    type RenderGroupTemplate<K extends string | number, D extends AreaItem<K> | any> = import('ojs/ojvcomponent').TemplateSlot<ChartGroupTemplateContext<K, D>>;
 }
 export interface CAreaChartElementEventMap<K extends string | number, D extends AreaItem<K> | any> extends HTMLElementEventMap {
     'ojViewportChange': CAreaChartElement.ojViewportChange;
@@ -120,6 +125,7 @@ export interface CAreaChartElementEventMap<K extends string | number, D extends 
     'ojGroupDrill': CAreaChartElement.ojGroupDrill<K>;
     'ojSeriesDrill': CAreaChartElement.ojSeriesDrill<K>;
     'dataChanged': JetElementCustomEventStrict<CAreaChartElement<K, D>['data']>;
+    'dragModeChanged': JetElementCustomEventStrict<CAreaChartElement<K, D>['dragMode']>;
     'drillingChanged': JetElementCustomEventStrict<CAreaChartElement<K, D>['drilling']>;
     'groupComparatorChanged': JetElementCustomEventStrict<CAreaChartElement<K, D>['groupComparator']>;
     'hiddenCategoriesChanged': JetElementCustomEventStrict<CAreaChartElement<K, D>['hiddenCategories']>;
@@ -142,6 +148,7 @@ export interface CAreaChartElementEventMap<K extends string | number, D extends 
 }
 export interface CAreaChartElementSettableProperties<K, D extends AreaItem<K> | any> extends JetSettableProperties {
     data?: AreaChartProps<K, D>['data'];
+    dragMode?: AreaChartProps<K, D>['dragMode'];
     drilling?: AreaChartProps<K, D>['drilling'];
     groupComparator?: AreaChartProps<K, D>['groupComparator'];
     hiddenCategories?: AreaChartProps<K, D>['hiddenCategories'];
@@ -172,6 +179,7 @@ export interface AreaChartIntrinsicProps extends Partial<Readonly<CAreaChartElem
     onojSeriesDrill?: (value: CAreaChartElementEventMap<any, any>['ojSeriesDrill']) => void;
     onojViewportChange?: (value: CAreaChartElementEventMap<any, any>['ojViewportChange']) => void;
     ondataChanged?: (value: CAreaChartElementEventMap<any, any>['dataChanged']) => void;
+    ondragModeChanged?: (value: CAreaChartElementEventMap<any, any>['dragModeChanged']) => void;
     ondrillingChanged?: (value: CAreaChartElementEventMap<any, any>['drillingChanged']) => void;
     ongroupComparatorChanged?: (value: CAreaChartElementEventMap<any, any>['groupComparatorChanged']) => void;
     onhiddenCategoriesChanged?: (value: CAreaChartElementEventMap<any, any>['hiddenCategoriesChanged']) => void;

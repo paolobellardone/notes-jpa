@@ -143,7 +143,8 @@ define(["require", "exports", "preact/hooks", "../UNSAFE_useComponentMessaging/u
             },
             onCommitValue,
             format,
-            normalizeAndParseValue
+            normalizeAndParseValue,
+            validateValueOnExternalChange
         };
     }
     exports.useEditableValue = useEditableValue;

@@ -41,7 +41,6 @@ export interface CFilePickerElement extends JetElement<CFilePickerElementSettabl
     setProperty<T extends keyof CFilePickerElementSettableProperties>(property: T, value: CFilePickerElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CFilePickerElementSettableProperties>): void;
     setProperties(properties: CFilePickerElementSettablePropertiesLenient): void;
-    _doSelectHelper: (fileList: FileList) => void;
     blur: () => void;
     focus: () => void;
 }

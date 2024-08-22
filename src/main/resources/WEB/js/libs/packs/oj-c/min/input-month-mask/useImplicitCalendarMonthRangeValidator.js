@@ -19,7 +19,15 @@ define(["require", "exports", "preact/hooks", "./CalendarMonthRangeValidator", "
                 });
             }
             return null;
-        }, [formatObj, dateRangeOverflowMessageDetail, dateRangeUnderflowMessageDetail, min, max]);
+        }, [
+            formatObj,
+            dateRangeOverflowMessageDetail,
+            dateRangeUnderflowMessageDetail,
+            defaultRangeOverflowMessageDetailFn,
+            defaultRangeUnderflowMessageDetailFn,
+            min,
+            max
+        ]);
         return calendarMonthRangeValidator;
     }
     exports.useImplicitCalendarMonthRangeValidator = useImplicitCalendarMonthRangeValidator;

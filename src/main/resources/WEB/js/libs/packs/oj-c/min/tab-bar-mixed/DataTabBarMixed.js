@@ -37,7 +37,7 @@ define(["require", "exports", "preact/jsx-runtime", "preact/hooks", "@oracle/ora
                                 badge: tab.badge ? tab.badge.toString() : undefined,
                                 label: tab.label,
                                 isRemovable: true
-                            })) }))] }), dynamicTabsOverflow === 'conveyor' && ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [isDividerVisible && (0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.TabBarMixedSeparator, { padding: separatorPadding }), (0, jsx_runtime_1.jsx)(UNSAFE_ConveyorBelt_1.ConveyorBelt, { children: (0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.TabBarLayout, { display: "standard", layout: "condense", children: dynamicTabs.map((tab) => ((0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.RemovableTabBarItem, { badge: tab.badge ? tab.badge.toString() : undefined, itemKey: tab.itemKey, label: tab.label, "aria-controls": tab.tabPanelId }))) }) })] }))] }));
+                            })) }))] }), dynamicTabsOverflow === 'conveyor' && ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [isDividerVisible && (0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.TabBarMixedSeparator, { padding: separatorPadding }), (0, jsx_runtime_1.jsx)(UNSAFE_ConveyorBelt_1.ConveyorBelt, { children: (0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.TabBarLayout, { display: "standard", layout: "condense", children: dynamicTabs.map((tab) => ((0, jsx_runtime_1.jsx)(UNSAFE_TabBarMixed_1.RemovableTabBarItem, { "aria-controls": tab.tabPanelId, badge: tab.badge ? tab.badge.toString() : undefined, itemKey: tab.itemKey, label: tab.label }))) }) })] }))] }));
     }
     exports.DataTabBarMixed = DataTabBarMixed;
 });

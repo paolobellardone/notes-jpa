@@ -4,6 +4,16 @@
   overflow-wrap: anywhere;
   display: inline;
 }
+.TextStyles_base__13t47my0:focus-visible {
+  outline-style: dotted;
+  outline-offset: 1px;
+  outline-width: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
+.TextStyles_base__13t47my0::after {
+  content: "";
+  display: block;
+}
 .TextStyles_lineClamp__13t47my1 {
   display: -webkit-box;
   -webkit-box-orient: vertical;

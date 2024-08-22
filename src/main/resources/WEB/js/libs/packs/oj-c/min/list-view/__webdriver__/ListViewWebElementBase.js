@@ -63,6 +63,24 @@ class ListViewWebElementBase extends elements_1.OjWebElement {
     getSelectionMode() {
         return this.getProperty('selectionMode');
     }
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig() {
+        return this.getProperty('contextMenuConfig');
+    }
+    /**
+     * Gets the value of <code>reorderable</code> property.
+     * Specify the item reordering functionality.
+     * @return The value of <code>reorderable</code> property.
+     *
+     */
+    getReorderable() {
+        return this.getProperty('reorderable');
+    }
 }
 exports.ListViewWebElementBase = ListViewWebElementBase;
 //# sourceMappingURL=ListViewWebElementBase.js.map

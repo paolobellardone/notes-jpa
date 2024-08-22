@@ -1,7 +1,7 @@
 {
   "name": "legend-section",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -14,11 +14,25 @@
   "displayName": "LegendSection",
   "main": "oj-c/legend-section",
   "help": "oj-c.LegendSection.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
     }
   },
+  "propertyLayout": [
+    {
+      "propertyGroup": "common",
+      "items": [
+        "text"
+      ]
+    }
+  ],
   "since": "15.0.0",
   "properties": {
     "text": {
@@ -26,6 +40,8 @@
       "description": "The title of the legend section.",
       "displayName": "Text",
       "help": "#text",
+      "translatable": true,
+      "required": true,
       "value": ""
     }
   },

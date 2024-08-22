@@ -1,16 +1,10 @@
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_Legend", "ojs/ojcontext", "ojs/ojvcomponent", "./utils", "../hooks/UNSAFE_useDataProvider/useDataProvider", "../utils/UNSAFE_vizUtils/TemplateHandler", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "preact/compat", "../hooks/UNSAFE_useVizCategories/useVizCategories", "./events", "./useSectionData", "css!oj-c/legend/legend-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_Legend_1, Context, ojvcomponent_1, utils_1, useDataProvider_1, TemplateHandler_1, UNSAFE_useTranslationBundle_1, compat_1, useVizCategories_1, events_1, useSectionData_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_Legend", "../hooks/UNSAFE_useVisBusyState/useVisBusyState", "@oracle/oraclejet-preact/UNSAFE_SectionalLegend", "ojs/ojvcomponent", "./utils", "../hooks/UNSAFE_useDataProvider/useDataProvider", "../utils/UNSAFE_vizUtils/TemplateHandler", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "preact/compat", "../hooks/UNSAFE_useVizCategories/useVizCategories", "./events", "./useSectionData", "css!oj-c/legend/legend-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_Legend_1, useVisBusyState_1, UNSAFE_SectionalLegend_1, ojvcomponent_1, utils_1, useDataProvider_1, TemplateHandler_1, UNSAFE_useTranslationBundle_1, compat_1, useVizCategories_1, events_1, useSectionData_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LinearLegend = exports.Legend = void 0;
     function LegendComp({ data = null, drilling = 'off', halign = 'start', valign = 'top', hiddenCategories = [], hideAndShowBehavior = 'off', highlightedCategories = [], hoverBehavior = 'none', orientation = 'vertical', symbolHeight = 0, symbolWidth = 0, textStyle = {}, sectionTitleStyle = {}, sectionTitleHalign = 'start', ...props }) {
         const rootRef = (0, hooks_1.useRef)(null);
-        const addBusyState = (0, hooks_1.useCallback)((description) => {
-            return rootRef.current
-                ? Context.getContext(rootRef.current)
-                    .getBusyContext()
-                    .addBusyState({ description: `oj-c-legend: ${description}` })
-                : () => { };
-        }, []);
+        const addBusyState = (0, useVisBusyState_1.useVisBusyState)(rootRef, 'oj-c-legend');
         const isTreeData = (0, utils_1.isTreeDataProvider)(data);
         const { width: symWidth, height: symHeight } = (0, utils_1.getDefaultSymbolDims)(symbolHeight, symbolWidth);
         return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: `oj-c-legend-${halign} oj-c-legend-${valign}`, children: isTreeData ? ((0, jsx_runtime_1.jsx)(SectionalLegend, { data: data, ...props, addBusyState: addBusyState, drilling: drilling, hiddenCategories: hiddenCategories, hideAndShowBehavior: hideAndShowBehavior, highlightedCategories: highlightedCategories, hoverBehavior: hoverBehavior, orientation: orientation, symbolHeight: symHeight, symbolWidth: symWidth, textStyle: textStyle, sectionTitleStyle: sectionTitleStyle, sectionTitleHalign: sectionTitleHalign })) : ((0, jsx_runtime_1.jsx)(LinearLegend, { ...props, data: data, drilling: drilling, hiddenCategories: hiddenCategories, hideAndShowBehavior: hideAndShowBehavior, highlightedCategories: highlightedCategories, hoverBehavior: hoverBehavior, orientation: orientation, symbolHeight: symHeight, symbolWidth: symHeight, addBusyState: addBusyState, textStyle: textStyle })) }));
@@ -25,7 +19,6 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
         });
         const isHighlightOn = hoverBehavior === 'dim';
         const isHideShowOn = hideAndShowBehavior === 'on';
-        const isInteractive = (0, utils_1.isLegendInteractive)(drilling, hideAndShowBehavior, hoverBehavior);
         const getItemContext = (context, index) => {
             return {
                 data: context.data,
@@ -37,9 +30,17 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
         const items = itemTemplate
             ? (0, TemplateHandler_1.processTemplate)(data, itemTemplate, getItemContext, 'oj-c-legend-item')
             : data.map((item) => item.data);
+        const hasDrillableItem = (0, compat_1.useMemo)(() => {
+            return items.some((value) => value['drilling'] === 'on');
+        }, [items]);
         const preactItems = (0, compat_1.useMemo)(() => {
-            return items.map((value, itemIndex) => (0, utils_1.transformItem)(value, 0, itemIndex, drilling === 'on' ? translations.viz_drillable() : ''));
+            return items.map((value, itemIndex) => {
+                return (0, utils_1.transformItem)(value, 0, itemIndex, (drilling === 'on' && value.drilling !== 'off') || value.drilling === 'on'
+                    ? translations.vis_drillable()
+                    : '', drilling, hideAndShowBehavior);
+            });
         }, [items, drilling, translations]);
+        const isInteractive = (0, utils_1.isLegendInteractive)(drilling, hideAndShowBehavior, hoverBehavior, hasDrillableItem);
         const categoriesItems = (0, compat_1.useMemo)(() => {
             const categoriesItems = [];
             if (isHideShowOn || isHighlightOn) {
@@ -57,21 +58,28 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
                 return item['categories'];
             return data[itemIdx].metadata?.key;
         };
-        const { itemActionHandler, inputHandler } = (0, events_1.getLegendEventsHandler)(isHideShowOn, isHighlightOn, updateHidden, updateHighlighted, getDrillDetail, drilling, props.onOjDrill);
+        const getItemDrilling = (itemIdx) => {
+            const item = items[itemIdx];
+            return item?.['drilling'];
+        };
+        const { itemActionHandler, inputHandler } = (0, events_1.getLegendEventsHandler)(isHideShowOn, isHighlightOn, updateHidden, updateHighlighted, getDrillDetail, drilling, getItemDrilling, props.onOjDrill);
         const textStyles = (0, utils_1.getTextStyles)(textStyle);
-        return preactItems.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { orientation: orientation, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, items: preactItems, onItemAction: itemActionHandler, onInput: inputHandler, ...props, ...textStyles })) : null;
+        return preactItems.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { orientation: orientation, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, items: preactItems, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, ...props, ...textStyles })) : null;
     }
     exports.LinearLegend = LinearLegend;
     function SectionalLegend({ hoverBehavior, hideAndShowBehavior, hiddenCategories, highlightedCategories, onHiddenCategoriesChanged, onHighlightedCategoriesChanged, drilling, itemTemplate, sectionTemplate, textStyle, sectionTitleStyle, orientation, symbolHeight, symbolWidth, data, ...props }) {
         const isHighlightOn = hoverBehavior === 'dim';
         const isHideShowOn = hideAndShowBehavior === 'on';
-        const isInteractive = (0, utils_1.isLegendInteractive)(drilling, hideAndShowBehavior, hoverBehavior);
         const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
         const sections = (0, useSectionData_1.useSectionData)(data, props.addBusyState, sectionTemplate, itemTemplate);
+        const hasDrillableItem = (0, compat_1.useMemo)(() => {
+            return sections.some((section) => section.items.some((item) => item['drilling'] === 'on'));
+        }, [sections]);
         const preactSections = (0, compat_1.useMemo)(() => {
-            const preactSections = sections.map((section, sectionIdx) => (0, utils_1.transformSection)(section, drilling === 'on' ? translations.viz_drillable() : '', sectionIdx));
+            const preactSections = sections.map((section, sectionIdx) => (0, utils_1.transformSection)(section, drilling === 'on' ? translations.vis_drillable() : '', sectionIdx));
             return preactSections;
         }, [sections, drilling, translations]);
+        const isInteractive = (0, utils_1.isLegendInteractive)(drilling, hideAndShowBehavior, hoverBehavior, hasDrillableItem);
         const categoriesItems = (0, compat_1.useMemo)(() => {
             const categoriesItems = [];
             if (isHideShowOn || isHighlightOn) {
@@ -94,9 +102,13 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
                 return item.categories;
             return item.key;
         };
-        const { itemActionHandler, inputHandler } = (0, events_1.getLegendEventsHandler)(isHideShowOn, isHighlightOn, updateHidden, updateHighlighted, getDillDetail, drilling, props.onOjDrill);
+        const getItemDrilling = (itemIdx, sectionIdx) => {
+            const item = sections[sectionIdx].items[itemIdx];
+            return item?.drilling;
+        };
+        const { itemActionHandler, inputHandler } = (0, events_1.getLegendEventsHandler)(isHideShowOn, isHighlightOn, updateHidden, updateHighlighted, getDillDetail, drilling, getItemDrilling, props.onOjDrill);
         const textStyles = (0, utils_1.getTextStyles)(textStyle);
         const sectionTitleStyles = (0, utils_1.getSectionStyles)(sectionTitleStyle);
-        return preactSections.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.SectionalLegend, { sections: preactSections, orientation: orientation, sectionTitleHAlign: props.sectionTitleHalign, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, onItemAction: itemActionHandler, onInput: inputHandler, ...textStyles, ...sectionTitleStyles })) : null;
+        return preactSections.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_SectionalLegend_1.SectionalLegend, { sections: preactSections, orientation: orientation, sectionTitleHAlign: props.sectionTitleHalign, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, ...textStyles, ...sectionTitleStyles })) : null;
     }
 });

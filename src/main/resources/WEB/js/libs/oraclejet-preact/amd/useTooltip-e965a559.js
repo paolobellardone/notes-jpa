@@ -1,0 +1,2 @@
+define(['exports', 'preact/hooks', './useTooltipControlled-18271c7a'], (function(t,o,e){"use strict";t.useTooltip=({text:t,position:s="bottom",isDisabled:i=!1,anchor:n={x:"element",y:"element"},offset:l,variant:a="tooltip",testId:p})=>{const[r,c]=o.useState(!1),u=i||!t,d=l||{mainAxis:8,crossAxis:0},f=o.useCallback((t=>{c(t.value)}),[]),{tooltipContent:x,tooltipProps:C}=e.useTooltipControlled({text:t,isOpen:r,position:s,isDisabled:u,offset:d,anchor:n,variant:a,onToggle:f,testId:p});return{tooltipContent:x,tooltipProps:C}}}));
+//# sourceMappingURL=useTooltip-e965a559.js.map

@@ -21,7 +21,7 @@ class ActionCardWebElement extends ActionCardWebElementBase_1.ActionCardWebEleme
      */
     async click() {
         // Find the <button> element to click so that it can receive focus
-        const button = await this.findElement(selenium_webdriver_1.By.css('button'));
+        const button = await this.findElement(selenium_webdriver_1.By.css('[role=button]'));
         return button.click();
     }
 }

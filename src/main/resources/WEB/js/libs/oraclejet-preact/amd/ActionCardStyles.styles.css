@@ -4,6 +4,7 @@
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;
+  cursor: pointer;
   display: inline-flex;
   width: -moz-min-content;
   width: min-content;

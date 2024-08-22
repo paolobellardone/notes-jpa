@@ -5,13 +5,13 @@ import Validator = require('ojs/ojvalidator');
 type CheckboxProps = ComponentProps<typeof Checkbox> & {
     validators?: Validator<boolean>[];
 };
-export declare function useCheckboxPreact({ ['aria-describedby']: ariaDescribedBy, disabled, displayOptions, messagesCustom, readonly, requiredMessageDetail: propRequiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged, validators }: Omit<CheckboxProps, 'children'>, addBusyState: (desc?: string) => () => void): {
+export declare function useCheckboxPreact({ ['aria-describedby']: ariaDescribedBy, disabled, displayOptions, messagesCustom, readonly, requiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged, validators }: Omit<CheckboxProps, 'children'>, addBusyState: (desc?: string) => () => void): {
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    checkboxProps: Omit<{
+    checkboxProps: import("preact/compat").PropsWithoutRef<{
         'aria-describedby'?: string | undefined;
         assistiveText?: string | undefined;
         children: import("preact").ComponentChildren;
@@ -25,7 +25,7 @@ export declare function useCheckboxPreact({ ['aria-describedby']: ariaDescribedB
         onCommit: (detail: ValueUpdateDetail<boolean>) => void;
         userAssistanceDensity?: import("@oracle/oraclejet-preact/UNSAFE_UserAssistance").UserAssistanceDensityType | undefined;
         value?: boolean | undefined;
-    }, "ref"> & {
+    } & import("@oracle/oraclejet-preact/hooks/UNSAFE_useTestId").TestIdProps> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

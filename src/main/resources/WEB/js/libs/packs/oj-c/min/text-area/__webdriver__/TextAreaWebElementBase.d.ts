@@ -168,13 +168,6 @@ export declare class TextAreaWebElementBase extends OjWebElement {
      */
     getTextAlign(): Promise<string>;
     /**
-     * Gets the value of <code>unsafe_labelledBy</code> property.
-     *
-     * @return The value of <code>unsafe_labelledBy</code> property.
-     *
-     */
-    getUnsafeLabelledBy(): Promise<string>;
-    /**
      * Gets the value of <code>userAssistanceDensity</code> property.
      * Specifies the density of the form component's user assistance presentation.
      * @return The value of <code>userAssistanceDensity</code> property.

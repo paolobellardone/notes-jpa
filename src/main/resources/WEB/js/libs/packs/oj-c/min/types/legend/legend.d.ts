@@ -21,7 +21,7 @@ type DrillDetail<K> = {
     id: K;
 };
 type LegendProps<K, D extends Item<K> | Section<K> | any> = ObservedGlobalProps<'aria-label' | 'aria-describedby' | 'aria-labelledby'> & {
-    data: DataProvider<K, D> | null;
+    data?: DataProvider<K, D> | null;
     drilling?: 'on' | 'off';
     halign?: 'center' | 'end' | 'start';
     hiddenCategories?: string[];
@@ -74,6 +74,8 @@ export namespace CLegendElement {
     type symbolWidthChanged<K extends string | number, D extends Item<K> | Section<K> | any> = JetElementCustomEventStrict<CLegendElement<K, D>['symbolWidth']>;
     type textStyleChanged<K extends string | number, D extends Item<K> | Section<K> | any> = JetElementCustomEventStrict<CLegendElement<K, D>['textStyle']>;
     type valignChanged<K extends string | number, D extends Item<K> | Section<K> | any> = JetElementCustomEventStrict<CLegendElement<K, D>['valign']>;
+    type RenderItemTemplate<K extends string | number, D extends Item<K> | Section<K> | any> = import('ojs/ojvcomponent').TemplateSlot<LegendItemTemplateContext<K, D>>;
+    type RenderSectionTemplate<K extends string | number, D extends Item<K> | Section<K> | any> = import('ojs/ojvcomponent').TemplateSlot<LegendSectionTemplateContext<K, D>>;
 }
 export interface CLegendElementEventMap<K extends string | number, D extends Item<K> | Section<K> | any> extends HTMLElementEventMap {
     'ojDrill': CLegendElement.ojDrill<K>;
@@ -93,7 +95,7 @@ export interface CLegendElementEventMap<K extends string | number, D extends Ite
     'valignChanged': JetElementCustomEventStrict<CLegendElement<K, D>['valign']>;
 }
 export interface CLegendElementSettableProperties<K, D extends Item<K> | Section<K> | any> extends JetSettableProperties {
-    data: LegendProps<K, D>['data'];
+    data?: LegendProps<K, D>['data'];
     drilling?: LegendProps<K, D>['drilling'];
     halign?: LegendProps<K, D>['halign'];
     hiddenCategories?: LegendProps<K, D>['hiddenCategories'];

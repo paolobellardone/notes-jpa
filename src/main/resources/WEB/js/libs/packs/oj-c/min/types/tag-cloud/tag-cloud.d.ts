@@ -58,6 +58,7 @@ export namespace CTagCloudElement {
     type selectionChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['selection']>;
     type selectionModeChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['selectionMode']>;
     type touchResponseChanged<K extends string | number, D extends any> = JetElementCustomEventStrict<CTagCloudElement<K, D>['touchResponse']>;
+    type RenderItemTemplate<K extends string | number, D extends any> = import('ojs/ojvcomponent').TemplateSlot<TagCloudItemTemplateContext<K, D>>;
 }
 export interface CTagCloudElementEventMap<K extends string | number, D extends any> extends HTMLElementEventMap {
     'dataChanged': JetElementCustomEventStrict<CTagCloudElement<K, D>['data']>;

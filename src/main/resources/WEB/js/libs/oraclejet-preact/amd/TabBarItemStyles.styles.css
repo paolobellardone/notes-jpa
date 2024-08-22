@@ -1,7 +1,7 @@
 .TabBarItemStyles_tabBarItemBase__1jor8oq0 {
+  position: relative;
   color: var(--labelColor__1vg465e0);
   cursor: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-cursor-clickable);
-  box-sizing: border-box;
   border-left: var(--borderWidthLeftRight__1vg465e5) solid transparent;
   border-bottom: var(--borderWidthBottom__1vg465e4) solid transparent;
   border-right: var(--borderWidthLeftRight__1vg465e5) solid transparent;
@@ -11,9 +11,14 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  align-items: center;
+  justify-content: center;
 }
 .TabBarItemStyles_tabBarItemBase__1jor8oq0:hover {
   color: var(--labelColorHover__1vg465e2);
+}
+.TabBarItemStyles_tabBarItemBase__1jor8oq0:active {
+  color: var(--labelColorSelected__1vg465e1);
 }
 .TabBarItemStyles_tabBarItemIcon__1jor8oq1 {
   font-size: var(--iconSize__1vg465e3);
@@ -35,7 +40,7 @@
 .TabBarItemStyles_tabBarItemStackedBadge__1jor8oq5 {
   position: absolute;
   left: calc(var(--iconSize__1vg465e3) * 0.40);
-  bottom: calc(var(--iconSize__1vg465e3) * 0.40);
+  bottom: calc(var(--iconSize__1vg465e3) * 0.35);
 }
 .TabBarItemStyles_tabBarItemStackedBadgeRtl__1jor8oq6 {
   left: 0;

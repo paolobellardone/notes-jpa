@@ -1,11 +1,9 @@
 .TableStyles_tableStyles_base__k2noww0 {
   background-color: inherit;
+  box-sizing: border-box;
   height: 100%;
   overflow-x: auto;
   position: relative;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   width: 100%;
   z-index: 0;
 }

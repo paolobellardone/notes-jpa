@@ -25,7 +25,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
             const validationResult = await onCommitValue(valueAsArray);
             const newValue = validationResult === useValidators_1.ValidationResult.INVALID ? null : valueAsArray;
             setDisplayValue(newValue);
-        }, [onCommitValue]);
+        }, [onCommitValue, setDisplayValue]);
         return {
             methods,
             checkboxsetProps: {

@@ -11,7 +11,7 @@ var elements_1 = require("@oracle/oraclejet-webdriver/elements");
 class CollapsibleWebElementBase extends elements_1.OjWebElement {
     /**
      * Gets the value of <code>disabled</code> property.
-     * Disables the collapsible if set to true
+     * Disables the collapsible if set to true.
      * @return The value of <code>disabled</code> property.
      *
      */

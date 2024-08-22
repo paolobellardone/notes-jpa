@@ -8,10 +8,7 @@ define(["require", "exports", "preact/hooks", "../UNSAFE_useValidators/useValida
             const { value, setDisplayValue } = valueState;
             setDisplayValue(format(value));
         }, []);
-        (0, hooks_1.useEffect)(() => {
-            if (previousValueRef.current === value) {
-                return;
-            }
+        if (previousValueRef.current !== value) {
             previousValueRef.current = value;
             if (value !== undefined && value !== valueState.value) {
                 const { setDisplayValue, setValue } = valueState;
@@ -21,7 +18,7 @@ define(["require", "exports", "preact/hooks", "../UNSAFE_useValidators/useValida
                     setDisplayValue(format(value));
                 }
             }
-        }, [value, valueState, format]);
+        }
     }
     exports.useValueLifecycle = useValueLifecycle;
 });

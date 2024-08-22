@@ -1,6 +1,6 @@
 import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetPropertyType } from 'ojs/index';
 import 'ojs/oj-jsx-interfaces';
-import { ComponentProps, ComponentType, Ref } from 'preact';
+import { ComponentProps, ComponentType } from 'preact';
 import { InputSensitiveText as PreactInputSensitiveText } from '@oracle/oraclejet-preact/UNSAFE_InputSensitiveText';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
@@ -53,8 +53,8 @@ type InputSensitiveTextHandle = {
     reset: () => void;
     validate: () => Promise<'valid' | 'invalid'>;
 };
-declare const FunctionalInputSensitiveText: import("preact").FunctionalComponent<Omit<Props<string>, "ref"> & {
-    ref?: Ref<InputSensitiveTextHandle> | undefined;
+declare const FunctionalInputSensitiveText: import("preact").FunctionalComponent<import("preact/compat").PropsWithoutRef<Props<string>> & {
+    ref?: import("preact").Ref<InputSensitiveTextHandle> | undefined;
 }>;
 export declare const InputSensitiveText: ComponentType<ExtendGlobalProps<ComponentProps<typeof FunctionalInputSensitiveText>>>;
 export type InputSensitiveTextProps<V extends string = string> = Props<V>;

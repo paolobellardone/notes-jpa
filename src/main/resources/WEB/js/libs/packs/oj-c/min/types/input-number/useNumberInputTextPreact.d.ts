@@ -5,13 +5,13 @@ type InputNumberProps = ComponentProps<typeof InputNumber>;
 import { StepEvent } from '@oracle/oraclejet-preact/UNSAFE_NumberInputText';
 export declare function useNumberInputTextPreact({ autocomplete, autofocus, converter: propConverter, disabled, displayOptions, inputPrefix, inputSuffix, labelEdge, labelHint, labelStartWidth, max, messagesCustom, min, numberRangeExactMessageDetail, numberRangeOverflowMessageDetail, numberRangeUnderflowMessageDetail, placeholder, readonly, required, requiredMessageDetail, step, stepperVariant, textAlign, userAssistanceDensity, validators, value: propValue, virtualKeyboard, onMessagesCustomChanged, onRawValueChanged, onTransientValueChanged, onValidChanged, onValueChanged, ...otherProps }: InputNumberProps, addBusyState?: (desc?: string) => () => void): {
     value: number | null;
-    setValue: import("preact/hooks").StateUpdater<number | null>;
+    setValue: import("preact/hooks").Dispatch<import("preact/hooks").StateUpdater<number | null>>;
     methods: {
         reset: () => void;
         validate: () => Promise<"invalid" | "valid">;
         showMessages: () => void;
     };
-    inputNumberProps: Omit<{
+    inputNumberProps: import("preact/compat").PropsWithoutRef<{
         isStepDownDisabled?: boolean | undefined;
         isStepUpDisabled?: boolean | undefined;
         onSpin?: ((event: StepEvent) => void) | undefined;
@@ -49,7 +49,7 @@ export declare function useNumberInputTextPreact({ autocomplete, autofocus, conv
         virtualKeyboard?: "number" | "auto" | "text" | undefined;
         onCommit?: ((detail: ValueUpdateDetail<string>) => void) | undefined;
         onInput: ((detail: ValueUpdateDetail<string>) => void) | undefined;
-    }, "ref"> & {
+    }> & {
         ref?: import("preact").Ref<import("@oracle/oraclejet-preact/hooks/UNSAFE_useFocusableTextField").FocusableHandle> | undefined;
     };
 };

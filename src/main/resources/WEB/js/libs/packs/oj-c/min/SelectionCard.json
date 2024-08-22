@@ -29,9 +29,15 @@
       }
     ],
     "since": "16.0.0",
+    "tsdeprecated": [
+      {
+        "type": "candidate",
+        "since": "17.0.0"
+      }
+    ],
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "ojmodule": "selection-card"
   },
@@ -47,7 +53,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "type": {
       "names": [
@@ -64,7 +70,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -98,7 +104,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -127,7 +133,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "params": [
@@ -157,7 +163,7 @@
     "ojhidden": true,
     "meta": {
       "filename": "selection-card.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selection-card"
+      "path": "web/components/oj-c/selection-card"
     },
     "scope": "instance",
     "ojchild": true,

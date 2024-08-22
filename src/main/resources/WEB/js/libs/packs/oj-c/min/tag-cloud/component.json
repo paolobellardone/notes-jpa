@@ -1,7 +1,7 @@
 {
   "name": "tag-cloud",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -13,6 +13,12 @@
   "displayName": "Tag Cloud",
   "main": "oj-c/tag-cloud",
   "help": "oj-c.TagCloud.html",
+  "status": [
+    {
+      "type": "candidate",
+      "since": "17.0.0"
+    }
+  ],
   "extension": {
     "catalog": {
       "category": "Visualizations"
@@ -27,6 +33,9 @@
       "uxSpecs": [
         "tag-cloud"
       ]
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TagCloudWebElement.html"
     }
   },
   "propertyLayout": [

@@ -37,9 +37,9 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     validators?: (AsyncValidator<CalendarMonthRequired> | Validator<CalendarMonthRequired>)[] | null;
     value?: CalendarMonthRequired | null;
     onMessagesCustomChanged?: PropertyChanged<PreactInputDateMaskProps['messages']>;
-    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarMonth>;
+    onRawValueChanged?: ReadOnlyPropertyChanged<CalendarMonth | undefined>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<CalendarMonthRequired>;
+    onValueChanged?: PropertyChanged<CalendarMonthRequired | null>;
 };
 type InputMonthMaskHandle = {
     blur: () => void;
@@ -48,7 +48,7 @@ type InputMonthMaskHandle = {
     reset: () => void;
     validate: () => Promise<'valid' | 'invalid'>;
 };
-declare const InputMonthMaskImpl: ({ columnSpan, disabled, displayOptions, help, helpHints, messagesCustom, readonly, required, userAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputMonthMaskHandle>) => import("preact").JSX.Element;
+declare const InputMonthMaskImpl: ({ columnSpan, containerReadonly: propContainerReadonly, disabled, displayOptions, help, helpHints, labelWrapping: propLabelWrapping, messagesCustom, readonly: propReadonly, required, userAssistanceDensity: propUserAssistanceDensity, validators, value, ...otherProps }: Props, ref: Ref<InputMonthMaskHandle>) => import("preact").JSX.Element;
 export declare const InputMonthMask: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputMonthMaskImpl>>>;
 export type InputMonthMaskProps = Props;
 export {};

@@ -82,6 +82,9 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
             iteratorRef.current = iterator;
             try {
                 const result = await iterator.next();
+                if (iterator !== iteratorRef.current) {
+                    return;
+                }
                 const fetchParameters = result.value.fetchParameters;
                 if (fetchParameters.signal && fetchParameters.signal.aborted) {
                     return;
@@ -129,7 +132,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
                                 isDoneRef.current = value.done;
                             }
                             const total = value.total;
-                            if (total > 0) {
+                            if (total > 0 || (total === 0 && isDoneRef.current)) {
                                 totalSizeRef.current = total;
                                 fetchRange({
                                     offset: range.offset,
@@ -296,7 +299,7 @@ define(["require", "exports", "ojs/ojdataproviderfactory", "preact/hooks"], func
     const handleAddRemoveMutation = (detail, dataState, options, isAdd) => {
         let itemCount = 0;
         if (isIndexesAvailable(detail, options)) {
-            const indexes = isAdd ? detail.indexes?.sort() : detail.indexes;
+            const indexes = isAdd ? detail.indexes?.sort((a, b) => a - b) : detail.indexes;
             let endIndex = dataState.totalSize - 1;
             indexes?.forEach((index) => {
                 if (index <= endIndex) {

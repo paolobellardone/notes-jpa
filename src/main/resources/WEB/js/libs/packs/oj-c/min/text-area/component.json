@@ -1,7 +1,7 @@
 {
   "name": "text-area",
-  "version": "16.1.1",
-  "jetVersion": "^16.1.1",
+  "version": "17.0.0",
+  "jetVersion": "^17.0.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -10,7 +10,7 @@
     "CTextAreaElement"
   ],
   "displayName": "TextArea",
-  "description": "A text area displays a field that allows a user to enter a multi-line text value",
+  "description": "A text area allows the user to enter a multi-line text value.",
   "help": "oj-c.TextArea.html",
   "main": "oj-c/text-area",
   "extension": {
@@ -24,6 +24,9 @@
     },
     "oracle": {
       "icon": "oj-ux-ico-text-input-area"
+    },
+    "webelement": {
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TextAreaWebElement.html"
     }
   },
   "since": "13.0.0",
@@ -237,7 +240,8 @@
           "enumValues": [
             "none",
             "remaining"
-          ]
+          ],
+          "value": "remaining"
         },
         "max": {
           "type": "number|null",
@@ -296,8 +300,7 @@
         "consume": {
           "name": "containerReadonly"
         }
-      },
-      "value": false
+      }
     },
     "required": {
       "type": "boolean",
@@ -375,9 +378,6 @@
         "right"
       ]
     },
-    "unsafe_labelledBy": {
-      "type": "string"
-    },
     "userAssistanceDensity": {
       "type": "string",
       "description": "Specifies the density of the form component's user assistance presentation.",
@@ -406,8 +406,7 @@
         "consume": {
           "name": "containerUserAssistanceDensity"
         }
-      },
-      "value": "reflow"
+      }
     },
     "validators": {
       "type": "Array<object>|null",
@@ -466,20 +465,25 @@
     }
   },
   "methods": {
-    "reset": {
-      "return": "any"
-    },
-    "showMessages": {
-      "return": "any"
-    },
-    "validate": {
-      "return": "Promise"
-    },
     "blur": {
-      "return": "any"
+      "description": "Blurs the input field.",
+      "return": "void"
     },
     "focus": {
-      "return": "any"
+      "description": "Focuses the input field.",
+      "return": "void"
+    },
+    "showMessages": {
+      "description": "Takes all deferred messages and shows them.",
+      "return": "void"
+    },
+    "reset": {
+      "description": "Resets the component by clearing all messages and updating the component's display value using the attribute value.",
+      "return": "void"
+    },
+    "validate": {
+      "description": "If enabled, validates the component's display value using the converter and all validators registered on the component. The Promise resolves to 'valid' if there were no converter parse errors and the component passed all validations, or if the component is disabled or readonly.",
+      "return": "Promise"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

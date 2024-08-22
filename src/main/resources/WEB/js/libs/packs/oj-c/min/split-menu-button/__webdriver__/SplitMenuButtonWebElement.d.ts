@@ -27,6 +27,7 @@ export declare class SplitMenuButtonWebElement extends SplitMenuButtonWebElement
      * delay - delays the milliseconds
      * await delay(2000);
      */
+    private delay;
     /**
      * In order to do nested selections, we need an isolated menu clicker
      */

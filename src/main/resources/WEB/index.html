@@ -4,7 +4,7 @@
 
     MIT License
 
-    Copyright (c) 2020 PaoloB
+    Copyright (c) 2020, 2024 PaoloB
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -38,8 +38,8 @@
   <meta name="apple-mobile-web-app-title" content="Oracle JET">
 
 <!-- injector:theme -->
-<link rel="stylesheet" href="css/redwood/16.1.1/web/redwood.min.css" id="basestyles" />
-<link rel="stylesheet" href="css/theme-redwood/16.1.1/web/theme.css" id="themestyle" />
+<link rel="stylesheet" href="css/redwood/17.0.0/web/redwood.min.css" id="basestyles" />
+<link rel="stylesheet" href="css/theme-redwood/17.0.0/web/theme.css" id="themestyle" />
 <!-- endinjector -->
 
   <link rel="stylesheet" href="css/custom.css" id="custom_css" />
@@ -60,8 +60,7 @@
         <div class="oj-panel oj-bg-neutral-30">
           <h1>Simple CRUD Notes</h1>
           <p class="center">
-            This application demonstrates how a Helidon application implements a CRUD endpoint to manage simple
-            notes.<br />
+            This application demonstrates how a Helidon application implements a CRUD endpoint to manage simple notes.<br />
             This simple frontend interacts via REST APIs with the Helidon Backend.
           </p>
         </div>
@@ -74,33 +73,29 @@
           <div class="oj-flex-item oj-sm-10 oj-md-6 oj-lg-8 oj-xl-8">
             <h3>Published notes</h3>
             <oj-table id="table" data="[[datasource]]" columns='[{"headerText": "Remove", "id": "column1", "sortable": "disabled"},
-                                {"headerText": "Note Id", "field": "id", "sortable": "enabled"},
-                                {"headerText": "Note Name", "field": "name", "sortable": "enabled"},
-                                {"headerText": "Note Contents", "field": "contents", "sortable": "enabled"}]'
-              selection-mode='{"row": "none", "column": "none"}'>
+                                                                 {"headerText": "Note Id", "field": "id", "sortable": "enabled"},
+                                                                 {"headerText": "Note Name", "field": "name", "sortable": "enabled"},
+                                                                 {"headerText": "Note Contents", "field": "contents", "sortable": "enabled"}]'
+                      selection-mode='{"row": "none", "column": "none"}'>
               <template slot='rowTemplate' data-oj-as='row'>
                 <tr>
                   <td>
-                    <oj-checkboxset aria-hidden='true' on-value-changed="[[enableDelete]]"
-                      class='oj-checkboxset-no-chrome'>
+                    <oj-checkboxset aria-hidden='true' on-value-changed="[[enableDelete]]" class='oj-checkboxset-no-chrome'>
                       <oj-option :id="[[row.data.id]]" value="[[row.data.id]]"></oj-option>
                     </oj-checkboxset>
                   </td>
                   <td>
-                    <div id='noteId'
-                      on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
+                    <div id="noteId" on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
                       <oj-bind-text value="[[row.data.id]]"></oj-bind-text>
                     </div>
                   </td>
                   <td>
-                    <div id="noteName"
-                      on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
+                    <div id="noteName" on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
                       <oj-bind-text value="[[row.data.name]]"></oj-bind-text>
                     </div>
                   </td>
                   <td>
-                    <div id="noteContents"
-                      on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
+                    <div id="noteContents" on-click="[[function(data, event) { showEditNoteDialog(row.data.id, data, event) }]]">
                       <oj-bind-text value="[[row.data.contents]]"></oj-bind-text>
                     </div>
                   </td>
@@ -111,25 +106,19 @@
               <br />
               (Click on a Note to edit it)
             </p>
-            <oj-c-button id="deleteNote_btn" disabled="[[!somethingChecked()]]" on-oj-action="[[deleteNote]]" label="Delete
-              Note"></oj-c-button>
+            <oj-c-button id="deleteNote_btn" disabled="[[!somethingChecked()]]" on-oj-action="[[deleteNote]]" label="Delete Note"></oj-c-button>
 
-            <oj-dialog id="editDialog" style="display:none" dialog-title="Update Note" drag-affordance="title-bar"
-              modality="modeless" resize-behavior="none">
+            <oj-dialog id="editDialog" style="display:none" dialog-title="Update Note" drag-affordance="title-bar" modality="modeless" resize-behavior="none">
               <div slot="header" class="oj-helper-clearfix" aria-labelledby="dialog-title-id">
                 <div>
                   <span id="dialog-title-id" class="oj-dialog-title">Update Note</span>
                 </div>
               </div>
               <div slot="body">
-                <div class="oj-md-odd-cols-4">
-                  <oj-label for="newName" class="oj-label">Note Name</oj-label>
-                  <oj-input-text id="newName" value="{{currentNoteName}}"></oj-input-text>
-                </div>
-                <div class="oj-md-odd-cols-4">
-                  <oj-label for="newContents" class="oj-label">Note Contents</oj-label>
-                  <oj-input-text id="newContents" value="{{currentNoteContents}}"></oj-input-text>
-                </div>
+                <oj-c-form-layout id="formUpdate" direction="row" full-width="true">
+                  <oj-c-input-text id="newName" value="{{currentNoteName}}" label-hint="Note Name"></oj-c-input-text>
+                  <oj-c-input-text id="newContents" value="{{currentNoteContents}}" label-hint="Note Contents"></oj-c-input-text>
+                </oj-c-form-layout>
               </div>
               <div slot="footer">
                 <oj-c-button id="submitBtn" on-oj-action="[[updateNote]]" label="Update"></oj-c-button>
@@ -144,14 +133,12 @@
           <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
           <div class="oj-flex-item">
             <h3>Create a note</h3>
-            <oj-form-layout direction="row" class="oj-formlayout-full-width">
-              <oj-input-number id="newNoteId" value="{{newNoteId}}" label-hint="Note Id"></oj-input-number>
-              <oj-input-text id="newNoteName" value="{{newNoteName}}" placeholder="Enter name"
-                label-hint="Note Name"></oj-input-text>
-              <oj-input-text id="newNoteContents" value="{{newNoteContents}}" placeholder="Enter contents"
-                label-hint="Note Contents"></oj-input-text>
-              <oj-c-button id="saveBtn" on-oj-action="[[addNote]]" label="Create Note"></oj-c-button>
-            </oj-form-layout>
+            <oj-c-form-layout id="formCreate" direction="row" full-width="true">
+              <oj-c-input-number id="newNoteId" value="{{newNoteId}}" label-hint="Note Id"></oj-c-input-number>
+              <oj-c-input-text id="newNoteName" value="{{newNoteName}}" placeholder="Enter name" label-hint="Note Name"></oj-c-input-text>
+              <oj-c-input-text id="newNoteContents" value="{{newNoteContents}}" placeholder="Enter contents" label-hint="Note Contents"></oj-c-input-text>
+            </oj-c-form-layout>
+            <oj-c-button id="saveBtn" on-oj-action="[[addNote]]" label="Create Note"></oj-c-button>
           </div>
           <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
         </div>

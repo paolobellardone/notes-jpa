@@ -126,6 +126,13 @@ export declare class AreaChartWebElementBase extends OjWebElement {
      */
     getHiddenCategories(): Promise<Array<string>>;
     /**
+     * Gets the value of <code>dragMode</code> property.
+     * The action that is performed when a drag occurs on the chart.
+     * @return The value of <code>dragMode</code> property.
+     *
+     */
+    getDragMode(): Promise<string>;
+    /**
      * Sets the value of <code>highlightedCategories</code> property.
      * An array of category string used for highlighting.
      * @param highlightedCategories The value to set for <code>highlightedCategories</code>
@@ -363,6 +370,10 @@ export interface XAxisTickLabel {
      * Whether the tick labels are rendered or not.
      */
     rendered: string;
+    /**
+     * Whether the ticklabels can be rotated.
+     */
+    rotation: string;
     /**
      * The style of the tick labels.
      */

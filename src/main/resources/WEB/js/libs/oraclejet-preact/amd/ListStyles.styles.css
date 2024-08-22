@@ -1,9 +1,6 @@
 .ListStyles_listStyles_base__1wld4xf0 {
   color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-text-icon-primary);
   height: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
   overflow-y: inherit;
   overflow-anchor: none;
 }
@@ -12,7 +9,7 @@
 }
 .ListStyles_listItemStyles_base__1wld4xf1 {
   display: flex;
-  min-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-row-height);
+  min-height: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-height);
   box-sizing: border-box;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;

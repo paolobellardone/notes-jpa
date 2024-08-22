@@ -3,10 +3,10 @@ import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
 import { SelectMultiple as PreactSelectMultiple } from '@oracle/oraclejet-preact/UNSAFE_SelectMultiple';
 import { ItemContext } from 'ojs/ojcommontypes';
-import { DataProvider, Item } from 'ojs/ojdataprovider';
+import { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
 import { ImmutableKeySet } from 'ojs/ojkeyset';
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
-import { Component, ComponentProps } from 'preact';
+import { ComponentProps, ComponentType } from 'preact';
 import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
@@ -34,13 +34,13 @@ type Props<K extends string | number, D extends Record<string, any>> = ObservedG
     labelHint: string;
     labelStartWidth?: Size;
     labelWrapping?: 'truncate' | 'wrap';
+    matchBy?: Array<TextFilter<D>['matchBy']> | null;
     messagesCustom?: PreactSelectMultipleProps['messages'];
     placeholder?: string;
     readonly?: boolean;
     required?: boolean;
     requiredMessageDetail?: string;
     textAlign?: PreactSelectMultipleProps['textAlign'];
-    unsafe_labelledBy?: string;
     userAssistanceDensity?: PreactSelectMultipleProps['userAssistanceDensity'];
     value?: Set<K> | null;
     valueItems?: Map<K, ItemContext<K, D>> | null;
@@ -50,21 +50,7 @@ type Props<K extends string | number, D extends Record<string, any>> = ObservedG
     onValueChanged?: PropertyChanged<Set<K> | null | undefined>;
     onValueItemsChanged?: PropertyChanged<Map<K, ItemContext<K, D>> | null | undefined>;
 };
-export declare class SelectMultiple<K extends string | number, D extends Record<string, any>> extends Component<ExtendGlobalProps<Props<K, D>>> {
-    static defaultProps: Pick<Props<any, any>, 'columnSpan' | 'data' | 'disabled' | 'displayOptions' | 'help' | 'helpHints' | 'messagesCustom' | 'readonly' | 'required' | 'requiredMessageDetail' | 'userAssistanceDensity' | 'value' | 'valueItems' | 'virtualKeyboard'>;
-    private busyContextRef;
-    private selectMultipleRef;
-    private rootRef;
-    componentDidMount(): void;
-    render({ columnSpan, ...props }: ExtendGlobalProps<Props<K, D>>): import("preact").JSX.Element;
-    componentWillUnmount(): void;
-    reset(): void;
-    showMessages(): void;
-    validate(): Promise<'valid' | 'invalid'>;
-    blur(): void;
-    focus(): void;
-    _selectItemsByValue(value: Set<K> | null): Promise<void> | undefined;
-}
+export declare const SelectMultiple: ComponentType<ExtendGlobalProps<Props<string | number, Record<string, any>>>>;
 export type SelectMultipleProps<K extends string | number, D extends Record<string, any>> = Props<K, D>;
 export {};
 export interface CSelectMultipleElement<K extends string | number, D extends Record<string, any>> extends JetElement<CSelectMultipleElementSettableProperties<K, D>>, CSelectMultipleElementSettableProperties<K, D> {
@@ -76,12 +62,12 @@ export interface CSelectMultipleElement<K extends string | number, D extends Rec
     setProperty<T extends keyof CSelectMultipleElementSettableProperties<K, D>>(property: T, value: CSelectMultipleElementSettableProperties<K, D>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CSelectMultipleElementSettableProperties<K, D>>): void;
     setProperties(properties: CSelectMultipleElementSettablePropertiesLenient<K, D>): void;
-    _selectItemsByValue: SelectMultiple<K, D>['_selectItemsByValue'];
-    blur: SelectMultiple<K, D>['blur'];
-    focus: SelectMultiple<K, D>['focus'];
-    reset: SelectMultiple<K, D>['reset'];
-    showMessages: SelectMultiple<K, D>['showMessages'];
-    validate: SelectMultiple<K, D>['validate'];
+    _selectItemsByValue: (value: Set<K> | null) => Promise<void>;
+    blur: () => void;
+    focus: () => void;
+    reset: () => void;
+    showMessages: () => void;
+    validate: () => Promise<'invalid' | 'valid'>;
 }
 export namespace CSelectMultipleElement {
     type columnSpanChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['columnSpan']>;
@@ -96,18 +82,19 @@ export namespace CSelectMultipleElement {
     type labelHintChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelHint']>;
     type labelStartWidthChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelStartWidth']>;
     type labelWrappingChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelWrapping']>;
+    type matchByChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['matchBy']>;
     type messagesCustomChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['messagesCustom']>;
     type placeholderChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['placeholder']>;
     type readonlyChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['readonly']>;
     type requiredChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['required']>;
     type requiredMessageDetailChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['requiredMessageDetail']>;
     type textAlignChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['textAlign']>;
-    type unsafe_labelledByChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['unsafe_labelledBy']>;
     type userAssistanceDensityChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['userAssistanceDensity']>;
     type validChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['valid']>;
     type valueChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['value']>;
     type valueItemsChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['valueItems']>;
     type virtualKeyboardChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['virtualKeyboard']>;
+    type RenderItemTemplate<K extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<K, D>>;
 }
 export interface CSelectMultipleElementEventMap<K extends string | number, D extends Record<string, any>> extends HTMLElementEventMap {
     'columnSpanChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['columnSpan']>;
@@ -122,13 +109,13 @@ export interface CSelectMultipleElementEventMap<K extends string | number, D ext
     'labelHintChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelHint']>;
     'labelStartWidthChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelStartWidth']>;
     'labelWrappingChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['labelWrapping']>;
+    'matchByChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['matchBy']>;
     'messagesCustomChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['messagesCustom']>;
     'placeholderChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['placeholder']>;
     'readonlyChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['readonly']>;
     'requiredChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['required']>;
     'requiredMessageDetailChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['requiredMessageDetail']>;
     'textAlignChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['textAlign']>;
-    'unsafe_labelledByChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['unsafe_labelledBy']>;
     'userAssistanceDensityChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['userAssistanceDensity']>;
     'validChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['valid']>;
     'valueChanged': JetElementCustomEventStrict<CSelectMultipleElement<K, D>['value']>;
@@ -148,13 +135,13 @@ export interface CSelectMultipleElementSettableProperties<K extends string | num
     labelHint: Props<K, D>['labelHint'];
     labelStartWidth?: Props<K, D>['labelStartWidth'];
     labelWrapping?: Props<K, D>['labelWrapping'];
+    matchBy?: Props<K, D>['matchBy'];
     messagesCustom?: Props<K, D>['messagesCustom'];
     placeholder?: Props<K, D>['placeholder'];
     readonly?: Props<K, D>['readonly'];
     required?: Props<K, D>['required'];
     requiredMessageDetail?: Props<K, D>['requiredMessageDetail'];
     textAlign?: Props<K, D>['textAlign'];
-    unsafe_labelledBy?: Props<K, D>['unsafe_labelledBy'];
     userAssistanceDensity?: Props<K, D>['userAssistanceDensity'];
     value?: Props<K, D>['value'];
     valueItems?: Props<K, D>['valueItems'];
@@ -178,13 +165,13 @@ export interface SelectMultipleIntrinsicProps extends Partial<Readonly<CSelectMu
     onlabelHintChanged?: (value: CSelectMultipleElementEventMap<any, any>['labelHintChanged']) => void;
     onlabelStartWidthChanged?: (value: CSelectMultipleElementEventMap<any, any>['labelStartWidthChanged']) => void;
     onlabelWrappingChanged?: (value: CSelectMultipleElementEventMap<any, any>['labelWrappingChanged']) => void;
+    onmatchByChanged?: (value: CSelectMultipleElementEventMap<any, any>['matchByChanged']) => void;
     onmessagesCustomChanged?: (value: CSelectMultipleElementEventMap<any, any>['messagesCustomChanged']) => void;
     onplaceholderChanged?: (value: CSelectMultipleElementEventMap<any, any>['placeholderChanged']) => void;
     onreadonlyChanged?: (value: CSelectMultipleElementEventMap<any, any>['readonlyChanged']) => void;
     onrequiredChanged?: (value: CSelectMultipleElementEventMap<any, any>['requiredChanged']) => void;
     onrequiredMessageDetailChanged?: (value: CSelectMultipleElementEventMap<any, any>['requiredMessageDetailChanged']) => void;
     ontextAlignChanged?: (value: CSelectMultipleElementEventMap<any, any>['textAlignChanged']) => void;
-    onunsafe_labelledByChanged?: (value: CSelectMultipleElementEventMap<any, any>['unsafe_labelledByChanged']) => void;
     onuserAssistanceDensityChanged?: (value: CSelectMultipleElementEventMap<any, any>['userAssistanceDensityChanged']) => void;
     onvalidChanged?: (value: CSelectMultipleElementEventMap<any, any>['validChanged']) => void;
     onvalueChanged?: (value: CSelectMultipleElementEventMap<any, any>['valueChanged']) => void;

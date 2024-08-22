@@ -13,7 +13,7 @@ export declare class ListViewWebElement extends ListViewWebElementBase {
      * @override
      * @typeparam K Type of keys
      */
-    changeSelected<K>(selected: Array<K>): Promise<void>;
+    changeSelected<K>(selected: Array<K>): Promise<K>;
     /**
      * Gets the value of "selected" property.
      * Retrieves the current selected items in the listview. See the Help documentation for more information.

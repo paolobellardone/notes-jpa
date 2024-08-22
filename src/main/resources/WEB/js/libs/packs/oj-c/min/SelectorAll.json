@@ -51,7 +51,7 @@
     ],
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "ojmodule": "selector-all"
   },
@@ -67,20 +67,13 @@
     "description": "Specifies the selectedKeys, should be hooked into the collection component.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "type": {
       "names": [
         "object"
       ]
-    },
-    "tstype": [
-      {
-        "target": "Type",
-        "value": "ImmutableKeySet<K>",
-        "jsdocOverride": true
-      }
-    ]
+    }
   },
   {
     "memberof": "oj-c.SelectorAll",
@@ -93,7 +86,7 @@
     "description": "Specifies whether tooltip should be shown on the SelectorAll checkbox",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "type": {
       "names": [
@@ -111,7 +104,7 @@
     "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [
@@ -145,7 +138,7 @@
     "description": "Retrieves the value of a property or a subproperty.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [
@@ -174,7 +167,7 @@
     "description": "Performs a batch set of properties.",
     "meta": {
       "filename": "selector-all.tsx",
-      "path": "/home/jenkins/uitech/workspace/OJET_Code_16.1.1/packages/oraclejet-core-pack/web/components/oj-c/selector-all"
+      "path": "web/components/oj-c/selector-all"
     },
     "scope": "instance",
     "params": [
