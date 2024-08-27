@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<!--
+
+    MIT License
+
+    Copyright (c) 2020, 2024 PaoloB
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+-->
+
+<html lang="en-us">
+
+<head>
+  <title>Kubernetes & Helidon CI/CD Workshop App</title>
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="viewport-fit=cover, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="css/images/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="css/images/touchicon.png">
+  <meta name="apple-mobile-web-app-title" content="Oracle JET">
+
+  <!-- This is the main css file for the default theme -->
+<!-- injector:theme -->
+<link rel="stylesheet" href="css/redwood/17.0.0/web/redwood.min.css" id="basestyles" />
+<link rel="stylesheet" href="css/theme-redwood/17.0.0/web/theme.css" id="themestyle" />
+<!-- endinjector -->
+
+  <!-- This contains icon fonts used by the starter template -->
+<!-- injector:font -->
+<link rel="stylesheet" id="uxiconFont" href="https://static.oracle.com/cdn/fnd/gallery/2404.0.0/images/iconfont/ojuxIconFont.min.css" />
+<!-- endinjector:font -->
+
+  <link rel="stylesheet" href="css/custom.css" id="custom_css" />
+</head>
+
+<body>
+
+  <div id="bodyWrapper" class="oj-flex">
+    <!-- Left column empty -->
+    <div class="oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2 oj-flex-item"></div>
+
+    <!-- Center column -->
+    <div class="oj-sm-10 oj-md-6 oj-lg-8 oj-xl-8 oj-flex-item oj-sm-margin-2x oj-panel">
+
+      <!-- Header -->
+      <div id="header">
+        <img alt="Oracle logo" src="images/oracle-logo.png" class="center"></img>
+        <div class="oj-panel oj-bg-neutral-30">
+          <h1>Simple CRUD Notes</h1>
+          <p class="center">
+            This application demonstrates how a Helidon application implements a CRUD endpoint to manage simple notes.<br />
+            This simple frontend interacts via REST APIs with the Helidon Backend.
+          </p>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div id="mainContent">
+        <div class="oj-flex">
+          <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
+          <div class="oj-flex-item oj-sm-10 oj-md-6 oj-lg-8 oj-xl-8">
+            <h3>Published notes</h3>
+            <oj-table id="table"
+                      data="[[datasource]]"
+                      columns='[{"headerText": "Note Id", "field": "id", "sortable": "enabled"},
+                                {"headerText": "Note Name", "field": "name", "sortable": "enabled"},
+                                {"headerText": "Note Contents", "field": "contents", "sortable": "enabled"},
+                                {"headerText": "", "field": "action", "sortable": "disabled"}]'
+                      selection-mode='{"row": "none", "column": "none"}'>
+              <template slot='rowTemplate' data-oj-as='row'>
+                <tr>
+                  <td><oj-bind-text value="[[row.data.id]]"></oj-bind-text></td>
+                  <td><oj-bind-text value="[[row.data.name]]"></oj-bind-text></td>
+                  <td><oj-bind-text value="[[row.data.contents]]"></oj-bind-text></td>
+                  <td><oj-c-menu-button label="Actions" chroming="borderless" display="icons" items="[[actionsMenu]]" on-oj-menu-action="[[actionsMenuHandler]]"></oj-c-menu-button></td>
+                </tr>
+              </template>
+            </oj-table>
+
+            <oj-dialog id="editDialog" style="display:none" dialog-title="Update Note" drag-affordance="title-bar" modality="modeless" resize-behavior="none">
+              <div slot="header" class="oj-helper-clearfix" aria-labelledby="dialog-title-id">
+                <div>
+                  <span id="dialog-title-id" class="oj-dialog-title">Update Note</span>
+                </div>
+              </div>
+              <div slot="body">
+                <oj-c-form-layout id="formUpdate" direction="row" full-width="true">
+                  <oj-c-input-text id="newName" value="{{currentNoteName}}" label-hint="Note Name"></oj-c-input-text>
+                  <oj-c-input-text id="newContents" value="{{currentNoteContents}}" label-hint="Note Contents"></oj-c-input-text>
+                </oj-c-form-layout>
+              </div>
+              <div slot="footer">
+                <oj-c-button id="submitBtn" on-oj-action="[[updateNote]]" label="Update"></oj-c-button>
+                <oj-c-button id="resetBtn" on-oj-action="[[cancelDialog]]" label="Cancel"></oj-c-button>
+              </div>
+            </oj-dialog>
+          </div>
+          <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
+        </div>
+
+        <div class="oj-flex">
+          <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
+          <div class="oj-flex-item">
+            <h3>Create a note</h3>
+            <oj-c-form-layout id="formCreate" direction="row" full-width="true">
+              <oj-c-input-number id="newNoteId" value="{{newNoteId}}" converter="[[numberConverter]]" label-hint="Note Id"></oj-c-input-number>
+              <oj-c-input-text id="newNoteName" value="{{newNoteName}}" placeholder="Enter name" label-hint="Note Name"></oj-c-input-text>
+              <oj-c-input-text id="newNoteContents" value="{{newNoteContents}}" placeholder="Enter contents" label-hint="Note Contents"></oj-c-input-text>
+            </oj-c-form-layout>
+            <oj-c-button id="saveBtn" on-oj-action="[[addNote]]" label="Create Note"></oj-c-button>
+          </div>
+          <div class="oj-flex-item oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2"></div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <h2>Powered By:</h2>
+        <img alt="Oracle Jet logo" src="images/ojet-logo.png" style="width:100px;" />
+        <span style="display:inline-block; width: 50px;"></span>
+        <img alt="helidon logo" src="images/helidon-logo.png" style="width:35%;" />
+        <span style="display:inline-block; width: 50px;"></span>
+        <img alt="Kubernetes logo" src="images/kubernetes-logo.png" style="width:10%;" />
+        <div>
+          <span style="display:inline-block; height: 25px;"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column empty -->
+    <div class="oj-sm-1 oj-md-3 oj-lg-2 oj-xl-2 oj-flex-item"></div>
+  </div>
+
+  <!-- This injects script tags for the main javascript files -->
+<!-- injector:scripts -->
+<script type='text/javascript' src='js/libs/require/require.js'></script>
+<script type='text/javascript' src='js/bundle.js'></script>
+<!-- endinjector -->
+
+</body>
+
+</html>

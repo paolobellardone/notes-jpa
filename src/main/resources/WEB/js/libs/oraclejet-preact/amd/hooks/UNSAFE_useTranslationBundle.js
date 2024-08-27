@@ -1,0 +1,2 @@
+define(['exports', '../useTranslationBundle-20bfc0f3', 'preact/hooks', '../LayerHost-0a244de8', '../Common/themes/redwood/theme', '../Common/themes/themeContract.css', 'preact', 'preact/jsx-runtime', 'preact/compat'], (function(e,t,o,n,s,a,r,c,u){"use strict";e.useTranslationBundle=t.useTranslationBundle,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=UNSAFE_useTranslationBundle.js.map
