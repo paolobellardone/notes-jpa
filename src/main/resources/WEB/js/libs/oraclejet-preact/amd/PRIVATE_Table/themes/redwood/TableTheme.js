@@ -1,2 +1,0 @@
-define(['exports', '../TableStyles.css', './TableVariants.css', 'module', 'css!./../../../TableStyles.styles.css', '../../../vanilla-extract-recipes-createRuntimeFn.esm-d881c69a'], (function(e,s,t,a,l,i){"use strict";const n={multiVariantStyles:t.multiVariantStyles,variants:s.variants,styles:s.tableStyles};e.TableRedwoodTheme=n,Object.defineProperty(e,"__esModule",{value:!0})}));
-//# sourceMappingURL=TableTheme.js.map
