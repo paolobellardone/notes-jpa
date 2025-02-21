@@ -1,7 +1,7 @@
-define(["require", "exports", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators"], function (require, exports, utils_1, index_1, useDeferredValidators_1) {
+define(["require", "exports", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators"], function (require, exports, index_1, useDeferredValidators_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useInputTextPreact = void 0;
+    exports.useInputTextPreact = useInputTextPreact;
     function useInputTextPreact({ autocomplete = 'on', autofocus, clearIcon = 'never', converter, disabled, displayOptions, end, inputPrefix, inputSuffix, labelEdge, labelHint, labelStartWidth, length, messagesCustom, placeholder, readonly, required, requiredMessageDetail, start, textAlign, userAssistanceDensity, validators, value: propValue, virtualKeyboard, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, ...otherProps }, addBusyState) {
         const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
             labelHint,
@@ -22,11 +22,12 @@ define(["require", "exports", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNS
             onValidChanged,
             onValueChanged,
             readonly,
-            validators: validators === null ? undefined : validators,
+            validators: (0, index_1.treatNull)(validators, undefined),
             value: propValue
         });
         const hasNoValue = value === null || (typeof value === 'string' && value === '');
         const hasClearIcon = clearIcon === 'conditional' ? 'conditionally' : clearIcon;
+        const normalizedVirtualKeyboard = virtualKeyboard === 'auto' ? (0, index_1.getVirtualKeyboardHintFromConverter)(converter) : virtualKeyboard;
         return {
             methods,
             inputTextProps: {
@@ -41,7 +42,7 @@ define(["require", "exports", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNS
                 label: labelHint,
                 labelEdge,
                 labelStartWidth,
-                maxLength: (0, utils_1.treatNull)(length?.max),
+                maxLength: (0, index_1.treatNull)(length?.max),
                 maxLengthUnit: length?.countBy,
                 placeholder,
                 prefix: inputPrefix,
@@ -49,10 +50,9 @@ define(["require", "exports", "oj-c/editable-value/utils/utils", "oj-c/hooks/UNS
                 suffix: inputSuffix,
                 textAlign,
                 userAssistanceDensity,
-                virtualKeyboard,
+                virtualKeyboard: normalizedVirtualKeyboard,
                 ...textFieldProps
             }
         };
     }
-    exports.useInputTextPreact = useInputTextPreact;
 });

@@ -12,17 +12,17 @@ export declare class SelectorWebElementBase extends OjWebElement {
      * @return The value of <code>rowKey</code> property.
      *
      */
-    getRowKey(): Promise<any>;
+    getRowKey(): Promise<string | number>;
     /**
      * Sets the value of <code>selectedKeys</code> property.
-     * Specifies the selectedKeys, should be hooked into the collection component.
+     * Specifies the selectedKeys.
      * @param selectedKeys The value to set for <code>selectedKeys</code>
      *
      */
     changeSelectedKeys(selectedKeys: object): Promise<void>;
     /**
      * Gets the value of <code>selectedKeys</code> property.
-     * Specifies the selectedKeys, should be hooked into the collection component.
+     * Specifies the selectedKeys.
      * @return The value of <code>selectedKeys</code> property.
      *
      */

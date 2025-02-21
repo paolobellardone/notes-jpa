@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MenuButtonWebElement = void 0;
-var MenuButtonWebElementBase_1 = require("./MenuButtonWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
+const MenuButtonWebElementBase_1 = require("./MenuButtonWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
 const MENU_ITEM_LOCATION = '#__oj_zorder_container [role=menuitem], #__root_layer_host [role=menuitem], ' +
     '#__oj_zorder_container [role=menuitemradio], #__root_layer_host [role=menuitemradio], ' +
     '#__oj_zorder_container [role=menuitemcheckbox], #__root_layer_host [role=menuitemcheckbox]';

@@ -1,63 +1,35 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent-binding", "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_ToggleButton", "@oracle/oraclejet-preact/UNSAFE_IconToggleButton", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useTooltip", "@oracle/oraclejet-preact/utils/UNSAFE_mergeProps", "preact", "preact/hooks", "preact/compat", "css!oj-c/button/button-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_binding_1, ojvcomponent_1, UNSAFE_ToggleButton_1, UNSAFE_IconToggleButton_1, UNSAFE_useTabbableMode_1, UNSAFE_useTooltip_1, UNSAFE_mergeProps_1, preact_1, hooks_1, compat_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_ToggleButton", "@oracle/oraclejet-preact/UNSAFE_IconToggleButton", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useTooltip", "@oracle/oraclejet-preact/utils/UNSAFE_mergeProps", "preact/hooks", "preact/compat", "css!oj-c/button/button-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_ToggleButton_1, UNSAFE_IconToggleButton_1, UNSAFE_useTabbableMode_1, UNSAFE_useTooltip_1, UNSAFE_mergeProps_1, hooks_1, compat_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ToggleButton = void 0;
-    let ToggleButton = class ToggleButton extends preact_1.Component {
-        constructor() {
-            super(...arguments);
-            this.buttonRef = (0, preact_1.createRef)();
+    function ToggleButtonImpl({ chroming = 'outlined', disabled = false, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width, display = 'all', value = false, label, tooltip, startIcon, endIcon, size = 'md', onValueChanged }, ref) {
+        const rootRef = (0, hooks_1.useRef)();
+        const buttonRef = (0, hooks_1.useRef)();
+        const iconButtonRef = (0, hooks_1.useRef)();
+        const isLabelButton = display != 'icons' ||
+            (startIcon && endIcon && display == 'icons') ||
+            (!startIcon && !endIcon && display == 'icons');
+        const widthProps = width ? { style: { width } } : {};
+        const ariaProps = { 'aria-describedby': ariaDescribedBy, 'aria-label': accessibleLabel };
+        (0, hooks_1.useImperativeHandle)(ref, () => ({
+            blur: () => (isLabelButton ? buttonRef.current?.blur() : iconButtonRef?.current?.blur()),
+            focus: () => (isLabelButton ? buttonRef.current?.focus() : iconButtonRef?.current?.focus()),
+            click: () => (isLabelButton ? buttonRef.current?.click() : iconButtonRef?.current?.click())
+        }), [isLabelButton, buttonRef, iconButtonRef]);
+        if (isLabelButton) {
+            return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, ...widthProps, "aria-describedby": ariaDescribedBy, children: (0, jsx_runtime_1.jsx)(FunctionalToggleButton, { ref: buttonRef, isSelected: value, tooltip: tooltip, onToggle: () => {
+                        onValueChanged?.(!value);
+                    }, variant: chroming, isDisabled: disabled, width: width ? '100%' : undefined, startIcon: startIcon, endIcon: endIcon, size: size, label: display == 'icons' ? (!startIcon && !endIcon ? label : '') : label, display: display != 'icons' ? display : 'all', ...ariaProps }) }));
         }
-        render({ chroming: variant, disabled: isDisabled, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width, display, value, label, tooltip, endIcon, startIcon, size, onValueChanged }) {
-            const widthProps = width ? { style: { width } } : {};
-            const ariaProps = { 'aria-describedby': ariaDescribedBy, 'aria-label': accessibleLabel };
-            if (display != 'icons' ||
-                (startIcon && endIcon && display == 'icons') ||
-                (!startIcon && !endIcon && display == 'icons')) {
-                return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ...widthProps, "aria-describedby": ariaProps['aria-describedby'], children: (0, jsx_runtime_1.jsx)(FunctionalToggleButton, { ref: this.buttonRef, isSelected: value, tooltip: tooltip, onToggle: () => {
-                            onValueChanged?.(!value);
-                        }, variant: variant, isDisabled: isDisabled, width: width ? '100%' : undefined, startIcon: startIcon, endIcon: endIcon, size: size, label: display == 'icons' ? (!startIcon && !endIcon ? label : '') : label, display: display != 'icons' ? display : 'all', ...ariaProps }) }));
-            }
-            else {
-                return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ...widthProps, "aria-describedby": ariaDescribedBy, children: (0, jsx_runtime_1.jsx)(FunctionalIconToggleButton, { isSelected: value, onToggle: () => {
-                            onValueChanged?.(!value);
-                        }, width: width ? '100%' : undefined, ref: this.buttonRef, variant: variant, isDisabled: isDisabled, tooltip: tooltip && tooltip !== '' ? tooltip : label, "aria-label": accessibleLabel && accessibleLabel !== '' ? accessibleLabel : label, "aria-describedby": ariaDescribedBy, size: size, children: startIcon ?? endIcon }) }));
-            }
+        else {
+            return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, ...widthProps, "aria-describedby": ariaDescribedBy, children: (0, jsx_runtime_1.jsx)(FunctionalIconToggleButton, { isSelected: value, onToggle: () => {
+                        onValueChanged?.(!value);
+                    }, width: width ? '100%' : undefined, ref: iconButtonRef, variant: chroming, isDisabled: disabled, tooltip: tooltip && tooltip !== '' ? tooltip : label, "aria-label": accessibleLabel && accessibleLabel !== '' ? accessibleLabel : label, "aria-describedby": ariaDescribedBy, size: size, children: startIcon ?? endIcon }) }));
         }
-        click() {
-            this.buttonRef.current?.click();
-        }
-        blur() {
-            this.buttonRef.current?.blur();
-        }
-        focus() {
-            this.buttonRef.current?.focus();
-        }
-    };
-    exports.ToggleButton = ToggleButton;
-    ToggleButton.defaultProps = {
-        chroming: 'outlined',
-        disabled: false,
-        size: 'md',
-        display: 'all',
-        endIcon: null,
-        startIcon: null,
-        tooltip: '',
-        value: false
-    };
-    ToggleButton._metadata = { "properties": { "label": { "type": "string" }, "value": { "type": "boolean", "writeback": true }, "tooltip": { "type": "string" }, "disabled": { "type": "boolean" }, "width": { "type": "number|string" }, "display": { "type": "string", "enumValues": ["all", "label", "icons"] }, "size": { "type": "string", "enumValues": ["sm", "md", "lg"] }, "chroming": { "type": "string", "enumValues": ["borderless", "outlined"], "binding": { "consume": { "name": "containerChroming" } } } }, "slots": { "startIcon": {}, "endIcon": {} }, "extension": { "_WRITEBACK_PROPS": ["value"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label"] }, "methods": { "click": {}, "blur": {}, "focus": {} } };
-    ToggleButton._translationBundleMap = {
+    }
+    exports.ToggleButton = (0, ojvcomponent_1.registerCustomElement)('oj-c-toggle-button', (0, compat_1.forwardRef)(ToggleButtonImpl), "ToggleButton", { "properties": { "label": { "type": "string" }, "value": { "type": "boolean", "writeback": true }, "tooltip": { "type": "string" }, "disabled": { "type": "boolean" }, "width": { "type": "number|string" }, "display": { "type": "string", "enumValues": ["all", "label", "icons"] }, "size": { "type": "string", "enumValues": ["sm", "md", "lg"] }, "chroming": { "type": "string", "enumValues": ["borderless", "outlined"], "binding": { "consume": { "name": "containerChroming" } } } }, "slots": { "startIcon": {}, "endIcon": {} }, "extension": { "_WRITEBACK_PROPS": ["value"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label"] }, "methods": { "focus": {}, "blur": {}, "click": {} } }, { "chroming": "outlined", "disabled": false, "display": "all", "value": false, "size": "md" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
-    };
-    ToggleButton._consumedContexts = [UNSAFE_useTabbableMode_1.TabbableModeContext];
-    exports.ToggleButton = ToggleButton = __decorate([
-        (0, ojvcomponent_1.customElement)('oj-c-toggle-button')
-    ], ToggleButton);
+    }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
     const FunctionalToggleButton = (0, compat_1.forwardRef)((props, ref) => {
         const buttonRef = (0, hooks_1.useRef)();
         (0, hooks_1.useImperativeHandle)(ref, () => ({

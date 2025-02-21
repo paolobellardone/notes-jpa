@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.CardView",
     "kind": "class",
-    "classdesc": "<h3 id=\"CardViewOverview-section\">\n  JET CardView Component\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardViewOverview-section\"></a>\n</h3>\n\n<p>Description: The JET CardView enhances a themable, WAI-ARIA compliant, mobile friendly component with advance interactive features.\nThe child content can be configured via a DataProvider which should be used for mutable data.</p>\n\n<p>For migration information from the card layout feature from <code>oj-list-view</code> refer to the <a href=\"https://jet.oraclecorp.com/trunk/jsdocs/oj.ojListView.html#styling-section\">migration section</a> in the API docs.\n\n<h3 id=\"data-section\">\n  Data\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-section\"></a>\n</h3>\n<p>The JET CardView gets its data from a DataProvider.</p>\n\n<p><b>ArrayDataProvider</b> - Use this when the underlying data is an array object or an observableArray.  In the observableArray case, CardView will automatically react\nwhen items are added or removed from the array.  See the documentation for ArrayDataProvider for more details on the available options.</p>\n\n<p>Example of data provider content</p>\n<pre class=\"prettyprint\"><code>\n  &lt;oj-c-card-view aria-label=\"Accessible Summary\" data=\"[[dataProvider]]\">\n  &lt;/oj-c-card-view>\n</code></pre>\n\n<p>Check out the CardView Basic demo</a>\n\n<h3 id=\"keyboard-section\">\n  Coming Features\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#coming-features-section\"></a>\n</h3>\n\n<p>These features will be available in forthcoming versions</p>\n<ul>\n   <li>Context menu</li>\n   <li>Selection required</li>\n   <li>First selected item</li>\n   <li>Drag and drop between components</li>\n   <li>Managing scroll position</li>\n</ul>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan = \"20\" nowrap>Card Item</td>\n      <td><kbd>F2</kbd></td>\n      <td>Enters tabbable mode.  This enables keyboard action on elements inside the item, including navigate between focusable elements inside the item.  It can also be used to exit tabbable mode if already in tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Esc</kbd></td>\n      <td>Exits tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>When in tabbable mode, navigates to next focusable element within the item.  If the last focusable element is reached, shift focus back to the first focusable element.\n          When not in tabbable mode, navigates to next focusable element on page (outside CardView).</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Tab</kbd></td>\n      <td>When in tabbable mode, navigates to previous focusable element within the item.  If the first focusable element is reached, shift focus back to the last focusable element.\n          When not in tabbable mode, navigates to previous focusable element on page (outside CardView).</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus to the item on the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus to the item on the right.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+DownArrow</kbd></td>\n      <td>Extend the selection to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+UpArrow</kbd></td>\n      <td>Extend the selection to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+LeftArrow</kbd></td>\n      <td>Extend the selection to the item on the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+RightArrow</kbd></td>\n      <td>Extend the selection to the item on the right.</td>\n    </tr>\n    <tr>\n      <td><kbd>Space</kbd></td>\n      <td>Toggles to select and deselect the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Space</kbd></td>\n      <td>Selects contiguous items from the last selected item to the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+DownArrow</kbd></td>\n      <td>Reorder the current item down.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+UpArrow</kbd></td>\n      <td>Reorder the current item up.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+LeftArrow</kbd></td>\n      <td>Reorder the current item to the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+RightArrow</kbd></td>\n      <td>Reorder the current item to the right.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application should specify a value for the aria-label attribute with a meaningful description of the purpose of this CardView.</p>\n<p>Note that CardView uses the grid role and follows the <a href=\"https://www.w3.org/TR/wai-aria-practices/examples/grid/LayoutGrids.html\">Layout Grid</a> design as outlined in the <a href=\"https://www.w3.org/TR/wai-aria-practices/#grid\">grid design pattern</a></p>\n<p>Nesting collection components such as ListView, Table, TreeView, and CardView inside of CardView is not supported.</p>\n<p>When reorder feature is enabled, application should specify a live region which contains an announcement to notify assistive technologies that the card reordering happens.</p>\n\n<h4>Custom Colours</h4>\n<p>Using colors, including background and text colors, is not accessible if it is the only way information is conveyed.\nLow vision users may not be able to see the different colors, and in high contrast mode the colors are removed.\nThe Redwood approved way to show status is to use badge.</p>\n\n<h3 id=\"context-section\">\n  Item Context\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#context-section\"></a>\n</h3>\n\n<p>For all item options, developers can specify a function as the return value.  The function takes a single argument, which is an object that contains contextual information about the particular item.  This gives developers the flexibility to return different value depending on the context.</p>\n\n<p>The context parameter contains the following keys:</p>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data</kbd></td>\n      <td>The data of the item.  Note this is made available primarily to ease migration.\n          Applications should get the data from the item property instead.</td>\n    </tr>\n    <tr>\n      <td><kbd>item</kbd></td>\n      <td>An object that contains the data and metadata for the item.</td>\n    </tr>\n    <tr>\n      <td><kbd>isTabbable</kbd></td>\n      <td>A boolean indicating whether the item is in tabbable mode or not.\n         This should be used to implement conditional behavior for all tabbable elements, this avoids creating a keyboard trap when tabbing through the CardView.<br/>\n         This can be implemented as a conditional tabindex, for example <code>tabindex=\"[[!item.isTabbable && '-1']]\"</code>.<br/>\n         When composing with core pack components, this is not needed, as they are tabbable mode aware.\n        </td>\n    </tr>\n  </tbody>\n</table>\n\n<p>The following keys are not currently supported:</p>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>componentElement</kbd></td>\n      <td>A reference to the root element of CardView.</td>\n    </tr>\n    <tr>\n      <td><kbd>datasource</kbd></td>\n      <td>A reference to the data source object.</td>\n    </tr>\n    <tr>\n      <td><kbd>index</kbd></td>\n      <td>The index of the item, where 0 is the index of the first item.  In the hierarchical case the index is relative to its parent.</td>\n    </tr>\n    <tr>\n      <td><kbd>key</kbd></td>\n      <td>The key of the item (this duplicates item.metadata.key and has been deprecated)</td>\n    </tr>\n    <tr>\n      <td><kbd>metadata</kbd></td>\n      <td>The metadata of the item (this is instead available in item)</td>\n    </tr>\n    <tr>\n      <td><kbd>parentElement</kbd></td>\n      <td>This will be supported by the Hierarchical list component and no longer applies to CardView..</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"data-attributes-section\">\n  Custom Data Attributes\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-attributes-section\"></a>\n</h3>\n\n<p>CardView supports the following custom data attributes.\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Description</th>\n      <th>Example</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data-oj-as</kbd></td>\n      <td>Provides an alias for a specific template instance and has the same subproperties as the $current variable.</td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"CardView\">\n  &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-clickthrough</kbd></td>\n      <td><p>Specify on any element inside an item where you want to control whether CardView should perform actions triggered by\n          a click event originating from the element or one of its descendants.</p>\n          <p>For example, if you specify this attribute with a value of \"disabled\" on a link inside an item, then CardView\n          will not select or trigger itemAction event to be fired when user clicks on the link.</p>\n          <p>Note that the currentItem will still be updated to the item that the user clicked on.</p>\n          <p>Also note you do not need to set this attribute on core pack components such as oj-c-button, as it natively supports\n             disabling clickthrough.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"card-view\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;a href=\"#\" data-oj-clickthrough=\"disabled\">&lt;/a>\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-manage-tabs</kbd></td>\n      <td><p>CardView does not manipulate the tabindex of the item content.  Applications should set the tabIndex of any focusable\n         element based on the isTabbableMode property from the context pass to the itemTemplate.</p>\n         <p>However, there will be cases where you can't control the tabindex of the content, for example, if you are using components from another team.</p>\n         <p>In that case, applications can specify this attribute on the element or one of its ancestors so that when the itemTemplate is processed,\n         it will scan and manipulate the tabindex of any focusable elements.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"CardView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;some-component-with-focusable-elements data-oj-manage-tabs>&lt;/some-component-with-focusable-elements>\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n  </tbody>\n</table>",
+    "classdesc": "<h3 id=\"CardViewOverview-section\">\n  JET CardView Component\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#CardViewOverview-section\"></a>\n</h3>\n\n<p>Description: The JET CardView enhances a themable, WAI-ARIA compliant, mobile friendly component with advance interactive features.\nThe child content can be configured via a DataProvider which should be used for mutable data.</p>\n\n<p>For migration information from the card layout feature from <code>oj-list-view</code> refer to the <a href=\"https://jet.oraclecorp.com/trunk/jsdocs/oj.ojListView.html#styling-section\">migration section</a> in the API docs.\n\n<h3 id=\"data-section\">\n  Data\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-section\"></a>\n</h3>\n<p>The JET CardView gets its data from a DataProvider.</p>\n\n<p><b>ArrayDataProvider</b> - Use this when the underlying data is an array object or an observableArray.  In the observableArray case, CardView will automatically react\nwhen items are added or removed from the array.  See the documentation for ArrayDataProvider for more details on the available options.</p>\n\n<p>Example of data provider content</p>\n<pre class=\"prettyprint\"><code>\n  &lt;oj-c-card-view aria-label=\"Accessible Summary\" data=\"[[dataProvider]]\">\n  &lt;/oj-c-card-view>\n</code></pre>\n\n<p>Check out the CardView Basic demo</a>\n\n<h3 id=\"keyboard-section\">\n  Coming Features\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#coming-features-section\"></a>\n</h3>\n\n<p>These features will be available in forthcoming versions</p>\n<ul>\n   <li>Context menu</li>\n   <li>First selected item</li>\n   <li>Drag and drop between components</li>\n   <li>Managing scroll position</li>\n</ul>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan = \"20\" nowrap>Card Item</td>\n      <td><kbd>F2</kbd></td>\n      <td>Enters tabbable mode.  This enables keyboard action on elements inside the item, including navigate between focusable elements inside the item.  It can also be used to exit tabbable mode if already in tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Esc</kbd></td>\n      <td>Exits tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>When in tabbable mode, navigates to next focusable element within the item.  If the last focusable element is reached, shift focus back to the first focusable element.\n          When not in tabbable mode, navigates to next focusable element on page (outside CardView).</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Tab</kbd></td>\n      <td>When in tabbable mode, navigates to previous focusable element within the item.  If the first focusable element is reached, shift focus back to the last focusable element.\n          When not in tabbable mode, navigates to previous focusable element on page (outside CardView).</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus to the item on the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus to the item on the right.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+DownArrow</kbd></td>\n      <td>Extend the selection to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+UpArrow</kbd></td>\n      <td>Extend the selection to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+LeftArrow</kbd></td>\n      <td>Extend the selection to the item on the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+RightArrow</kbd></td>\n      <td>Extend the selection to the item on the right.</td>\n    </tr>\n    <tr>\n      <td><kbd>Space</kbd></td>\n      <td>Toggles to select and deselect the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Space</kbd></td>\n      <td>Selects contiguous items from the last selected item to the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+DownArrow</kbd></td>\n      <td>Reorder the current item down.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+UpArrow</kbd></td>\n      <td>Reorder the current item up.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+LeftArrow</kbd></td>\n      <td>Reorder the current item to the left.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+RightArrow</kbd></td>\n      <td>Reorder the current item to the right.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application should specify a value for the aria-label attribute with a meaningful description of the purpose of this CardView.</p>\n<p>Note that CardView uses the grid role and follows the <a href=\"https://www.w3.org/TR/wai-aria-practices/examples/grid/LayoutGrids.html\">Layout Grid</a> design as outlined in the <a href=\"https://www.w3.org/TR/wai-aria-practices/#grid\">grid design pattern</a></p>\n<p>Nesting collection components such as ListView, Table, TreeView, and CardView inside of CardView is not supported.</p>\n<p>When reorder feature is enabled, application should specify a live region which contains an announcement to notify assistive technologies that the card reordering happens.</p>\n\n<h4>Custom Colours</h4>\n<p>Using colors, including background and text colors, is not accessible if it is the only way information is conveyed.\nLow vision users may not be able to see the different colors, and in high contrast mode the colors are removed.\nThe Redwood approved way to show status is to use badge.</p>\n\n<h3 id=\"context-section\">\n  Item Context\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#context-section\"></a>\n</h3>\n\n<p>For all item options, developers can specify a function as the return value.  The function takes a single argument, which is an object that contains contextual information about the particular item.  This gives developers the flexibility to return different value depending on the context.</p>\n\n<p>The context parameter contains the following keys:</p>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data</kbd></td>\n      <td>The data of the item.  Note this is made available primarily to ease migration.\n          Applications should get the data from the item property instead.</td>\n    </tr>\n    <tr>\n      <td><kbd>item</kbd></td>\n      <td>An object that contains the data and metadata for the item.</td>\n    </tr>\n    <tr>\n      <td><kbd>isTabbable</kbd></td>\n      <td>A boolean indicating whether the item is in tabbable mode or not.\n         This should be used to implement conditional behavior for all tabbable elements, this avoids creating a keyboard trap when tabbing through the CardView.<br/>\n         This can be implemented as a conditional tabindex, for example <code>tabindex=\"[[!item.isTabbable && '-1']]\"</code>.<br/>\n         When composing with core pack components, this is not needed, as they are tabbable mode aware.\n        </td>\n    </tr>\n  </tbody>\n</table>\n\n<p>The following keys are not currently supported:</p>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>componentElement</kbd></td>\n      <td>A reference to the root element of CardView.</td>\n    </tr>\n    <tr>\n      <td><kbd>datasource</kbd></td>\n      <td>A reference to the data source object.</td>\n    </tr>\n    <tr>\n      <td><kbd>index</kbd></td>\n      <td>The index of the item, where 0 is the index of the first item.  In the hierarchical case the index is relative to its parent.</td>\n    </tr>\n    <tr>\n      <td><kbd>key</kbd></td>\n      <td>The key of the item (this duplicates item.metadata.key and has been deprecated)</td>\n    </tr>\n    <tr>\n      <td><kbd>metadata</kbd></td>\n      <td>The metadata of the item (this is instead available in item)</td>\n    </tr>\n    <tr>\n      <td><kbd>parentElement</kbd></td>\n      <td>This will be supported by the Hierarchical list component and no longer applies to CardView..</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"data-attributes-section\">\n  Custom Data Attributes\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-attributes-section\"></a>\n</h3>\n\n<p>CardView supports the following custom data attributes.\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Description</th>\n      <th>Example</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data-oj-as</kbd></td>\n      <td>Provides an alias for a specific template instance and has the same subproperties as the $current variable.</td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"CardView\">\n  &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-clickthrough</kbd></td>\n      <td><p>Specify on any element inside an item where you want to control whether CardView should perform actions triggered by\n          a click event originating from the element or one of its descendants.</p>\n          <p>For example, if you specify this attribute with a value of \"disabled\" on a link inside an item, then CardView\n          will not select or trigger itemAction event to be fired when user clicks on the link.</p>\n          <p>Note that the currentItem will still be updated to the item that the user clicked on.</p>\n          <p>Also note you do not need to set this attribute on core pack components such as oj-c-button, as it natively supports\n             disabling clickthrough.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"card-view\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;a href=\"#\" data-oj-clickthrough=\"disabled\">&lt;/a>\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-manage-tabs</kbd></td>\n      <td><p>CardView does not manipulate the tabindex of the item content.  Applications should set the tabIndex of any focusable\n         element based on the isTabbableMode property from the context pass to the itemTemplate.</p>\n         <p>However, there will be cases where you can't control the tabindex of the content, for example, if you are using components from another team.</p>\n         <p>In that case, applications can specify this attribute on the element or one of its ancestors so that when the itemTemplate is processed,\n         it will scan and manipulate the tabindex of any focusable elements.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-card-view id=\"CardView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;some-component-with-focusable-elements data-oj-manage-tabs>&lt;/some-component-with-focusable-elements>\n  &lt;/template>\n&lt;/oj-c-card-view></code></pre>\n      </td>\n    </tr>\n  </tbody>\n</table>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-card-view",
     "tagWithBrackets": "<oj-c-card-view>",
@@ -57,13 +57,13 @@
     },
     "type": {
       "names": [
-        "any"
+        "string|number"
       ]
     },
     "tstype": [
       {
         "target": "Type",
-        "value": "ReadOnlyPropertyChanged",
+        "value": "K",
         "jsdocOverride": true
       }
     ]
@@ -91,7 +91,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>|null",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -202,7 +205,17 @@
       "names": [
         "object"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "ImmutableKeySet<K>",
+        "jsdocOverride": true,
+        "module": {
+          "ImmutableKeySet": "ojkeyset"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.CardView",
@@ -212,7 +225,7 @@
     "longname": "oj-c.CardView#selectionMode",
     "optional": true,
     "scope": "instance",
-    "description": "<p>The type of selection behavior that is enabled on the CardView. This attribute controls the number of selections that can be made via selection gestures at any given time.\n\n<p>If <code class=\"prettyprint\">single</code> or <code class=\"prettyprint\">multiple</code> is specified, selection gestures will be enabled, and the CardView's selection styling will be applied to all items specified by the <a href=\"#selection\">selection</a> and <a href=\"#selected\">selected</a> attributes.\nIf <code class=\"prettyprint\">none</code> is specified, selection gestures will be disabled, and the CardView's selection styling will not be applied to any items specified by the <a href=\"#selection\">selection</a> and <a href=\"#selected\">selected</a> attributes.\n\n<p>Changing the value of this attribute will not affect the value of the <a href=\"#selection\">selection</a> or <a href=\"#selected\">selected</a> attributes.",
+    "description": "<p>The type of selection behavior that is enabled on the CardView. This attribute controls the number of selections that can be made via selection gestures at any given time.\n\n<p>If <code class=\"prettyprint\">single</code> or <code class=\"prettyprint\">multiple</code> is specified, selection gestures will be enabled, and the CardView's selection styling will be applied to all items specified by the <a href=\"#selected\">selected</a> attribute.\nIf <code class=\"prettyprint\">singleRequired</code> is specified, then the behavior is the same as single except that CardView will ensure there is an item selected at all times. Specifically, the user will not be able to de-selected a selected item.  And if selection is initially empty, CardView will select the first item.\nIf <code class=\"prettyprint\">none</code> is specified, selection gestures will be disabled, and the CardView's selection styling will not be applied to any items specified by the <a href=\"#selected\">selected</a> attribute.\n<p>Changing the value of this attribute will not affect the value of the <a href=\"#selected\">selected</a> attribute.",
     "meta": {
       "filename": "card-view.tsx",
       "path": "web/components/oj-c/card-view"
@@ -247,6 +260,16 @@
             "string"
           ]
         }
+      },
+      {
+        "name": "singleRequired",
+        "description": "Only a single item can be selected at a time. In addition, CardView will also ensure that an item is selected at all time.",
+        "displayName": "Single Required",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
       }
     ],
     "defaultvalue": "\"none\"",
@@ -254,7 +277,8 @@
       "names": [
         "\"none\"",
         "\"multiple\"",
-        "\"single\""
+        "\"single\"",
+        "\"singleRequired\""
       ]
     }
   },
@@ -497,8 +521,8 @@
           {
             "target": "Type",
             "value": "Array<K>",
-            "for": "reorderedKeys",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "reorderedKeys"
           }
         ]
       },
@@ -515,8 +539,8 @@
           {
             "target": "Type",
             "value": "Array<K>",
-            "for": "itemKeys",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "itemKeys"
           }
         ]
       },
@@ -533,8 +557,8 @@
           {
             "target": "Type",
             "value": "K|null",
-            "for": "referenceKey",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "referenceKey"
           }
         ]
       }
@@ -584,8 +608,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -602,8 +626,8 @@
           {
             "target": "Type",
             "value": "Item<K, D>",
-            "for": "item",
             "jsdocOverride": true,
+            "for": "item",
             "module": {
               "Item": "ojdataprovider"
             }
@@ -621,6 +645,22 @@
         }
       }
     ]
+  },
+  {
+    "memberof": "oj-c.CardView",
+    "id": "oj-c.CardView#skeletonTemplate",
+    "name": "skeletonTemplate",
+    "kind": "member",
+    "longname": "oj-c.CardView#skeletonTemplate",
+    "description": "<p>The <code class=\"prettyprint\">skeletonTemplate</code> slot is used to specify the template for rendering each skeleton while waiting for data during initial load as well as load more on scroll. The slot content\nmust be a &lt;template&gt; element. If not specified then the default skeleton will display.\n<p>When the template is executed for each skeleton, it will have access to the binding context containing the following properties:</p>\n<ul>\n  <li>$current - an object that contains information for the current skeleton.</li>\n</ul>\n<h5>Properties of $current:</h5>\n<p></p>\n<table class=\"keyboard-table\">\n<thead>\n<tr><th>Name</th><th>Type</th><th>Argument</th><th>Description</th></tr>\n</thead>\n<tbody>\n<tr><td>loadingStatus</td><td>'initial' | 'loadMore'</td><td>     </td><td>Whether the skeletons are rendered for initial load of data or for load more data in CardView</td></tr>\n<tr><td>height</td><td>Size</td><td>optional</td><td>when the loadingStatus is ‘loadMore’ this will be the height of the actual card size, when loadingStatus is 'initial' this vale is undefined.</td></tr>\n<tr><td>width</td><td>Size</td><td>optional</td><td>when the loadingStatus is ‘loadMore’ this will be the width of the actual card size, when loadingStatus is 'initial' this vale is undefined.</td></tr>\n</tbody>\n</table>\n<p></p>\n<p>Example of skeletonTemplate slot usage.</p>\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-card-view\n id=\"cardview\"\n       class=\"demo-card-view\"\n       aria-label=\"cardview with custom skeleton\"\n       data=[[dataProvider]]>\n   &lt;template slot=\"skeletonTemplate\" data-oj-as=\"context\">\n     &lt;div class=\"oj-panel oj-sm-padding-0 \n      :style=\"[[context.loadingStatus === 'initial' ? { width: '300px', height: '240px' } : { width: context.width, height: context.height } ]]\">\n         &lt;oj-c-skeleton height =\"100%\">\n         &lt;/oj-c-skeleton>\n     &lt;/div>\n   &lt;/template>\n   &lt;template data-oj-as=\"item\" slot=\"itemTemplate\">\n     &lt;div class=\"oj-panel\">\n       &lt;demo-profile-card-layout\n         name=\"[[item.data.name]]\"\n         initials=\"[[item.data.initials]]\"\n       >\n       &lt;/demo-profile-card-layout>\n     &lt;/div>\n   &lt;/template>\n&lt;/oj-c-card-view>\n</code></pre>",
+    "meta": {
+      "filename": "card-view.tsx",
+      "path": "web/components/oj-c/card-view"
+    },
+    "scope": "instance",
+    "ojchild": false,
+    "ojslot": true,
+    "properties": []
   },
   {
     "id": "oj-c.CardView.keyboardDoc",

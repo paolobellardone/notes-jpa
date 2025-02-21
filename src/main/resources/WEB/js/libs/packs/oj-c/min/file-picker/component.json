@@ -1,7 +1,7 @@
 {
   "name": "file-picker",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -36,7 +36,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/FilePickerWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/FilePickerWebElement.html"
     }
   },
   "propertyLayout": [
@@ -54,13 +54,13 @@
   "since": "14.0.0",
   "properties": {
     "accept": {
-      "type": "Array<string>",
+      "type": "Array<string>|null",
       "description": "An array of strings of allowed MIME types or file extensions that can be uploaded. If not specified, accept all file types",
       "displayName": "Accept",
       "help": "#accept"
     },
     "capture": {
-      "type": "string",
+      "type": "string|null",
       "description": "Specifies the preferred facing mode for the device's media capture mechanism.",
       "displayName": "Capture",
       "help": "#capture",

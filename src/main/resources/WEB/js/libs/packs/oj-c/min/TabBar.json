@@ -62,8 +62,11 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<TabData<string | number>>|DataProvider<K, TabData<K>>",
-        "jsdocOverride": true
+        "value": "Array<oj-c.TabBar.TabData<string | number>|oj-c.TabBar.TabLinkItemData<string | number>>|DataProvider<K, oj-c.TabBar.TabData<K> | oj-c.TabBar.TabLinkItemData<K>>",
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -83,7 +86,7 @@
     },
     "type": {
       "names": [
-        "any"
+        "string|number"
       ]
     },
     "tstype": [
@@ -279,6 +282,56 @@
   },
   {
     "memberof": "oj-c.TabBar",
+    "id": "oj-c.TabBar#truncation",
+    "name": "truncation",
+    "kind": "member",
+    "longname": "oj-c.TabBar#truncation",
+    "optional": true,
+    "scope": "instance",
+    "description": "Truncation applies to the tab labels when there is not enough room to display all tabs.",
+    "meta": {
+      "filename": "tab-bar.tsx",
+      "path": "web/components/oj-c/tab-bar"
+    },
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"none\"",
+        "\"progressive\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.TabBar",
+    "id": "oj-c.TabBar#_doReorderHelper",
+    "name": "_doReorderHelper",
+    "kind": "function",
+    "longname": "oj-c.TabBar#_doReorderHelper",
+    "description": "This is a private method that should only be called by the webelement API.",
+    "ojhidden": true,
+    "meta": {
+      "filename": "tab-bar.tsx",
+      "path": "web/components/oj-c/tab-bar"
+    },
+    "scope": "instance",
+    "params": [
+      {
+        "name": "tabBarKeys",
+        "type": "Array<string|number>"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TabBar",
     "id": "oj-c.TabBar#setProperty",
     "name": "setProperty",
     "kind": "function",
@@ -396,15 +449,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       }
@@ -428,15 +481,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       }
@@ -461,15 +514,15 @@
         "optional": false,
         "type": {
           "names": [
-            "Array<any>"
+            "Array<string|number>"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "Array<K>",
-            "for": "reorderedKeys",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "reorderedKeys"
           }
         ]
       }
@@ -493,15 +546,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "previousValue",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "previousValue"
           }
         ]
       },
@@ -510,15 +563,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "value",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "value"
           }
         ]
       }
@@ -549,5 +602,255 @@
       "path": "web/components/oj-c/tab-bar"
     },
     "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.TabBar",
+    "id": "oj-c.TabBar.TabData",
+    "name": "TabData",
+    "kind": "typedef",
+    "longname": "oj-c.TabBar.TabData",
+    "scope": "static",
+    "description": "The data item object that represents a tab.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K extends string | number>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "tab-bar.tsx",
+      "path": "web/components/oj-c/tab-bar"
+    },
+    "properties": [
+      {
+        "name": "itemKey",
+        "description": "Key of the TabBarItem",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "itemKey"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "description": "Label of the TabBarItem. For icon only display this label is the content\nfor aria-label and tooltip text of the Tab.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "icon",
+        "description": "The icon before the label in non-stack case, icon above the label in\nstacked case or the stand alone icon when no label is specified.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "icon"
+          }
+        ]
+      },
+      {
+        "name": "badge",
+        "description": "The content to be rendered inside the Badge component.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "metadata",
+        "description": "The content to be rendered inside the Text component as a metadata,\nthat appears after the label in non stack case only.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "severity",
+        "description": "The status icon to be rendered after the label in non stack case only.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"none\"",
+            "\"error\"",
+            "\"confirmation\"",
+            "\"info\"",
+            "\"warning\""
+          ]
+        }
+      },
+      {
+        "name": "tabPanelId",
+        "description": "Accepts the tabpanel element's ID associated with the tab item",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "isRemovable",
+        "description": "Renders a remove icon allowing the tabs to be removed.",
+        "optional": true,
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.TabBar",
+    "id": "oj-c.TabBar.TabLinkItemData",
+    "name": "TabLinkItemData",
+    "kind": "typedef",
+    "longname": "oj-c.TabBar.TabLinkItemData",
+    "scope": "static",
+    "description": "The data item object that represents a tab with link. Note: Do not use with <code class=\"prettyprint\"> overflow=\"popup\"</code> as links are currently not supported in overflow items inside a popup.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K extends string | number>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "tab-bar.tsx",
+      "path": "web/components/oj-c/tab-bar"
+    },
+    "properties": [
+      {
+        "name": "itemKey",
+        "description": "Key of the TabBarItem",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "itemKey"
+          }
+        ]
+      },
+      {
+        "name": "label",
+        "description": "Label of the TabBarItem. For icon only display this label is the content\nfor aria-label and tooltip text of the Tab.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "icon",
+        "description": "The icon before the label in non-stack case, icon above the label in\nstacked case or the stand alone icon when no label is specified.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "icon"
+          }
+        ]
+      },
+      {
+        "name": "badge",
+        "description": "The content to be rendered inside the Badge component.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "metadata",
+        "description": "The content to be rendered inside the Text component as a metadata,\nthat appears after the label in non stack case only.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "severity",
+        "description": "The status icon to be rendered after the label in non stack case only.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"none\"",
+            "\"error\"",
+            "\"confirmation\"",
+            "\"info\"",
+            "\"warning\""
+          ]
+        }
+      },
+      {
+        "name": "tabPanelId",
+        "description": "Accepts the tabpanel element's ID associated with the tab item",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "href",
+        "description": "Sets the URL that the hyperlink points to. If there is no valid URL use \"#\" for href value to navigate to the top of the page.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ]
   }
 ]

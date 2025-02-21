@@ -15,13 +15,14 @@ type Length = {
     max?: number | null;
 };
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint'>;
 type Props<V> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     autofocus?: GlobalProps['autofocus'];
     clearIcon?: 'always' | 'never' | 'conditional';
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactInputSensitiveTextProps['labelEdge'];

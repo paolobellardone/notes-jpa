@@ -85,7 +85,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -111,7 +114,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|(parameters: MessageToastTemplateValueParameters<K, D>) => string | undefined",
+        "value": "string|(parameters: oj-c.MessageToast.MessageToastTemplateValueParameters<K, D>) => string | undefined",
         "jsdocOverride": true
       }
     ]
@@ -138,7 +141,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|(parameters: MessageToastTemplateValueParameters<K, D>) => string | undefined",
+        "value": "string|(parameters: oj-c.MessageToast.MessageToastTemplateValueParameters<K, D>) => string | undefined",
         "jsdocOverride": true
       }
     ]
@@ -190,8 +193,8 @@
         "\"bottom\"",
         "\"top-start\"",
         "\"top-end\"",
-        "\"bottom-end\"",
         "\"bottom-start\"",
+        "\"bottom-end\"",
         "\"top-left\"",
         "\"top-right\"",
         "\"bottom-left\"",
@@ -317,8 +320,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -328,15 +331,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -353,8 +356,8 @@
           {
             "target": "Type",
             "value": "ItemMetadata<K>",
-            "for": "metadata",
             "jsdocOverride": true,
+            "for": "metadata",
             "module": {
               "ItemMetadata": "ojdataprovider"
             }
@@ -393,8 +396,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -404,15 +407,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -429,8 +432,8 @@
           {
             "target": "Type",
             "value": "ItemMetadata<K>",
-            "for": "metadata",
             "jsdocOverride": true,
+            "for": "metadata",
             "module": {
               "ItemMetadata": "ojdataprovider"
             }
@@ -591,8 +594,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -602,15 +605,15 @@
         "optional": false,
         "type": {
           "names": [
-            "any"
+            "string|number"
           ]
         },
         "tstype": [
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -627,8 +630,8 @@
           {
             "target": "Type",
             "value": "ItemMetadata<K>",
-            "for": "metadata",
             "jsdocOverride": true,
+            "for": "metadata",
             "module": {
               "ItemMetadata": "ojdataprovider"
             }

@@ -8,8 +8,8 @@ import { Action, CancelableAction, ObservedGlobalProps, Slot } from 'ojs/ojvcomp
 import 'css!oj-c/file-picker/file-picker-styles.css';
 type PreactFilePickerProps = ComponentProps<typeof PreactFilePicker>;
 type Props = ObservedGlobalProps<'aria-label'> & {
-    accept?: string[];
-    capture?: PreactFilePickerProps['capture'];
+    accept?: string[] | null;
+    capture?: PreactFilePickerProps['capture'] | null;
     disabled?: boolean;
     primaryText?: string | (() => string);
     secondaryText?: string | ((fileOptions: {

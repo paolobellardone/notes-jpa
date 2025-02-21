@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputSensitiveText = exports.InputSensitiveTextWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputSensitiveTextWebElement_1 = require("./InputSensitiveTextWebElement");
+exports.InputSensitiveTextWebElement = void 0;
+exports.findInputSensitiveText = findInputSensitiveText;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputSensitiveTextWebElement_1 = require("./InputSensitiveTextWebElement");
 Object.defineProperty(exports, "InputSensitiveTextWebElement", { enumerable: true, get: function () { return InputSensitiveTextWebElement_1.InputSensitiveTextWebElement; } });
 /**
  * Retrieve an instance of [InputSensitiveTextWebElement](../classes/InputSensitiveTextWebElement.html).
@@ -29,6 +30,5 @@ async function findInputSensitiveText(driver, by) {
     }
     return webEl;
 }
-exports.findInputSensitiveText = findInputSensitiveText;
 (0, oraclejet_webdriver_1.register)('oj-c-input-sensitive-text', InputSensitiveTextWebElement_1.InputSensitiveTextWebElement);
 //# sourceMappingURL=index.js.map

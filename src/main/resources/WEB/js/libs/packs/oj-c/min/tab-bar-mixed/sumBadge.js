@@ -1,7 +1,7 @@
 define(["require", "exports", "ojs/ojlogger"], function (require, exports, Logger) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.sumBadge = void 0;
+    exports.sumBadge = sumBadge;
     function sumBadge(items) {
         return items.reduce((total, item) => {
             if (!item.badge) {
@@ -19,5 +19,4 @@ define(["require", "exports", "ojs/ojlogger"], function (require, exports, Logge
             return total + item.badge;
         }, 0);
     }
-    exports.sumBadge = sumBadge;
 });

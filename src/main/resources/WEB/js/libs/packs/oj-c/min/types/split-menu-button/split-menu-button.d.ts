@@ -8,7 +8,7 @@ import { MenuItemSelectionDetail, MenuItem, MenuSeparator } from '../utils/PRIVA
 export type { MenuValueUpdateDetail } from '@oracle/oraclejet-preact/UNSAFE_Menu/menuUtils';
 export type { MenuSelection, MenuItemSelectionDetail } from '../utils/PRIVATE_ItemsMenu/items-menu';
 export type MenuItems = MenuItem | MenuSeparator;
-import { ComponentProps, Component } from 'preact';
+import { ComponentProps, Ref, ComponentType } from 'preact';
 import 'css!oj-c/split-menu-button/split-menu-button-styles.css';
 type PreactSplitMenuButtonProps = ComponentProps<typeof PreactSplitMenuButton>;
 type Props = ObservedGlobalProps<'aria-describedby'> & {
@@ -22,14 +22,13 @@ type Props = ObservedGlobalProps<'aria-describedby'> & {
     chroming?: PreactSplitMenuButtonProps['variant'];
     onOjAction?: Action & Bubbles;
 };
-export declare class SplitMenuButton extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render({ chroming, label, disabled, size, width, items, tooltip, onOjMenuAction, 'aria-describedby': ariaDescribedBy, onOjAction: onAction }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    blur(): void;
-    focus(): void;
-    doAction(): void;
-}
+type SplitMenuButtonHandle = {
+    focus: () => void;
+    blur: () => void;
+    click: () => void;
+};
+declare function SplitMenuButtonImpl({ label, chroming, disabled, size, items, width, tooltip, onOjMenuAction, onOjAction, 'aria-describedby': ariaDescribedBy, ...otherProps }: Props, ref: Ref<SplitMenuButtonHandle>): import("preact").JSX.Element;
+export declare const SplitMenuButton: ComponentType<ExtendGlobalProps<ComponentProps<typeof SplitMenuButtonImpl>>>;
 export interface CSplitMenuButtonElement extends JetElement<CSplitMenuButtonElementSettableProperties>, CSplitMenuButtonElementSettableProperties {
     addEventListener<T extends keyof CSplitMenuButtonElementEventMap>(type: T, listener: (this: HTMLElement, ev: CSplitMenuButtonElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
@@ -38,9 +37,9 @@ export interface CSplitMenuButtonElement extends JetElement<CSplitMenuButtonElem
     setProperty<T extends keyof CSplitMenuButtonElementSettableProperties>(property: T, value: CSplitMenuButtonElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CSplitMenuButtonElementSettableProperties>): void;
     setProperties(properties: CSplitMenuButtonElementSettablePropertiesLenient): void;
-    blur: SplitMenuButton['blur'];
-    doAction: SplitMenuButton['doAction'];
-    focus: SplitMenuButton['focus'];
+    blur: () => void;
+    click: () => void;
+    focus: () => void;
 }
 export namespace CSplitMenuButtonElement {
     interface ojMenuAction extends CustomEvent<MenuItemSelectionDetail & {}> {

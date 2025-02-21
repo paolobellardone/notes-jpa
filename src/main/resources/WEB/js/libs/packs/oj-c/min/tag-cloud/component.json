@@ -1,7 +1,7 @@
 {
   "name": "tag-cloud",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -35,7 +35,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TagCloudWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/TagCloudWebElement.html"
     }
   },
   "propertyLayout": [
@@ -61,6 +61,17 @@
       "description": "Specifies the DataProvider for the sections and items of the tag-cloud",
       "displayName": "Data",
       "help": "#data",
+      "extension": {
+        "webelement": {
+          "exceptionStatus": [
+            {
+              "type": "deprecated",
+              "since": "17.1.0",
+              "description": "Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead."
+            }
+          ]
+        }
+      },
       "value": null
     },
     "datatip": {
@@ -166,6 +177,20 @@
       "help": "#selection",
       "writeback": true,
       "value": []
+    },
+    "contextMenuConfig": {
+      "type": "object",
+      "description": "Specifies a context menu configuration.",
+      "displayName": "Context Menu Config",
+      "help": "#contextMenuConfig",
+      "properties": {
+        "accessibleLabel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "function"
+        }
+      }
     }
   },
   "slots": {
@@ -183,6 +208,41 @@
         },
         "index": {
           "type": "number"
+        }
+      }
+    }
+  },
+  "events": {
+    "ojContextMenuAction": {
+      "bubbles": true,
+      "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuAction",
+      "help": "#event:ojContextMenuAction",
+      "detail": {
+        "menuItemKey": {
+          "type": "string"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        }
+      }
+    },
+    "ojContextMenuSelection": {
+      "bubbles": true,
+      "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuSelection",
+      "help": "#event:ojContextMenuSelection",
+      "detail": {
+        "value": {
+          "type": "string|Array<string>"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        },
+        "menuSelectionGroupKey": {
+          "type": "string"
         }
       }
     }

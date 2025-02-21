@@ -4,7 +4,7 @@ import 'ojs/oj-jsx-interfaces';
 import { ExtendGlobalProps, Action, Bubbles, ObservedGlobalProps, Slot } from 'ojs/ojvcomponent';
 import { Button as PreactButton } from '@oracle/oraclejet-preact/UNSAFE_Button';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
-import { ComponentProps, Component } from 'preact';
+import { ComponentProps, Ref, ComponentType } from 'preact';
 import 'css!oj-c/button/button-styles.css';
 type PreactButtonProps = ComponentProps<typeof PreactButton>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
@@ -20,14 +20,13 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     chroming?: PreactButtonProps['variant'];
     onOjAction?: Action & Bubbles;
 };
-export declare class Button extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render(props: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    click(): void;
-    blur(): void;
-    focus(): void;
-}
+type ButtonHandle = {
+    focus: () => void;
+    blur: () => void;
+    click: () => void;
+};
+declare function ButtonImpl({ chroming, disabled, size, display, endIcon, startIcon, edge, tooltip, width, label, onOjAction, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, ...otherProps }: Props, ref: Ref<ButtonHandle>): import("preact").JSX.Element;
+export declare const Button: ComponentType<ExtendGlobalProps<ComponentProps<typeof ButtonImpl>>>;
 export {};
 export interface CButtonElement extends JetElement<CButtonElementSettableProperties>, CButtonElementSettableProperties {
     addEventListener<T extends keyof CButtonElementEventMap>(type: T, listener: (this: HTMLElement, ev: CButtonElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
@@ -37,9 +36,9 @@ export interface CButtonElement extends JetElement<CButtonElementSettablePropert
     setProperty<T extends keyof CButtonElementSettableProperties>(property: T, value: CButtonElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CButtonElementSettableProperties>): void;
     setProperties(properties: CButtonElementSettablePropertiesLenient): void;
-    blur: Button['blur'];
-    click: Button['click'];
-    focus: Button['focus'];
+    blur: () => void;
+    click: () => void;
+    focus: () => void;
 }
 export namespace CButtonElement {
     interface ojAction extends CustomEvent<{}> {

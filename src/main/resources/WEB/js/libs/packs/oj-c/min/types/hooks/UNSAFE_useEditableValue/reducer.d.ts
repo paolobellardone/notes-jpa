@@ -19,6 +19,10 @@ type UpdateValueAction<V> = {
     type: 'UPDATE_VALUE';
     payload: Optional<V>;
 };
+type UpdateTransientValueAction<V> = {
+    type: 'UPDATE_TRANSIENT_VALUE';
+    payload: Optional<V>;
+};
 type UpdateValidAction = {
     type: 'UPDATE_VALID';
     payload: ValidState;
@@ -71,7 +75,7 @@ type UpdatePreviousValueAction<V> = {
     type: 'UPDATE_PREVIOUS_VALUE';
     payload: Optional<V>;
 };
-type Action<V, DV> = UpdateDisplayValueAction<DV> | UpdateValueAction<V> | UpdateValidAction | UpdateComponentMessagesAction | UpdateCustomMessagesAction | UpdateHiddenMessagesAction | ClearAllMessagesAction | AddComponentMessageAction | ShowHiddenMessagesAction | UpdatePreviousConverterAction<V, DV> | UpdatePreviousDeferredValidatorsAction<V> | UpdatePreviousDisabledAction | UpdatePreviousReadonlyAction | UpdatePreviousValidatorsAction<V> | UpdatePreviousValueAction<V>;
+type Action<V, DV> = UpdateDisplayValueAction<DV> | UpdateValueAction<V> | UpdateTransientValueAction<V> | UpdateValidAction | UpdateComponentMessagesAction | UpdateCustomMessagesAction | UpdateHiddenMessagesAction | ClearAllMessagesAction | AddComponentMessageAction | ShowHiddenMessagesAction | UpdatePreviousConverterAction<V, DV> | UpdatePreviousDeferredValidatorsAction<V> | UpdatePreviousDisabledAction | UpdatePreviousReadonlyAction | UpdatePreviousValidatorsAction<V> | UpdatePreviousValueAction<V>;
 type State<V, DV> = Readonly<{
     customMessages?: ComponentMessageItem[];
     componentMessages: ComponentMessageItem[];
@@ -86,11 +90,13 @@ type State<V, DV> = Readonly<{
     previousReadonly?: boolean;
     previousValidators?: (AsyncValidator<V> | Validator<V>)[];
     previousValue?: Optional<V>;
+    transientValue?: Optional<V>;
 }>;
 declare function reducer<V, DV>(state: State<V, DV>, action: Action<V, DV>): State<V, DV>;
 declare function updateDisplayValue<V, DV>(dispatch: Dispatch<Action<V, DV>>, displayValue: DV, { onRawValueChanged }: Callbacks<V, DV>): void;
 declare function updateValidStatus<V, DV>(dispatch: Dispatch<Action<V, DV>>, state: ValidState, { onValidChanged }: Callbacks<V, DV>): void;
 declare function updateValue<V, DV>(dispatch: Dispatch<Action<V, DV>>, value: V, { onValueChanged }: Callbacks<V, DV>): void;
+declare function updateTransientValue<V, DV>(dispatch: Dispatch<Action<V, DV>>, transientValue: V, { onTransientValueChanged }: Callbacks<V, DV>): void;
 declare function updateComponentMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>, messages: ComponentMessageItem[]): void;
 declare function updateHiddenMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>, messages: ComponentMessageItem[]): void;
 declare function updateCustomMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>, messages: ComponentMessageItem[]): void;
@@ -103,4 +109,4 @@ declare function updatePreviousValidators<V, DV>(dispatch: Dispatch<Action<V, DV
 declare function clearAllMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>, _value: any, { onMessagesCustomChanged }: Callbacks<V, DV>): void;
 declare function showHiddenMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>): void;
 declare function addComponentMessage<V, DV>(dispatch: Dispatch<Action<V, DV>>, message: ComponentMessageItem): void;
-export { reducer, Action, State, addComponentMessage, clearAllMessages, showHiddenMessages, updateComponentMessages, updateCustomMessages, updateDisplayValue, updateHiddenMessages, updatePreviousConverter, updatePreviousDeferredValidators, updatePreviousDisabled, updatePreviousReadonly, updatePreviousValidators, updatePreviousValue, updateValidStatus, updateValue };
+export { reducer, Action, State, addComponentMessage, clearAllMessages, showHiddenMessages, updateComponentMessages, updateCustomMessages, updateDisplayValue, updateHiddenMessages, updatePreviousConverter, updatePreviousDeferredValidators, updatePreviousDisabled, updatePreviousReadonly, updatePreviousValidators, updatePreviousValue, updateTransientValue, updateValidStatus, updateValue };

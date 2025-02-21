@@ -1,9 +1,9 @@
 define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet-preact/UNSAFE_ConveyorBelt", "./ContentRenderer"], function (require, exports, jsx_runtime_1, preact_1, UNSAFE_ConveyorBelt_1, ContentRenderer_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.DataTabBar = void 0;
+    exports.DataTabBar = DataTabBar;
     function DataTabBar(props) {
-        const { onRemove, onReorder, onSelect, selection, data = [], display, layout, edge, overflow, reorderable, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby } = props;
+        const { onRemove, onReorder, onSelect, selection, data = [], display, layout, edge, overflow, reorderable, truncation, 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby } = props;
         const tabBarRef = (0, preact_1.createRef)();
         const handleSelect = (event) => {
             if (event.value && onSelect) {
@@ -21,6 +21,7 @@ define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet
                     'aria-labelledby': ariaLabelledby,
                     data,
                     reorderable,
+                    truncation,
                     onReorder
                 }, handleSelect, tabBarRef) }));
         };
@@ -32,6 +33,7 @@ define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet
                 layout,
                 display,
                 edge,
+                truncation,
                 'aria-label': ariaLabel,
                 'aria-labelledby': ariaLabelledby
             }, handleSelect)
@@ -47,8 +49,8 @@ define(["require", "exports", "preact/jsx-runtime", "preact", "@oracle/oraclejet
                     'aria-labelledby': ariaLabelledby,
                     data,
                     reorderable,
+                    truncation,
                     onReorder
                 }, handleSelect, tabBarRef);
     }
-    exports.DataTabBar = DataTabBar;
 });

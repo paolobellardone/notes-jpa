@@ -1,7 +1,7 @@
 {
   "name": "card-view",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -29,7 +29,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/CardViewWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/CardViewWebElement.html"
     }
   },
   "propertyLayout": [
@@ -53,7 +53,7 @@
   "since": "17.0.0",
   "properties": {
     "currentItem": {
-      "type": "any",
+      "type": "string|number",
       "description": "The item that currently has keyboard focus",
       "displayName": "Current Item",
       "help": "#currentItem",
@@ -129,12 +129,17 @@
         "single": {
           "description": "Only a single item can be selected at a time.",
           "displayName": "Single"
+        },
+        "singleRequired": {
+          "description": "Only a single item can be selected at a time. In addition, CardView will also ensure that an item is selected at all time.",
+          "displayName": "Single Required"
         }
       },
       "enumValues": [
         "none",
         "multiple",
-        "single"
+        "single",
+        "singleRequired"
       ],
       "value": "none"
     },
@@ -257,6 +262,14 @@
           "type": "boolean"
         }
       }
+    },
+    "skeletonTemplate": {
+      "description": "The skeletonTemplate slot is used to specify the template for rendering each skeleton while waiting for data during initial load as well as load more on scroll. See the Help documentation for more information.",
+      "displayName": "skeletonTemplate",
+      "help": "#skeletonTemplate",
+      "maxItems": 1,
+      "templateSlotRenderType": "RenderSkeletonTemplate",
+      "data": {}
     }
   },
   "events": {

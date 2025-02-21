@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.widthStyle = void 0;
+    exports.widthStyle = widthStyle;
     function widthStyle(layoutWidth, width, maxWidth) {
         return layoutWidth == 'equal'
             ? maxWidth
@@ -15,5 +15,4 @@ define(["require", "exports"], function (require, exports) {
                     ? { style: { maxWidth: maxWidth } }
                     : {};
     }
-    exports.widthStyle = widthStyle;
 });

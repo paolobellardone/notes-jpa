@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.ListView",
     "kind": "class",
-    "classdesc": "<h3 id=\"listViewOverview-section\">\n  JET ListView Component\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#listViewOverview-section\"></a>\n</h3>\n\n<p>Description: The JET ListView enhances a HTML list element into a themable, WAI-ARIA compliant, mobile friendly component with advance interactive features.\nThe child content can be configured via a DataProvider which should be used for mutable data.</p>\n\n<p>For migration information from <code>oj-list-view</code> refer to the <a href=\"https://jet.oraclecorp.com/trunk/jsdocs/oj.ojListView.html#styling-section\">migration section</a> in the API docs.\n\n<h3 id=\"data-section\">\n  Data\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-section\"></a>\n</h3>\n<p>The JET ListView gets its data from a DataProvider.</p>\n\n<p><b>ArrayDataProvider</b> - Use this when the underlying data is an array object or an observableArray.  In the observableArray case, ListView will automatically react\nwhen items are added or removed from the array.  See the documentation for ArrayDataProvider for more details on the available options.</p>\n\n<p>Example of data provider content</p>\n<pre class=\"prettyprint\"><code>\n  &lt;oj-c-list-view aria-label=\"Accessible Summary\" data=\"[[dataProvider]]\">\n  &lt;/oj-c-list-view>\n</code></pre>\n\n<p>Check out the Listview Basic demo</a>\n\n<h3 id=\"keyboard-section\">\n  Coming Features\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#coming-features-section\"></a>\n</h3>\n\n<p>These features will be the domain of new, specialized components</p>\n<ul>\n   <li>Cards in grid layout</li>\n   <li>Cards in waterfall layout</li>\n   <li>Grouped list</li>\n   <li>Expandable list</li>\n</ul>\n\n<p>These features will be available in forthcoming versions</p>\n<ul>\n   <li>Context menu</li>\n   <li>Selection required</li>\n   <li>First selected item</li>\n   <li>Reordering, drag and drop with move, copy and paste functionalities</li>\n   <li>Managing scroll position</li>\n</ul>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan = \"20\" nowrap>List Item</td>\n      <td><kbd>F2</kbd></td>\n      <td>Enters tabbable mode.  This enables keyboard action on elements inside the item, including navigate between focusable elements inside the item.  It can also be used to exit tabbable mode if already in tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Esc</kbd></td>\n      <td>Exits tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>When in tabbable mode, navigates to next focusable element within the item.  If the last focusable element is reached, shift focus back to the first focusable element.\n          When not in tabbable mode, navigates to next focusable element on page (outside ListView).</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Tab</kbd></td>\n      <td>When in tabbable mode, navigates to previous focusable element within the item.  If the first focusable element is reached, shift focus back to the last focusable element.\n          When not in tabbable mode, navigates to previous focusable element on page (outside ListView).</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+DownArrow</kbd></td>\n      <td>Extend the selection to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+UpArrow</kbd></td>\n      <td>Extend the selection to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Space</kbd></td>\n      <td>Toggles to select and deselect the current item.  If previous items have been selected, deselects them and selects the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Space</kbd></td>\n      <td>Selects contiguous items from the last selected item to the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+UpArrow</kbd></td>\n      <td>Reorder the current item up.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+DownArrow</kbd></td>\n      <td>Reorder the current item down.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl+Space</kbd></td>\n      <td>Toggles to select and deselect the current item while maintaining previous selected items.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application should specify a value for the aria-label attribute with a meaningful description of the purpose of this list.</p>\n<p>Note that ListView uses the grid role and follows the <a href=\"https://www.w3.org/TR/wai-aria-practices/examples/grid/LayoutGrids.html\">Layout Grid</a> design as outlined in the <a href=\"https://www.w3.org/TR/wai-aria-practices/#grid\">grid design pattern</a></p>\n<p>Nesting collection components such as ListView, Table, TreeView, and ListView inside of ListView is not supported.</p>\n<p>When reorder feature is enabled, application should specify a live region which contains an announcement to notify assistive technologies that the item reordering happens.</p>\n\n<h4>Custom Colours</h4>\n<p>Using colors, including background and text colors, is not accessible if it is the only way information is conveyed.\nLow vision users may not be able to see the different colors, and in high contrast mode the colors are removed.\nThe Redwood approved way to show status is to use badge.</p>\n\n<h3 id=\"context-section\">\n  Item Context\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#context-section\"></a>\n</h3>\n\n<p>For all item options, developers can specify a function as the return value.  The function takes a single argument, which is an object that contains contextual information about the particular item.  This gives developers the flexibility to return different value depending on the context.</p>\n\n<p>The context parameter contains the following keys:</p>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data</kbd></td>\n      <td>The data of the item.  Note this is made available primarily to ease migration.\n          Applications should get the data from the item property instead.</td>\n    </tr>\n    <tr>\n      <td><kbd>item</kbd></td>\n      <td>An object that contains the data and metadata for the item.</td>\n    </tr>\n    <tr>\n      <td><kbd>isTabbable</kbd></td>\n      <td>A boolean indicating whether the item is in tabbable mode or not.\n         This should be used to implement conditional behavior for all tabbable elements, this avoids creating a keyboard trap when tabbing through a List.<br/>\n         This can be implemented as a conditional tabindex, for example <code>tabindex=\"[[!item.isTabbable && '-1']]\"</code>.<br/>\n         When composing with core pack components, this is not needed, as they are tabbable mode aware.\n        </td>\n    </tr>\n  </tbody>\n</table>\n\n<p>The following keys are not currently supported:</p>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>componentElement</kbd></td>\n      <td>A reference to the root element of ListView.</td>\n    </tr>\n    <tr>\n      <td><kbd>datasource</kbd></td>\n      <td>A reference to the data source object.</td>\n    </tr>\n    <tr>\n      <td><kbd>index</kbd></td>\n      <td>The index of the item, where 0 is the index of the first item.  In the hierarchical case the index is relative to its parent.</td>\n    </tr>\n    <tr>\n      <td><kbd>key</kbd></td>\n      <td>The key of the item (this duplicates item.metadata.key and has been deprecated)</td>\n    </tr>\n    <tr>\n      <td><kbd>metadata</kbd></td>\n      <td>The metadata of the item (this is instead available in item)</td>\n    </tr>\n    <tr>\n      <td><kbd>parentElement</kbd></td>\n      <td>This will be supported by the Hierarchical list component and no longer applies to list view..</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"data-attributes-section\">\n  Custom Data Attributes\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-attributes-section\"></a>\n</h3>\n\n<p>ListView supports the following custom data attributes.\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Description</th>\n      <th>Example</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data-oj-as</kbd></td>\n      <td>Provides an alias for a specific template instance and has the same subproperties as the $current variable.</td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-clickthrough</kbd></td>\n      <td><p>Specify on any element inside an item where you want to control whether ListView should perform actions triggered by\n          a click event originating from the element or one of its descendants.</p>\n          <p>For example, if you specify this attribute with a value of \"disabled\" on a link inside an item, then ListView\n          will not select or trigger itemAction event to be fired when user clicks on the link.</p>\n          <p>Note that the currentItem will still be updated to the item that the user clicked on.</p>\n          <p>Also note you do not need to set this attribute on core pack components such as oj-c-button, as it natively supports\n             disabling clickthrough.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;a href=\"#\" data-oj-clickthrough=\"disabled\">&lt;/a>\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-manage-tabs</kbd></td>\n      <td><p>ListView does not manipulate the tabindex of the item content.  Applications should set the tabIndex of any focusable\n         element based on the isTabbableMode property from the context pass to the itemTemplate.</p>\n         <p>However, there will be cases where you can't control the tabindex of the content, for example, if you are using components from another team.</p>\n         <p>In that case, applications can specify this attribute on the element or one of its ancestors so that when the itemTemplate is processed,\n         it will scan and manipulate the tabindex of any focusable elements.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;some-component-with-focusable-elements data-oj-manage-tabs>&lt;/some-component-with-focusable-elements>\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"suggestion-items-section\">\n  Suggestion Items\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#suggestion-items-section\"></a>\n</h3>\n\n<p>If <a href=\"ItemMetadata.html\">ItemMetadata</a> returned by the DataProvider contains suggestion field, ListView will apply special visual to those\n   items. The DataProvider must ensure the suggestion items are the first items returned by the initial fetchFirst call.</p>",
+    "classdesc": "<h3 id=\"listViewOverview-section\">\n  JET ListView Component\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#listViewOverview-section\"></a>\n</h3>\n\n<p>Description: The JET ListView enhances a HTML list element into a themable, WAI-ARIA compliant, mobile friendly component with advance interactive features.\nThe child content can be configured via a DataProvider which should be used for mutable data.</p>\n\n<p>For migration information from <code>oj-list-view</code> refer to the <a href=\"https://jet.oraclecorp.com/trunk/jsdocs/oj.ojListView.html#styling-section\">migration section</a> in the API docs.\n\n<h3 id=\"data-section\">\n  Data\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-section\"></a>\n</h3>\n<p>The JET ListView gets its data from a DataProvider.</p>\n\n<p><b>ArrayDataProvider</b> - Use this when the underlying data is an array object or an observableArray.  In the observableArray case, ListView will automatically react\nwhen items are added or removed from the array.  See the documentation for ArrayDataProvider for more details on the available options.</p>\n\n<p>Example of data provider content</p>\n<pre class=\"prettyprint\"><code>\n  &lt;oj-c-list-view aria-label=\"Accessible Summary\" data=\"[[dataProvider]]\">\n  &lt;/oj-c-list-view>\n</code></pre>\n\n<p>Check out the Listview Basic demo</a>\n\n<h3 id=\"keyboard-section\">\n  Coming Features\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#coming-features-section\"></a>\n</h3>\n\n<p>These features will be the domain of new, specialized components</p>\n<ul>\n   <li>Cards in grid layout</li>\n   <li>Cards in waterfall layout</li>\n   <li>Grouped list</li>\n   <li>Expandable list</li>\n</ul>\n\n<p>These features will be available in forthcoming versions</p>\n<ul>\n   <li>Drag and drop between components</li>\n   <li>Managing scroll position</li>\n</ul>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan = \"20\" nowrap>List Item</td>\n      <td><kbd>F2</kbd></td>\n      <td>Enters tabbable mode.  This enables keyboard action on elements inside the item, including navigate between focusable elements inside the item.  It can also be used to exit tabbable mode if already in tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Esc</kbd></td>\n      <td>Exits tabbable mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>When in tabbable mode, navigates to next focusable element within the item.  If the last focusable element is reached, shift focus back to the first focusable element.\n          When not in tabbable mode, navigates to next focusable element on page (outside ListView).</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Tab</kbd></td>\n      <td>When in tabbable mode, navigates to previous focusable element within the item.  If the first focusable element is reached, shift focus back to the last focusable element.\n          When not in tabbable mode, navigates to previous focusable element on page (outside ListView).</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+DownArrow</kbd></td>\n      <td>Extend the selection to the item below.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+UpArrow</kbd></td>\n      <td>Extend the selection to the item above.</td>\n    </tr>\n    <tr>\n      <td><kbd>Space</kbd></td>\n      <td>Toggles to select and deselect the current item.  If previous items have been selected, deselects them and selects the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Space</kbd></td>\n      <td>Selects contiguous items from the last selected item to the current item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+UpArrow</kbd></td>\n      <td>Reorder the current item up.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+Cmd/Ctrl+DownArrow</kbd></td>\n      <td>Reorder the current item down.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl+Space</kbd></td>\n      <td>Toggles to select and deselect the current item while maintaining previous selected items.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>Application should specify a value for the aria-label attribute with a meaningful description of the purpose of this list.</p>\n<p>Note that ListView uses the grid role and follows the <a href=\"https://www.w3.org/TR/wai-aria-practices/examples/grid/LayoutGrids.html\">Layout Grid</a> design as outlined in the <a href=\"https://www.w3.org/TR/wai-aria-practices/#grid\">grid design pattern</a></p>\n<p>Nesting collection components such as ListView, Table, TreeView, and ListView inside of ListView is not supported.</p>\n<p>When reorder feature is enabled, application should specify a live region which contains an announcement to notify assistive technologies that the item reordering happens.</p>\n\n<h4>Custom Colours</h4>\n<p>Using colors, including background and text colors, is not accessible if it is the only way information is conveyed.\nLow vision users may not be able to see the different colors, and in high contrast mode the colors are removed.\nThe Redwood approved way to show status is to use badge.</p>\n\n<h3 id=\"context-section\">\n  Item Context\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#context-section\"></a>\n</h3>\n\n<p>For all item options, developers can specify a function as the return value.  The function takes a single argument, which is an object that contains contextual information about the particular item.  This gives developers the flexibility to return different value depending on the context.</p>\n\n<p>The context parameter contains the following keys:</p>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data</kbd></td>\n      <td>The data of the item.  Note this is made available primarily to ease migration.\n          Applications should get the data from the item property instead.</td>\n    </tr>\n    <tr>\n      <td><kbd>item</kbd></td>\n      <td>An object that contains the data and metadata for the item.</td>\n    </tr>\n    <tr>\n      <td><kbd>isTabbable</kbd></td>\n      <td>A boolean indicating whether the item is in tabbable mode or not.\n         This should be used to implement conditional behavior for all tabbable elements, this avoids creating a keyboard trap when tabbing through a List.<br/>\n         This can be implemented as a conditional tabindex, for example <code>tabindex=\"[[!item.isTabbable && '-1']]\"</code>.<br/>\n         When composing with core pack components, this is not needed, as they are tabbable mode aware.\n        </td>\n    </tr>\n  </tbody>\n</table>\n\n<p>The following keys are not currently supported:</p>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Description</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>componentElement</kbd></td>\n      <td>A reference to the root element of ListView.</td>\n    </tr>\n    <tr>\n      <td><kbd>datasource</kbd></td>\n      <td>A reference to the data source object.</td>\n    </tr>\n    <tr>\n      <td><kbd>index</kbd></td>\n      <td>The index of the item, where 0 is the index of the first item.  In the hierarchical case the index is relative to its parent.</td>\n    </tr>\n    <tr>\n      <td><kbd>key</kbd></td>\n      <td>The key of the item (this duplicates item.metadata.key and has been deprecated)</td>\n    </tr>\n    <tr>\n      <td><kbd>metadata</kbd></td>\n      <td>The metadata of the item (this is instead available in item)</td>\n    </tr>\n    <tr>\n      <td><kbd>parentElement</kbd></td>\n      <td>This will be supported by the Hierarchical list component and no longer applies to list view..</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"data-attributes-section\">\n  Custom Data Attributes\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#data-attributes-section\"></a>\n</h3>\n\n<p>ListView supports the following custom data attributes.\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Description</th>\n      <th>Example</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>data-oj-as</kbd></td>\n      <td>Provides an alias for a specific template instance and has the same subproperties as the $current variable.</td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\" data-oj-as=\"item\">\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-clickthrough</kbd></td>\n      <td><p>Specify on any element inside an item where you want to control whether ListView should perform actions triggered by\n          a click event originating from the element or one of its descendants.</p>\n          <p>For example, if you specify this attribute with a value of \"disabled\" on a link inside an item, then ListView\n          will not select or trigger itemAction event to be fired when user clicks on the link.</p>\n          <p>Note that the currentItem will still be updated to the item that the user clicked on.</p>\n          <p>Also note you do not need to set this attribute on core pack components such as oj-c-button, as it natively supports\n             disabling clickthrough.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;a href=\"#\" data-oj-clickthrough=\"disabled\">&lt;/a>\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n    <tr>\n      <td><kbd>data-oj-manage-tabs</kbd></td>\n      <td><p>ListView does not manipulate the tabindex of the item content.  Applications should set the tabIndex of any focusable\n         element based on the isTabbableMode property from the context pass to the itemTemplate.</p>\n         <p>However, there will be cases where you can't control the tabindex of the content, for example, if you are using components from another team.</p>\n         <p>In that case, applications can specify this attribute on the element or one of its ancestors so that when the itemTemplate is processed,\n         it will scan and manipulate the tabindex of any focusable elements.</p>\n      </td>\n      <td>\n        <pre class=\"prettyprint\"><code>&lt;oj-c-list-view id=\"listView\">\n  &lt;template slot=\"itemTemplate\">\n    &lt;some-component-with-focusable-elements data-oj-manage-tabs>&lt;/some-component-with-focusable-elements>\n  &lt;/template>\n&lt;/oj-c-list-view></code></pre>\n      </td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"suggestion-items-section\">\n  Suggestion Items\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#suggestion-items-section\"></a>\n</h3>\n\n<p>If <a href=\"ItemMetadata.html\">ItemMetadata</a> returned by the DataProvider contains suggestion field, ListView will apply special visual to those\n   items. The DataProvider must ensure the suggestion items are the first items returned by the initial fetchFirst call.</p>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-list-view",
     "tagWithBrackets": "<oj-c-list-view>",
@@ -50,20 +50,72 @@
     "scope": "instance",
     "ojwriteback": true,
     "readonly": true,
-    "description": "The item that currently has keyboard focus",
+    "description": "The key of the item that currently has keyboard focus",
     "meta": {
       "filename": "list-view.tsx",
       "path": "web/components/oj-c/list-view"
     },
     "type": {
       "names": [
-        "any"
+        "string|number"
       ]
     },
     "tstype": [
       {
         "target": "Type",
-        "value": "ReadOnlyPropertyChanged",
+        "value": "K",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ListView",
+    "id": "oj-c.ListView#currentItemOverride",
+    "name": "currentItemOverride",
+    "kind": "member",
+    "longname": "oj-c.ListView#currentItemOverride",
+    "optional": true,
+    "scope": "instance",
+    "description": "The key of the item that will have keyboard focus",
+    "meta": {
+      "filename": "list-view.tsx",
+      "path": "web/components/oj-c/list-view"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "{ rowKey: K }",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ListView",
+    "id": "oj-c.ListView#currentItemOverride.rowKey",
+    "name": "currentItemOverride.rowKey",
+    "kind": "member",
+    "longname": "oj-c.ListView#currentItemOverride.rowKey",
+    "optional": false,
+    "scope": "instance",
+    "description": "",
+    "meta": {
+      "filename": "list-view.tsx",
+      "path": "web/components/oj-c/list-view"
+    },
+    "type": {
+      "names": [
+        "string|number"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "K",
         "jsdocOverride": true
       }
     ]
@@ -90,7 +142,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>|null",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -202,7 +257,17 @@
       "names": [
         "object"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "ImmutableKeySet<K>",
+        "jsdocOverride": true,
+        "module": {
+          "ImmutableKeySet": "ojkeyset"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.ListView",
@@ -212,7 +277,7 @@
     "longname": "oj-c.ListView#selectionMode",
     "optional": true,
     "scope": "instance",
-    "description": "<p>The type of selection behavior that is enabled on the ListView. This attribute controls the number of selections that can be made via selection gestures at any given time.\n\n<p>If <code class=\"prettyprint\">single</code> or <code class=\"prettyprint\">multiple</code> is specified, selection gestures will be enabled, and the ListView's selection styling will be applied to all items specified by the <a href=\"#selected\">selected</a> attribute.\nIf <code class=\"prettyprint\">singleRequired</code> is specified, then the behavior is the same as single except that ListView will ensure there is an item selected at all time. Specifically, user will not be able to de-selected a selected item.  And if selection is initially empty, ListView will select the first item.\nIf <code class=\"prettyprint\">none</code> is specified, selection gestures will be disabled, and the ListView's selection styling will not be applied to any items specified by the <a href=\"#selected\">selected</a> attribute.\n<p>Changing the value of this attribute will not affect the value of the <a href=\"#selected\">selected</a> attribute.",
+    "description": "<p>The type of selection behavior that is enabled on the ListView. This attribute controls the number of selections that can be made via selection gestures at any given time.\n\n<p>If <code class=\"prettyprint\">single</code> or <code class=\"prettyprint\">multiple</code> is specified, selection gestures will be enabled, and the ListView's selection styling will be applied to all items specified by the <a href=\"#selected\">selected</a> attribute.\nIf <code class=\"prettyprint\">singleRequired</code> is specified, then the behavior is the same as single except that ListView will ensure there is an item selected at all times. Specifically, the user will not be able to de-selected a selected item.  And if selection is initially empty, ListView will select the first item.\nIf <code class=\"prettyprint\">none</code> is specified, selection gestures will be disabled, and the ListView's selection styling will not be applied to any items specified by the <a href=\"#selected\">selected</a> attribute.\n<p>Changing the value of this attribute will not affect the value of the <a href=\"#selected\">selected</a> attribute.",
     "meta": {
       "filename": "list-view.tsx",
       "path": "web/components/oj-c/list-view"
@@ -290,7 +355,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.ListView.ContextMenuConfig",
+        "value": "oj-c.ListView.ContextMenuConfig<K, D>",
         "jsdocOverride": true
       }
     ]
@@ -341,6 +406,32 @@
         "\"enabled\""
       ]
     }
+  },
+  {
+    "memberof": "oj-c.ListView",
+    "id": "oj-c.ListView#item",
+    "name": "item",
+    "kind": "member",
+    "longname": "oj-c.ListView#item",
+    "optional": true,
+    "scope": "instance",
+    "description": "The item option contains a subset of options for items.",
+    "meta": {
+      "filename": "list-view.tsx",
+      "path": "web/components/oj-c/list-view"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "{ padding?: 'disabled' | 'enabled' | oj-c.ListView.ItemPadding; }",
+        "jsdocOverride": true
+      }
+    ]
   },
   {
     "memberof": "oj-c.ListView",
@@ -440,7 +531,7 @@
     "name": "ojItemAction",
     "kind": "event",
     "longname": "oj-c.ListView#event:ojItemAction",
-    "description": "Triggered when user performs an action gesture on an item while ListView is in navigation mode.  The action gestures include:\n<ul>\n  <li>User clicks anywhere in an item</li>\n  <li>User taps anywhere in an item</li>\n  <li>User pressed spacebar on an item</li>\n</ul>",
+    "description": "Triggered when user performs an action gesture on an item while ListView is in navigation mode.  The action gestures include:\n<ul>\n  <li>User clicks anywhere in an item</li>\n  <li>User taps anywhere in an item</li>\n  <li>User pressed enter key while item has focus</li>\n</ul>",
     "meta": {
       "filename": "list-view.tsx",
       "path": "web/components/oj-c/list-view"
@@ -458,9 +549,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.ListView.ListItemContext",
-            "for": "context",
-            "jsdocOverride": true
+            "value": "oj-c.ListView.ListItemContextProps<K, D>",
+            "jsdocOverride": true,
+            "for": "context"
           }
         ]
       }
@@ -491,8 +582,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -508,8 +599,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       }
@@ -548,9 +639,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.ListView.ListItemContext",
-            "for": "contextMenuContext",
-            "jsdocOverride": true
+            "value": "oj-c.ListView.ListItemContextProps<K, D>",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
           }
         ]
       }
@@ -579,6 +670,15 @@
         }
       },
       {
+        "name": "menuSelectionGroupKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
         "name": "contextMenuContext",
         "optional": false,
         "type": {
@@ -589,9 +689,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.ListView.ListItemContext",
-            "for": "contextMenuContext",
-            "jsdocOverride": true
+            "value": "oj-c.ListView.ListItemContextProps<K, D>",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
           }
         ]
       }
@@ -623,8 +723,8 @@
           {
             "target": "Type",
             "value": "Array<K>",
-            "for": "reorderedKeys",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "reorderedKeys"
           }
         ]
       },
@@ -641,8 +741,8 @@
           {
             "target": "Type",
             "value": "Array<K>",
-            "for": "itemKeys",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "itemKeys"
           }
         ]
       },
@@ -659,8 +759,8 @@
           {
             "target": "Type",
             "value": "K|null",
-            "for": "referenceKey",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "referenceKey"
           }
         ]
       }
@@ -694,8 +794,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -712,8 +812,8 @@
           {
             "target": "Type",
             "value": "Item<K, D>",
-            "for": "item",
             "jsdocOverride": true,
+            "for": "item",
             "module": {
               "Item": "ojdataprovider"
             }
@@ -813,6 +913,70 @@
   },
   {
     "memberof": "oj-c.ListView",
+    "id": "oj-c.ListView.ListItemContextProps",
+    "name": "ListItemContextProps",
+    "kind": "typedef",
+    "longname": "oj-c.ListView.ListItemContextProps",
+    "scope": "static",
+    "description": "",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K,D>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "list-view.tsx",
+      "path": "web/components/oj-c/list-view"
+    },
+    "properties": [
+      {
+        "name": "data",
+        "description": "The data of the item.  Note this is made available primarily to ease migration.\nApplications should get the data from the item property instead.",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
+      },
+      {
+        "name": "item",
+        "description": "Contains the data and metadata of the item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Item<K, D>",
+            "jsdocOverride": true,
+            "for": "item",
+            "module": {
+              "Item": "ojdataprovider"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ListView",
     "id": "oj-c.ListView.ContextMenuConfig",
     "name": "ContextMenuConfig",
     "kind": "typedef",
@@ -854,9 +1018,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "(context: Omit<ListItemContext<K, D>, \"isTabbable\">) => ContextMenuItems[]",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "(context: oj-c.ListView.ListItemContextProps<K, D>) => ContextMenuItems[]",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       }
@@ -864,17 +1028,12 @@
   },
   {
     "memberof": "oj-c.ListView",
-    "id": "oj-c.ListView.ListItemContext",
-    "name": "ListItemContext",
+    "id": "oj-c.ListView.ItemPadding",
+    "name": "ItemPadding",
     "kind": "typedef",
-    "longname": "oj-c.ListView.ListItemContext",
+    "longname": "oj-c.ListView.ItemPadding",
     "scope": "static",
     "description": "",
-    "tsgenerictype": {
-      "target": "Type",
-      "value": "<K,D>",
-      "for": "genericTypeParameters"
-    },
     "type": {
       "names": [
         "Object"
@@ -886,43 +1045,44 @@
     },
     "properties": [
       {
-        "name": "data",
-        "description": "The data of the item.  Note this is made available primarily to ease migration.\nApplications should get the data from the item property instead.",
-        "optional": false,
+        "name": "bottom",
+        "optional": true,
         "type": {
           "names": [
-            "any"
+            "\"disabled\"",
+            "\"enabled\""
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "D",
-            "for": "data",
-            "jsdocOverride": true
-          }
-        ]
+        }
       },
       {
-        "name": "item",
-        "description": "Contains the data and metadata of the item.",
-        "optional": false,
+        "name": "end",
+        "optional": true,
         "type": {
           "names": [
-            "object"
+            "\"disabled\"",
+            "\"enabled\""
           ]
-        },
-        "tstype": [
-          {
-            "target": "Type",
-            "value": "Item<K, D>",
-            "for": "item",
-            "jsdocOverride": true,
-            "module": {
-              "Item": "ojdataprovider"
-            }
-          }
-        ]
+        }
+      },
+      {
+        "name": "start",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"disabled\"",
+            "\"enabled\""
+          ]
+        }
+      },
+      {
+        "name": "top",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"disabled\"",
+            "\"enabled\""
+          ]
+        }
       }
     ]
   }

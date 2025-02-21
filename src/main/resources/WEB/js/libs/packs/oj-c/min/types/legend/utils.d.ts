@@ -14,9 +14,9 @@ export declare function getSectionStyles(styles?: Partial<CSSStyleDeclaration>):
     sectionTitleFontWeight: string | undefined;
     sectionTitleTextDecoration: string | undefined;
 };
-export declare function isLegendInteractive(drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', hoverBehavior?: 'dim' | 'none', hasDrillableItem?: boolean): boolean | undefined;
-export declare function parseItemId(id: string): number[];
-export declare function transformItem(dataItem: any, sectionIndex: number, itemIndex: number, ariaLabelSuffix: string, drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off'): {
+export declare function isLegendInteractive(drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', hoverBehavior?: 'dim' | 'none', hasDrillableItem?: boolean, isContextMenuEnabled?: boolean): boolean | undefined;
+export declare function parseItemIdx(id: string): number[];
+export declare function transformItem(dataItem: any, sectionIndex: number, itemIndex: number, ariaLabelSuffix: string, drilling?: 'on' | 'off', hideAndShowBehavior?: 'on' | 'off', isContextMenuEnabled?: boolean): {
     borderColor: any;
     lineWidth: any;
     markerColor: any;

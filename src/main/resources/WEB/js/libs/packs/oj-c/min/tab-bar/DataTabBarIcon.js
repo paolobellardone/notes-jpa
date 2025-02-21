@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/jsx-runtime"], function (require, exports, jsx_runtime_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.DataTabBarIcon = void 0;
+    exports.DataTabBarIcon = DataTabBarIcon;
     function DataTabBarIcon(props) {
         const { icon } = props;
         if (!icon) {
@@ -12,5 +12,4 @@ define(["require", "exports", "preact/jsx-runtime"], function (require, exports,
         }
         return null;
     }
-    exports.DataTabBarIcon = DataTabBarIcon;
 });

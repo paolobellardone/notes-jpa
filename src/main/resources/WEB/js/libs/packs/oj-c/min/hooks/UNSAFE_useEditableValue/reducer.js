@@ -1,7 +1,23 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.updateValue = exports.updateValidStatus = exports.updatePreviousValue = exports.updatePreviousValidators = exports.updatePreviousReadonly = exports.updatePreviousDisabled = exports.updatePreviousDeferredValidators = exports.updatePreviousConverter = exports.updateHiddenMessages = exports.updateDisplayValue = exports.updateCustomMessages = exports.updateComponentMessages = exports.showHiddenMessages = exports.clearAllMessages = exports.addComponentMessage = exports.reducer = void 0;
+    exports.reducer = reducer;
+    exports.addComponentMessage = addComponentMessage;
+    exports.clearAllMessages = clearAllMessages;
+    exports.showHiddenMessages = showHiddenMessages;
+    exports.updateComponentMessages = updateComponentMessages;
+    exports.updateCustomMessages = updateCustomMessages;
+    exports.updateDisplayValue = updateDisplayValue;
+    exports.updateHiddenMessages = updateHiddenMessages;
+    exports.updatePreviousConverter = updatePreviousConverter;
+    exports.updatePreviousDeferredValidators = updatePreviousDeferredValidators;
+    exports.updatePreviousDisabled = updatePreviousDisabled;
+    exports.updatePreviousReadonly = updatePreviousReadonly;
+    exports.updatePreviousValidators = updatePreviousValidators;
+    exports.updatePreviousValue = updatePreviousValue;
+    exports.updateTransientValue = updateTransientValue;
+    exports.updateValidStatus = updateValidStatus;
+    exports.updateValue = updateValue;
     function reducer(state, action) {
         const customMsgs = state.customMessages ?? [];
         const hiddenMsgs = state.hiddenMessages;
@@ -22,6 +38,11 @@ define(["require", "exports"], function (require, exports) {
                 return {
                     ...state,
                     value: action.payload
+                };
+            case 'UPDATE_TRANSIENT_VALUE':
+                return {
+                    ...state,
+                    transientValue: action.payload
                 };
             case 'UPDATE_PREVIOUS_CONVERTER':
                 return {
@@ -96,69 +117,57 @@ define(["require", "exports"], function (require, exports) {
                 return state;
         }
     }
-    exports.reducer = reducer;
     function updateDisplayValue(dispatch, displayValue, { onRawValueChanged }) {
         dispatch({ type: 'UPDATE_DISPLAY_VALUE', payload: displayValue });
         onRawValueChanged?.(displayValue);
     }
-    exports.updateDisplayValue = updateDisplayValue;
     function updateValidStatus(dispatch, state, { onValidChanged }) {
         dispatch({ type: 'UPDATE_VALID', payload: state });
         onValidChanged?.(state);
     }
-    exports.updateValidStatus = updateValidStatus;
     function updateValue(dispatch, value, { onValueChanged }) {
         dispatch({ type: 'UPDATE_VALUE', payload: value });
         onValueChanged?.(value);
     }
-    exports.updateValue = updateValue;
+    function updateTransientValue(dispatch, transientValue, { onTransientValueChanged }) {
+        dispatch({ type: 'UPDATE_TRANSIENT_VALUE', payload: transientValue });
+        onTransientValueChanged?.(transientValue);
+    }
     function updateComponentMessages(dispatch, messages) {
         dispatch({ type: 'UPDATE_COMPONENT_MESSAGES', payload: messages });
     }
-    exports.updateComponentMessages = updateComponentMessages;
     function updateHiddenMessages(dispatch, messages) {
         dispatch({ type: 'UPDATE_HIDDEN_MESSAGES', payload: messages });
     }
-    exports.updateHiddenMessages = updateHiddenMessages;
     function updateCustomMessages(dispatch, messages) {
         dispatch({ type: 'UPDATE_CUSTOM_MESSAGES', payload: messages });
     }
-    exports.updateCustomMessages = updateCustomMessages;
     function updatePreviousValue(dispatch, value) {
         dispatch({ type: 'UPDATE_PREVIOUS_VALUE', payload: value });
     }
-    exports.updatePreviousValue = updatePreviousValue;
     function updatePreviousConverter(dispatch, converter) {
         dispatch({ type: 'UPDATE_PREVIOUS_CONVERTER', payload: converter });
     }
-    exports.updatePreviousConverter = updatePreviousConverter;
     function updatePreviousDeferredValidators(dispatch, validators) {
         dispatch({ type: 'UPDATE_PREVIOUS_DEFERRED_VALIDATORS', payload: validators });
     }
-    exports.updatePreviousDeferredValidators = updatePreviousDeferredValidators;
     function updatePreviousDisabled(dispatch, disabled) {
         dispatch({ type: 'UPDATE_PREVIOUS_DISABLED', payload: disabled });
     }
-    exports.updatePreviousDisabled = updatePreviousDisabled;
     function updatePreviousReadonly(dispatch, readonly) {
         dispatch({ type: 'UPDATE_PREVIOUS_READONLY', payload: readonly });
     }
-    exports.updatePreviousReadonly = updatePreviousReadonly;
     function updatePreviousValidators(dispatch, validators) {
         dispatch({ type: 'UPDATE_PREVIOUS_VALIDATORS', payload: validators });
     }
-    exports.updatePreviousValidators = updatePreviousValidators;
     function clearAllMessages(dispatch, _value, { onMessagesCustomChanged }) {
         dispatch({ type: 'CLEAR_ALL_MESSAGES' });
         onMessagesCustomChanged?.([]);
     }
-    exports.clearAllMessages = clearAllMessages;
     function showHiddenMessages(dispatch) {
         dispatch({ type: 'SHOW_HIDDEN_MESSAGES' });
     }
-    exports.showHiddenMessages = showHiddenMessages;
     function addComponentMessage(dispatch, message) {
         dispatch({ type: 'ADD_COMPONENT_MESSAGE', payload: message });
     }
-    exports.addComponentMessage = addComponentMessage;
 });

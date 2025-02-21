@@ -30,8 +30,11 @@
     "since": "17.0.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
-        "since": "17.0.0"
+        "type": "supersedes",
+        "since": "17.1.0",
+        "value": [
+          "oj-input-date"
+        ]
       }
     ],
     "meta": {
@@ -100,7 +103,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(p: OverflowMessageDetailParameters) => string",
+        "value": "(p: oj-c.InputDatePicker.OverflowMessageDetailParameters) => string",
         "jsdocOverride": true
       }
     ]
@@ -126,7 +129,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(p: UnderflowMessageDetailParameters) => string",
+        "value": "(p: oj-c.InputDatePicker.UnderflowMessageDetailParameters) => string",
         "jsdocOverride": true
       }
     ]
@@ -152,7 +155,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(p: RestrictionMessageDetailParameters) => string",
+        "value": "(p: oj-c.InputDatePicker.RestrictionMessageDetailParameters) => string",
         "jsdocOverride": true
       }
     ]
@@ -178,7 +181,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(date: Required<CalendarDate>) => { state: \"disabled\" | \"enabled\" | \"restricted\"; }",
+        "value": "(date: Required<oj-c.InputDatePicker.CalendarDate>) => { state: \"disabled\" | \"enabled\" | \"restricted\"; }",
         "jsdocOverride": true
       }
     ]
@@ -267,7 +270,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.InputDatePicker.DisplayOptions",
+        "value": "oj-c.InputDatePicker.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -439,6 +442,13 @@
       "filename": "input-date-picker.tsx",
       "path": "web/components/oj-c/input-date-picker"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -821,7 +831,18 @@
       "names": [
         "Array<object>|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<AsyncValidator<string>|Validator<string>>|null",
+        "jsdocOverride": true,
+        "module": {
+          "AsyncValidator": "ojvalidator-async",
+          "Validator": "ojvalidator"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputDatePicker",
@@ -841,6 +862,49 @@
     "type": {
       "names": [
         "string|null"
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.InputDatePicker",
+    "id": "oj-c.InputDatePicker#weekDisplay",
+    "name": "weekDisplay",
+    "kind": "member",
+    "longname": "oj-c.InputDatePicker#weekDisplay",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether week of the year will be shown in the DatePicker. The default calculation follows the\nrule for ISO 8601 as follows: The first week of the year is defined as the week that contains\nthe first Thursday. Therefore, if January 1st falls on a Friday, it is considered part of the last week\nof the previous year. Conversely, if December 31st falls on a Wednesday, it is part of week 1 of the following year.",
+    "meta": {
+      "filename": "input-date-picker.tsx",
+      "path": "web/components/oj-c/input-date-picker"
+    },
+    "ojvalues": [
+      {
+        "name": "none",
+        "description": "The week of the year column will not be shown.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "number",
+        "description": "Will show the week of the year as a number.",
+        "displayName": "Number",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"number\"",
+        "\"none\""
       ]
     }
   },
@@ -1292,10 +1356,57 @@
   },
   {
     "memberof": "oj-c.InputDatePicker",
-    "id": "oj-c.InputDatePicker.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.InputDatePicker.CalendarDate",
+    "name": "CalendarDate",
     "kind": "typedef",
-    "longname": "oj-c.InputDatePicker.DisplayOptions",
+    "longname": "oj-c.InputDatePicker.CalendarDate",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "input-date-picker.tsx",
+      "path": "web/components/oj-c/input-date-picker"
+    },
+    "properties": [
+      {
+        "name": "year",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "month",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "day",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.InputDatePicker",
+    "id": "oj-c.InputDatePicker.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
+    "kind": "typedef",
+    "longname": "oj-c.InputDatePicker.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {
@@ -1459,53 +1570,6 @@
             "\"confirmation\"",
             "\"info\"",
             "\"warning\""
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.InputDatePicker",
-    "id": "oj-c.InputDatePicker.CalendarDate",
-    "name": "CalendarDate",
-    "kind": "typedef",
-    "longname": "oj-c.InputDatePicker.CalendarDate",
-    "scope": "static",
-    "description": "",
-    "type": {
-      "names": [
-        "Object"
-      ]
-    },
-    "meta": {
-      "filename": "input-date-picker.tsx",
-      "path": "web/components/oj-c/input-date-picker"
-    },
-    "properties": [
-      {
-        "name": "year",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      },
-      {
-        "name": "month",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      },
-      {
-        "name": "day",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
           ]
         }
       }

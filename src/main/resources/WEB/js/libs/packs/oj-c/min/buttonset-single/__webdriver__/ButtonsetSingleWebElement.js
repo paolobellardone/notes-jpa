@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ButtonsetSingleWebElement = void 0;
-var ButtonsetSingleWebElementBase_1 = require("./ButtonsetSingleWebElementBase");
+const ButtonsetSingleWebElementBase_1 = require("./ButtonsetSingleWebElementBase");
 /**
  * The component WebElement for [oj-c-buttonset-single](../../../oj-c/docs/oj.ButtonsetSingle.html).
  * Do not instantiate this class directly, instead, use

@@ -1,5 +1,6 @@
 import type { ComponentMessageItem } from '@oracle/oraclejet-preact/UNSAFE_ComponentMessage';
-import type { Optional, ValidState } from './types';
+import { ConversionResult } from './converterUtils';
+import type { Optional, TranslateParseErrorFunc, ValidState } from './types';
 import type { ValueUpdateDetail } from '@oracle/oraclejet-preact/utils/UNSAFE_valueUpdateDetail';
 import type { Converter } from './types';
 import type Validator = require('ojs/ojvalidator');
@@ -15,29 +16,39 @@ type UseEditableValueProps<V, DV> = {
         messages?: 'display' | 'none';
     };
     messagesCustom?: ComponentMessageItem[];
+    onDisplayValueChanged?: () => void;
     onMessagesCustomChanged?: (messagesCustom?: ComponentMessageItem[]) => void;
     onRawValueChanged?: (rawValue: DV) => void;
     onTransientValueChanged?: (transientValue: V) => void;
     onValidChanged?: (valid: ValidState) => void;
     onValueChanged?: (value: V) => void;
+    translateConverterParseError?: TranslateParseErrorFunc;
     readonly?: boolean;
     validators?: (AsyncValidator<V> | Validator<V>)[];
     value?: V;
 };
-export declare function useEditableValue<V = string, DV = V>({ addBusyState, ariaDescribedBy, converter, defaultDisplayValue, deferredValidators, disabled, displayOptions, messagesCustom, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, readonly, validators, value }: UseEditableValueProps<V, DV>): {
+export declare function useEditableValue<V = string, DV = V>({ addBusyState, ariaDescribedBy, converter, defaultDisplayValue, deferredValidators, disabled, displayOptions, messagesCustom, onDisplayValueChanged, onMessagesCustomChanged, onRawValueChanged, onTransientValueChanged, onValidChanged: propOnValidChanged, onValueChanged, translateConverterParseError, readonly, validators, value }: UseEditableValueProps<V, DV>): {
     value: Optional<V>;
     displayValue: DV | undefined;
+    formatValue: (value: Optional<V>) => DV | undefined;
     methods: {
         reset: () => void;
         showMessages: () => void;
-        validate: () => Promise<'valid' | 'invalid'>;
+        validate: () => Promise<"valid" | "invalid">;
     };
+    onCommitValue: (value: Optional<V>, doCommitOnValid?: boolean) => Promise<boolean>;
+    parseValue: (value: DV) => ConversionResult<V>;
+    refreshDisplayValue: (value: Optional<V>) => true;
+    setDisplayValue: (value: Optional<DV>) => void;
+    setTransientValue: (transientValue: Optional<V>) => void;
+    setValue: (value: Optional<V>) => void;
     textFieldProps: {
         'aria-describedby': string | undefined;
         messages: ComponentMessageItem[] | undefined;
-        onCommit: ({ value }: ValueUpdateDetail<DV>) => Promise<void>;
+        onCommit: ({ value }: ValueUpdateDetail<DV>) => Promise<boolean>;
         onInput: ({ value }: ValueUpdateDetail<DV>) => void;
         value: DV | undefined;
     };
+    validateValueOnExternalChange: (value: Optional<V>) => true;
 };
 export {};

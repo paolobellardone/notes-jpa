@@ -7,8 +7,8 @@
 .InsetStyles_multiVariantStyles_variantGroup_listview__1x4kupi1 {
   padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-vertical);
   padding-bottom: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-vertical);
-  padding-left: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-horizontal);
-  padding-right: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-horizontal);
+  padding-inline-start: var(--oj-core-gutter-start, var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-horizontal));
+  padding-inline-end: var(--oj-core-gutter-end, var(--oj-c-EXPERIMENTAL-DO-NOT-USE-list-item-padding-horizontal));
 }
 .InsetStyles_multiVariantStyles_variantGroup_toolbar__1x4kupi2 {
   padding-top: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem);

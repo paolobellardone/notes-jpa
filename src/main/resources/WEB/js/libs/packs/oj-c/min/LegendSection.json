@@ -47,7 +47,7 @@
     "name": "text",
     "kind": "member",
     "longname": "oj-c.LegendSection#text",
-    "optional": false,
+    "optional": true,
     "scope": "instance",
     "description": "The title of the legend section.",
     "meta": {

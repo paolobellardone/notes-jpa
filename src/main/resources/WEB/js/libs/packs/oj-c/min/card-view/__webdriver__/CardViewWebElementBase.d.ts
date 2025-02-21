@@ -12,7 +12,7 @@ export declare class CardViewWebElementBase extends OjWebElement {
      * @return The value of <code>currentItem</code> property.
      *
      */
-    getCurrentItem(): Promise<any>;
+    getCurrentItem(): Promise<string | number>;
     /**
      * Gets the value of <code>gutterSize</code> property.
      * Size of the gutter between columns and rows.

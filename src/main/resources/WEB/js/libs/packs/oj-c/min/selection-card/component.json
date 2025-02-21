@@ -1,7 +1,7 @@
 {
   "name": "selection-card",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -29,11 +29,11 @@
     },
     "vbdt": {
       "module": "oj-c/selection-card",
-      "defaultColumns": "1",
-      "minColumns": "1"
+      "defaultColumns": 1,
+      "minColumns": 1
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/SelectionCardWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectionCardWebElement.html"
     }
   },
   "since": "16.0.0",

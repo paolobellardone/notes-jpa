@@ -1,4 +1,5 @@
 .dropdownStyles_base__d55yjw0 {
+  --oj-current-bg-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-popup);
   box-sizing: border-box;
   background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-popup);
   border-width: 1px;

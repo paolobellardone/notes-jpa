@@ -6,7 +6,7 @@ import { ButtonSetSingle as PreactButtonSetSingle } from '@oracle/oraclejet-prea
 import { type ToggleItem } from 'oj-c/utils/PRIVATE_toggleUtils/index';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 export type { ToggleItem } from 'oj-c/utils/PRIVATE_toggleUtils';
-import { ComponentProps, Component } from 'preact';
+import { ComponentProps, Ref, ComponentType } from 'preact';
 import 'css!oj-c/buttonset-single/buttonset-single-styles.css';
 export type PreactButtonSetSingleProps = ComponentProps<typeof PreactButtonSetSingle>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
@@ -21,13 +21,12 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     chroming?: PreactButtonSetSingleProps['variant'];
     layoutWidth?: PreactButtonSetSingleProps['layoutWidth'];
 };
-export declare class ButtonsetSingle extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render({ chroming, disabled, value, onValueChanged, size, items, width, maxWidth, layoutWidth, display, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    blur(): void;
-    focus(): void;
-}
+type ButtonsetSingleHandle = {
+    focus: () => void;
+    blur: () => void;
+};
+declare function ButtonsetSingleImpl({ chroming, disabled, value, onValueChanged, size, width, maxWidth, layoutWidth, items, display, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, ...otherProps }: Props, ref: Ref<ButtonsetSingleHandle>): import("preact").JSX.Element;
+export declare const ButtonsetSingle: ComponentType<ExtendGlobalProps<ComponentProps<typeof ButtonsetSingleImpl>>>;
 export interface CButtonsetSingleElement extends JetElement<CButtonsetSingleElementSettableProperties>, CButtonsetSingleElementSettableProperties {
     addEventListener<T extends keyof CButtonsetSingleElementEventMap>(type: T, listener: (this: HTMLElement, ev: CButtonsetSingleElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
@@ -36,8 +35,8 @@ export interface CButtonsetSingleElement extends JetElement<CButtonsetSingleElem
     setProperty<T extends keyof CButtonsetSingleElementSettableProperties>(property: T, value: CButtonsetSingleElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CButtonsetSingleElementSettableProperties>): void;
     setProperties(properties: CButtonsetSingleElementSettablePropertiesLenient): void;
-    blur: ButtonsetSingle['blur'];
-    focus: ButtonsetSingle['focus'];
+    blur: () => void;
+    focus: () => void;
 }
 export namespace CButtonsetSingleElement {
     type chromingChanged = JetElementCustomEventStrict<CButtonsetSingleElement['chroming']>;

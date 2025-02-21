@@ -47,9 +47,9 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     virtualKeyboard?: PreactNumberInputTextProps['virtualKeyboard'];
     onMessagesCustomChanged?: PropertyChanged<PreactNumberInputTextProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<string>;
-    onTransientValueChanged?: ReadOnlyPropertyChanged<number>;
+    onTransientValueChanged?: ReadOnlyPropertyChanged<number | null>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
-    onValueChanged?: PropertyChanged<number>;
+    onValueChanged?: PropertyChanged<number | null>;
 };
 type InputNumberHandle = {
     blur: () => void;

@@ -111,7 +111,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/UNSAFE_IntlDateTime", "@
                 todayButton: props.todayButton,
                 userAssistanceDensity: inputDateMaskProps.userAssistanceDensity,
                 value: inputDateMaskProps.value,
-                variant: variant
+                variant: variant,
+                weekDisplay: props.weekDisplay
             },
             rootProps: {
                 id: props.id,

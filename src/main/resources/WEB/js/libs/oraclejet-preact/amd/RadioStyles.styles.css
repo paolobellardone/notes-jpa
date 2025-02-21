@@ -4,6 +4,7 @@
   display: inline-flex;
   align-items: flex-start;
   gap: var(--iconToTextGap__11tjnon1);
+  position: relative;
 }
 .RadioStyles_radioBaseStyle__o9of5r0:focus {
   outline: none;

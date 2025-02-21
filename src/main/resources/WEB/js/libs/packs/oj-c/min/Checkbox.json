@@ -120,7 +120,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.Checkbox.DisplayOptions",
+        "value": "oj-c.Checkbox.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -651,10 +651,10 @@
   },
   {
     "memberof": "oj-c.Checkbox",
-    "id": "oj-c.Checkbox.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.Checkbox.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.Checkbox.DisplayOptions",
+    "longname": "oj-c.Checkbox.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {

@@ -7,13 +7,6 @@ import { OjWebElement } from '@oracle/oraclejet-webdriver/elements';
  */
 export declare class PopupWebElementBase extends OjWebElement {
     /**
-     * Sets the value of <code>opened</code> property.
-     * Specifies whether the Popup is open.
-     * @param opened The value to set for <code>opened</code>
-     *
-     */
-    changeOpened(opened: boolean): Promise<void>;
-    /**
      * Gets the value of <code>opened</code> property.
      * Specifies whether the Popup is open.
      * @return The value of <code>opened</code> property.
@@ -29,14 +22,14 @@ export declare class PopupWebElementBase extends OjWebElement {
     getLauncher(): Promise<string>;
     /**
      * Gets the value of <code>anchor</code> property.
-     * Specifies Popup's anchor. Popup is placed relatively to its anchor.
+     * Specifies Popup's anchor. Popup is placed relative to its anchor.
      * @return The value of <code>anchor</code> property.
      *
      */
     getAnchor(): Promise<string | object>;
     /**
      * Gets the value of <code>placement</code> property.
-     * Specifies displacement of the Popup from the anchor element placement along the specified axes.
+     * Specifies the location the popup will appear relative to another element.
      * @return The value of <code>placement</code> property.
      *
      */
@@ -75,7 +68,7 @@ export declare class PopupWebElementBase extends OjWebElement {
      * @return The value of <code>offset</code> property.
      *
      */
-    getOffset(): Promise<Offset>;
+    getOffset(): Promise<number | object>;
     /**
      * Gets the value of <code>collision</code> property.
      * Specifies rule for alternate placement alignment.
@@ -125,14 +118,4 @@ export declare class PopupWebElementBase extends OjWebElement {
      *
      */
     getMaxHeight(): Promise<number | string>;
-}
-export interface Offset {
-    /**
-     *
-     */
-    x: number;
-    /**
-     *
-     */
-    y: number;
 }

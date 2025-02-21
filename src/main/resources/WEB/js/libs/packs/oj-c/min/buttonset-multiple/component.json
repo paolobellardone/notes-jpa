@@ -1,7 +1,7 @@
 {
   "name": "buttonset-multiple",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -27,7 +27,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/ButtonsetMultipleWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ButtonsetMultipleWebElement.html"
     }
   },
   "since": "17.0.0",
@@ -56,19 +56,24 @@
         "vbdt": {
           "itemProperties": {
             "label": {
-              "type": "string"
+              "type": "string",
+              "description": "The toggle item label."
             },
             "value": {
-              "type": "string"
+              "type": "string",
+              "description": "The toggle item value."
             },
             "disabled": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Specifies if the toggle item is disabled (enabled by default)."
             },
             "startIcon": {
-              "type": "object"
+              "type": "object",
+              "description": "Optional icon to render at the start of the toggle item."
             },
             "endIcon": {
-              "type": "object"
+              "type": "object",
+              "description": "Optional icon to render at the end of the toggle item."
             }
           }
         }
@@ -177,11 +182,11 @@
     }
   },
   "methods": {
-    "blur": {
-      "return": "any"
-    },
     "focus": {
-      "return": "any"
+      "return": "void"
+    },
+    "blur": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

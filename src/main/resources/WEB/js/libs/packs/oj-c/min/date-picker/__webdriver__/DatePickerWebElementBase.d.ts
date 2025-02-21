@@ -84,6 +84,13 @@ export declare class DatePickerWebElementBase extends OjWebElement {
      */
     getValue(): Promise<string | null>;
     /**
+     * Gets the value of <code>weekDisplay</code> property.
+     *
+     * @return The value of <code>weekDisplay</code> property.
+     *
+     */
+    getWeekDisplay(): Promise<string>;
+    /**
      * Gets the value of <code>width</code> property.
      * Specifies the component style width.
      * @return The value of <code>width</code> property.

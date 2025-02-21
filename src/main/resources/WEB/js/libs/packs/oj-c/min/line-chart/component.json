@@ -1,7 +1,7 @@
 {
   "name": "line-chart",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -35,7 +35,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/LineChartWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/LineChartWebElement.html"
     }
   },
   "propertyLayout": [
@@ -144,6 +144,20 @@
       "description": "The time axis type of the chart x axis.",
       "displayName": "TimeAxisType",
       "help": "#timeAxisType",
+      "propertyEditorValues": {
+        "enabled": {
+          "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute.",
+          "displayName": "Regular"
+        },
+        "mixedFrequency": {
+          "description": "The mixed frequency time axis type. The mixed frequency time axis type is used when different series have different sampling frequencies. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> x attribute.",
+          "displayName": "MixedFrequency"
+        },
+        "skipGaps": {
+          "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute. Gap between time values will be ignored.",
+          "displayName": "SkipGaps"
+        }
+      },
       "enumValues": [
         "enabled",
         "mixedFrequency",
@@ -539,7 +553,7 @@
           "displayName": "Tick Label",
           "properties": {
             "converter": {
-              "type": "object|",
+              "type": "object|Array<object>",
               "description": "The converter to format the axis tick labels.",
               "displayName": "Converter"
             },
@@ -765,7 +779,18 @@
       "type": "DataProvider|null",
       "description": "Specifies the DataProvider for the sections and items of the line-chart.",
       "displayName": "Data",
-      "help": "#data"
+      "help": "#data",
+      "extension": {
+        "webelement": {
+          "exceptionStatus": [
+            {
+              "type": "deprecated",
+              "since": "17.1.0",
+              "description": "Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead."
+            }
+          ]
+        }
+      }
     },
     "selectionMode": {
       "type": "string",
@@ -808,10 +833,10 @@
       "help": "#dragMode",
       "enumValues": [
         "pan",
+        "zoom",
         "select",
         "off",
-        "user",
-        "zoom"
+        "user"
       ]
     },
     "hiddenCategories": {
@@ -935,6 +960,20 @@
         },
         "symbolWidth": {
           "type": "number"
+        }
+      }
+    },
+    "contextMenuConfig": {
+      "type": "object",
+      "description": "Specifies a context menu configuration.",
+      "displayName": "Context Menu Config",
+      "help": "#contextMenuConfig",
+      "properties": {
+        "accessibleLabel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "function"
         }
       }
     }
@@ -1784,6 +1823,39 @@
         "yMin": {
           "type": "number",
           "description": "The minimum y value of the new viewport."
+        }
+      }
+    },
+    "ojContextMenuAction": {
+      "bubbles": true,
+      "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuAction",
+      "help": "#event:ojContextMenuAction",
+      "detail": {
+        "menuItemKey": {
+          "type": "string"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        }
+      }
+    },
+    "ojContextMenuSelection": {
+      "bubbles": true,
+      "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+      "eventGroup": "common",
+      "displayName": "onOjContextMenuSelection",
+      "help": "#event:ojContextMenuSelection",
+      "detail": {
+        "value": {
+          "type": "string|Array<string>"
+        },
+        "contextMenuContext": {
+          "type": "any"
+        },
+        "menuSelectionGroupKey": {
+          "type": "string"
         }
       }
     }

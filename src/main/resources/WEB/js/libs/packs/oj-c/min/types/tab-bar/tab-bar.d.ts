@@ -5,7 +5,7 @@ import type { Action, CancelableAction, ExtendGlobalProps, ObservedGlobalProps, 
 import type { ComponentProps, ComponentType } from 'preact';
 import { DataProvider } from 'ojs/ojdataprovider';
 import { DataTabBar } from './DataTabBar';
-type DataTabBarProps = ComponentProps<typeof DataTabBar>;
+export type DataTabBarProps = ComponentProps<typeof DataTabBar>;
 type Severity = 'warning' | 'info' | 'none' | 'error' | 'confirmation';
 export type TabIconData = {
     type?: 'class';
@@ -24,6 +24,16 @@ export type TabData<K extends string | number> = {
     tabPanelId?: string;
     isRemovable?: boolean;
 };
+export type TabLinkItemData<K extends string | number> = {
+    itemKey: K;
+    label: string;
+    icon?: TabIconData;
+    badge?: number;
+    metadata?: string;
+    severity?: Severity;
+    tabPanelId?: string;
+    href: string;
+};
 export type KeyDetail<K extends string | number> = {
     key: K;
 };
@@ -35,7 +45,7 @@ export type ReorderDetail<K extends string | number> = {
     reorderedKeys: K[];
 };
 export type Props<K extends string | number> = ObservedGlobalProps<'aria-label' | 'id' | 'aria-labelledby'> & {
-    data?: DataTabBarProps['data'] | DataProvider<K, TabData<K>>;
+    data?: DataTabBarProps['data'] | DataProvider<K, TabData<K> | TabLinkItemData<K>>;
     selection?: K;
     onOjBeforeSelect?: CancelableAction<KeyDetail<K>>;
     onOjRemove?: Action<KeyDetail<K>>;
@@ -47,6 +57,7 @@ export type Props<K extends string | number> = ObservedGlobalProps<'aria-label' 
     display?: DataTabBarProps['display'];
     layout?: DataTabBarProps['layout'];
     edge?: DataTabBarProps['edge'];
+    truncation?: DataTabBarProps['truncation'];
 };
 export declare const TabBar: ComponentType<ExtendGlobalProps<Props<string | number>>>;
 export {};
@@ -58,6 +69,7 @@ export interface CTabBarElement extends JetElement<CTabBarElementSettablePropert
     setProperty<T extends keyof CTabBarElementSettableProperties<string | number>>(property: T, value: CTabBarElementSettableProperties<string | number>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CTabBarElementSettableProperties<string | number>>): void;
     setProperties(properties: CTabBarElementSettablePropertiesLenient<string | number>): void;
+    _doReorderHelper: (tabBarKeys: (string | number)[]) => void;
 }
 export namespace CTabBarElement {
     interface ojBeforeSelect<K extends string | number> extends CustomEvent<KeyDetail<K> & {
@@ -77,6 +89,7 @@ export namespace CTabBarElement {
     type overflowChanged = JetElementCustomEventStrict<CTabBarElement['overflow']>;
     type reorderableChanged = JetElementCustomEventStrict<CTabBarElement['reorderable']>;
     type selectionChanged = JetElementCustomEventStrict<CTabBarElement['selection']>;
+    type truncationChanged = JetElementCustomEventStrict<CTabBarElement['truncation']>;
 }
 export interface CTabBarElementEventMap extends HTMLElementEventMap {
     'ojBeforeSelect': CTabBarElement.ojBeforeSelect<string | number>;
@@ -90,6 +103,7 @@ export interface CTabBarElementEventMap extends HTMLElementEventMap {
     'overflowChanged': JetElementCustomEventStrict<CTabBarElement['overflow']>;
     'reorderableChanged': JetElementCustomEventStrict<CTabBarElement['reorderable']>;
     'selectionChanged': JetElementCustomEventStrict<CTabBarElement['selection']>;
+    'truncationChanged': JetElementCustomEventStrict<CTabBarElement['truncation']>;
 }
 export interface CTabBarElementSettableProperties<K extends string | number> extends JetSettableProperties {
     data?: Props<K>['data'];
@@ -99,6 +113,7 @@ export interface CTabBarElementSettableProperties<K extends string | number> ext
     overflow?: Props<K>['overflow'];
     reorderable?: Props<K>['reorderable'];
     selection?: Props<K>['selection'];
+    truncation?: Props<K>['truncation'];
 }
 export interface CTabBarElementSettablePropertiesLenient<K extends string | number> extends Partial<CTabBarElementSettableProperties<K>> {
     [key: string]: any;
@@ -115,6 +130,7 @@ export interface TabBarIntrinsicProps extends Partial<Readonly<CTabBarElementSet
     onoverflowChanged?: (value: CTabBarElementEventMap['overflowChanged']) => void;
     onreorderableChanged?: (value: CTabBarElementEventMap['reorderableChanged']) => void;
     onselectionChanged?: (value: CTabBarElementEventMap['selectionChanged']) => void;
+    ontruncationChanged?: (value: CTabBarElementEventMap['truncationChanged']) => void;
 }
 declare global {
     namespace preact.JSX {

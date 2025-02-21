@@ -1,6 +1,6 @@
 .FormLayoutStyles_rootWrapperStyle__1h1o9fy0 {
   container-type: inline-size;
-  max-width: calc(var(--layoutLocalVars_columnCount__5qy13b0) * var(--maxColumnWidth__pa4rfz0));
+  max-width: calc(var(--layoutLocalVars_maxColumnCount__5qy13b0) * var(--maxColumnWidth__pa4rfz0));
 }
 .FormLayoutStyles_rootWrapperFullWidthStyle__1h1o9fy1 {
   max-width: 100%;

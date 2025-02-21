@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTabBar = exports.TabBarWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var TabBarWebElement_1 = require("./TabBarWebElement");
+exports.TabBarWebElement = void 0;
+exports.findTabBar = findTabBar;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const TabBarWebElement_1 = require("./TabBarWebElement");
 Object.defineProperty(exports, "TabBarWebElement", { enumerable: true, get: function () { return TabBarWebElement_1.TabBarWebElement; } });
 /**
  * Retrieve an instance of [TabBarWebElement](../classes/TabBarWebElement.html).
@@ -29,6 +30,5 @@ async function findTabBar(driver, by) {
     }
     return webEl;
 }
-exports.findTabBar = findTabBar;
 (0, oraclejet_webdriver_1.register)('oj-c-tab-bar', TabBarWebElement_1.TabBarWebElement);
 //# sourceMappingURL=index.js.map

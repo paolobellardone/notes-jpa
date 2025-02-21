@@ -20,7 +20,7 @@
   padding-inline-end: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
 }
 .CollapsibleStyles_contentHiddenStyle__zrqzyk4 {
-  display: none;
+  visibility: hidden;
 }
 .CollapsibleStyles_contentChildrenStyle__zrqzyk5 > * {
   margin-top: 0 !important;

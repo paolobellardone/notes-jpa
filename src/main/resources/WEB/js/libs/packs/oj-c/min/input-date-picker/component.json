@@ -1,7 +1,7 @@
 {
   "name": "input-date-picker",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -15,8 +15,11 @@
   "main": "oj-c/input-date-picker",
   "status": [
     {
-      "type": "candidate",
-      "since": "17.0.0"
+      "type": "supersedes",
+      "since": "17.1.0",
+      "value": [
+        "oj-input-date"
+      ]
     }
   ],
   "extension": {
@@ -32,7 +35,7 @@
       "icon": "oj-ux-ico-type-date-input"
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/InputDatePickerWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/InputDatePickerWebElement.html"
     }
   },
   "propertyLayout": [
@@ -248,6 +251,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -444,6 +454,27 @@
       "format": "date",
       "writeback": true,
       "value": null
+    },
+    "weekDisplay": {
+      "type": "string",
+      "propertyEditorValues": {
+        "none": {
+          "description": "The week of the year column will not be shown.",
+          "displayName": "None"
+        },
+        "number": {
+          "description": "Will show the week of the year as a number.",
+          "displayName": "Number"
+        }
+      },
+      "description": "Whether week of the year will be shown in the DatePicker.",
+      "displayName": "Week Display",
+      "help": "#weekDisplay",
+      "enumValues": [
+        "number",
+        "none"
+      ],
+      "value": "none"
     },
     "rawValue": {
       "type": "object",

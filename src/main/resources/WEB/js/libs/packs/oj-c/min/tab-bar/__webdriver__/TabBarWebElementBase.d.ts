@@ -19,14 +19,14 @@ export declare class TabBarWebElementBase extends OjWebElement {
      * @param selection The value to set for <code>selection</code>
      *
      */
-    changeSelection(selection: any): Promise<void>;
+    changeSelection(selection: string | number): Promise<void>;
     /**
      * Gets the value of <code>selection</code> property.
      * The key of the selected tab
      * @return The value of <code>selection</code> property.
      *
      */
-    getSelection(): Promise<any>;
+    getSelection(): Promise<string | number>;
     /**
      * Gets the value of <code>reorderable</code> property.
      * The reorderable configuration for tabs.
@@ -62,4 +62,11 @@ export declare class TabBarWebElementBase extends OjWebElement {
      *
      */
     getEdge(): Promise<string>;
+    /**
+     * Gets the value of <code>truncation</code> property.
+     * The truncation configuration for tab labels.
+     * @return The value of <code>truncation</code> property.
+     *
+     */
+    getTruncation(): Promise<string>;
 }

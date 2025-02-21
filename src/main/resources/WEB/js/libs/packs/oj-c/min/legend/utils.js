@@ -1,7 +1,15 @@
 define(["require", "exports", "../legend-item/legend-item", "../legend-section/legend-section"], function (require, exports, legend_item_1, legend_section_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.isLegendItemDrillable = exports.getDefaultSymbolDims = exports.isTreeDataProvider = exports.transformSection = exports.transformItem = exports.parseItemId = exports.isLegendInteractive = exports.getSectionStyles = exports.getTextStyles = void 0;
+    exports.getDefaultSymbolDims = void 0;
+    exports.getTextStyles = getTextStyles;
+    exports.getSectionStyles = getSectionStyles;
+    exports.isLegendInteractive = isLegendInteractive;
+    exports.parseItemIdx = parseItemIdx;
+    exports.transformItem = transformItem;
+    exports.transformSection = transformSection;
+    exports.isTreeDataProvider = isTreeDataProvider;
+    exports.isLegendItemDrillable = isLegendItemDrillable;
     function getTextStyles(styles) {
         return {
             textFontStyle: styles?.fontStyle,
@@ -12,7 +20,6 @@ define(["require", "exports", "../legend-item/legend-item", "../legend-section/l
             textFontFamily: styles?.fontFamily
         };
     }
-    exports.getTextStyles = getTextStyles;
     function getSectionStyles(styles) {
         return {
             sectionTitleColor: styles?.color,
@@ -23,16 +30,17 @@ define(["require", "exports", "../legend-item/legend-item", "../legend-section/l
             sectionTitleTextDecoration: styles?.textDecoration
         };
     }
-    exports.getSectionStyles = getSectionStyles;
-    function isLegendInteractive(drilling, hideAndShowBehavior, hoverBehavior, hasDrillableItem) {
-        return (drilling === 'on' || hideAndShowBehavior === 'on' || hoverBehavior === 'dim' || hasDrillableItem);
+    function isLegendInteractive(drilling, hideAndShowBehavior, hoverBehavior, hasDrillableItem, isContextMenuEnabled) {
+        return (drilling === 'on' ||
+            hideAndShowBehavior === 'on' ||
+            hoverBehavior === 'dim' ||
+            hasDrillableItem ||
+            isContextMenuEnabled);
     }
-    exports.isLegendInteractive = isLegendInteractive;
-    function parseItemId(id) {
+    function parseItemIdx(id) {
         return id.split(';').map((i) => parseInt(i, 10));
     }
-    exports.parseItemId = parseItemId;
-    function transformItem(dataItem, sectionIndex, itemIndex, ariaLabelSuffix, drilling, hideAndShowBehavior) {
+    function transformItem(dataItem, sectionIndex, itemIndex, ariaLabelSuffix, drilling, hideAndShowBehavior, isContextMenuEnabled) {
         const item = { ...legend_item_1.LegendItemDefaults, ...dataItem };
         return {
             borderColor: item.borderColor,
@@ -45,13 +53,12 @@ define(["require", "exports", "../legend-item/legend-item", "../legend-section/l
             datatip: item.shortDesc,
             source: item.source,
             text: item.text,
-            actionable: hideAndShowBehavior === 'on'
+            actionable: hideAndShowBehavior === 'on' || isContextMenuEnabled
                 ? 'inherit'
                 : isLegendItemDrillable(drilling, item.drilling),
             id: `${sectionIndex};${itemIndex}`
         };
     }
-    exports.transformItem = transformItem;
     function transformSection(dataSection, ariaLabelSuffix, sectionIndex, drilling) {
         const section = { ...legend_section_1.LegendSectionDefaults, ...dataSection };
         return {
@@ -60,14 +67,12 @@ define(["require", "exports", "../legend-item/legend-item", "../legend-section/l
             id: `${sectionIndex}`
         };
     }
-    exports.transformSection = transformSection;
     function isTreeDataProvider(dataprovider) {
         if (dataprovider && dataprovider['getChildDataProvider']) {
             return true;
         }
         return false;
     }
-    exports.isTreeDataProvider = isTreeDataProvider;
     const getDefaultSymbolDims = (symbolHeight, symbolWidth) => {
         if (!symbolHeight && !symbolWidth) {
             return { width: undefined, height: undefined };
@@ -99,5 +104,4 @@ define(["require", "exports", "../legend-item/legend-item", "../legend-section/l
         }
         return actionable;
     }
-    exports.isLegendItemDrillable = isLegendItemDrillable;
 });

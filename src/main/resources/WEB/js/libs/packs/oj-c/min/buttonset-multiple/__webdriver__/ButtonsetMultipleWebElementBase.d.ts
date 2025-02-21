@@ -79,23 +79,23 @@ export declare class ButtonsetMultipleWebElementBase extends OjWebElement {
 }
 export interface Items {
     /**
-     *
+     * The toggle item label.
      */
     label: string;
     /**
-     *
+     * The toggle item value.
      */
     value: string;
     /**
-     *
+     * Specifies if the toggle item is disabled (enabled by default).
      */
     disabled: boolean;
     /**
-     *
+     * Optional icon to render at the start of the toggle item.
      */
     startIcon: object;
     /**
-     *
+     * Optional icon to render at the end of the toggle item.
      */
     endIcon: object;
 }

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findDrawerLayout = exports.DrawerLayoutWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var DrawerLayoutWebElement_1 = require("./DrawerLayoutWebElement");
+exports.DrawerLayoutWebElement = void 0;
+exports.findDrawerLayout = findDrawerLayout;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const DrawerLayoutWebElement_1 = require("./DrawerLayoutWebElement");
 Object.defineProperty(exports, "DrawerLayoutWebElement", { enumerable: true, get: function () { return DrawerLayoutWebElement_1.DrawerLayoutWebElement; } });
 /**
  * Retrieve an instance of [DrawerLayoutWebElement](../classes/DrawerLayoutWebElement.html).
@@ -29,6 +30,5 @@ async function findDrawerLayout(driver, by) {
     }
     return webEl;
 }
-exports.findDrawerLayout = findDrawerLayout;
 (0, oraclejet_webdriver_1.register)('oj-c-drawer-layout', DrawerLayoutWebElement_1.DrawerLayoutWebElement);
 //# sourceMappingURL=index.js.map

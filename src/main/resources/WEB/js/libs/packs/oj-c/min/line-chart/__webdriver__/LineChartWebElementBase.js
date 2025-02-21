@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LineChartWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-line-chart WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -112,7 +112,7 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
      * Gets the value of <code>data</code> property.
      * Specifies the DataProvider for the sections and items of the line-chart.
      * @return The value of <code>data</code> property.
-     *
+     * @deprecated Since 17.1.0. Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead.
      */
     getData() {
         return this.getProperty('data');
@@ -224,6 +224,15 @@ class LineChartWebElementBase extends elements_1.OjWebElement {
      */
     getLegend() {
         return this.getProperty('legend');
+    }
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig() {
+        return this.getProperty('contextMenuConfig');
     }
 }
 exports.LineChartWebElementBase = LineChartWebElementBase;

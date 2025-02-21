@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findToggleButton = exports.ToggleButtonWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ToggleButtonWebElement_1 = require("./ToggleButtonWebElement");
+exports.ToggleButtonWebElement = void 0;
+exports.findToggleButton = findToggleButton;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ToggleButtonWebElement_1 = require("./ToggleButtonWebElement");
 Object.defineProperty(exports, "ToggleButtonWebElement", { enumerable: true, get: function () { return ToggleButtonWebElement_1.ToggleButtonWebElement; } });
 /**
  * Retrieve an instance of [ToggleButtonWebElement](../classes/ToggleButtonWebElement.html).
@@ -29,6 +30,5 @@ async function findToggleButton(driver, by) {
     }
     return webEl;
 }
-exports.findToggleButton = findToggleButton;
 (0, oraclejet_webdriver_1.register)('oj-c-toggle-button', ToggleButtonWebElement_1.ToggleButtonWebElement);
 //# sourceMappingURL=index.js.map

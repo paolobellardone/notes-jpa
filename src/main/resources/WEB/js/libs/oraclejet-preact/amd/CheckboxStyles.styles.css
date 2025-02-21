@@ -4,6 +4,7 @@
   display: inline-flex;
   align-items: flex-start;
   gap: var(--iconToTextGap__1qyga5a1);
+  position: relative;
 }
 .CheckboxStyles_checkboxBaseStyle__13w91qj0:focus {
   outline: none;

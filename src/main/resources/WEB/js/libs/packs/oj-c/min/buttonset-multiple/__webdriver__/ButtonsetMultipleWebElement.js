@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ButtonsetMultipleWebElement = void 0;
-var ButtonsetMultipleWebElementBase_1 = require("./ButtonsetMultipleWebElementBase");
+const ButtonsetMultipleWebElementBase_1 = require("./ButtonsetMultipleWebElementBase");
 /**
  * The component WebElement for [oj-c-buttonset-multiple](../../../oj-c/docs/oj.ButtonsetMultiple.html).
  * Do not instantiate this class directly, instead, use

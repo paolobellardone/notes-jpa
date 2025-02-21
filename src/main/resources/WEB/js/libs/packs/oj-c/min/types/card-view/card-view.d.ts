@@ -5,9 +5,11 @@ import { ComponentProps, ComponentType } from 'preact';
 import { DataProvider, Item } from 'ojs/ojdataprovider';
 import { ImmutableKeySet } from 'ojs/ojkeyset';
 import { Action, ExtendGlobalProps, ObservedGlobalProps, ReadOnlyPropertyChanged, TemplateSlot, PropertyChanged } from 'ojs/ojvcomponent';
+import { SkeletonRendererContext } from '@oracle/oraclejet-preact/UNSAFE_CardFlexView';
 import { CardGridView as PreactCardGridView } from '@oracle/oraclejet-preact/UNSAFE_CardGridView';
 import 'css!oj-c/card-view/card-view-styles.css';
 type PreactCardViewProps = ComponentProps<typeof PreactCardGridView>;
+export type SkeletonTemplateContext = SkeletonRendererContext;
 export type ListItemContext<K, D> = {
     data: D;
     item: Item<K, D>;
@@ -18,6 +20,7 @@ export type ReorderDetail<K> = {
     itemKeys: Array<K>;
     referenceKey: K | null;
 };
+type selectionMode = PreactCardViewProps['selectionMode'] | 'singleRequired';
 type Props<K extends string | number, D> = ObservedGlobalProps<'aria-label' | 'aria-labelledby' | 'id'> & {
     onCurrentItemChanged?: ReadOnlyPropertyChanged<K>;
     data?: DataProvider<K, D> | null;
@@ -30,7 +33,7 @@ type Props<K extends string | number, D> = ObservedGlobalProps<'aria-label' | 'a
     selected?: ImmutableKeySet<K>;
     itemTemplate?: TemplateSlot<ListItemContext<K, D>>;
     onSelectedChanged?: PropertyChanged<ImmutableKeySet<K>>;
-    selectionMode?: PreactCardViewProps['selectionMode'];
+    selectionMode?: selectionMode;
     initialAnimation?: PreactCardViewProps['initialAnimation'];
     focusBehavior?: PreactCardViewProps['focusBehavior'];
     columns?: PreactCardViewProps['columns'] | 'auto';
@@ -38,6 +41,7 @@ type Props<K extends string | number, D> = ObservedGlobalProps<'aria-label' | 'a
         items?: 'enabled' | 'disabled';
     };
     onOjReorder?: Action<ReorderDetail<K>>;
+    skeletonTemplate?: TemplateSlot<SkeletonTemplateContext>;
 };
 declare const CardViewImpl: <K extends string | number, D>({ columns, data, focusBehavior, gutterSize, initialAnimation, scrollPolicyOptions, selectionMode, reorderable, ...rest }: Props<K, D>) => import("preact").JSX.Element;
 export declare const CardView: ComponentType<ExtendGlobalProps<ComponentProps<typeof CardViewImpl<string | number, any>>>>;
@@ -68,6 +72,7 @@ export namespace CCardViewElement {
     type selectionModeChanged<K extends string | number, D> = JetElementCustomEventStrict<CCardViewElement<K, D>['selectionMode']>;
     type RenderNoDataTemplate = import('ojs/ojvcomponent').TemplateSlot<{}>;
     type RenderItemTemplate<K extends string | number, D> = import('ojs/ojvcomponent').TemplateSlot<ListItemContext<K, D>>;
+    type RenderSkeletonTemplate = import('ojs/ojvcomponent').TemplateSlot<SkeletonRendererContext>;
 }
 export interface CCardViewElementEventMap<K extends string | number, D> extends HTMLElementEventMap {
     'ojReorder': CCardViewElement.ojReorder<K>;

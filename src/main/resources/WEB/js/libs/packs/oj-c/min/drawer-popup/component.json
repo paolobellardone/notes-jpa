@@ -1,7 +1,7 @@
 {
   "name": "drawer-popup",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -63,7 +63,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/DrawerPopupWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/DrawerPopupWebElement.html"
     }
   },
   "since": "16.0.0",
@@ -132,6 +132,12 @@
         "swipe"
       ],
       "value": "swipe"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "description": "Specifies background color of the Drawer.",
+      "displayName": "backgroundColor",
+      "help": "#backgroundColor"
     }
   },
   "events": {

@@ -87,7 +87,7 @@ export declare class InputMonthMaskWebElementBase extends OjWebElement {
      * Gets the value of <code>labelWrapping</code> property.
      * Should the labels wrap or truncate when there is not enough available space.
      * @return The value of <code>labelWrapping</code> property.
-     *
+     * @deprecated Since 18.0.0. Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value.
      */
     getLabelWrapping(): Promise<string>;
     /**

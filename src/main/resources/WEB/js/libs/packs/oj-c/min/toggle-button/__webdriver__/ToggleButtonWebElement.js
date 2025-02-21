@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ToggleButtonWebElement = void 0;
-var ToggleButtonWebElementBase_1 = require("./ToggleButtonWebElementBase");
+const ToggleButtonWebElementBase_1 = require("./ToggleButtonWebElementBase");
 /**
  * The component WebElement for [oj-c-toggle-button](../../../oj-c/docs/oj.ToggleButton.html).
  * Do not instantiate this class directly, instead, use

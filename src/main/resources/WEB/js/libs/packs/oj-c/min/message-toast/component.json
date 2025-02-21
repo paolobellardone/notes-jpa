@@ -1,7 +1,7 @@
 {
   "name": "message-toast",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -25,11 +25,11 @@
     "oracle": {
       "icon": "oj-ux-ico-messages",
       "uxSpecs": [
-        "toast-messages"
+        "messages-toast-jet"
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/MessageToastWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/MessageToastWebElement.html"
     }
   },
   "propertyLayout": [
@@ -101,8 +101,8 @@
         "bottom",
         "top-start",
         "top-end",
-        "bottom-end",
         "bottom-start",
+        "bottom-end",
         "top-left",
         "top-right",
         "bottom-left",
@@ -121,7 +121,7 @@
           "type": "any"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         },
         "metadata": {
           "type": "object",
@@ -172,7 +172,7 @@
           "type": "any"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         },
         "metadata": {
           "type": "object",

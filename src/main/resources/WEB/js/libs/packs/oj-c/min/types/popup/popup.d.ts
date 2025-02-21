@@ -5,14 +5,10 @@ import { ExtendGlobalProps, PropertyChanged, Action, CancelableAction, ObservedG
 import { ComponentChildren, ComponentType } from 'preact';
 import 'css!oj-c/popup/popup-styles.css';
 import { InitialFocus, Tail, Modality, PopupPlacement } from '@oracle/oraclejet-preact/UNSAFE_Popup';
-import { Coords } from '@oracle/oraclejet-preact/UNSAFE_Floating';
+import { Coords, Offset } from '@oracle/oraclejet-preact/UNSAFE_Floating';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 type PositionCollision = 'none' | 'flip' | 'fit' | 'flipfit' | 'flipcenter';
-type PopupOffset = {
-    x?: number;
-    y?: number;
-};
-export type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'aria-labelledby'> & {
+export type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'aria-labelledby' | 'id'> & {
     children?: ComponentChildren;
     opened: boolean;
     launcher?: string | Element;
@@ -22,7 +18,7 @@ export type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'ari
     autoDismiss?: 'none' | 'focusLoss';
     tail?: Tail;
     initialFocus?: InitialFocus;
-    offset?: PopupOffset;
+    offset?: Offset;
     collision?: PositionCollision;
     onOpenedChanged?: PropertyChanged<boolean>;
     onOjOpen?: Action;

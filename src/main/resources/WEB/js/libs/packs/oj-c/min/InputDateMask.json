@@ -30,7 +30,7 @@
     "since": "16.0.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
+        "type": "production",
         "since": "17.0.0"
       }
     ],
@@ -158,7 +158,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.InputDateMask.DisplayOptions",
+        "value": "oj-c.InputDateMask.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -330,6 +330,13 @@
       "filename": "input-date-mask.tsx",
       "path": "web/components/oj-c/input-date-mask"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -607,7 +614,18 @@
       "names": [
         "Array<object>|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<AsyncValidator<string>|Validator<string>>|null",
+        "jsdocOverride": true,
+        "module": {
+          "AsyncValidator": "ojvalidator-async",
+          "Validator": "ojvalidator"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputDateMask",
@@ -957,10 +975,10 @@
   },
   {
     "memberof": "oj-c.InputDateMask",
-    "id": "oj-c.InputDateMask.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.InputDateMask.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.InputDateMask.DisplayOptions",
+    "longname": "oj-c.InputDateMask.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {

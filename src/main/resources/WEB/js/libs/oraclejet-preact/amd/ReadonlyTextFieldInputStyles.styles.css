@@ -42,7 +42,7 @@
   margin-left: 0.25rem;
   margin-right: 0.25rem;
   padding-left: calc(var(--textToEdgePadding__w6gg1y9) - 0.25rem);
-  padding-right: 0;
+  padding-right: calc(var(--textToEdgePadding__w6gg1y9) - 0.25rem);
   overflow-x: auto;
   overflow-y: auto;
   white-space: pre-wrap;

@@ -8,7 +8,9 @@ type Props = {
     selection?: Readonly<Record<string, MenuSelection>>;
     onSelectionChanged?: (value: Readonly<Record<string, MenuSelection>>) => void;
     onOjMenuAction?: (details: MenuItemSelectionDetail) => void;
-    onOjMenuSelection?: (details: SelectMenuItemDetail<string | Array<string>>) => void;
+    onOjMenuSelection?: (details: SelectMenuItemDetail<string | Array<string>> & {
+        menuSelectionGroupKey: string;
+    }) => void;
     isSplitMenu?: boolean;
 };
 export declare const ItemsMenu: ({ items, selection, onSelectionChanged, onOjMenuAction, isSplitMenu, onOjMenuSelection }: Props) => import("preact").JSX.Element;

@@ -1,4 +1,4 @@
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "preact/compat", "ojs/ojcontext", "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Checkbox", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "oj-c/hooks/UNSAFE_useMergedFormContext/useMergedFormContext", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "./useCheckboxPreact", "css!oj-c/checkbox/checkbox-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, compat_1, Context, ojvcomponent_1, UNSAFE_Checkbox_1, UNSAFE_useFormContext_1, useMergedFormContext_1, UNSAFE_useTabbableMode_1, UNSAFE_useTranslationBundle_1, Layout_1, useAssistiveText_1, useCheckboxPreact_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "preact/compat", "ojs/ojcontext", "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Checkbox", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "oj-c/hooks/UNSAFE_useMergedFormContext/useMergedFormContext", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "./useCheckboxPreact", "css!oj-c/checkbox/checkbox-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, compat_1, Context, ojvcomponent_1, UNSAFE_Checkbox_1, UNSAFE_useFormContext_1, useMergedFormContext_1, UNSAFE_useTabbableMode_1, Layout_1, useAssistiveText_1, useCheckboxPreact_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Checkbox = void 0;
@@ -16,20 +16,6 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
     const FunctionalCheckbox = (0, compat_1.forwardRef)(({ ['aria-describedby']: ariaDescribedBy, children, columnSpan = 1, containerReadonly: propContainerReadonly, disabled = false, displayOptions = displayOptionsDefault, help = helpDefault, helpHints = helpHintsDefault, id, messagesCustom = messagesCustomDefault, onMessagesCustomChanged, onValidChanged, onValueChanged, readonly: propReadonly, required = false, requiredMessageDetail, userAssistanceDensity: propUserAssistanceDensity, value = false }, ref) => {
         const rootRef = (0, hooks_1.useRef)();
         const checkboxRef = (0, hooks_1.useRef)();
-        const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
-        const errorMessage = requiredMessageDetail || translations.checkbox_requiredMessageDetail();
-        const validators = (0, hooks_1.useMemo)(() => {
-            return [
-                {
-                    validate: (value) => {
-                        if (required && value !== true) {
-                            throw new Error(errorMessage);
-                        }
-                        return;
-                    }
-                }
-            ];
-        }, [errorMessage, required]);
         const addBusyState = (0, hooks_1.useCallback)((description) => {
             return rootRef.current
                 ? Context.getContext(rootRef.current)
@@ -55,7 +41,6 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             required,
             requiredMessageDetail,
             userAssistanceDensity: uadValue,
-            validators,
             value
         }, addBusyState);
         (0, hooks_1.useImperativeHandle)(ref, () => ({
@@ -67,7 +52,6 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             displayOptions,
             help,
             helpHints,
-            validators,
             userAssistanceDensity: checkboxProps.userAssistanceDensity
         });
         return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, class: Layout_1.layoutSpanStyles.layoutSpanColumn[columnSpan], children: (0, jsx_runtime_1.jsx)(UNSAFE_useFormContext_1.FormContext.Provider, { value: containerProps, children: (0, jsx_runtime_1.jsx)(UNSAFE_Checkbox_1.Checkbox, { ref: checkboxRef, ...assistiveTextProps, ...checkboxProps, children: children }) }) }));

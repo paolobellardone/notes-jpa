@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DrawerLayoutWebElement = void 0;
-var DrawerLayoutWebElementBase_1 = require("./DrawerLayoutWebElementBase");
+const DrawerLayoutWebElementBase_1 = require("./DrawerLayoutWebElementBase");
 /**
  * The component WebElement for [oj-c-drawer-layout](../../../oj-c/docs/oj.DrawerLayout.html).
  * Do not instantiate this class directly, instead, use

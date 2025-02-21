@@ -1,8 +1,9 @@
 define(["require", "exports", "./utils"], function (require, exports, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.parse = exports.format = void 0;
-    function parse(displayValue, converter) {
+    exports.format = format;
+    exports.parse = parse;
+    function parse(displayValue, converter, translateConverterParseError) {
         if (displayValue === undefined) {
             return { result: 'success', value: null };
         }
@@ -16,13 +17,13 @@ define(["require", "exports", "./utils"], function (require, exports, utils_1) {
             };
         }
         catch (error) {
+            const message = translateConverterParseError?.(error) ?? (0, utils_1.createMessageFromError)(error);
             return {
                 result: 'failure',
-                error: (0, utils_1.createMessageFromError)(error)
+                error: message
             };
         }
     }
-    exports.parse = parse;
     function format(value, defaultValue, converter) {
         if (shouldSkipFormat(value)) {
             return { result: 'success', value: defaultValue };
@@ -40,7 +41,6 @@ define(["require", "exports", "./utils"], function (require, exports, utils_1) {
             };
         }
     }
-    exports.format = format;
     function shouldSkipParse(value) {
         return value === '' || value === null;
     }

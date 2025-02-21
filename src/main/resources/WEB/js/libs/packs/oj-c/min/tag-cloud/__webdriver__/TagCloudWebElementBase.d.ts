@@ -10,7 +10,7 @@ export declare class TagCloudWebElementBase extends OjWebElement {
      * Gets the value of <code>data</code> property.
      * Specifies the DataProvider for the sections and items of the tag-cloud
      * @return The value of <code>data</code> property.
-     *
+     * @deprecated Since 17.1.0. Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead.
      */
     getData(): Promise<null>;
     /**
@@ -97,4 +97,17 @@ export declare class TagCloudWebElementBase extends OjWebElement {
      *
      */
     getSelection(): Promise<Array<any>>;
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig(): Promise<ContextMenuConfig>;
+}
+export interface ContextMenuConfig {
+    /**
+     *
+     */
+    accessibleLabel: string;
 }

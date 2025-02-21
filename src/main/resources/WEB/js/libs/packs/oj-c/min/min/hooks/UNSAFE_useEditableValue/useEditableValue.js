@@ -1,9 +1,8 @@
 define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj-c/editable-value/UNSAFE_useStaleIdentity/useStaleIdentity", "./reducer", "./validationUtils"], function (require, exports, hooks_1, converterUtils_1, utils_1, useStaleIdentity_1, reducer_1, validationUtils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useEditableValue = void 0;
-    const ConverterErrorSymbol = Symbol('ConverterError');
-    function useEditableValue({ addBusyState, ariaDescribedBy, converter, defaultDisplayValue, deferredValidators, disabled, displayOptions, messagesCustom, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged, readonly, validators, value }) {
+    exports.useEditableValue = useEditableValue;
+    function useEditableValue({ addBusyState, ariaDescribedBy, converter, defaultDisplayValue, deferredValidators, disabled, displayOptions, messagesCustom, onDisplayValueChanged, onMessagesCustomChanged, onRawValueChanged, onTransientValueChanged, onValidChanged: propOnValidChanged, onValueChanged, translateConverterParseError, readonly, validators, value }) {
         const initialRender = (0, hooks_1.useRef)(true);
         const { setStaleIdentity } = (0, useStaleIdentity_1.useStaleIdentity)();
         const [state, dispatch] = (0, hooks_1.useReducer)((reducer_1.reducer), {
@@ -22,16 +21,48 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                 displayValue: conversion.result === 'success' ? conversion.value : defaultDisplayValue
             };
         });
+        const currentValidRef = (0, hooks_1.useRef)();
+        const onValidChanged = (0, hooks_1.useCallback)((newValid) => {
+            if (newValid !== currentValidRef.current) {
+                currentValidRef.current = newValid;
+                propOnValidChanged?.(newValid);
+            }
+        }, [propOnValidChanged]);
         const _dispatch = (0, hooks_1.useCallback)((updateFn, payload) => {
             updateFn(dispatch, payload, {
                 onMessagesCustomChanged,
                 onRawValueChanged,
+                onTransientValueChanged,
                 onValidChanged,
                 onValueChanged
             });
             return true;
-        }, [dispatch, onMessagesCustomChanged, onRawValueChanged, onValidChanged, onValueChanged]);
-        const refreshDisplayValue = (0, hooks_1.useCallback)((value) => {
+        }, [
+            dispatch,
+            onMessagesCustomChanged,
+            onRawValueChanged,
+            onTransientValueChanged,
+            onValidChanged,
+            onValueChanged
+        ]);
+        const validateDeferredSync = (0, hooks_1.useCallback)((value) => {
+            const valueToSendToDeferredValidation = typeof value === 'string' ? value.trim() : value;
+            const deferredValidate = (0, validationUtils_1.validateSync)({
+                validators: deferredValidators ?? [],
+                value: valueToSendToDeferredValidation
+            });
+            return deferredValidate;
+        }, [deferredValidators]);
+        const setValue = (0, hooks_1.useCallback)((value) => {
+            _dispatch(reducer_1.updateValue, value);
+        }, [_dispatch]);
+        const setDisplayValue = (0, hooks_1.useCallback)((value) => {
+            _dispatch(reducer_1.updateDisplayValue, value);
+        }, [_dispatch]);
+        const setTransientValue = (0, hooks_1.useCallback)((transientValue) => {
+            _dispatch(reducer_1.updateTransientValue, transientValue);
+        }, [_dispatch]);
+        const formatValue = (0, hooks_1.useCallback)((value) => {
             let newDisplayValue;
             if (!converter) {
                 newDisplayValue = (0, utils_1.treatNull)(value, defaultDisplayValue);
@@ -47,38 +78,43 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                     newDisplayValue = conversion.value;
                 }
             }
+            return newDisplayValue;
+        }, [converter, defaultDisplayValue, _dispatch]);
+        const refreshDisplayValue = (0, hooks_1.useCallback)((value) => {
+            const newDisplayValue = formatValue(value);
             _dispatch(reducer_1.updateDisplayValue, newDisplayValue);
+            onDisplayValueChanged?.();
             return true;
-        }, [converter, _dispatch, defaultDisplayValue]);
+        }, [_dispatch, formatValue, onDisplayValueChanged]);
         const getValueForValidation = (0, hooks_1.useCallback)(() => {
             if (state.valid !== 'invalidShown') {
-                return state.value;
+                return { result: 'success', value: state.value };
             }
             if (!converter) {
-                return (0, utils_1.normalizeValue)(state.displayValue);
+                return { result: 'success', value: (0, utils_1.normalizeValue)(state.displayValue) };
             }
-            const conversion = (0, converterUtils_1.parse)((0, utils_1.normalizeValue)(state.displayValue), converter);
+            return (0, converterUtils_1.parse)((0, utils_1.normalizeValue)(state.displayValue), converter, translateConverterParseError);
+        }, [converter, state.displayValue, state.valid, state.value, translateConverterParseError]);
+        const normalizeAndParseValue = (0, hooks_1.useCallback)((value) => {
+            if (!converter) {
+                return {
+                    result: 'success',
+                    value: (0, utils_1.normalizeValue)(value)
+                };
+            }
+            return (0, converterUtils_1.parse)((0, utils_1.normalizeValue)(value), converter, translateConverterParseError);
+        }, [converter, translateConverterParseError]);
+        const parseValue = (0, hooks_1.useCallback)((value) => {
+            const conversion = normalizeAndParseValue(value);
             if (conversion.result === 'failure') {
                 _dispatch(reducer_1.updateComponentMessages, [conversion.error]);
                 _dispatch(reducer_1.updateValidStatus, 'invalidShown');
-                return ConverterErrorSymbol;
             }
-            return conversion.value;
-        }, [converter, _dispatch, state.displayValue, state.valid, state.value]);
-        const normalizeAndParseValue = (0, hooks_1.useCallback)((value) => {
-            if (!converter) {
-                return (0, utils_1.normalizeValue)(value);
-            }
-            const conversion = (0, converterUtils_1.parse)((0, utils_1.normalizeValue)(value), converter);
-            conversion.result === 'failure' &&
-                _dispatch(reducer_1.updateComponentMessages, [conversion.error]) &&
-                _dispatch(reducer_1.updateValidStatus, 'invalidShown');
-            return conversion.result === 'success' ? conversion.value : ConverterErrorSymbol;
-        }, [converter, _dispatch]);
+            return conversion;
+        }, [_dispatch, normalizeAndParseValue]);
         const fullValidate = (0, hooks_1.useCallback)(async (value, options = {}) => {
             const { doNotClearMessagesCustom = false } = options;
             const hasCustomErrorMessages = doNotClearMessagesCustom && (0, utils_1.hasErrorMessages)(messagesCustom);
-            _dispatch(reducer_1.updateValidStatus, 'pending');
             if (doNotClearMessagesCustom) {
                 _dispatch(reducer_1.updateComponentMessages, []);
                 _dispatch(reducer_1.updateHiddenMessages, []);
@@ -92,7 +128,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                 return true;
             }
             const errors = [];
-            const deferredValidate = (0, validationUtils_1.validateSync)({ validators: deferredValidators ?? [], value });
+            const deferredValidate = validateDeferredSync(value);
             deferredValidate.result === 'failure' && errors.push(...deferredValidate.errors);
             let nonDeferredValidate = undefined;
             if (value !== null && value !== undefined) {
@@ -111,6 +147,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             if (!maybeErrorPromises.length) {
                 return !hasSyncError;
             }
+            !hasSyncError && _dispatch(reducer_1.updateValidStatus, 'pending');
             const resolver = addBusyState?.('running asynchronous validation');
             const { isStale } = setStaleIdentity('useEditableValue-full-validate');
             let hasAsyncError = false;
@@ -131,19 +168,37 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             }
             resolver?.();
             return !hasSyncError && !hasAsyncError;
-        }, [addBusyState, _dispatch, deferredValidators, messagesCustom, setStaleIdentity, validators]);
+        }, [
+            addBusyState,
+            _dispatch,
+            deferredValidators,
+            messagesCustom,
+            setStaleIdentity,
+            validateDeferredSync,
+            validators
+        ]);
         const runFullValidationAndUpdateValue = async () => {
             if (disabled || readonly)
                 return;
-            const parsedValueOrSymbol = getValueForValidation();
-            if (parsedValueOrSymbol === ConverterErrorSymbol)
+            const conversion = getValueForValidation();
+            if (conversion.result === 'failure') {
+                _dispatch(reducer_1.updateComponentMessages, [conversion.error]);
+                _dispatch(reducer_1.updateValidStatus, 'invalidShown');
                 return;
-            const newValue = parsedValueOrSymbol;
+            }
+            const newValue = conversion.value;
             const validated = await validateValueOnInternalChange(newValue, {
                 doNotClearMessagesCustom: true
             });
             validated && _dispatch(reducer_1.updateValue, newValue) && refreshDisplayValue(newValue);
         };
+        const validateValueOnExternalChange = (0, hooks_1.useCallback)((value) => {
+            _dispatch(reducer_1.clearAllMessages);
+            const validated = validateDeferredSync(value);
+            validated.result === 'failure' && _dispatch(reducer_1.updateHiddenMessages, validated.errors);
+            _dispatch(reducer_1.updateValidStatus, validated.result === 'failure' ? 'invalidHidden' : 'valid');
+            return true;
+        }, [_dispatch, validateDeferredSync]);
         const validateValueOnInternalChange = (0, hooks_1.useCallback)(async (value, options = {}) => {
             const { isStale } = setStaleIdentity('useEditableValue-validateValueOnInternalChange');
             const resolver = addBusyState?.('Running validateValueOnInternalChange');
@@ -154,15 +209,21 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             }
             return validationResult;
         }, [addBusyState, fullValidate, setStaleIdentity]);
+        const onCommitValue = (0, hooks_1.useCallback)(async (value, doCommitOnValid = true) => {
+            const validated = await validateValueOnInternalChange(value);
+            validated && doCommitOnValid && _dispatch(reducer_1.updateValue, value);
+            return validated;
+        }, [_dispatch, validateValueOnInternalChange]);
         const onCommit = (0, hooks_1.useCallback)(async ({ value }) => {
-            const parsedValueOrSymbol = normalizeAndParseValue(value);
-            if (parsedValueOrSymbol === ConverterErrorSymbol) {
-                return;
+            const conversion = parseValue(value);
+            if (conversion.result === 'failure') {
+                return false;
             }
-            const parsedValue = parsedValueOrSymbol;
-            const validated = await validateValueOnInternalChange(parsedValue);
-            validated && _dispatch(reducer_1.updateValue, parsedValue) && refreshDisplayValue(parsedValue);
-        }, [_dispatch, normalizeAndParseValue, refreshDisplayValue, validateValueOnInternalChange]);
+            const parsedValue = conversion.value;
+            const succeeded = await onCommitValue(parsedValue);
+            succeeded && refreshDisplayValue(parsedValue);
+            return succeeded;
+        }, [onCommitValue, parseValue, refreshDisplayValue]);
         const onInput = (0, hooks_1.useCallback)(({ value }) => {
             _dispatch(reducer_1.updateDisplayValue, value ?? defaultDisplayValue);
         }, [_dispatch, defaultDisplayValue]);
@@ -170,11 +231,11 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             if (readonly || disabled) {
                 return 'valid';
             }
-            const newValueOrSymbol = normalizeAndParseValue(state.displayValue);
-            if (newValueOrSymbol === ConverterErrorSymbol) {
+            const conversion = parseValue(state.displayValue);
+            if (conversion.result === 'failure') {
                 return 'invalid';
             }
-            const newValue = newValueOrSymbol;
+            const newValue = conversion.value;
             const resolver = addBusyState?.('Running component method validate');
             const validated = await fullValidate(newValue);
             resolver?.();
@@ -191,23 +252,16 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             disabled,
             _dispatch,
             fullValidate,
-            normalizeAndParseValue,
+            parseValue,
             readonly,
             refreshDisplayValue,
             state.displayValue,
             state.value
         ]);
         const reset = (0, hooks_1.useCallback)(() => {
-            _dispatch(reducer_1.clearAllMessages);
-            const valueToValidate = state.value;
-            const validated = (0, validationUtils_1.validateSync)({
-                validators: deferredValidators ?? [],
-                value: valueToValidate
-            });
-            validated.result === 'failure' && _dispatch(reducer_1.updateHiddenMessages, validated.errors);
-            _dispatch(reducer_1.updateValidStatus, validated.result === 'failure' ? 'invalidHidden' : 'valid');
+            validateValueOnExternalChange(state.value);
             refreshDisplayValue(state.value);
-        }, [deferredValidators, _dispatch, refreshDisplayValue, state.value]);
+        }, [refreshDisplayValue, state.value, validateValueOnExternalChange]);
         const showMessages = (0, hooks_1.useCallback)(() => {
             if (state.hiddenMessages && state.hiddenMessages.length > 0) {
                 _dispatch(reducer_1.showHiddenMessages);
@@ -217,12 +271,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
         if (!initialRender.current && state.previousValue !== value) {
             _dispatch(reducer_1.updatePreviousValue, value);
             if (value !== state.value) {
-                _dispatch(reducer_1.clearAllMessages);
-                const validated = (0, validationUtils_1.validateSync)({ validators: deferredValidators ?? [], value });
-                validated.result === 'success' && _dispatch(reducer_1.updateValidStatus, 'valid');
-                validated.result === 'failure' &&
-                    _dispatch(reducer_1.updateValidStatus, 'invalidHidden') &&
-                    _dispatch(reducer_1.updateHiddenMessages, validated.errors);
+                validateValueOnExternalChange(value);
                 _dispatch(reducer_1.updateValue, value);
                 refreshDisplayValue(value);
             }
@@ -267,12 +316,13 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             if (isRequiredToggledToFalse || (!readonly && !disabled)) {
                 switch (state.valid) {
                     case 'valid':
-                        const newValue = getValueForValidation();
-                        if (newValue !== ConverterErrorSymbol) {
-                            const deferredValidate = (0, validationUtils_1.validateSync)({
-                                validators: deferredValidators ?? [],
-                                value: newValue
-                            });
+                        const conversion = getValueForValidation();
+                        if (conversion.result === 'failure') {
+                            _dispatch(reducer_1.updateComponentMessages, [conversion.error]);
+                            _dispatch(reducer_1.updateValidStatus, 'invalidShown');
+                        }
+                        else {
+                            const deferredValidate = validateDeferredSync(conversion.value);
                             deferredValidate.result === 'failure' &&
                                 _dispatch(reducer_1.updateHiddenMessages, deferredValidate.errors) &&
                                 _dispatch(reducer_1.updateValidStatus, 'invalidHidden');
@@ -301,11 +351,12 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             _dispatch(reducer_1.updatePreviousDisabled, disabled);
             _dispatch(reducer_1.updatePreviousReadonly, readonly);
             _dispatch(reducer_1.updateCustomMessages, messagesCustom);
+            _dispatch(reducer_1.updateTransientValue, value);
             if (!disabled && !readonly) {
-                const validated = (0, validationUtils_1.validateSync)({ validators: deferredValidators ?? [], value });
+                const validated = validateDeferredSync(value);
                 validated.result === 'failure' &&
                     _dispatch(reducer_1.updateHiddenMessages, validated.errors) &&
-                    _dispatch(reducer_1.updateValidStatus, 'invalidHidden');
+                    _dispatch(reducer_1.updateValidStatus, (0, utils_1.hasErrorMessages)(messagesCustom) ? 'invalidShown' : 'invalidHidden');
                 validated.result === 'success' &&
                     _dispatch(reducer_1.updateValidStatus, (0, utils_1.hasErrorMessages)(messagesCustom) ? 'invalidShown' : 'valid') &&
                     refreshDisplayValue(value);
@@ -318,19 +369,26 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
         return {
             value: state.value,
             displayValue: state.displayValue,
+            formatValue,
             methods: {
                 reset,
                 showMessages,
                 validate
             },
+            onCommitValue,
+            parseValue,
+            refreshDisplayValue,
+            setDisplayValue,
+            setTransientValue,
+            setValue,
             textFieldProps: {
                 'aria-describedby': ariaDescribedBy,
                 messages: displayOptions?.messages !== 'none' ? state.shownMessages : undefined,
                 onCommit,
                 onInput,
                 value: state.displayValue
-            }
+            },
+            validateValueOnExternalChange
         };
     }
-    exports.useEditableValue = useEditableValue;
 });

@@ -96,7 +96,6 @@
       "filename": "toggle-button.tsx",
       "path": "web/components/oj-c/toggle-button"
     },
-    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -295,12 +294,11 @@
   },
   {
     "memberof": "oj-c.ToggleButton",
-    "id": "oj-c.ToggleButton#click",
-    "name": "click",
+    "id": "oj-c.ToggleButton#focus",
+    "name": "focus",
     "kind": "function",
-    "longname": "oj-c.ToggleButton#click",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "longname": "oj-c.ToggleButton#focus",
+    "description": "",
     "meta": {
       "filename": "toggle-button.tsx",
       "path": "web/components/oj-c/toggle-button"
@@ -310,7 +308,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -322,8 +320,7 @@
     "name": "blur",
     "kind": "function",
     "longname": "oj-c.ToggleButton#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "description": "",
     "meta": {
       "filename": "toggle-button.tsx",
       "path": "web/components/oj-c/toggle-button"
@@ -333,7 +330,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -341,12 +338,11 @@
   },
   {
     "memberof": "oj-c.ToggleButton",
-    "id": "oj-c.ToggleButton#focus",
-    "name": "focus",
+    "id": "oj-c.ToggleButton#click",
+    "name": "click",
     "kind": "function",
-    "longname": "oj-c.ToggleButton#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "longname": "oj-c.ToggleButton#click",
+    "description": "",
     "meta": {
       "filename": "toggle-button.tsx",
       "path": "web/components/oj-c/toggle-button"
@@ -356,7 +352,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }

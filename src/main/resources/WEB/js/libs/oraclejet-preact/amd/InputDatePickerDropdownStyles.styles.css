@@ -6,6 +6,9 @@
   padding-left: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   padding-right: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   padding-top: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 .InputDatePickerDropdownStyles_dropdownStyles__kfdrzm1 {
   overflow-x: hidden;

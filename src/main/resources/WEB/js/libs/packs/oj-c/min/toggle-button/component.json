@@ -1,7 +1,7 @@
 {
   "name": "toggle-button",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -27,7 +27,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/ToggleButtonWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ToggleButtonWebElement.html"
     }
   },
   "propertyLayout": [
@@ -74,8 +74,7 @@
       "type": "string",
       "description": "Text to show in the tooltip. This overrides the default tooltip that renders the label when in icon mode.",
       "help": "#tooltip",
-      "translatable": true,
-      "value": ""
+      "translatable": true
     },
     "disabled": {
       "type": "boolean",
@@ -175,14 +174,14 @@
     }
   },
   "methods": {
-    "click": {
-      "return": "any"
+    "focus": {
+      "return": "void"
     },
     "blur": {
-      "return": "any"
+      "return": "void"
     },
-    "focus": {
-      "return": "any"
+    "click": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

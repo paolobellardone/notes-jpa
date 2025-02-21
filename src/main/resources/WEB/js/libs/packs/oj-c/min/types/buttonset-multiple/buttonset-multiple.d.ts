@@ -6,7 +6,7 @@ import { ButtonSetMultiple as PreactButtonSetMultiple } from '@oracle/oraclejet-
 import { type ToggleItem } from 'oj-c/utils/PRIVATE_toggleUtils/index';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 export type { ToggleItem } from 'oj-c/utils/PRIVATE_toggleUtils/toggleTypes';
-import { ComponentProps, Component } from 'preact';
+import { ComponentProps, Ref, ComponentType } from 'preact';
 import 'css!oj-c/buttonset-multiple/buttonset-multiple-styles.css';
 export type PreactButtonSetMultipleProps = ComponentProps<typeof PreactButtonSetMultiple>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
@@ -21,13 +21,12 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     chroming?: PreactButtonSetMultipleProps['variant'];
     layoutWidth?: PreactButtonSetMultipleProps['layoutWidth'];
 };
-export declare class ButtonsetMultiple extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render({ chroming, disabled, value, onValueChanged, size, width, maxWidth, layoutWidth, items, display, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    blur(): void;
-    focus(): void;
-}
+type ButtonsetMultipleHandle = {
+    focus: () => void;
+    blur: () => void;
+};
+declare function ButtonsetMultipleImpl({ chroming, disabled, value, onValueChanged, size, width, maxWidth, layoutWidth, items, display, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, ...otherProps }: Props, ref: Ref<ButtonsetMultipleHandle>): import("preact").JSX.Element;
+export declare const ButtonsetMultiple: ComponentType<ExtendGlobalProps<ComponentProps<typeof ButtonsetMultipleImpl>>>;
 export interface CButtonsetMultipleElement extends JetElement<CButtonsetMultipleElementSettableProperties>, CButtonsetMultipleElementSettableProperties {
     addEventListener<T extends keyof CButtonsetMultipleElementEventMap>(type: T, listener: (this: HTMLElement, ev: CButtonsetMultipleElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: (boolean | AddEventListenerOptions)): void;
@@ -36,8 +35,8 @@ export interface CButtonsetMultipleElement extends JetElement<CButtonsetMultiple
     setProperty<T extends keyof CButtonsetMultipleElementSettableProperties>(property: T, value: CButtonsetMultipleElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CButtonsetMultipleElementSettableProperties>): void;
     setProperties(properties: CButtonsetMultipleElementSettablePropertiesLenient): void;
-    blur: ButtonsetMultiple['blur'];
-    focus: ButtonsetMultiple['focus'];
+    blur: () => void;
+    focus: () => void;
 }
 export namespace CButtonsetMultipleElement {
     type chromingChanged = JetElementCustomEventStrict<CButtonsetMultipleElement['chroming']>;

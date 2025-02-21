@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InputDatePickerWebElement = void 0;
-var InputDatePickerWebElementBase_1 = require("./InputDatePickerWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
-var UNSAFE_IntlDateTime_1 = require("@oracle/oraclejet-preact/UNSAFE_IntlDateTime");
+const InputDatePickerWebElementBase_1 = require("./InputDatePickerWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
+const UNSAFE_IntlDateTime_1 = require("@oracle/oraclejet-preact/UNSAFE_IntlDateTime");
 /**
  * The component WebElement for [oj-c-input-date-picker](../../../oj-c/docs/oj.InputDatePicker.html).
  * Do not instantiate this class directly, instead, use
@@ -18,10 +18,10 @@ class InputDatePickerWebElement extends InputDatePickerWebElementBase_1.InputDat
         if (!UNSAFE_IntlDateTime_1.DateTimeUtils.isDateOnlyIsoString(value)) {
             throw new Error(`InputDatePickerWebElement - value must be a date-only ISO string: ${value}`);
         }
-        await this.getDriver().executeScript('arguments[0].focus()', this);
         const readonly = await this.getReadonly();
         const disabled = await this.getDisabled();
         if (!(disabled || readonly)) {
+            await this.getDriver().executeScript((el) => el.focus(), this);
             await this.whenBusyContextReady();
             const segments = await this.findElements(selenium_webdriver_1.By.css('[role="spinbutton"]'));
             if (!value) {

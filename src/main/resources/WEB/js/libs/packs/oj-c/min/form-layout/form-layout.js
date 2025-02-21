@@ -1,4 +1,4 @@
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "@oracle/oraclejet-preact/UNSAFE_FormLayout", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "ojs/ojvcomponent"], function (require, exports, jsx_runtime_1, translationBundle_1, UNSAFE_FormLayout_1, Layout_1, ojvcomponent_1) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "@oracle/oraclejet-preact/UNSAFE_FormLayout", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "ojs/ojvcomponent", "css!oj-c/form-layout/form-layout-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, UNSAFE_FormLayout_1, Layout_1, ojvcomponent_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.FormLayout = void 0;

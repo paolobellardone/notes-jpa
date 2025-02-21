@@ -1,5 +1,5 @@
-import { FilePickerWebElementBase } from './FilePickerWebElementBase';
 import { WebDriver } from 'selenium-webdriver';
+import { FilePickerWebElementBase } from './FilePickerWebElementBase';
 /**
  * The component WebElement for [oj-c-file-picker](../../../oj-c/docs/oj.FilePicker.html).
  * Do not instantiate this class directly, instead, use
@@ -17,7 +17,7 @@ export declare class FilePickerWebElement extends FilePickerWebElementBase {
     doSelect(files: Array<{
         path: string;
         type: string;
-    }>): Promise<void>;
+    }>): Promise<boolean>;
     /**
      * This method should be called right before ojfilepickerutils.pickFiles
      * Takes the webdriver and an Array of objects containing file paths + types.

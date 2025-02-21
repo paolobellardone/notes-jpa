@@ -9,12 +9,13 @@ import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useA
 import 'css!oj-c/checkbox/checkbox-styles.css';
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type PreactCheckboxProps = ComponentProps<typeof PreactCheckbox>;
+type DisplayOptionsProps = Pick<DisplayOptions, 'messages'>;
 type CheckboxProps = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     children: ComponentChildren;
     containerReadonly?: boolean;
     columnSpan?: LayoutColumnSpan;
     disabled?: boolean;
-    displayOptions?: Pick<DisplayOptions, 'messages'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     messagesCustom?: PreactCheckboxProps['messages'];

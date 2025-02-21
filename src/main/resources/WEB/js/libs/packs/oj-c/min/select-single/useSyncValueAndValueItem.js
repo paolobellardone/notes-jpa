@@ -1,7 +1,7 @@
-define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/editable-value/UNSAFE_useStaleIdentity/useStaleIdentity", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, useStaleIdentity_1, useValidators_1, utils_1, hooks_1) {
+define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/editable-value/UNSAFE_useStaleIdentity/useStaleIdentity", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, useStaleIdentity_1, utils_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useSyncValueAndValueItem = void 0;
+    exports.useSyncValueAndValueItem = useSyncValueAndValueItem;
     function useSyncValueAndValueItem({ addBusyState, dataProvider, setDisplayValue, setIsLoading, setValue, setValueItem, value, valueItem, validateValueOnExternalChange }) {
         const prevValueRef = (0, hooks_1.useRef)(value);
         const prevValueItemsRef = (0, hooks_1.useRef)(valueItem);
@@ -54,8 +54,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
         ]);
         const syncValueToValueItem = (0, hooks_1.useCallback)(() => {
             const updateValue = (nextValue) => {
-                const validationResult = validateValueOnExternalChange(nextValue);
-                if (validationResult === useValidators_1.ValidationResult.VALID) {
+                const validationSucceeded = validateValueOnExternalChange(nextValue);
+                if (validationSucceeded) {
                     setValue(nextValue);
                     setDisplayValue(nextValue);
                 }
@@ -108,7 +108,6 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
             }
         }, [syncValueItemToValue, syncValueToValueItem, value, valueItem]);
     }
-    exports.useSyncValueAndValueItem = useSyncValueAndValueItem;
     function handleFetchByKeysResults(value, valueItem, fetchByKeysResults) {
         if (valueItem && valueItem.key === value) {
             return valueItem;

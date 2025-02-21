@@ -1,7 +1,7 @@
 {
   "name": "list-item-layout",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -31,7 +31,7 @@
           "description": "Not accessible to WebDriverJS."
         }
       ],
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/ListItemLayoutWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ListItemLayoutWebElement.html"
     }
   },
   "since": "14.0.0",
@@ -101,6 +101,16 @@
       "enumValues": [
         "none",
         "listInset"
+      ]
+    },
+    "verticalAlignment": {
+      "type": "string",
+      "description": "Default is 'middle' which vertically aligns layout content to center of the row.",
+      "displayName": "verticalAlignment",
+      "help": "#verticalAlignment",
+      "enumValues": [
+        "top",
+        "middle"
       ]
     }
   },

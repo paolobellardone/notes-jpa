@@ -48,4 +48,11 @@ export declare class DrawerPopupWebElementBase extends OjWebElement {
      *
      */
     getCloseGesture(): Promise<string>;
+    /**
+     * Gets the value of <code>backgroundColor</code> property.
+     * Specifies background color of the Drawer.
+     * @return The value of <code>backgroundColor</code> property.
+     *
+     */
+    getBackgroundColor(): Promise<string>;
 }

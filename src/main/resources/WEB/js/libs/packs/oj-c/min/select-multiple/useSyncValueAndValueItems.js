@@ -1,7 +1,7 @@
-define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/editable-value/UNSAFE_useValidators/useValidators", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, useValidators_1, utils_1, hooks_1) {
+define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, utils_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useSyncValueAndValueItems = void 0;
+    exports.useSyncValueAndValueItems = useSyncValueAndValueItems;
     function useSyncValueAndValueItems({ addBusyState, dataProvider, setDisplayValue, setIsLoading, setValue, setValueItems, value, valueItems, validateValueOnExternalChange }) {
         const prevValueRef = (0, hooks_1.useRef)(value);
         const prevValueItemsRef = (0, hooks_1.useRef)(valueItems);
@@ -70,8 +70,8 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
         ]);
         const syncValueToValueItems = (0, hooks_1.useCallback)(() => {
             const updateValue = (nextValue) => {
-                const validationResult = validateValueOnExternalChange(nextValue);
-                if (validationResult === useValidators_1.ValidationResult.VALID) {
+                const validationSucceeded = validateValueOnExternalChange(nextValue);
+                if (validationSucceeded) {
                     setValue(nextValue);
                     setDisplayValue(nextValue);
                 }
@@ -131,7 +131,6 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
             }
         }, [syncValueItemsToValue, syncValueToValueItems, value, valueItems]);
     }
-    exports.useSyncValueAndValueItems = useSyncValueAndValueItems;
     function handleFetchByKeysResults(value, valueItems, fetchByKeysResults) {
         const arKeys = Array.from(value.keys());
         return arKeys.reduce((accumMap, currKey) => {

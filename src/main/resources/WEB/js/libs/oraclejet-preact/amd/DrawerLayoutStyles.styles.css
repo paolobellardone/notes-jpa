@@ -9,19 +9,22 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 .DrawerLayoutStyles_mainContent__18a5d602 {
   flex-grow: 1;
   overflow-y: auto;
 }
-.DrawerLayoutStyles_animatedDrawer__18a5d603 {
-  overflow: hidden;
-}
-.DrawerLayoutStyles_reflowDrawer__18a5d604 {
+.DrawerLayoutStyles_reflowDrawer__18a5d603 {
   display: block;
   flex: 0 0 auto;
   border-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-divider);
   border-width: 1px;
+  overflow-y: auto;
+}
+.DrawerLayoutStyles_animatedDrawer__18a5d604 {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .DrawerLayoutStyles_reflowDrawerLeft__18a5d605 {
   border-right-style: solid;
@@ -34,6 +37,7 @@
 }
 .DrawerLayoutStyles_overlayDrawer__18a5d608 {
   background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral10);
+  overflow-y: auto;
 }
 .DrawerLayoutStyles_overlayDrawerLeft__18a5d609 {
   box-shadow: 8px 0 15px rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-boxshadow-shadowcolor),0.05);

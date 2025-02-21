@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findButtonsetMultiple = exports.ButtonsetMultipleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ButtonsetMultipleWebElement_1 = require("./ButtonsetMultipleWebElement");
+exports.ButtonsetMultipleWebElement = void 0;
+exports.findButtonsetMultiple = findButtonsetMultiple;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ButtonsetMultipleWebElement_1 = require("./ButtonsetMultipleWebElement");
 Object.defineProperty(exports, "ButtonsetMultipleWebElement", { enumerable: true, get: function () { return ButtonsetMultipleWebElement_1.ButtonsetMultipleWebElement; } });
 /**
  * Retrieve an instance of [ButtonsetMultipleWebElement](../classes/ButtonsetMultipleWebElement.html).
@@ -29,6 +30,5 @@ async function findButtonsetMultiple(driver, by) {
     }
     return webEl;
 }
-exports.findButtonsetMultiple = findButtonsetMultiple;
 (0, oraclejet_webdriver_1.register)('oj-c-buttonset-multiple', ButtonsetMultipleWebElement_1.ButtonsetMultipleWebElement);
 //# sourceMappingURL=index.js.map

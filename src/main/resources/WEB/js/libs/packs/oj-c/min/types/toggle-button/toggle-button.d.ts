@@ -4,7 +4,7 @@ import 'ojs/oj-jsx-interfaces';
 import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, Slot } from 'ojs/ojvcomponent';
 import { ToggleButton as PreactToggleButton } from '@oracle/oraclejet-preact/UNSAFE_ToggleButton';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
-import { ComponentProps, Component } from 'preact';
+import { ComponentProps, Ref, ComponentType } from 'preact';
 import 'css!oj-c/button/button-styles.css';
 type PreactToggleButtonProps = ComponentProps<typeof PreactToggleButton>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
@@ -20,14 +20,13 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label'> & {
     size?: 'sm' | 'md' | 'lg';
     chroming?: PreactToggleButtonProps['variant'];
 };
-export declare class ToggleButton extends Component<ExtendGlobalProps<Props>> {
-    static defaultProps: Partial<Props>;
-    private buttonRef;
-    render({ chroming: variant, disabled: isDisabled, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width, display, value, label, tooltip, endIcon, startIcon, size, onValueChanged }: ExtendGlobalProps<Props>): import("preact").JSX.Element;
-    click(): void;
-    blur(): void;
-    focus(): void;
-}
+type ToggleButtonHandle = {
+    focus: () => void;
+    blur: () => void;
+    click: () => void;
+};
+declare function ToggleButtonImpl({ chroming, disabled, 'aria-label': accessibleLabel, 'aria-describedby': ariaDescribedBy, width, display, value, label, tooltip, startIcon, endIcon, size, onValueChanged }: Props, ref: Ref<ToggleButtonHandle>): import("preact").JSX.Element;
+export declare const ToggleButton: ComponentType<ExtendGlobalProps<ComponentProps<typeof ToggleButtonImpl>>>;
 export {};
 export interface CToggleButtonElement extends JetElement<CToggleButtonElementSettableProperties>, CToggleButtonElementSettableProperties {
     addEventListener<T extends keyof CToggleButtonElementEventMap>(type: T, listener: (this: HTMLElement, ev: CToggleButtonElementEventMap[T]) => any, options?: (boolean | AddEventListenerOptions)): void;
@@ -37,9 +36,9 @@ export interface CToggleButtonElement extends JetElement<CToggleButtonElementSet
     setProperty<T extends keyof CToggleButtonElementSettableProperties>(property: T, value: CToggleButtonElementSettableProperties[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CToggleButtonElementSettableProperties>): void;
     setProperties(properties: CToggleButtonElementSettablePropertiesLenient): void;
-    blur: ToggleButton['blur'];
-    click: ToggleButton['click'];
-    focus: ToggleButton['focus'];
+    blur: () => void;
+    click: () => void;
+    focus: () => void;
 }
 export namespace CToggleButtonElement {
     type chromingChanged = JetElementCustomEventStrict<CToggleButtonElement['chroming']>;

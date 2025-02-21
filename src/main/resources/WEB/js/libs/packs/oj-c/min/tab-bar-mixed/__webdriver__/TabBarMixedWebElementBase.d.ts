@@ -40,14 +40,14 @@ export declare class TabBarMixedWebElementBase extends OjWebElement {
      * @param selection The value to set for <code>selection</code>
      *
      */
-    changeSelection(selection: any): Promise<void>;
+    changeSelection(selection: string | number): Promise<void>;
     /**
      * Gets the value of <code>selection</code> property.
      * The key of the selected tab
      * @return The value of <code>selection</code> property.
      *
      */
-    getSelection(): Promise<any>;
+    getSelection(): Promise<string | number>;
     /**
      * Gets the value of <code>separatorPadding</code> property.
      * The padding around the vertical divider that seperates collections of tabs.
@@ -82,7 +82,7 @@ export interface DynamicTabs {
     /**
      *
      */
-    itemKey: any;
+    itemKey: string | number;
     /**
      *
      */
@@ -104,7 +104,7 @@ export interface StaticTabs {
     /**
      *
      */
-    itemKey: any;
+    itemKey: string | number;
     /**
      *
      */

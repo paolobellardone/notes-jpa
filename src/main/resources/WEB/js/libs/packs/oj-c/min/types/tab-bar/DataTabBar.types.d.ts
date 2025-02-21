@@ -15,8 +15,18 @@ export type TabData<K extends string | number> = {
     tabPanelId?: string;
     isRemovable?: boolean;
 };
+export type TabLinkItemData<K extends string | number> = {
+    itemKey: K;
+    label: string;
+    icon?: TabIconData;
+    badge?: number;
+    metadata?: string;
+    severity?: Severity;
+    tabPanelId?: string;
+    href: string;
+};
 export type DataTabBarProps<K extends string | number> = {
-    data: TabData<K>[];
+    data: (TabData<K> | TabLinkItemData<K>)[];
     onRemove: TabBarProps['onRemove'];
     onSelect: TabBarProps['onSelect'];
     selection: TabBarProps['selection'];
@@ -26,6 +36,7 @@ export type DataTabBarProps<K extends string | number> = {
     overflow?: 'conveyor' | 'popup' | 'hidden';
     onReorder?: ReorderableTabBarProps['onReorder'];
     reorderable?: 'enabled' | 'disabled';
+    truncation?: 'none' | 'progressive';
     'aria-label'?: TabBarProps['aria-label'];
     'aria-labelledby'?: TabBarProps['aria-labelledby'];
 };

@@ -42,6 +42,13 @@ export declare class MeterBarWebElementBase extends OjWebElement {
      */
     getValue(): Promise<number | null>;
     /**
+     * Gets the value of <code>baseline</code> property.
+     * Define the baseline value of the bar. If undefined, defaults to minimum value of the meter bar.
+     * @return The value of <code>baseline</code> property.
+     *
+     */
+    getBaseline(): Promise<number>;
+    /**
      * Gets the value of <code>step</code> property.
      *
      * @return The value of <code>step</code> property.
@@ -156,6 +163,32 @@ export interface ReferenceLines {
      *
      */
     value: number;
+    /**
+     *
+     */
+    label: string;
+    /**
+     *
+     */
+    style: ReferenceLinesStyle;
+}
+export interface ReferenceLinesStyle {
+    /**
+     *
+     */
+    color: string;
+    /**
+     *
+     */
+    fontSize: string;
+    /**
+     *
+     */
+    fontStyle: string;
+    /**
+     *
+     */
+    fontWeight: string;
 }
 export interface Thresholds {
     /**

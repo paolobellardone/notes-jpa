@@ -30,8 +30,11 @@
     "since": "17.0.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
-        "since": "17.0.0"
+        "type": "supersedes",
+        "since": "17.1.0",
+        "value": [
+          "oj-date-picker"
+        ]
       }
     ],
     "meta": {
@@ -61,7 +64,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(date: Required<CalendarDate>) => { state: \"disabled\" | \"enabled\" | \"restricted\"; }",
+        "value": "(date: Required<oj-c.DatePicker.CalendarDate>) => { state: \"disabled\" | \"enabled\" | \"restricted\"; }",
         "jsdocOverride": true
       }
     ]
@@ -316,6 +319,49 @@
   },
   {
     "memberof": "oj-c.DatePicker",
+    "id": "oj-c.DatePicker#weekDisplay",
+    "name": "weekDisplay",
+    "kind": "member",
+    "longname": "oj-c.DatePicker#weekDisplay",
+    "optional": true,
+    "scope": "instance",
+    "description": "Whether week of the year will be shown in the DatePicker. The default calculation follows the\nrule for ISO 8601 as follows: The first week of the year is defined as the week that contains\nthe first Thursday. Therefore, if January 1st falls on a Friday, it is considered part of the last week\nof the previous year. Conversely, if December 31st falls on a Wednesday, it is part of week 1 of the following year.",
+    "meta": {
+      "filename": "date-picker.tsx",
+      "path": "web/components/oj-c/date-picker"
+    },
+    "ojvalues": [
+      {
+        "name": "none",
+        "description": "The week of the year column will not be shown.",
+        "displayName": "None",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "number",
+        "description": "Will show the week of the year as a number.",
+        "displayName": "Number",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
+    "defaultvalue": "\"none\"",
+    "type": {
+      "names": [
+        "\"number\"",
+        "\"none\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.DatePicker",
     "id": "oj-c.DatePicker#width",
     "name": "width",
     "kind": "member",
@@ -450,5 +496,52 @@
       "path": "web/components/oj-c/date-picker"
     },
     "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.DatePicker",
+    "id": "oj-c.DatePicker.CalendarDate",
+    "name": "CalendarDate",
+    "kind": "typedef",
+    "longname": "oj-c.DatePicker.CalendarDate",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "date-picker.tsx",
+      "path": "web/components/oj-c/date-picker"
+    },
+    "properties": [
+      {
+        "name": "year",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "month",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "day",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
   }
 ]

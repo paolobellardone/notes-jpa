@@ -42,7 +42,7 @@
     "since": "16.1.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
+        "type": "production",
         "since": "17.0.0"
       }
     ],
@@ -186,7 +186,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.InputSensitiveText.DisplayOptions",
+        "value": "oj-c.InputSensitiveText.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -358,6 +358,13 @@
       "filename": "input-sensitive-text.tsx",
       "path": "web/components/oj-c/input-sensitive-text"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -704,7 +711,18 @@
       "names": [
         "Array<object>|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<AsyncValidator<V>|Validator<V>>|null",
+        "jsdocOverride": true,
+        "module": {
+          "AsyncValidator": "ojvalidator-async",
+          "Validator": "ojvalidator"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputSensitiveText",
@@ -1171,10 +1189,10 @@
   },
   {
     "memberof": "oj-c.InputSensitiveText",
-    "id": "oj-c.InputSensitiveText.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.InputSensitiveText.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.InputSensitiveText.DisplayOptions",
+    "longname": "oj-c.InputSensitiveText.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {

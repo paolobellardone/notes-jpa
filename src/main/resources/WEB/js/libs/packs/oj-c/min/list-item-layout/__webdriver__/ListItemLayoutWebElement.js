@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListItemLayoutWebElement = void 0;
-var ListItemLayoutWebElementBase_1 = require("./ListItemLayoutWebElementBase");
+const ListItemLayoutWebElementBase_1 = require("./ListItemLayoutWebElementBase");
 /**
  * ListItemLayout is not accessible to WebDriverJS.
  * These methods are deprecated since 16.0.0 and are not to be used.

@@ -6,6 +6,7 @@ import { FormLayout as PreactFormLayout } from '@oracle/oraclejet-preact/UNSAFE_
 import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
 import { ExtendGlobalProps, ObservedGlobalProps } from 'ojs/ojvcomponent';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import 'css!oj-c/form-layout/form-layout-styles.css';
 type PreactFormLayoutProps = ComponentProps<typeof PreactFormLayout>;
 type Props = ObservedGlobalProps<'id'> & {
     children: ComponentChildren;

@@ -87,7 +87,7 @@ export declare class LineChartWebElementBase extends OjWebElement {
      * Gets the value of <code>data</code> property.
      * Specifies the DataProvider for the sections and items of the line-chart.
      * @return The value of <code>data</code> property.
-     *
+     * @deprecated Since 17.1.0. Data sets from a DataProvider cannot be sent to WebDriverJS; use ViewModels or page variables instead.
      */
     getData(): Promise<null>;
     /**
@@ -174,6 +174,13 @@ export declare class LineChartWebElementBase extends OjWebElement {
      *
      */
     getLegend(): Promise<Legend>;
+    /**
+     * Gets the value of <code>contextMenuConfig</code> property.
+     * Specifies a context menu configuration.
+     * @return The value of <code>contextMenuConfig</code> property.
+     *
+     */
+    getContextMenuConfig(): Promise<ContextMenuConfig>;
 }
 export interface YAxis {
     /**
@@ -365,7 +372,7 @@ export interface XAxisTickLabel {
     /**
      * The converter to format the axis tick labels.
      */
-    converter: object;
+    converter: object | Array<object>;
     /**
      * Whether the tick labels are rendered or not.
      */
@@ -458,4 +465,10 @@ export interface Legend {
      *
      */
     symbolWidth: number;
+}
+export interface ContextMenuConfig {
+    /**
+     *
+     */
+    accessibleLabel: string;
 }

@@ -1,7 +1,7 @@
 define(["require", "exports", "preact/hooks", "../UNSAFE_useDataProvider/useDataProvider"], function (require, exports, hooks_1, useDataProvider_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useVisData = void 0;
+    exports.useVisData = useVisData;
     const STATE_GRAPH = {
         initial: {
             setDP: 'fetching',
@@ -40,5 +40,4 @@ define(["require", "exports", "preact/hooks", "../UNSAFE_useDataProvider/useData
             isLoading: state !== 'fetched'
         };
     }
-    exports.useVisData = useVisData;
 });

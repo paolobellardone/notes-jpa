@@ -1,4 +1,5 @@
 .dropdownStyles_base__1le3d5u0 {
+  --oj-current-bg-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
   box-sizing: border-box;
   background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-neutral0);
   border-width: 1px;
@@ -33,8 +34,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  display: grid;
 }
 .dropdownStyles_list_topGap__1le3d5u5 {
   padding-top: calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));

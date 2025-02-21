@@ -31,6 +31,7 @@ export type MenuItem = {
     variant?: 'standard' | 'destructive';
 };
 export type MenuSubMenu = {
+    key?: string;
     type: 'submenu';
     label?: string;
     disabled?: boolean;
@@ -64,5 +65,6 @@ export type ContextMenuSelectMultiple = MenuSelectMultiple & {
 };
 export type SelectMenuItemDetail<T extends MenuSelection> = {
     value: MenuValueUpdateDetail<T>['value'];
+    menuSelectionGroupKey: string;
 };
 export type ContextMenuItems = ContextMenuSeparator | MenuItem | ContextMenuSubMenu | ContextMenuSelectSingle | ContextMenuSelectMultiple;

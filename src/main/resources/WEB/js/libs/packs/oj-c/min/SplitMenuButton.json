@@ -30,7 +30,7 @@
     "since": "14.0.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
+        "type": "production",
         "since": "17.0.0"
       }
     ],
@@ -53,7 +53,6 @@
       "filename": "split-menu-button.tsx",
       "path": "web/components/oj-c/split-menu-button"
     },
-    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -82,335 +81,10 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<MenuSeparator|MenuItem>",
+        "value": "Array<oj-c.SplitMenuButton.MenuSeparator|oj-c.SplitMenuButton.MenuItem>",
         "jsdocOverride": true
       }
     ]
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].type",
-    "name": "items[].type",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].type",
-    "scope": "instance",
-    "description": "Specifies the type of the menu item.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "tsdeprecated": [
-      {
-        "type": "deprecated",
-        "target": "propertyValue",
-        "since": "17.0.0",
-        "value": [
-          "divider"
-        ],
-        "description": "Use 'separator' instead."
-      }
-    ],
-    "ojvalues": [
-      {
-        "name": "item",
-        "description": "A selectable menu item that triggers an action.",
-        "type": {
-          "names": [
-            "string"
-          ]
-        }
-      },
-      {
-        "name": "separator",
-        "description": "A non-selectable menu item that visibly separates menu items (no other properties apply).",
-        "type": {
-          "names": [
-            "string"
-          ]
-        }
-      },
-      {
-        "name": "divider",
-        "description": "A divider that visibly separates menu items (deprecated).",
-        "type": {
-          "names": [
-            "string"
-          ]
-        },
-        "tsdeprecated": [
-          {
-            "target": "propertyValue",
-            "for": "divider",
-            "since": "17.0.0",
-            "description": "Use 'separator' instead."
-          }
-        ]
-      }
-    ],
-    "type": {
-      "names": [
-        "\"item\"",
-        "\"separator\"",
-        "\"divider\""
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].label",
-    "name": "items[].label",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].label",
-    "scope": "instance",
-    "description": "Specifies the text to show for the menu item.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].key",
-    "name": "items[].key",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].key",
-    "scope": "instance",
-    "description": "Specifes a key value associated with the menu item.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].disabled",
-    "name": "items[].disabled",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].disabled",
-    "scope": "instance",
-    "description": "Specifies whether the menu item should be disabled.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "boolean"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].onAction",
-    "name": "items[].onAction",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].onAction",
-    "scope": "instance",
-    "description": "A callback function invoked when the menu item is selected.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "function"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].startIcon",
-    "name": "items[].startIcon",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].startIcon",
-    "scope": "instance",
-    "description": "Specifies an icon to show at the start position of the menu item.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "object"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].startIcon.type",
-    "name": "items[].startIcon.type",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].startIcon.type",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "\"class\"",
-        "\"img\""
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].startIcon.class",
-    "name": "items[].startIcon.class",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].startIcon.class",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].startIcon.src",
-    "name": "items[].startIcon.src",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].startIcon.src",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].endIcon",
-    "name": "items[].endIcon",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].endIcon",
-    "scope": "instance",
-    "description": "Specifies an icon to show at the end position of the menu item.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "object"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].endIcon.type",
-    "name": "items[].endIcon.type",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].endIcon.type",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "\"class\"",
-        "\"img\""
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].endIcon.class",
-    "name": "items[].endIcon.class",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].endIcon.class",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].endIcon.src",
-    "name": "items[].endIcon.src",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].endIcon.src",
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "type": {
-      "names": [
-        "string"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#items[].variant",
-    "name": "items[].variant",
-    "kind": "member",
-    "longname": "oj-c.SplitMenuButton#items[].variant",
-    "scope": "instance",
-    "description": "Specifies styling for the menu item based upon its associated action.",
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "ojvalues": [
-      {
-        "name": "standard",
-        "description": "Styling for a standard menu item",
-        "type": {
-          "names": [
-            "string"
-          ]
-        }
-      },
-      {
-        "name": "destructive",
-        "description": "Styling for a menu item associated with a non-reversible action",
-        "type": {
-          "names": [
-            "string"
-          ]
-        }
-      }
-    ],
-    "type": {
-      "names": [
-        "\"standard\"",
-        "\"destructive\""
-      ]
-    }
   },
   {
     "memberof": "oj-c.SplitMenuButton",
@@ -580,35 +254,11 @@
   },
   {
     "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#blur",
-    "name": "blur",
-    "kind": "function",
-    "longname": "oj-c.SplitMenuButton#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
-    "meta": {
-      "filename": "split-menu-button.tsx",
-      "path": "web/components/oj-c/split-menu-button"
-    },
-    "scope": "instance",
-    "returns": [
-      {
-        "type": {
-          "names": [
-            "any"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.SplitMenuButton",
     "id": "oj-c.SplitMenuButton#focus",
     "name": "focus",
     "kind": "function",
     "longname": "oj-c.SplitMenuButton#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "description": "",
     "meta": {
       "filename": "split-menu-button.tsx",
       "path": "web/components/oj-c/split-menu-button"
@@ -618,7 +268,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -626,12 +276,11 @@
   },
   {
     "memberof": "oj-c.SplitMenuButton",
-    "id": "oj-c.SplitMenuButton#doAction",
-    "name": "doAction",
+    "id": "oj-c.SplitMenuButton#blur",
+    "name": "blur",
     "kind": "function",
-    "longname": "oj-c.SplitMenuButton#doAction",
-    "description": "invokes button action",
-    "ojhidden": true,
+    "longname": "oj-c.SplitMenuButton#blur",
+    "description": "",
     "meta": {
       "filename": "split-menu-button.tsx",
       "path": "web/components/oj-c/split-menu-button"
@@ -641,7 +290,29 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton#click",
+    "name": "click",
+    "kind": "function",
+    "longname": "oj-c.SplitMenuButton#click",
+    "description": "",
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "scope": "instance",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "void"
           ]
         }
       }
@@ -801,5 +472,164 @@
       "path": "web/components/oj-c/split-menu-button"
     },
     "ojfragment": true
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton.MenuSeparator",
+    "name": "MenuSeparator",
+    "kind": "typedef",
+    "longname": "oj-c.SplitMenuButton.MenuSeparator",
+    "scope": "static",
+    "description": "Specifies a menu separator:  <code>{ type: \"separator\" }</code>.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "properties": [
+      {
+        "name": "type",
+        "description": "Specifies a separator menu item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"separator\"",
+            "\"divider\""
+          ]
+        },
+        "tsdeprecated": [
+          {
+            "type": "deprecated",
+            "since": "17.0.0",
+            "target": "propertyValue",
+            "value": [
+              "divider"
+            ],
+            "description": "Use 'separator' instead."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.SplitMenuButton",
+    "id": "oj-c.SplitMenuButton.MenuItem",
+    "name": "MenuItem",
+    "kind": "typedef",
+    "longname": "oj-c.SplitMenuButton.MenuItem",
+    "scope": "static",
+    "description": "Specifies a standard menu item.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "split-menu-button.tsx",
+      "path": "web/components/oj-c/split-menu-button"
+    },
+    "properties": [
+      {
+        "name": "type",
+        "description": "Specifies a standard menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"item\""
+          ]
+        }
+      },
+      {
+        "name": "label",
+        "description": "The menu item label.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "key",
+        "description": "A unique key associated with the menu item.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "disabled",
+        "description": "Specifies if the menu item is disabled (enabled by default).",
+        "optional": true,
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        }
+      },
+      {
+        "name": "onAction",
+        "description": "Optional callback function associated with the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "function"
+          ]
+        }
+      },
+      {
+        "name": "startIcon",
+        "description": "Optional icon to render at the start of the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "startIcon"
+          }
+        ]
+      },
+      {
+        "name": "endIcon",
+        "description": "Optional icon to render at the end of the menu item.",
+        "optional": true,
+        "type": {
+          "names": [
+            "object"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "endIcon"
+          }
+        ]
+      },
+      {
+        "name": "variant",
+        "description": "Specifies the menu item behavior.",
+        "optional": true,
+        "type": {
+          "names": [
+            "\"standard\"",
+            "\"destructive\""
+          ]
+        }
+      }
+    ]
   }
 ]

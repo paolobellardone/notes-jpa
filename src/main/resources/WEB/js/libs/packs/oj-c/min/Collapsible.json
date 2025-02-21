@@ -293,8 +293,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -334,8 +334,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -366,8 +366,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }
@@ -398,8 +398,8 @@
           {
             "target": "Type",
             "value": "EventTarget|null",
-            "for": "target",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "target"
           }
         ]
       }

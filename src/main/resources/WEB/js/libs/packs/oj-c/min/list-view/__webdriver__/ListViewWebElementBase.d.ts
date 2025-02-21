@@ -8,11 +8,18 @@ import { OjWebElement } from '@oracle/oraclejet-webdriver/elements';
 export declare class ListViewWebElementBase extends OjWebElement {
     /**
      * Gets the value of <code>currentItem</code> property.
-     * The item that currently has keyboard focus
+     * The key of the item that currently has keyboard focus
      * @return The value of <code>currentItem</code> property.
      *
      */
-    getCurrentItem(): Promise<any>;
+    getCurrentItem(): Promise<string | number>;
+    /**
+     * Gets the value of <code>currentItemOverride</code> property.
+     * The key of the item that will have keyboard focus
+     * @return The value of <code>currentItemOverride</code> property.
+     *
+     */
+    getCurrentItemOverride(): Promise<CurrentItemOverride>;
     /**
      * Gets the value of <code>gridlines</code> property.
      * Specifies whether the grid lines should be visible.
@@ -62,6 +69,19 @@ export declare class ListViewWebElementBase extends OjWebElement {
      *
      */
     getReorderable(): Promise<Reorderable>;
+    /**
+     * Gets the value of <code>item</code> property.
+     * The item option contains a subset of options for items.
+     * @return The value of <code>item</code> property.
+     *
+     */
+    getItem(): Promise<Item>;
+}
+export interface CurrentItemOverride {
+    /**
+     *
+     */
+    rowKey: string | number;
 }
 export interface Gridlines {
     /**
@@ -98,4 +118,10 @@ export interface Reorderable {
      *
      */
     items: string;
+}
+export interface Item {
+    /**
+     * It controls the padding around the list item
+     */
+    padding: string | object;
 }

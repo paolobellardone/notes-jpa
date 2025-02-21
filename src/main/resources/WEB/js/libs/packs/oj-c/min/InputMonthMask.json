@@ -30,7 +30,7 @@
     "since": "16.1.0",
     "tsdeprecated": [
       {
-        "type": "candidate",
+        "type": "production",
         "since": "17.0.0"
       }
     ],
@@ -100,7 +100,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(p: OverflowMessageDetailParameters) => string",
+        "value": "(p: oj-c.InputMonthMask.OverflowMessageDetailParameters) => string",
         "jsdocOverride": true
       }
     ]
@@ -126,7 +126,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(p: UnderflowMessageDetailParameters) => string",
+        "value": "(p: oj-c.InputMonthMask.UnderflowMessageDetailParameters) => string",
         "jsdocOverride": true
       }
     ]
@@ -172,7 +172,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.InputMonthMask.DisplayOptions",
+        "value": "oj-c.InputMonthMask.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -344,6 +344,13 @@
       "filename": "input-month-mask.tsx",
       "path": "web/components/oj-c/input-month-mask"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -390,45 +397,14 @@
       "names": [
         "object|null"
       ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#max.year",
-    "name": "max.year",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#max.year",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
     },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#max.month",
-    "name": "max.month",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#max.month",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
-    },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Required<oj-c.InputMonthMask.CalendarMonth>|null",
+        "jsdocOverride": true
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputMonthMask",
@@ -475,45 +451,14 @@
       "names": [
         "object|null"
       ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#min.year",
-    "name": "min.year",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#min.year",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
     },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#min.month",
-    "name": "min.month",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#min.month",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
-    },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Required<oj-c.InputMonthMask.CalendarMonth>|null",
+        "jsdocOverride": true
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputMonthMask",
@@ -697,7 +642,18 @@
       "names": [
         "Array<object>|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<AsyncValidator<Required<oj-c.InputMonthMask.CalendarMonth>>|Validator<Required<oj-c.InputMonthMask.CalendarMonth>>>|null",
+        "jsdocOverride": true,
+        "module": {
+          "AsyncValidator": "ojvalidator-async",
+          "Validator": "ojvalidator"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputMonthMask",
@@ -718,45 +674,14 @@
       "names": [
         "object|null"
       ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#value.year",
-    "name": "value.year",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#value.year",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
     },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask#value.month",
-    "name": "value.month",
-    "kind": "member",
-    "longname": "oj-c.InputMonthMask#value.month",
-    "optional": false,
-    "scope": "instance",
-    "description": "",
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
-    },
-    "type": {
-      "names": [
-        "number"
-      ]
-    }
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Required<oj-c.InputMonthMask.CalendarMonth>|null",
+        "jsdocOverride": true
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputMonthMask",
@@ -1165,10 +1090,10 @@
   },
   {
     "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.InputMonthMask.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.InputMonthMask.DisplayOptions",
+    "longname": "oj-c.InputMonthMask.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {
@@ -1289,6 +1214,44 @@
   },
   {
     "memberof": "oj-c.InputMonthMask",
+    "id": "oj-c.InputMonthMask.CalendarMonth",
+    "name": "CalendarMonth",
+    "kind": "typedef",
+    "longname": "oj-c.InputMonthMask.CalendarMonth",
+    "scope": "static",
+    "description": "",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "input-month-mask.tsx",
+      "path": "web/components/oj-c/input-month-mask"
+    },
+    "properties": [
+      {
+        "name": "year",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "month",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.InputMonthMask",
     "id": "oj-c.InputMonthMask.ComponentMessageItem",
     "name": "ComponentMessageItem",
     "kind": "typedef",
@@ -1332,44 +1295,6 @@
             "\"confirmation\"",
             "\"info\"",
             "\"warning\""
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.InputMonthMask",
-    "id": "oj-c.InputMonthMask.CalendarMonth",
-    "name": "CalendarMonth",
-    "kind": "typedef",
-    "longname": "oj-c.InputMonthMask.CalendarMonth",
-    "scope": "static",
-    "description": "",
-    "type": {
-      "names": [
-        "Object"
-      ]
-    },
-    "meta": {
-      "filename": "input-month-mask.tsx",
-      "path": "web/components/oj-c/input-month-mask"
-    },
-    "properties": [
-      {
-        "name": "year",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      },
-      {
-        "name": "month",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
           ]
         }
       }

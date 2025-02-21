@@ -1,7 +1,7 @@
 {
   "name": "popup",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -33,7 +33,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/PopupWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/PopupWebElement.html"
     }
   },
   "propertyLayout": [
@@ -78,6 +78,15 @@
       "description": "Specifies whether the Popup is open.",
       "displayName": "opened",
       "help": "#opened",
+      "extension": {
+        "webelement": {
+          "exceptionStatus": [
+            {
+              "type": "getterOnly"
+            }
+          ]
+        }
+      },
       "writeback": true,
       "value": false
     },
@@ -89,13 +98,13 @@
     },
     "anchor": {
       "type": "string|Element|object",
-      "description": "Specifies Popup's anchor. Popup is placed relatively to its anchor.",
+      "description": "Specifies Popup's anchor. Popup is placed relative to its anchor.",
       "displayName": "anchor",
       "help": "#anchor"
     },
     "placement": {
       "type": "string",
-      "description": "Specifies displacement of the Popup from the anchor element placement along the specified axes.",
+      "description": "Specifies the location the popup will appear relative to another element.",
       "displayName": "placement",
       "help": "#placement",
       "enumValues": [
@@ -106,14 +115,14 @@
         "bottom",
         "top-start",
         "top-end",
-        "bottom-end",
-        "bottom-start",
         "top-start-corner",
         "top-end-corner",
         "start-top",
         "start-bottom",
         "start-top-corner",
         "start-bottom-corner",
+        "bottom-start",
+        "bottom-end",
         "bottom-start-corner",
         "bottom-end-corner",
         "end-top",
@@ -169,18 +178,10 @@
       "value": "auto"
     },
     "offset": {
-      "type": "object",
+      "type": "number|object",
       "description": "Specifies displacement of the Popup from the anchor element placement along the specified axes.",
       "displayName": "offset",
-      "help": "#offset",
-      "properties": {
-        "x": {
-          "type": "number"
-        },
-        "y": {
-          "type": "number"
-        }
-      }
+      "help": "#offset"
     },
     "collision": {
       "type": "string",

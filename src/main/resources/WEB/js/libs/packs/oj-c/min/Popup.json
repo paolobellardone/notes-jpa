@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.Popup",
     "kind": "class",
-    "classdesc": "<h3 id=\"popupOverview-section\">\n  JET Popup\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#popupOverview-section\"></a>\n</h3>\n<p>Description: A popup temporarily 'pops up' content in the foreground.</p>\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-popup>\n   Popup content\n&lt;/oj-c-popup>\n\n&lt;oj-c-popup edge=\"end\" opened=\"true\">\n   Opened Popup\n&lt;/oj-c-popup>\n\n&lt;oj-c-popup placement=\"bottom\">\n   Popup positioned at the bottom of the anchor\n&lt;/oj-c-popup>\n\nMain section content\n</code></pre>\n\n<p id=\"popup-section\">A popup temporarily 'pops up' content in the foreground.</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n <thead>\n   <tr>\n     <th>Target</th>\n     <th>Key</th>\n     <th>Action</th>\n   </tr>\n </thead>\n <tbody>\n   <tr>\n      <td rowspan = \"3\">Focus within Popup</td>\n      <td><kbd>Tab</kbd> or <kbd>Shift + Tab</kbd></td>\n      <td>Navigate the content of the popup.</td>\n   </tr>\n   <tr>\n     <td><kbd>F6</kbd></td>\n     <td>Move focus to the launcher for a popup with modeless modality.</td>\n   </tr>\n   <tr>\n     <td><kbd>Esc</kbd></td>\n     <td>Close the open popup.</td>\n   </tr>\n   <tr>\n     <td rowspan = \"1\">Popup Launcher</td>\n     <td><kbd>F6</kbd></td>\n     <td>Move focus to the first tab stop within the open popup. If there is not a tab stop\n         within the content, focus is established on the popup.</td>\n    </tr>\n </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>For WAI-ARIA compliance, JET automatically adds\n<code class=\"prettyprint\">role=\"tooltip\"</code> to the non-modal popup root dom element, or\n<code class=\"prettyprint\">role=\"dialog\"</code> to the modal popup root dom element, if not\nalready specificed. This is not a component property but rather the standard html\n<a href=\"https://www.w3.org/WAI/PF/aria/roles\">role</a> attribute. Depending on how the\npopup is used in the page, the page developer should choose from the following when overriding\nthe default values:\n<ul>\n  <li>\"tooltip\" defines contextual popup that displays a description for an element.\n      Although this is the default role for non-modal popups, it should only be used\n      for popups that include simple textual content and no interactive elements.\n      The \"tooltip\" role should never be used with modal popups.</li>\n  <li>\"dialog\" defines an application window that is designed to interrupt the current\n      processing of an application in order to prompt the user to enter information or\n      require a response. It is the default role for modal popups, but can (and should) be used\n      for non-modal windows too, if the popup includes interactive content.</li>\n  <li>\"alertdialog\" defines type of popup that contains an alert message, where initial focus\n      goes to an element within the popup.</li>\n</ul>\n</p>\n<p>\n The page developer should consider adding the aria-haspopup=\"dialog\" to the launcher element.\n</p>\n<p>\nDepending on the aria role and popup content, the page developer may also need to\nset the <code class=\"prettyprint\">aria-labelledby</code> and (optionally)\n<code class=\"prettyprint\">aria-describedby</code> attributes on the oj-popup\nelement in order to make the popup and its content accessible.\n</p>\n\n<p>One point often overlooked is making the gestures that launch a popup accessible.\n  There are no constraints to what events a page developer might choose to trigger opening a\n  popup.  The choice should be accessible for screen reader users.  Page\n  developers should take care when using mouse events to trigger opening of a popup.\n  This is especially important if the content of the popup can't be derived from other\n  visible areas on the page. In cases that mouseover, mouseout, mouseenter, mouseleave and\n  hover events are used to launch popups, there needs to be a keyboard functional equivalency.\n</p>\n\n<h3 id=\"reparenting-section\">\n  Reparenting\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#reparenting-section\"></a>\n</h3>\n<p id=\"reparenting-strategy\">\n   When popups are open, they will be reparented in the document and reparented back when\n   closed. When open, the location of the popup within the document will be in context of\n   how it's used. Popups open from other popups will be relocated in the document into the\n   nearest parent popup's layer. The popups layer defines its z-index weight \"stacking\n   context\".  The ojPopup's layer is marked with the \"oj-popup-layer\" style.\n   The context of opening is defined by the launcher argument passed to the open method.  If\n   not open from another popup, the popup will be reparented to a container in the document\n   body. Popups of the same type are assigned the same z-index values.  The layering between\n   peer popups reflect the opening order.\n</p>\n<p>\n    There are known caveats with this design. However, these scenarios are considered \"bad use\"\n    based on our JET popup strategy.\n </p>\n <ol>\n   <li>Events raised within the popup will not bubble up to the popup's original ancestors.\n       Instead, listeners for popup events should be applied to either the popup's root\n       element, or the document.</li>\n   <li>Likewise, developers should not use CSS descendant selectors, or similar logic, that\n       assumes that the popup will remain a child of its original parent.</li>\n   <li>Popups containing iframes are problematic.  The iframe elements \"may\" fire a HTTP GET\n       request for its src attribute each time the iframe is reparented in the document.</li>\n   <li>If an iframe is added to the popup's content, it must not be the first or last tab stop\n       within the popup or keyboard and VoiceOver navigation will not remain within the popup.</li>\n   <li>In some browsers, reparenting a popup that contains elements having overflow, will cause\n       these overflow elements to reset their scrollTop.</li>\n </ol>\n\n<h3 id=\"eventHandling-section\">\n  Event Handling\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#eventHandling-section\"></a>\n</h3>\n<ul>\n <li>ojBeforeClose(event) - Triggered before a popup closes. Event can prevent closing the\n     popup; However, there are cases the framework must veto, such as when the popup is\n     destroyed.</li>\n <li>ojClose(event) - Triggered after the popup has closed.</li>\n <li>ojFocus(event) - Triggered when initial focus is established on opening, depending on\n     the value of the initalFocus property, or <kbd>F6</kbd> focus toggle from the associated\n     launcher.</li>\n <li>ojOpen(event) - Triggered after the popup has been made visible.</li>\n</ul>\n\n<h3 id=\"rtl-section\">\n  Reading direction\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#rtl-section\"></a>\n</h3>\n\n<p> Setting the reading direction (LTR or RTL) is supported by setting the <code class=\"prettyprint\">\"dir\"</code> attribute on the\n<code class=\"prettyprint\">&lt;html></code> element of the page. As with any JET component, in the unusual case that the reading direction\nis changed post-init, the page must be reloaded.",
+    "classdesc": "<h3 id=\"popupOverview-section\">\n  JET Popup\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#popupOverview-section\"></a>\n</h3>\n<p>Description: A popup temporarily 'pops up' content in the foreground.</p>\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-popup>\n   Popup content\n&lt;/oj-c-popup>\n\n&lt;oj-c-popup opened=\"true\">\n   Opened Popup\n&lt;/oj-c-popup>\n\n&lt;oj-c-popup placement=\"bottom\">\n   Popup positioned at the bottom of the anchor\n&lt;/oj-c-popup>\n\nMain section content\n</code></pre>\n\n<p id=\"popup-section\">A popup temporarily 'pops up' content in the foreground.</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n <thead>\n   <tr>\n     <th>Target</th>\n     <th>Key</th>\n     <th>Action</th>\n   </tr>\n </thead>\n <tbody>\n   <tr>\n      <td rowspan = \"3\">Focus within Popup</td>\n      <td><kbd>Tab</kbd> or <kbd>Shift + Tab</kbd></td>\n      <td>Navigate the content of the popup.</td>\n   </tr>\n   <tr>\n     <td><kbd>F6</kbd></td>\n     <td>Move focus to the launcher for a popup with modeless modality.</td>\n   </tr>\n   <tr>\n     <td><kbd>Esc</kbd></td>\n     <td>Close the open popup.</td>\n   </tr>\n   <tr>\n     <td rowspan = \"1\">Popup Launcher</td>\n     <td><kbd>F6</kbd></td>\n     <td>Move focus to the first tab stop within the open popup. If there is not a tab stop\n         within the content, focus is established on the popup.</td>\n    </tr>\n </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>For WAI-ARIA compliance, JET automatically adds\n<code class=\"prettyprint\">role=\"tooltip\"</code> to the non-modal popup root dom element, or\n<code class=\"prettyprint\">role=\"dialog\"</code> to the modal popup root dom element, if not\nalready specificed. This is not a component property but rather the standard html\n<a href=\"https://www.w3.org/WAI/PF/aria/roles\">role</a> attribute. Depending on how the\npopup is used in the page, the page developer should choose from the following when overriding\nthe default values:\n<ul>\n  <li>\"tooltip\" defines contextual popup that displays a description for an element.\n      Although this is the default role for non-modal popups, it should only be used\n      for popups that include simple textual content and no interactive elements.\n      The \"tooltip\" role should never be used with modal popups.</li>\n  <li>\"dialog\" defines an application window that is designed to interrupt the current\n      processing of an application in order to prompt the user to enter information or\n      require a response. It is the default role for modal popups, but can (and should) be used\n      for non-modal windows too, if the popup includes interactive content.</li>\n  <li>\"alertdialog\" defines type of popup that contains an alert message, where initial focus\n      goes to an element within the popup.</li>\n</ul>\n</p>\n<p>\n The page developer should consider adding the aria-haspopup=\"dialog\" to the launcher element.\n</p>\n<p>\nDepending on the aria role and popup content, the page developer may also need to\nset the <code class=\"prettyprint\">aria-labelledby</code> and (optionally)\n<code class=\"prettyprint\">aria-describedby</code> attributes on the oj-popup\nelement in order to make the popup and its content accessible.\n</p>\n\n<p>One point often overlooked is making the gestures that launch a popup accessible.\n  There are no constraints to what events a page developer might choose to trigger opening a\n  popup.  The choice should be accessible for screen reader users.  Page\n  developers should take care when using mouse events to trigger opening of a popup.\n  This is especially important if the content of the popup can't be derived from other\n  visible areas on the page. In cases that mouseover, mouseout, mouseenter, mouseleave and\n  hover events are used to launch popups, there needs to be a keyboard functional equivalency.\n</p>\n\n<h3 id=\"reparenting-section\">\n  Reparenting\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#reparenting-section\"></a>\n</h3>\n<p id=\"reparenting-strategy\">\n   When popups are open, they will be reparented in the document and reparented back when\n   closed. When open, the location of the popup within the document will be in context of\n   how it's used. Popups open from other popups will be relocated in the document into the\n   nearest parent popup's layer. The popups layer defines its z-index weight \"stacking\n   context\".  The ojPopup's layer is marked with the \"oj-popup-layer\" style.\n   The context of opening is defined by the launcher argument passed to the open method.  If\n   not open from another popup, the popup will be reparented to a container in the document\n   body. Popups of the same type are assigned the same z-index values.  The layering between\n   peer popups reflect the opening order.\n</p>\n<p>\n    There are known caveats with this design. However, these scenarios are considered \"bad use\"\n    based on our JET popup strategy.\n </p>\n <ol>\n   <li>Events raised within the popup will not bubble up to the popup's original ancestors.\n       Instead, listeners for popup events should be applied to either the popup's root\n       element, or the document.</li>\n   <li>Likewise, developers should not use CSS descendant selectors, or similar logic, that\n       assumes that the popup will remain a child of its original parent.</li>\n   <li>Popups containing iframes are problematic.  The iframe elements \"may\" fire a HTTP GET\n       request for its src attribute each time the iframe is reparented in the document.</li>\n   <li>If an iframe is added to the popup's content, it must not be the first or last tab stop\n       within the popup or keyboard and VoiceOver navigation will not remain within the popup.</li>\n   <li>In some browsers, reparenting a popup that contains elements having overflow, will cause\n       these overflow elements to reset their scrollTop.</li>\n </ol>\n\n<h3 id=\"eventHandling-section\">\n  Event Handling\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#eventHandling-section\"></a>\n</h3>\n<ul>\n <li>ojBeforeClose(event) - Triggered before a popup closes. Event can prevent closing the\n     popup; However, there are cases the framework must veto, such as when the popup is\n     destroyed.</li>\n <li>ojClose(event) - Triggered after the popup has closed.</li>\n <li>ojFocus(event) - Triggered when initial focus is established on opening, depending on\n     the value of the initalFocus property, or <kbd>F6</kbd> focus toggle from the associated\n     launcher.</li>\n <li>ojOpen(event) - Triggered after the popup has been made visible.</li>\n</ul>\n\n<h3 id=\"rtl-section\">\n  Reading direction\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#rtl-section\"></a>\n</h3>\n\n<p> Setting the reading direction (LTR or RTL) is supported by setting the <code class=\"prettyprint\">\"dir\"</code> attribute on the\n<code class=\"prettyprint\">&lt;html></code> element of the page. As with any JET component, in the unusual case that the reading direction\nis changed post-init, the page must be reloaded.",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-popup",
     "tagWithBrackets": "<oj-c-popup>",
@@ -95,7 +95,7 @@
     "longname": "oj-c.Popup#anchor",
     "optional": true,
     "scope": "instance",
-    "description": "Specifies Popup's anchor. Popup is placed relatively to its anchor.",
+    "description": "Specifies Popup's anchor. Popup is placed relative to its anchor.",
     "meta": {
       "filename": "popup.tsx",
       "path": "web/components/oj-c/popup"
@@ -108,7 +108,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "string|Element|Coords",
+        "value": "string|Element|oj-c.Popup.Coords",
         "jsdocOverride": true
       }
     ]
@@ -121,7 +121,7 @@
     "longname": "oj-c.Popup#placement",
     "optional": true,
     "scope": "instance",
-    "description": "Specifies displacement of the Popup from the anchor element placement along the specified axes.\nThe offset object consists of mainAxis and crossAxis properties. The direction in which these properties\nare applied depends on the current value of the position property.\n\nThe <code>mainAxis</code> property represents the distance between the Popup and the anchor.\nThe <code>crossAxis</code> property represents the deviation in the opposite axis to the main axis - the skidding between the Popup and the anchor.",
+    "description": "<p>Specifies the location the popup will appear relative to another element.</p>\n\n<p>If not specified, the default popup position is \"center\" on desktop and \"bottom-start\" on phone.</p>",
     "meta": {
       "filename": "popup.tsx",
       "path": "web/components/oj-c/popup"
@@ -135,14 +135,14 @@
         "\"bottom\"",
         "\"top-start\"",
         "\"top-end\"",
-        "\"bottom-end\"",
-        "\"bottom-start\"",
         "\"top-start-corner\"",
         "\"top-end-corner\"",
         "\"start-top\"",
         "\"start-bottom\"",
         "\"start-top-corner\"",
         "\"start-bottom-corner\"",
+        "\"bottom-start\"",
+        "\"bottom-end\"",
         "\"bottom-start-corner\"",
         "\"bottom-end-corner\"",
         "\"end-top\"",
@@ -253,13 +253,13 @@
     },
     "type": {
       "names": [
-        "object"
+        "number|object"
       ]
     },
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.Popup.PopupOffset",
+        "value": "number|{ mainAxis?: number; crossAxis?: number; }",
         "jsdocOverride": true
       }
     ]
@@ -589,10 +589,10 @@
   },
   {
     "memberof": "oj-c.Popup",
-    "id": "oj-c.Popup.PopupOffset",
-    "name": "PopupOffset",
+    "id": "oj-c.Popup.Coords",
+    "name": "Coords",
     "kind": "typedef",
-    "longname": "oj-c.Popup.PopupOffset",
+    "longname": "oj-c.Popup.Coords",
     "scope": "static",
     "description": "",
     "type": {
@@ -607,7 +607,7 @@
     "properties": [
       {
         "name": "x",
-        "optional": true,
+        "optional": false,
         "type": {
           "names": [
             "number"
@@ -616,12 +616,29 @@
       },
       {
         "name": "y",
-        "optional": true,
+        "optional": false,
         "type": {
           "names": [
             "number"
           ]
         }
+      },
+      {
+        "name": "contextElement",
+        "optional": true,
+        "type": {
+          "names": [
+            "Element"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Element",
+            "jsdocOverride": true,
+            "for": "contextElement"
+          }
+        ]
       }
     ]
   }

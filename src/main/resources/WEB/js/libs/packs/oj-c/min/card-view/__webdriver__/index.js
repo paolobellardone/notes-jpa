@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findCardView = exports.CardViewWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var CardViewWebElement_1 = require("./CardViewWebElement");
+exports.CardViewWebElement = void 0;
+exports.findCardView = findCardView;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const CardViewWebElement_1 = require("./CardViewWebElement");
 Object.defineProperty(exports, "CardViewWebElement", { enumerable: true, get: function () { return CardViewWebElement_1.CardViewWebElement; } });
 /**
  * Retrieve an instance of [CardViewWebElement](../classes/CardViewWebElement.html).
@@ -29,6 +30,5 @@ async function findCardView(driver, by) {
     }
     return webEl;
 }
-exports.findCardView = findCardView;
 (0, oraclejet_webdriver_1.register)('oj-c-card-view', CardViewWebElement_1.CardViewWebElement);
 //# sourceMappingURL=index.js.map

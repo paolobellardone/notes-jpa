@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.treatNull = exports.normalizeValue = exports.isShallowEqual = exports.hasErrorMessages = exports.createMessageFromError = void 0;
+    exports.treatNull = exports.normalizeValue = exports.isShallowEqual = exports.hasErrorMessages = exports.getVirtualKeyboardHintFromConverter = exports.createMessageFromError = void 0;
     const createMessageFromError = (error) => {
         if (typeof error.getMessage === 'function') {
             return {
@@ -32,4 +32,16 @@ define(["require", "exports"], function (require, exports) {
         return !!messages && messages.some((message) => message.severity === 'error');
     };
     exports.hasErrorMessages = hasErrorMessages;
+    const getVirtualKeyboardHintFromConverter = (converter) => {
+        let virtualKeyboardHint;
+        if (converter && converter.resolvedOptions) {
+            const resOptions = converter.resolvedOptions();
+            virtualKeyboardHint = resOptions?.virtualKeyboardHint ?? 'text';
+        }
+        else {
+            virtualKeyboardHint = 'text';
+        }
+        return virtualKeyboardHint;
+    };
+    exports.getVirtualKeyboardHintFromConverter = getVirtualKeyboardHintFromConverter;
 });

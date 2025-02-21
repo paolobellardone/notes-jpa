@@ -58,7 +58,7 @@
     },
     "type": {
       "names": [
-        "Array<string>"
+        "Array<string>|null"
       ]
     }
   },
@@ -117,7 +117,7 @@
         }
       }
     ],
-    "defaultvalue": "\"none\"",
+    "defaultvalue": "none",
     "type": {
       "names": [
         "\"none\"",
@@ -406,8 +406,8 @@
           {
             "target": "Type",
             "value": "FileList",
-            "for": "files",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "files"
           }
         ]
       }
@@ -439,8 +439,8 @@
           {
             "target": "Type",
             "value": "Array<oj-c.FilePicker.ComponentMessageItem>",
-            "for": "messages",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "messages"
           }
         ]
       },
@@ -482,8 +482,8 @@
           {
             "target": "Type",
             "value": "FileList",
-            "for": "files",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "files"
           }
         ]
       }

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PopupWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-popup WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -9,15 +9,6 @@ var elements_1 = require("@oracle/oraclejet-webdriver/elements");
  * Put overrides into the WebElements's subclass, PopupWebElement.ts.
  */
 class PopupWebElementBase extends elements_1.OjWebElement {
-    /**
-     * Sets the value of <code>opened</code> property.
-     * Specifies whether the Popup is open.
-     * @param opened The value to set for <code>opened</code>
-     *
-     */
-    changeOpened(opened) {
-        return this.setProperty('opened', opened);
-    }
     /**
      * Gets the value of <code>opened</code> property.
      * Specifies whether the Popup is open.
@@ -38,7 +29,7 @@ class PopupWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>anchor</code> property.
-     * Specifies Popup's anchor. Popup is placed relatively to its anchor.
+     * Specifies Popup's anchor. Popup is placed relative to its anchor.
      * @return The value of <code>anchor</code> property.
      *
      */
@@ -47,7 +38,7 @@ class PopupWebElementBase extends elements_1.OjWebElement {
     }
     /**
      * Gets the value of <code>placement</code> property.
-     * Specifies displacement of the Popup from the anchor element placement along the specified axes.
+     * Specifies the location the popup will appear relative to another element.
      * @return The value of <code>placement</code> property.
      *
      */

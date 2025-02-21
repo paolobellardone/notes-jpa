@@ -144,7 +144,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.Checkboxset.DisplayOptions",
+        "value": "oj-c.Checkboxset.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -444,8 +444,11 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<(CheckboxsetDataItem & { value: V; })>|DataProvider<V, D>",
-        "jsdocOverride": true
+        "value": "Array<oj-c.Checkboxset.CheckboxsetArrayDataItem<V>>|DataProvider<V, D>",
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -462,6 +465,13 @@
       "filename": "checkboxset.tsx",
       "path": "web/components/oj-c/checkboxset"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -593,7 +603,7 @@
     "defaultvalue": null,
     "type": {
       "names": [
-        "Array<any>|null"
+        "Array<string|number>|null"
       ]
     },
     "tstype": [
@@ -842,7 +852,7 @@
     "kind": "typedef",
     "longname": "oj-c.Checkboxset.CheckboxsetDataItem",
     "scope": "static",
-    "description": "The data item object that represents a checkbox in the rendered checkboxset. The label property is required and\nprovides the text for the checkbox.",
+    "description": "An object that represents the data associated with a checkbox in the rendered checkboxset. The label property is required and\nprovides the text for the checkbox.",
     "type": {
       "names": [
         "Object"
@@ -897,10 +907,10 @@
   },
   {
     "memberof": "oj-c.Checkboxset",
-    "id": "oj-c.Checkboxset.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.Checkboxset.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.Checkboxset.DisplayOptions",
+    "longname": "oj-c.Checkboxset.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {
@@ -1054,6 +1064,88 @@
             "\"warning\""
           ]
         }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Checkboxset",
+    "id": "oj-c.Checkboxset.CheckboxsetArrayDataItem",
+    "name": "CheckboxsetArrayDataItem",
+    "kind": "typedef",
+    "longname": "oj-c.Checkboxset.CheckboxsetArrayDataItem",
+    "scope": "static",
+    "description": "An object that represents the value and corresponding data associated with a checkbox in the rendered checkboxset.\nThe label property is required and provides the text for the checkbox.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<V extends string | number>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "checkboxset.tsx",
+      "path": "web/components/oj-c/checkboxset"
+    },
+    "properties": [
+      {
+        "name": "label",
+        "description": "The value of this required property will provide the text for the checkbox's label.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "assistiveText",
+        "description": "Optional value to provide guidance to the user about the checkbox this applies to.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "helpSourceLink",
+        "description": "Optional link to aid the user in the checkbox this applies to.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "helpSourceText",
+        "description": "Optional custom text to be rendered for the <code>helpSourceLink</code>.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "value",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "V",
+            "jsdocOverride": true,
+            "for": "value"
+          }
+        ]
       }
     ]
   }

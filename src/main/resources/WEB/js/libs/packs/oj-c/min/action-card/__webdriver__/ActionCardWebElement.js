@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActionCardWebElement = void 0;
-var ActionCardWebElementBase_1 = require("./ActionCardWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
+const ActionCardWebElementBase_1 = require("./ActionCardWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
 /**
  * The component WebElement for [oj-c-action-card](../../../oj-c/docs/oj.ActionCard.html).
  * Do not instantiate this class directly, instead, use

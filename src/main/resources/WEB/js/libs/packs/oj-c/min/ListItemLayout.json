@@ -65,6 +65,26 @@
   },
   {
     "memberof": "oj-c.ListItemLayout",
+    "id": "oj-c.ListItemLayout#verticalAlignment",
+    "name": "verticalAlignment",
+    "kind": "member",
+    "longname": "oj-c.ListItemLayout#verticalAlignment",
+    "optional": true,
+    "scope": "instance",
+    "description": "Default is 'middle' which vertically aligns layout content to center of the row.",
+    "meta": {
+      "filename": "list-item-layout.tsx",
+      "path": "web/components/oj-c/list-item-layout"
+    },
+    "type": {
+      "names": [
+        "\"top\"",
+        "\"middle\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.ListItemLayout",
     "id": "oj-c.ListItemLayout#setProperty",
     "name": "setProperty",
     "kind": "function",

@@ -105,8 +105,11 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<ConveyorBeltArrayDataItem<K, D>>|DataProvider<K, D>",
-        "jsdocOverride": true
+        "value": "Array<oj-c.ConveyorBelt.ConveyorBeltArrayDataItem<K, D>>|DataProvider<K, D>",
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -294,8 +297,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -312,11 +315,70 @@
           {
             "target": "Type",
             "value": "Item<K, D>",
-            "for": "item",
             "jsdocOverride": true,
+            "for": "item",
             "module": {
               "Item": "ojdataprovider"
             }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.ConveyorBelt",
+    "id": "oj-c.ConveyorBelt.ConveyorBeltArrayDataItem",
+    "name": "ConveyorBeltArrayDataItem",
+    "kind": "typedef",
+    "longname": "oj-c.ConveyorBelt.ConveyorBeltArrayDataItem",
+    "scope": "static",
+    "description": "",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K,D>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "conveyor-belt.tsx",
+      "path": "web/components/oj-c/conveyor-belt"
+    },
+    "properties": [
+      {
+        "name": "data",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "D",
+            "jsdocOverride": true,
+            "for": "data"
+          }
+        ]
+      },
+      {
+        "name": "key",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "K",
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       }

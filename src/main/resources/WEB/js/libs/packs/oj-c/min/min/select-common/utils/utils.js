@@ -1,7 +1,10 @@
 define(["require", "exports", "ojs/ojdataprovider", "@oracle/oraclejet-preact/utils/UNSAFE_logger"], function (require, exports, ojdataprovider_1, UNSAFE_logger_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getFilterCriterion = exports.isSetEqual = exports.isEmpty = exports.DEFAULT_VALUE_ITEMS = exports.DEFAULT_VALUE_ITEM = exports.DEFAULT_VALUE = exports.DEFAULT_ITEM_CONTEXT = void 0;
+    exports.DEFAULT_VALUE_ITEMS = exports.DEFAULT_VALUE_ITEM = exports.DEFAULT_VALUE = exports.DEFAULT_ITEM_CONTEXT = void 0;
+    exports.isEmpty = isEmpty;
+    exports.isSetEqual = isSetEqual;
+    exports.getFilterCriterion = getFilterCriterion;
     exports.DEFAULT_ITEM_CONTEXT = null;
     exports.DEFAULT_VALUE = null;
     exports.DEFAULT_VALUE_ITEM = null;
@@ -15,7 +18,6 @@ define(["require", "exports", "ojs/ojdataprovider", "@oracle/oraclejet-preact/ut
             return value.size === 0;
         return false;
     }
-    exports.isEmpty = isEmpty;
     function isSetEqual(a, b) {
         if (a === b)
             return true;
@@ -25,7 +27,6 @@ define(["require", "exports", "ojs/ojdataprovider", "@oracle/oraclejet-preact/ut
         const bArray = Array.from(b);
         return aArray.every((value, index) => value === bArray[index]);
     }
-    exports.isSetEqual = isSetEqual;
     function getFilterCriterion(dataProvider, searchText, paramMatchBy) {
         const hasSearchText = searchText && searchText.length > 0;
         if (!hasSearchText) {
@@ -63,5 +64,4 @@ define(["require", "exports", "ojs/ojdataprovider", "@oracle/oraclejet-preact/ut
         const fc = ojdataprovider_1.FilterFactory.getFilter({ filterDef });
         return fc;
     }
-    exports.getFilterCriterion = getFilterCriterion;
 });

@@ -1,7 +1,7 @@
 {
   "name": "legend-section",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -41,7 +41,6 @@
       "displayName": "Text",
       "help": "#text",
       "translatable": true,
-      "required": true,
       "value": ""
     }
   },

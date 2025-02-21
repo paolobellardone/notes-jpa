@@ -11,6 +11,6 @@ type Props = {
 export declare function useMergedFormContext({ propContainerReadonly, propLabelWrapping, propReadonly, propUserAssistanceDensity }: Props): {
     containerProps: FormContextProps;
     readonlyValue: boolean | undefined;
-    uadValue: import("@oracle/oraclejet-preact/UNSAFE_UserAssistance").UserAssistanceDensityType | undefined;
+    uadValue: import("@oracle/oraclejet-preact/dist/types/UNSAFE_UserAssistance").UserAssistanceDensityType | undefined;
 };
 export {};

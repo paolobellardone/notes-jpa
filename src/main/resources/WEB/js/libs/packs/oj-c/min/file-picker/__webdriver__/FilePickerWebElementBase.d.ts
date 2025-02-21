@@ -12,14 +12,14 @@ export declare class FilePickerWebElementBase extends OjWebElement {
      * @return The value of <code>accept</code> property.
      *
      */
-    getAccept(): Promise<Array<string>>;
+    getAccept(): Promise<Array<string> | null>;
     /**
      * Gets the value of <code>capture</code> property.
      * Specifies the preferred facing mode for the device's media capture mechanism.
      * @return The value of <code>capture</code> property.
      *
      */
-    getCapture(): Promise<string>;
+    getCapture(): Promise<string | null>;
     /**
      * Gets the value of <code>disabled</code> property.
      * Disables the filepicker if set to true

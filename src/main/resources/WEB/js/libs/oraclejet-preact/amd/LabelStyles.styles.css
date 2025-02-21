@@ -14,15 +14,14 @@
   color: var(--color__kn3t7f2);
 }
 .LabelStyles_insideBase__t9j3mr3 {
-  padding-inline-end: calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
   color: var(--insideEdgeColor__kn3t7f7);
-  max-width: calc(100% - calc(4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)));
+  max-width: 100%;
 }
 .LabelStyles_insideBaseUADensityEfficientReflow__t9j3mr4 {
   display: block;
 }
 .LabelStyles_insideReadonlyInEnabledForm__t9j3mr5 {
-  inset-inline-start: var(--textToEdgePadding__w6gg1y9);
+  inset-inline: var(--textToEdgePadding__w6gg1y9);
   top: var(--insideEdgePositionTop__kn3t7fa);
   font-size: var(--insideEdgeFontSize__kn3t7f4);
   font-weight: var(--insideEdgeFontWeight__kn3t7f5);
@@ -44,7 +43,7 @@
 }
 .LabelStyles_insideNonReadonly__t9j3mr7 {
   position: absolute;
-  inset-inline-start: var(--textToEdgePadding__w6gg1y9);
+  inset-inline: var(--textToEdgePadding__w6gg1y9);
   top: calc(var(--insideEdgeHeight__w6gg1yh)/ 2);
   transform: translateY(-50%);
   transition-property: all;

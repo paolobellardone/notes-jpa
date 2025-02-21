@@ -13,13 +13,14 @@ import 'css!oj-c/input-month-mask/input-month-mask-styles.css';
 import type { OverflowMessageDetailParameters, UnderflowMessageDetailParameters } from './CalendarMonthRangeValidator';
 type PreactInputDateMaskProps = ComponentProps<typeof PreactInputDateMask>;
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint'>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     dateRangeOverflowMessageDetail?: (p: OverflowMessageDetailParameters) => string;
     dateRangeUnderflowMessageDetail?: (p: UnderflowMessageDetailParameters) => string;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactInputDateMaskProps['labelEdge'];

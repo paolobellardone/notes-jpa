@@ -2,16 +2,17 @@ import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetP
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
 import { SelectMultiple as PreactSelectMultiple } from '@oracle/oraclejet-preact/UNSAFE_SelectMultiple';
-import { ItemContext } from 'ojs/ojcommontypes';
-import { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
-import { ImmutableKeySet } from 'ojs/ojkeyset';
-import { ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
-import { ComponentProps, ComponentType } from 'preact';
-import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
-import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
-import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
+import type { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import { type LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
+import { type DisplayOptions, type Help, type HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
+import type { ItemContext } from 'ojs/ojcommontypes';
+import type { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
+import type { ImmutableKeySet } from 'ojs/ojkeyset';
+import { type ExtendGlobalProps, type ObservedGlobalProps, type PropertyChanged, type ReadOnlyPropertyChanged, type TemplateSlot } from 'ojs/ojvcomponent';
+import type { ComponentProps, ComponentType } from 'preact';
 import 'css!oj-c/select-multiple/select-multiple-styles.css';
 type PreactSelectMultipleProps = ComponentProps<typeof PreactSelectMultiple>;
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint' | 'validatorHint'>;
 type ItemTemplateContext<K extends string | number, D extends Record<string, any>> = Pick<Parameters<NonNullable<PreactSelectMultipleProps['itemRenderer']>>[0], 'searchText'> & {
     item: Item<K, D>;
     selectedKeys: ImmutableKeySet<K>;
@@ -19,13 +20,28 @@ type ItemTemplateContext<K extends string | number, D extends Record<string, any
         value: ImmutableKeySet<K>;
     }>) => void);
 };
+export type CollectionTemplateContext<K extends string | number, D extends Record<string, any>> = {
+    data?: DataProvider<K, D> | null;
+    searchText?: string;
+    currentRowOverride?: {
+        rowKey: K;
+    };
+    onCurrentRowChanged: (detail: {
+        rowKey?: K;
+    }) => void;
+    selected: ImmutableKeySet<K>;
+    onSelectedChanged: (detail: {
+        value?: ImmutableKeySet<K>;
+    }) => void;
+};
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type Props<K extends string | number, D extends Record<string, any>> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
+    collectionTemplate?: TemplateSlot<CollectionTemplateContext<K, D>>;
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     data?: DataProvider<K, D> | null;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint' | 'validatorHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     itemTemplate?: TemplateSlot<ItemTemplateContext<K, D>>;
@@ -62,6 +78,7 @@ export interface CSelectMultipleElement<K extends string | number, D extends Rec
     setProperty<T extends keyof CSelectMultipleElementSettableProperties<K, D>>(property: T, value: CSelectMultipleElementSettableProperties<K, D>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CSelectMultipleElementSettableProperties<K, D>>): void;
     setProperties(properties: CSelectMultipleElementSettablePropertiesLenient<K, D>): void;
+    UNSAFE_focusAndOpenDropdown: () => void;
     _selectItemsByValue: (value: Set<K> | null) => Promise<void>;
     blur: () => void;
     focus: () => void;
@@ -94,6 +111,7 @@ export namespace CSelectMultipleElement {
     type valueChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['value']>;
     type valueItemsChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['valueItems']>;
     type virtualKeyboardChanged<K extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectMultipleElement<K, D>['virtualKeyboard']>;
+    type RenderCollectionTemplate<K extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<CollectionTemplateContext<K, D>>;
     type RenderItemTemplate<K extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<K, D>>;
 }
 export interface CSelectMultipleElementEventMap<K extends string | number, D extends Record<string, any>> extends HTMLElementEventMap {

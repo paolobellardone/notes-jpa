@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListViewWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-list-view WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -11,12 +11,21 @@ var elements_1 = require("@oracle/oraclejet-webdriver/elements");
 class ListViewWebElementBase extends elements_1.OjWebElement {
     /**
      * Gets the value of <code>currentItem</code> property.
-     * The item that currently has keyboard focus
+     * The key of the item that currently has keyboard focus
      * @return The value of <code>currentItem</code> property.
      *
      */
     getCurrentItem() {
         return this.getProperty('currentItem');
+    }
+    /**
+     * Gets the value of <code>currentItemOverride</code> property.
+     * The key of the item that will have keyboard focus
+     * @return The value of <code>currentItemOverride</code> property.
+     *
+     */
+    getCurrentItemOverride() {
+        return this.getProperty('currentItemOverride');
     }
     /**
      * Gets the value of <code>gridlines</code> property.
@@ -80,6 +89,15 @@ class ListViewWebElementBase extends elements_1.OjWebElement {
      */
     getReorderable() {
         return this.getProperty('reorderable');
+    }
+    /**
+     * Gets the value of <code>item</code> property.
+     * The item option contains a subset of options for items.
+     * @return The value of <code>item</code> property.
+     *
+     */
+    getItem() {
+        return this.getProperty('item');
     }
 }
 exports.ListViewWebElementBase = ListViewWebElementBase;

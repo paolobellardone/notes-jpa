@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findPopup = exports.PopupWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var PopupWebElement_1 = require("./PopupWebElement");
+exports.PopupWebElement = void 0;
+exports.findPopup = findPopup;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const PopupWebElement_1 = require("./PopupWebElement");
 Object.defineProperty(exports, "PopupWebElement", { enumerable: true, get: function () { return PopupWebElement_1.PopupWebElement; } });
 /**
  * Retrieve an instance of [PopupWebElement](../classes/PopupWebElement.html).
@@ -29,6 +30,5 @@ async function findPopup(driver, by) {
     }
     return webEl;
 }
-exports.findPopup = findPopup;
 (0, oraclejet_webdriver_1.register)('oj-c-popup', PopupWebElement_1.PopupWebElement);
 //# sourceMappingURL=index.js.map

@@ -13,13 +13,14 @@ import 'css!oj-c/input-date-mask/input-date-mask-styles.css';
 import { DateISOStr } from '@oracle/oraclejet-preact/UNSAFE_IntlDateTime';
 type PreactInputDateMaskProps = ComponentProps<typeof PreactInputDateMask>;
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint'>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     dateRangeOverflowMessageDetail?: string;
     dateRangeUnderflowMessageDetail?: string;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactInputDateMaskProps['labelEdge'];

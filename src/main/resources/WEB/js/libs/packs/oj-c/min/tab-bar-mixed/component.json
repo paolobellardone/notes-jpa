@@ -1,7 +1,7 @@
 {
   "name": "tab-bar-mixed",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -15,7 +15,7 @@
   "main": "oj-c/tab-bar-mixed",
   "status": [
     {
-      "type": "candidate",
+      "type": "production",
       "since": "17.0.0"
     }
   ],
@@ -27,7 +27,7 @@
       "module": "oj-c/tab-bar-mixed"
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TabBarMixedWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/TabBarMixedWebElement.html"
     }
   },
   "since": "16.1.0",
@@ -46,7 +46,7 @@
               "type": "object"
             },
             "itemKey": {
-              "type": "any"
+              "type": "string|number"
             },
             "label": {
               "type": "string"
@@ -102,7 +102,7 @@
       ]
     },
     "selection": {
-      "type": "any",
+      "type": "string|number",
       "description": "The key of the selected tab",
       "displayName": "Selected Tab",
       "help": "#selection",
@@ -127,7 +127,7 @@
               "type": "object"
             },
             "itemKey": {
-              "type": "any"
+              "type": "string|number"
             },
             "label": {
               "type": "string"
@@ -171,7 +171,7 @@
           "type": "function"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     },
@@ -181,7 +181,7 @@
       "help": "#event:remove",
       "detail": {
         "key": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     },
@@ -191,10 +191,10 @@
       "help": "#event:selectionAction",
       "detail": {
         "previousValue": {
-          "type": "any"
+          "type": "string|number"
         },
         "value": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     }

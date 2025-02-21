@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.LineChart",
     "kind": "class",
-    "classdesc": "<h3 id=\"lineChartOverview-section\">\n  JET Line Chart\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#lineChartOverview-section\"></a>\n</h3>\n\n<p>A line chart displays information graphically using data points connected by straight or curved lines, making relationships among the data easier to understand.</p>\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-line-chart\n  data=\"[[dataProvider]]\">\n&lt;/oj-c-line-chart>\n</code>\n</pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n When setting color, applications are responsible for making sure that the color meets the <a target=\"_blank\" href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast requirements</a>.\n</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Data Set Size</h4>\n<p>As a rule of thumb, it's recommended that applications only set usable data densities on the chart. For example,\n   it's not recommended to show more than 500 lines on a 500 pixel wide chart, since the  lines will be unusably thin.\n   While there are several optimizations within the chart to deal with large data sets, it's always more efficient to\n   reduce the data set size as early as possible. Future optimizations will focus on improving end user experience as\n   well as developer productivity for common use cases.\n</p>\n\n<h4>Styling</h4>\n<p>Use the highest level property available. For example, consider setting styling properties on\n   <code class=\"prettyprint\">styleDefaults</code> or <code class=\"prettyprint\">series</code>, instead of styling properties\n   on the individual data items. The chart can take advantage of these higher level properties to apply the style properties on\n   containers, saving expensive DOM calls.\n</p>\n\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td>Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"4\">Plot Line</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "classdesc": "<h3 id=\"lineChartOverview-section\">\n  JET Line Chart\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#lineChartOverview-section\"></a>\n</h3>\n\n<p>A line chart displays information graphically using data points connected by straight or curved lines, making relationships among the data easier to understand.</p>\n\n<pre class=\"prettyprint\">\n<code>\n&lt;oj-c-line-chart\n  data=\"[[dataProvider]]\">\n&lt;/oj-c-line-chart>\n</code>\n</pre>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\nTo make your component accessible, the application is required to include contextual information for screender readers using one or more the following methods as appropriate:\n <ul>\n  <li>aria-describedby</li>\n  <li>aria-labelledby</li>\n  <li>aria-label</li>\n  <li>short-desc property of your items</li>\n </ul>\n<p>\n If your application has custom keyboard and touch shortcuts implemented for the component, these shortcuts can conflict with those of the component. It is the application's responsibility to disclose these custom shortcuts, possibly via a datatip or help popup.\n</p>\n<p>\n When setting color, applications are responsible for making sure that the color meets the <a target=\"_blank\" href=\"https://www.w3.org/TR/WCAG21/#contrast-minimum\">minimum contrast requirements</a>.\n</p>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n     <tr>\n      <td><kbd>PageUp or Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown or Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+F10</kbd></td>\n      <td>Launch the context menu if there is one associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"perf-section\">\n  Performance\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#perf-section\"></a>\n</h3>\n\n<h4>Data Set Size</h4>\n<p>As a rule of thumb, it's recommended that applications only set usable data densities on the chart. For example,\n   it's not recommended to show more than 500 lines on a 500 pixel wide chart, since the  lines will be unusably thin.\n   While there are several optimizations within the chart to deal with large data sets, it's always more efficient to\n   reduce the data set size as early as possible. Future optimizations will focus on improving end user experience as\n   well as developer productivity for common use cases.\n</p>\n\n<h4>Styling</h4>\n<p>Use the highest level property available. For example, consider setting styling properties on\n   <code class=\"prettyprint\">styleDefaults</code> or <code class=\"prettyprint\">series</code>, instead of styling properties\n   on the individual data items. The chart can take advantage of these higher level properties to apply the style properties on\n   containers, saving expensive DOM calls.\n</p>\n\n\n<h3 id=\"touch-section\">\nTouch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"5\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Series Line</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Axis Title</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-line-chart",
     "tagWithBrackets": "<oj-c-line-chart>",
@@ -61,7 +61,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(context1: ChartGroupTemplateContext<K, D>, context2: ChartGroupTemplateContext<K, D>) => number",
+        "value": "(context1: oj-c.LineChart.ChartGroupTemplateContext<K, D>, context2: oj-c.LineChart.ChartGroupTemplateContext<K, D>) => number",
         "jsdocOverride": true
       }
     ]
@@ -230,6 +230,38 @@
       "filename": "line-chart.tsx",
       "path": "web/components/oj-c/line-chart"
     },
+    "ojvalues": [
+      {
+        "name": "enabled",
+        "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute.",
+        "displayName": "Regular",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "mixedFrequency",
+        "description": "The mixed frequency time axis type. The mixed frequency time axis type is used when different series have different sampling frequencies. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> x attribute.",
+        "displayName": "MixedFrequency",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "skipGaps",
+        "description": "The regular time axis type. Time values are passed using <a target='_blank' href='oj-c.LineChartItem.html'>oj-c-line-chart-item</a> group-id attribute. Gap between time values will be ignored.",
+        "displayName": "SkipGaps",
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ],
     "type": {
       "names": [
         "\"enabled\"",
@@ -383,7 +415,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "(context1: ChartSeriesTemplateContext<K, D>, context2: ChartSeriesTemplateContext<K, D>) => number",
+        "value": "(context1: oj-c.LineChart.ChartSeriesTemplateContext<K, D>, context2: oj-c.LineChart.ChartSeriesTemplateContext<K, D>) => number",
         "jsdocOverride": true
       }
     ]
@@ -410,7 +442,10 @@
       {
         "target": "Type",
         "value": "DataProvider<K, D>|null",
-        "jsdocOverride": true
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -422,7 +457,7 @@
     "longname": "oj-c.LineChart#selectionMode",
     "optional": true,
     "scope": "instance",
-    "description": "The type of selection behavior that is enabled on the tag cloud. This attribute controls the number of selections that can be made via selection gestures at any given time.",
+    "description": "The type of selection behavior that is enabled on the line chart. This attribute controls the number of selections that can be made via selection gestures at any given time.",
     "meta": {
       "filename": "line-chart.tsx",
       "path": "web/components/oj-c/line-chart"
@@ -512,10 +547,10 @@
     "type": {
       "names": [
         "\"pan\"",
+        "\"zoom\"",
         "\"select\"",
         "\"off\"",
-        "\"user\"",
-        "\"zoom\""
+        "\"user\""
       ]
     }
   },
@@ -729,6 +764,32 @@
   },
   {
     "memberof": "oj-c.LineChart",
+    "id": "oj-c.LineChart#contextMenuConfig",
+    "name": "contextMenuConfig",
+    "kind": "member",
+    "longname": "oj-c.LineChart#contextMenuConfig",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies a context menu configuration.\nIt takes the keys `accessibleLabel` and `items`,\nwhere `accessibleLabel` is optional and items required . `items` function returns an array\nof menu item object representations that indicates what menu items are going to be part of\nmenu based on some specific context menu context.\n<table>\n<tr><th align='left'>Context Menu Item Type</th><th align='left'>Def</th></tr>\n<tr><td>ContextMenuSeparator</td><td>{ type: 'separator'}</td></tr>\n<tr><td>MenuItem</td><td>{\ntype?: 'item';\nlabel: string;\nkey: string;\ndisabled?: boolean;\nonAction?: () => void;\nstartIcon?: MenuIcon;\nendIcon?: MenuIcon;\nvariant?: 'standard' | 'destructive';\n};</td></tr>\n<tr><td>ContextMenuSubMenu</td><td>{\ntype: 'submenu';\nlabel?: string;\ndisabled?: boolean;\nstartIcon?: string;\nitems?: Array&lt;ContextMenuItems&gt;;\n};</td></tr>\n<tr><td>ContextMenuSelectSingle</td><td>{\ntype: 'selectsingle';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: string;\nonSelection?: (detail: { value: string }) => void;\n};</td></tr>\n<tr><td>ContextMenuSelectMultiple</td><td>{\ntype: 'selectmultiple';\nkey?: string;\nitems?: Array&lt;MenuSelectItem&gt;;\nselection?: Array&lt;string&gt;;\nonSelection?: (detail: { value: Array&lt;string&gt; }) => void;\n};</td></tr>\n<tr><td>MenuIcon</td><td>{\ntype?: 'class';\n    class: string;\n  }\n| {\n    type: 'img';\n   src: string;\n  };</td></tr>\n<tr><td>MenuSelectItem</td><td>{\nlabel: string;\ndisabled?: boolean;\nendIcon?: MenuIcon;\nvalue: string;\n}</td></tr>\n</table>",
+    "meta": {
+      "filename": "line-chart.tsx",
+      "path": "web/components/oj-c/line-chart"
+    },
+    "type": {
+      "names": [
+        "object"
+      ]
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "oj-c.LineChart.LineChartContextMenuConfig<K, D>",
+        "jsdocOverride": true
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChart",
     "id": "oj-c.LineChart#setProperty",
     "name": "setProperty",
     "kind": "function",
@@ -845,8 +906,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -863,8 +924,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "series",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "series"
           }
         ]
       },
@@ -881,8 +942,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "group",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "group"
           }
         ]
       },
@@ -898,9 +959,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.LineChart.LineItem",
-            "for": "data",
-            "jsdocOverride": true
+            "value": "oj-c.LineChart.LineItem<K>",
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -917,8 +978,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "itemData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "itemData"
           }
         ]
       },
@@ -934,9 +995,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.LineChart.LineChartSeries",
-            "for": "seriesData",
-            "jsdocOverride": true
+            "value": "oj-c.LineChart.LineChartSeries<K>",
+            "jsdocOverride": true,
+            "for": "seriesData"
           }
         ]
       },
@@ -953,8 +1014,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.Group",
-            "for": "groupData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "groupData"
           }
         ]
       }
@@ -986,8 +1047,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1004,8 +1065,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "series",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "series"
           }
         ]
       },
@@ -1021,9 +1082,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "oj-c.LineChart.LineChartSeries",
-            "for": "seriesData",
-            "jsdocOverride": true
+            "value": "oj-c.LineChart.LineChartSeries<K>",
+            "jsdocOverride": true,
+            "for": "seriesData"
           }
         ]
       },
@@ -1039,9 +1100,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.LineItem>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.LineItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       }
@@ -1073,8 +1134,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1091,8 +1152,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "group",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "group"
           }
         ]
       },
@@ -1109,8 +1170,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.Group",
-            "for": "groupData",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "groupData"
           }
         ]
       },
@@ -1126,9 +1187,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.LineItem>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.LineItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       }
@@ -1211,6 +1272,97 @@
   },
   {
     "memberof": "oj-c.LineChart",
+    "id": "oj-c.LineChart#event:ojContextMenuAction",
+    "name": "ojContextMenuAction",
+    "kind": "event",
+    "longname": "oj-c.LineChart#event:ojContextMenuAction",
+    "description": "Triggered when a menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "line-chart.tsx",
+      "path": "web/components/oj-c/line-chart"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "menuItemKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChart",
+    "id": "oj-c.LineChart#event:ojContextMenuSelection",
+    "name": "ojContextMenuSelection",
+    "kind": "event",
+    "longname": "oj-c.LineChart#event:ojContextMenuSelection",
+    "description": "Triggered when a select menu item is clicked, whether by keyboard, mouse, or touch events.",
+    "meta": {
+      "filename": "line-chart.tsx",
+      "path": "web/components/oj-c/line-chart"
+    },
+    "scope": "instance",
+    "properties": [
+      {
+        "name": "value",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|Array<string>"
+          ]
+        }
+      },
+      {
+        "name": "contextMenuContext",
+        "optional": false,
+        "type": {
+          "names": [
+            "any"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "C",
+            "jsdocOverride": true,
+            "for": "contextMenuContext"
+          }
+        ]
+      },
+      {
+        "name": "menuSelectionGroupKey",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChart",
     "id": "oj-c.LineChart#itemTemplate",
     "name": "itemTemplate",
     "kind": "member",
@@ -1237,8 +1389,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -1255,8 +1407,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -1299,9 +1451,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1354,9 +1506,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -1397,7 +1549,7 @@
     "name": "touchDoc",
     "kind": "member",
     "longname": "oj-c.LineChart.touchDoc",
-    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td>Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"4\">Plot Line</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td rowspan=\"5\">Data Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Select when <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">none</code>.</td>\n    </tr>\n    <tr>\n      <td><kbd>Double Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled and <code class=\"prettyprint\">selectionMode</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\"><kbd>Press & Hold</kbd></td>\n      <td>Display tooltip.</td>\n    </tr>\n    <tr>\n      <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Categorical Axis Item</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"2\">Legend Item</td>\n      <td rowspan=\"2\"><kbd>Tap</kbd></td>\n      <td>Drill when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td>Filter when <code class=\"prettyprint\">hideAndShowBehavior</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td rowspan=\"5\">Plot Area</td>\n      <td rowspan=\"2\"><kbd>Drag</kbd></td>\n      <td>Pan when panning is enabled and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td>Marquee select when <code class=\"prettyprint\">selectionMode</code> is <code class=\"prettyprint\">multiple</code> and toggled into that mode.</td>\n    </tr>\n    <tr>\n      <td><kbd>Pinch-close</kbd></td>\n      <td>Zoom out when zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Spread-open</kbd></td>\n      <td>Zoom in when zooming is enabled.</td>\n    </tr>\n    <tr>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Series Line</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n    <tr>\n       <td>Axis Title</td>\n       <td><kbd>Press & Hold</kbd></td>\n       <td>Display context menu on release.</td>\n    </tr>\n  </tbody>\n</table>",
     "memberof": "oj-c.LineChart",
     "meta": {
       "filename": "line-chart.tsx",
@@ -1410,7 +1562,7 @@
     "name": "keyboardDoc",
     "kind": "member",
     "longname": "oj-c.LineChart.keyboardDoc",
-    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n  </tbody>\n</table>",
+    "description": "<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><kbd>Tab</kbd></td>\n      <td>Move focus to next element.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + Tab</kbd></td>\n      <td>Move focus to previous element.</td>\n    </tr>\n    <tr>\n      <td><kbd>UpArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>DownArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>LeftArrow</kbd></td>\n      <td>Move focus and selection to previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>RightArrow</kbd></td>\n      <td>Move focus and selection to next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + UpArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + DownArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + LeftArrow</kbd></td>\n      <td>Move focus and multi-select previous data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift + RightArrow</kbd></td>\n      <td>Move focus and multi-select next data item.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + UpArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + DownArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + LeftArrow</kbd></td>\n      <td>Move focus to previous data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + RightArrow</kbd></td>\n      <td>Move focus to next data item, without changing the current selection.</td>\n    </tr>\n    <tr>\n      <td><kbd>Ctrl + Spacebar</kbd></td>\n      <td>Multi-select data item with focus.</td>\n    </tr>\n    <tr>\n      <td><kbd>= or +</kbd></td>\n      <td>Zoom in one level if zooming is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>- or _</kbd></td>\n      <td>Zoom out one level if zooming is enabled.</td>\n    </tr>\n     <tr>\n      <td><kbd>PageUp or Shift + PageUp</kbd></td>\n      <td>Pan left in left-to-right locales. Pan right in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>PageDown or Shift + PageDown</kbd></td>\n      <td>Pan right in left-to-right locales. Pan left in right-to-left locales.</td>\n    </tr>\n    <tr>\n      <td><kbd>Enter</kbd></td>\n      <td>Drill on data item, categorical axis label, or legend item when <code class=\"prettyprint\">drilling</code> is enabled.</td>\n    </tr>\n    <tr>\n      <td><kbd>Shift+F10</kbd></td>\n      <td>Launch the context menu if there is one associated with the current item.</td>\n    </tr>\n  </tbody>\n</table>",
     "memberof": "oj-c.LineChart",
     "meta": {
       "filename": "line-chart.tsx",
@@ -1454,8 +1606,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "id",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "id"
           }
         ]
       },
@@ -1619,8 +1771,8 @@
           {
             "target": "Type",
             "value": "D",
-            "for": "data",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "data"
           }
         ]
       },
@@ -1637,8 +1789,8 @@
           {
             "target": "Type",
             "value": "K",
-            "for": "key",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "key"
           }
         ]
       },
@@ -1689,9 +1841,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -2009,7 +2161,18 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Converter<number>",
+            "jsdocOverride": true,
+            "for": "converter",
+            "module": {
+              "Converter": "ojconverter"
+            }
+          }
+        ]
       },
       {
         "name": "rendered",
@@ -2052,7 +2215,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "style"
+          }
+        ]
       }
     ]
   },
@@ -2127,8 +2298,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.MajorTick",
-            "for": "majorTick",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "majorTick"
           }
         ]
       },
@@ -2145,8 +2316,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.MinorTick",
-            "for": "minorTick",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "minorTick"
           }
         ]
       },
@@ -2163,8 +2334,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.YAxisTickLabel",
-            "for": "tickLabel",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "tickLabel"
           }
         ]
       },
@@ -2259,7 +2430,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "titleStyle"
+          }
+        ]
       }
     ]
   },
@@ -2287,15 +2466,18 @@
         "optional": true,
         "type": {
           "names": [
-            "object|"
+            "object|Array<object>"
           ]
         },
         "tstype": [
           {
             "target": "Type",
-            "value": "Converter<string>|undefined<Converter<string>, Converter<string>>",
+            "value": "Converter<string>|[Converter<string>,Converter<string>]",
+            "jsdocOverride": true,
             "for": "converter",
-            "jsdocOverride": true
+            "module": {
+              "Converter": "ojconverter"
+            }
           }
         ]
       },
@@ -2373,7 +2555,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "style"
+          }
+        ]
       }
     ]
   },
@@ -2408,8 +2598,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.MajorTick",
-            "for": "majorTick",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "majorTick"
           }
         ]
       },
@@ -2426,8 +2616,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.MinorTick",
-            "for": "minorTick",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "minorTick"
           }
         ]
       },
@@ -2444,8 +2634,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.XAxisTickLabel",
-            "for": "tickLabel",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "tickLabel"
           }
         ]
       },
@@ -2518,7 +2708,15 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Partial<CSSStyleDeclaration>",
+            "jsdocOverride": true,
+            "for": "titleStyle"
+          }
+        ]
       }
     ]
   },
@@ -2641,7 +2839,18 @@
           "names": [
             "object"
           ]
-        }
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "Converter<number>",
+            "jsdocOverride": true,
+            "for": "converter",
+            "module": {
+              "Converter": "ojconverter"
+            }
+          }
+        ]
       },
       {
         "name": "tooltipLabel",
@@ -2719,8 +2928,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.TextValueFormat",
-            "for": "group",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "group"
           }
         ]
       },
@@ -2737,8 +2946,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.TextValueFormat",
-            "for": "series",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "series"
           }
         ]
       },
@@ -2755,8 +2964,8 @@
           {
             "target": "Type",
             "value": "oj-c.LineChart.NumericalValueFormat",
-            "for": "value",
-            "jsdocOverride": true
+            "jsdocOverride": true,
+            "for": "value"
           }
         ]
       }
@@ -2797,9 +3006,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.ChartItemTemplateContext>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.ChartItemTemplateContext<K, D>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -2817,94 +3026,6 @@
         "name": "index",
         "description": "The series index",
         "optional": false,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "memberof": "oj-c.LineChart",
-    "id": "oj-c.LineChart.ChartLegend",
-    "name": "ChartLegend",
-    "kind": "typedef",
-    "longname": "oj-c.LineChart.ChartLegend",
-    "scope": "static",
-    "description": "The chart legend type.",
-    "type": {
-      "names": [
-        "Object"
-      ]
-    },
-    "meta": {
-      "filename": "line-chart.tsx",
-      "path": "web/components/oj-c/line-chart"
-    },
-    "properties": [
-      {
-        "name": "position",
-        "description": "The position of the legend within the chart. By default, the legend will be placed on the side or bottom\nof the chart.",
-        "optional": false,
-        "type": {
-          "names": [
-            "\"auto\"",
-            "\"end\"",
-            "\"start\"",
-            "\"top\"",
-            "\"bottom\""
-          ]
-        },
-        "defaultvalue": "\"auto\""
-      },
-      {
-        "name": "rendered",
-        "description": "Defines whether the legend is rendered. If set to auto, the legend will be hidden for charts with a large bunber of series.",
-        "optional": false,
-        "type": {
-          "names": [
-            "\"auto\"",
-            "\"off\"",
-            "\"on\""
-          ]
-        },
-        "defaultvalue": "\"on\""
-      },
-      {
-        "name": "maxSize",
-        "description": "The max size of the legend in pixels or in percentage.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number|string"
-          ]
-        }
-      },
-      {
-        "name": "size",
-        "description": "Defines the size of legend in pixel or percent.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number|string"
-          ]
-        }
-      },
-      {
-        "name": "symbolHeight",
-        "description": "The height of the legend symbol (line or marker) in pixels.",
-        "optional": true,
-        "type": {
-          "names": [
-            "number"
-          ]
-        }
-      },
-      {
-        "name": "symbolWidth",
-        "description": "The width of the legend symbol (line or marker) in pixels.",
-        "optional": true,
         "type": {
           "names": [
             "number"
@@ -2948,9 +3069,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "Array<oj-c.LineChart.LineItem>",
-            "for": "items",
-            "jsdocOverride": true
+            "value": "Array<oj-c.LineChart.LineItem<K>>",
+            "jsdocOverride": true,
+            "for": "items"
           }
         ]
       },
@@ -3148,6 +3269,145 @@
             "string"
           ]
         }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChart",
+    "id": "oj-c.LineChart.ChartLegend",
+    "name": "ChartLegend",
+    "kind": "typedef",
+    "longname": "oj-c.LineChart.ChartLegend",
+    "scope": "static",
+    "description": "The chart legend type.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "line-chart.tsx",
+      "path": "web/components/oj-c/line-chart"
+    },
+    "properties": [
+      {
+        "name": "position",
+        "description": "The position of the legend within the chart. By default, the legend will be placed on the side or bottom\nof the chart.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"end\"",
+            "\"start\"",
+            "\"top\"",
+            "\"bottom\""
+          ]
+        },
+        "defaultvalue": "\"auto\""
+      },
+      {
+        "name": "rendered",
+        "description": "Defines whether the legend is rendered. If set to auto, the legend will be hidden for charts with a large bunber of series.",
+        "optional": false,
+        "type": {
+          "names": [
+            "\"auto\"",
+            "\"off\"",
+            "\"on\""
+          ]
+        },
+        "defaultvalue": "\"on\""
+      },
+      {
+        "name": "maxSize",
+        "description": "The max size of the legend in pixels or in percentage.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number|string"
+          ]
+        }
+      },
+      {
+        "name": "size",
+        "description": "Defines the size of legend in pixel or percent.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number|string"
+          ]
+        }
+      },
+      {
+        "name": "symbolHeight",
+        "description": "The height of the legend symbol (line or marker) in pixels.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      },
+      {
+        "name": "symbolWidth",
+        "description": "The width of the legend symbol (line or marker) in pixels.",
+        "optional": true,
+        "type": {
+          "names": [
+            "number"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.LineChart",
+    "id": "oj-c.LineChart.LineChartContextMenuConfig",
+    "name": "LineChartContextMenuConfig",
+    "kind": "typedef",
+    "longname": "oj-c.LineChart.LineChartContextMenuConfig",
+    "scope": "static",
+    "description": "",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<K,D>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "line-chart.tsx",
+      "path": "web/components/oj-c/line-chart"
+    },
+    "properties": [
+      {
+        "name": "accessibleLabel",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "items",
+        "optional": false,
+        "type": {
+          "names": [
+            "function"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "(context: C) => ContextMenuItems[]",
+            "jsdocOverride": true,
+            "for": "items"
+          }
+        ]
       }
     ]
   }

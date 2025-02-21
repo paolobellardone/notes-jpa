@@ -108,7 +108,7 @@ export declare class InputDatePickerWebElementBase extends OjWebElement {
      * Gets the value of <code>labelWrapping</code> property.
      * Should the labels wrap or truncate when there is not enough available space.
      * @return The value of <code>labelWrapping</code> property.
-     *
+     * @deprecated Since 18.0.0. Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value.
      */
     getLabelWrapping(): Promise<string>;
     /**
@@ -216,6 +216,13 @@ export declare class InputDatePickerWebElementBase extends OjWebElement {
      *
      */
     getValue(): Promise<string | null>;
+    /**
+     * Gets the value of <code>weekDisplay</code> property.
+     * Whether week of the year will be shown in the DatePicker.
+     * @return The value of <code>weekDisplay</code> property.
+     *
+     */
+    getWeekDisplay(): Promise<string>;
     /**
      * Gets the value of <code>rawValue</code> property.
      * Specifies how the raw value of the component

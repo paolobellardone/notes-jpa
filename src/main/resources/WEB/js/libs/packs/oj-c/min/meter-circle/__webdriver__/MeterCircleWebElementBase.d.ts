@@ -166,6 +166,32 @@ export interface ReferenceLines {
      *
      */
     value: number;
+    /**
+     *
+     */
+    label: string;
+    /**
+     *
+     */
+    style: ReferenceLinesStyle;
+}
+export interface ReferenceLinesStyle {
+    /**
+     *
+     */
+    color: string;
+    /**
+     *
+     */
+    fontSize: string;
+    /**
+     *
+     */
+    fontStyle: string;
+    /**
+     *
+     */
+    fontWeight: string;
 }
 export interface Thresholds {
     /**

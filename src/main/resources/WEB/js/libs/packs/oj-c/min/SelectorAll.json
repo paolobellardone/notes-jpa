@@ -73,7 +73,17 @@
       "names": [
         "object"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "ImmutableKeySet<K>",
+        "jsdocOverride": true,
+        "module": {
+          "ImmutableKeySet": "ojkeyset"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.SelectorAll",

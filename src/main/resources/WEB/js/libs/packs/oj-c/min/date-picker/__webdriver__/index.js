@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findDatePicker = exports.DatePickerWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var DatePickerWebElement_1 = require("./DatePickerWebElement");
+exports.DatePickerWebElement = void 0;
+exports.findDatePicker = findDatePicker;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const DatePickerWebElement_1 = require("./DatePickerWebElement");
 Object.defineProperty(exports, "DatePickerWebElement", { enumerable: true, get: function () { return DatePickerWebElement_1.DatePickerWebElement; } });
 /**
  * Retrieve an instance of [DatePickerWebElement](../classes/DatePickerWebElement.html).
@@ -29,6 +30,5 @@ async function findDatePicker(driver, by) {
     }
     return webEl;
 }
-exports.findDatePicker = findDatePicker;
 (0, oraclejet_webdriver_1.register)('oj-c-date-picker', DatePickerWebElement_1.DatePickerWebElement);
 //# sourceMappingURL=index.js.map

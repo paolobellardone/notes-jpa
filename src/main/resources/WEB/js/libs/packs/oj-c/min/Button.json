@@ -75,7 +75,6 @@
       "filename": "button.tsx",
       "path": "web/components/oj-c/button"
     },
-    "defaultvalue": "\"\"",
     "type": {
       "names": [
         "string"
@@ -191,7 +190,7 @@
     "ojvalues": [
       {
         "name": "xs",
-        "description": "Display an extra small button.  Only suppported for component developers with ghost chroming in icon display mode.",
+        "description": "Display an extra small button.  Only supported for component developers with ghost chroming in icon display mode.",
         "displayName": "Extra Small",
         "type": {
           "names": [
@@ -372,12 +371,11 @@
   },
   {
     "memberof": "oj-c.Button",
-    "id": "oj-c.Button#click",
-    "name": "click",
+    "id": "oj-c.Button#focus",
+    "name": "focus",
     "kind": "function",
-    "longname": "oj-c.Button#click",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "longname": "oj-c.Button#focus",
+    "description": "",
     "meta": {
       "filename": "button.tsx",
       "path": "web/components/oj-c/button"
@@ -387,7 +385,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -399,8 +397,7 @@
     "name": "blur",
     "kind": "function",
     "longname": "oj-c.Button#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "description": "",
     "meta": {
       "filename": "button.tsx",
       "path": "web/components/oj-c/button"
@@ -410,7 +407,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -418,12 +415,11 @@
   },
   {
     "memberof": "oj-c.Button",
-    "id": "oj-c.Button#focus",
-    "name": "focus",
+    "id": "oj-c.Button#click",
+    "name": "click",
     "kind": "function",
-    "longname": "oj-c.Button#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "longname": "oj-c.Button#click",
+    "description": "",
     "meta": {
       "filename": "button.tsx",
       "path": "web/components/oj-c/button"
@@ -433,7 +429,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }

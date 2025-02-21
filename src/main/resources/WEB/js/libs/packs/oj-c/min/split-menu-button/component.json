@@ -1,7 +1,7 @@
 {
   "name": "split-menu-button",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -15,7 +15,7 @@
   "main": "oj-c/split-menu-button",
   "status": [
     {
-      "type": "candidate",
+      "type": "production",
       "since": "17.0.0"
     }
   ],
@@ -33,7 +33,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/SplitMenuButtonWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SplitMenuButtonWebElement.html"
     }
   },
   "propertyLayout": [
@@ -59,8 +59,7 @@
       "displayName": "label",
       "help": "#label",
       "required": true,
-      "translatable": true,
-      "value": ""
+      "translatable": true
     },
     "items": {
       "type": "Array<object>",
@@ -68,6 +67,23 @@
       "help": "#items",
       "extension": {
         "vbdt": {
+          "pi": {
+            "events": {
+              "suggestions": [
+                {
+                  "type": "component",
+                  "name": "ojMenuAction",
+                  "mappings": [
+                    {
+                      "variableName": "menuItemKey",
+                      "expression": "{{$event.detail.key}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
           "itemProperties": {
             "type": {
               "description": "Specifies the type of the menu item.",
@@ -242,6 +258,11 @@
         "outlined",
         "callToAction"
       ],
+      "binding": {
+        "consume": {
+          "name": "containerChroming"
+        }
+      },
       "value": "outlined"
     }
   },
@@ -265,14 +286,14 @@
     }
   },
   "methods": {
-    "blur": {
-      "return": "any"
-    },
     "focus": {
-      "return": "any"
+      "return": "void"
     },
-    "doAction": {
-      "return": "any"
+    "blur": {
+      "return": "void"
+    },
+    "click": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

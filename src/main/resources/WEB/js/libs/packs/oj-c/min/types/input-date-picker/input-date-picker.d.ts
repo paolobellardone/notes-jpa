@@ -15,6 +15,7 @@ import type Validator = require('ojs/ojvalidator');
 import type AsyncValidator = require('ojs/ojvalidator-async');
 import 'css!oj-c/input-date-picker/input-date-picker-styles.css';
 type PreactInputDatePickerProps = ComponentProps<typeof PreactInputDatePicker>;
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint'>;
 type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
@@ -26,7 +27,7 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     };
     daysOutsideMonth?: PreactInputDatePickerProps['daysOutsideMonth'];
     disabled?: PreactInputDatePickerProps['isDisabled'];
-    displayOptions?: Omit<DisplayOptions, 'converterHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactInputDatePickerProps['labelEdge'];
@@ -46,6 +47,7 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     userAssistanceDensity?: PreactInputDatePickerProps['userAssistanceDensity'];
     validators?: (AsyncValidator<DateISOStr> | Validator<DateISOStr>)[] | null;
     value?: DateISOStr | null;
+    weekDisplay?: PreactInputDatePickerProps['weekDisplay'];
     onMessagesCustomChanged?: PropertyChanged<PreactInputDatePickerProps['messages']>;
     onRawValueChanged?: ReadOnlyPropertyChanged<CalendarDate | undefined>;
     onValidChanged?: ReadOnlyPropertyChanged<ValidState>;
@@ -58,7 +60,7 @@ type InputDatePickerHandle = {
     reset: () => void;
     validate: () => Promise<'valid' | 'invalid'>;
 };
-declare function InputDatePickerImpl({ columnSpan, daysOutsideMonth, disabled, displayOptions, help, helpHints, messagesCustom, monthAndYearPicker, required, todayButton, validators, value, ...otherProps }: Props, ref: Ref<InputDatePickerHandle>): import("preact").JSX.Element;
+declare function InputDatePickerImpl({ columnSpan, daysOutsideMonth, disabled, displayOptions, help, helpHints, messagesCustom, monthAndYearPicker, required, todayButton, validators, value, weekDisplay, ...otherProps }: Props, ref: Ref<InputDatePickerHandle>): import("preact").JSX.Element;
 export declare const InputDatePicker: ComponentType<ExtendGlobalProps<ComponentProps<typeof InputDatePickerImpl>>>;
 export type InputDatePickerProps = Props;
 export type InputDatePickerRef = Ref<InputDatePickerHandle>;
@@ -110,6 +112,7 @@ export namespace CInputDatePickerElement {
     type validChanged = JetElementCustomEventStrict<CInputDatePickerElement['valid']>;
     type validatorsChanged = JetElementCustomEventStrict<CInputDatePickerElement['validators']>;
     type valueChanged = JetElementCustomEventStrict<CInputDatePickerElement['value']>;
+    type weekDisplayChanged = JetElementCustomEventStrict<CInputDatePickerElement['weekDisplay']>;
 }
 export interface CInputDatePickerElementEventMap extends HTMLElementEventMap {
     'columnSpanChanged': JetElementCustomEventStrict<CInputDatePickerElement['columnSpan']>;
@@ -142,6 +145,7 @@ export interface CInputDatePickerElementEventMap extends HTMLElementEventMap {
     'validChanged': JetElementCustomEventStrict<CInputDatePickerElement['valid']>;
     'validatorsChanged': JetElementCustomEventStrict<CInputDatePickerElement['validators']>;
     'valueChanged': JetElementCustomEventStrict<CInputDatePickerElement['value']>;
+    'weekDisplayChanged': JetElementCustomEventStrict<CInputDatePickerElement['weekDisplay']>;
 }
 export interface CInputDatePickerElementSettableProperties extends JetSettableProperties {
     columnSpan?: Props['columnSpan'];
@@ -172,6 +176,7 @@ export interface CInputDatePickerElementSettableProperties extends JetSettablePr
     userAssistanceDensity?: Props['userAssistanceDensity'];
     validators?: Props['validators'];
     value?: Props['value'];
+    weekDisplay?: Props['weekDisplay'];
 }
 export interface CInputDatePickerElementSettablePropertiesLenient extends Partial<CInputDatePickerElementSettableProperties> {
     [key: string]: any;
@@ -209,6 +214,7 @@ export interface InputDatePickerIntrinsicProps extends Partial<Readonly<CInputDa
     onvalidChanged?: (value: CInputDatePickerElementEventMap['validChanged']) => void;
     onvalidatorsChanged?: (value: CInputDatePickerElementEventMap['validatorsChanged']) => void;
     onvalueChanged?: (value: CInputDatePickerElementEventMap['valueChanged']) => void;
+    onweekDisplayChanged?: (value: CInputDatePickerElementEventMap['weekDisplayChanged']) => void;
 }
 declare global {
     namespace preact.JSX {

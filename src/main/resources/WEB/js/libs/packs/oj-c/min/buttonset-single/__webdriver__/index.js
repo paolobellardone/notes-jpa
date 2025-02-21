@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findButtonsetSingle = exports.ButtonsetSingleWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ButtonsetSingleWebElement_1 = require("./ButtonsetSingleWebElement");
+exports.ButtonsetSingleWebElement = void 0;
+exports.findButtonsetSingle = findButtonsetSingle;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ButtonsetSingleWebElement_1 = require("./ButtonsetSingleWebElement");
 Object.defineProperty(exports, "ButtonsetSingleWebElement", { enumerable: true, get: function () { return ButtonsetSingleWebElement_1.ButtonsetSingleWebElement; } });
 /**
  * Retrieve an instance of [ButtonsetSingleWebElement](../classes/ButtonsetSingleWebElement.html).
@@ -29,6 +30,5 @@ async function findButtonsetSingle(driver, by) {
     }
     return webEl;
 }
-exports.findButtonsetSingle = findButtonsetSingle;
 (0, oraclejet_webdriver_1.register)('oj-c-buttonset-single', ButtonsetSingleWebElement_1.ButtonsetSingleWebElement);
 //# sourceMappingURL=index.js.map

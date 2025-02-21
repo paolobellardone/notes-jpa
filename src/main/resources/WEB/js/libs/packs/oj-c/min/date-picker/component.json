@@ -1,7 +1,7 @@
 {
   "name": "date-picker",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -24,14 +24,17 @@
       "icon": "oj-ux-ico-date"
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/DatePickerWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/DatePickerWebElement.html"
     }
   },
   "since": "17.0.0",
   "status": [
     {
-      "type": "candidate",
-      "since": "17.0.0"
+      "type": "supersedes",
+      "since": "17.1.0",
+      "value": [
+        "oj-date-picker"
+      ]
     }
   ],
   "properties": {
@@ -125,6 +128,24 @@
       "type": "string|null",
       "writeback": true,
       "value": null
+    },
+    "weekDisplay": {
+      "type": "string",
+      "propertyEditorValues": {
+        "none": {
+          "description": "The week of the year column will not be shown.",
+          "displayName": "None"
+        },
+        "number": {
+          "description": "Will show the week of the year as a number.",
+          "displayName": "Number"
+        }
+      },
+      "enumValues": [
+        "number",
+        "none"
+      ],
+      "value": "none"
     },
     "width": {
       "type": "number|string",

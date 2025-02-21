@@ -5,21 +5,23 @@ import { DataProvider, Item } from 'ojs/ojdataprovider';
 import { ImmutableKeySet } from 'ojs/ojkeyset';
 import { Action, Bubbles, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
 import { ComponentProps, ComponentType } from 'preact';
-import { ListView as PreactListView } from '@oracle/oraclejet-preact/UNSAFE_ListView';
+import { ListView as PreactListView, ItemPadding } from '@oracle/oraclejet-preact/UNSAFE_ListView';
 import 'css!oj-c/list-view/list-view-styles.css';
 import { ContextMenuItems } from '../utils/PRIVATE_ItemsMenu/items-menu';
 type PreactListViewProps = ComponentProps<typeof PreactListView>;
 export type ContextMenuConfig<K, D> = {
     accessibleLabel?: string;
-    items: (context: Omit<ListItemContext<K, D>, 'isTabbable'>) => Array<ContextMenuItems>;
+    items: (context: ListItemContextProps<K, D>) => Array<ContextMenuItems>;
 };
+type ListItemContextProps<K, D> = Omit<ListItemContext<K, D>, 'isTabbable'>;
 export type ListViewContextMenuSelectionDetail<K, D> = {
     value: string | Array<string>;
-    contextMenuContext: Omit<ListItemContext<K, D>, 'isTabbable'>;
+    menuSelectionGroupKey: string;
+    contextMenuContext: ListItemContextProps<K, D>;
 };
 export type ListViewContextMenuActionDetail<K, D> = {
     menuItemKey: string;
-    contextMenuContext: Omit<ListItemContext<K, D>, 'isTabbable'>;
+    contextMenuContext: ListItemContextProps<K, D>;
 };
 export type ListItemContext<K, D> = {
     data: D;
@@ -27,7 +29,7 @@ export type ListItemContext<K, D> = {
     isTabbable: boolean;
 };
 export type ItemActionDetail<K, D> = {
-    context: Omit<ListItemContext<K, D>, 'isTabbable'>;
+    context: ListItemContextProps<K, D>;
 };
 export type FirstSelectedItemDetail<K, D> = {
     key: K;
@@ -41,6 +43,9 @@ export type ReorderDetail<K> = {
 type selectionMode = PreactListViewProps['selectionMode'] | 'singleRequired';
 type Props<K extends string | number, D> = ObservedGlobalProps<'aria-label' | 'aria-labelledby' | 'id'> & {
     onCurrentItemChanged?: ReadOnlyPropertyChanged<K>;
+    currentItemOverride?: {
+        rowKey: K;
+    };
     data?: DataProvider<K, D> | null;
     gridlines?: PreactListViewProps['gridlines'];
     itemTemplate?: TemplateSlot<ListItemContext<K, D>>;
@@ -61,8 +66,11 @@ type Props<K extends string | number, D> = ObservedGlobalProps<'aria-label' | 'a
         items?: 'enabled' | 'disabled';
     };
     onOjReorder?: Action<ReorderDetail<K>>;
+    item?: {
+        padding?: 'disabled' | 'enabled' | ItemPadding;
+    };
 };
-declare const ListViewImpl: <K extends string | number, D>({ selectionMode, reorderable, ...rest }: Props<K, D>) => import("preact").JSX.Element;
+declare const ListViewImpl: <K extends string | number, D>({ selectionMode, reorderable, item, ...rest }: Props<K, D>) => import("preact").JSX.Element;
 export declare const ListView: ComponentType<ExtendGlobalProps<ComponentProps<typeof ListViewImpl<string | number, any>>>>;
 export type ListViewProps<K extends string | number, D> = Props<K, D>;
 export {};
@@ -89,8 +97,10 @@ export namespace CListViewElement {
     }
     type contextMenuConfigChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['contextMenuConfig']>;
     type currentItemChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['currentItem']>;
+    type currentItemOverrideChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['currentItemOverride']>;
     type dataChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['data']>;
     type gridlinesChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['gridlines']>;
+    type itemChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['item']>;
     type reorderableChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['reorderable']>;
     type scrollPolicyOptionsChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['scrollPolicyOptions']>;
     type selectedChanged<K extends string | number, D> = JetElementCustomEventStrict<CListViewElement<K, D>['selected']>;
@@ -106,8 +116,10 @@ export interface CListViewElementEventMap<K extends string | number, D> extends 
     'ojReorder': CListViewElement.ojReorder<K>;
     'contextMenuConfigChanged': JetElementCustomEventStrict<CListViewElement<K, D>['contextMenuConfig']>;
     'currentItemChanged': JetElementCustomEventStrict<CListViewElement<K, D>['currentItem']>;
+    'currentItemOverrideChanged': JetElementCustomEventStrict<CListViewElement<K, D>['currentItemOverride']>;
     'dataChanged': JetElementCustomEventStrict<CListViewElement<K, D>['data']>;
     'gridlinesChanged': JetElementCustomEventStrict<CListViewElement<K, D>['gridlines']>;
+    'itemChanged': JetElementCustomEventStrict<CListViewElement<K, D>['item']>;
     'reorderableChanged': JetElementCustomEventStrict<CListViewElement<K, D>['reorderable']>;
     'scrollPolicyOptionsChanged': JetElementCustomEventStrict<CListViewElement<K, D>['scrollPolicyOptions']>;
     'selectedChanged': JetElementCustomEventStrict<CListViewElement<K, D>['selected']>;
@@ -115,8 +127,10 @@ export interface CListViewElementEventMap<K extends string | number, D> extends 
 }
 export interface CListViewElementSettableProperties<K extends string | number, D> extends JetSettableProperties {
     contextMenuConfig?: Props<K, D>['contextMenuConfig'];
+    currentItemOverride?: Props<K, D>['currentItemOverride'];
     data?: Props<K, D>['data'];
     gridlines?: Props<K, D>['gridlines'];
+    item?: Props<K, D>['item'];
     reorderable?: Props<K, D>['reorderable'];
     scrollPolicyOptions?: Props<K, D>['scrollPolicyOptions'];
     selected?: Props<K, D>['selected'];
@@ -135,8 +149,10 @@ export interface ListViewIntrinsicProps extends Partial<Readonly<CListViewElemen
     onojReorder?: (value: CListViewElementEventMap<any, any>['ojReorder']) => void;
     oncontextMenuConfigChanged?: (value: CListViewElementEventMap<any, any>['contextMenuConfigChanged']) => void;
     oncurrentItemChanged?: (value: CListViewElementEventMap<any, any>['currentItemChanged']) => void;
+    oncurrentItemOverrideChanged?: (value: CListViewElementEventMap<any, any>['currentItemOverrideChanged']) => void;
     ondataChanged?: (value: CListViewElementEventMap<any, any>['dataChanged']) => void;
     ongridlinesChanged?: (value: CListViewElementEventMap<any, any>['gridlinesChanged']) => void;
+    onitemChanged?: (value: CListViewElementEventMap<any, any>['itemChanged']) => void;
     onreorderableChanged?: (value: CListViewElementEventMap<any, any>['reorderableChanged']) => void;
     onscrollPolicyOptionsChanged?: (value: CListViewElementEventMap<any, any>['scrollPolicyOptionsChanged']) => void;
     onselectedChanged?: (value: CListViewElementEventMap<any, any>['selectedChanged']) => void;

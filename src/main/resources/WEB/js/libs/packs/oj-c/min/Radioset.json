@@ -144,7 +144,7 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "oj-c.Radioset.DisplayOptions",
+        "value": "oj-c.Radioset.DisplayOptionsProps",
         "jsdocOverride": true
       }
     ]
@@ -316,6 +316,13 @@
       "filename": "radioset.tsx",
       "path": "web/components/oj-c/radioset"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -394,8 +401,11 @@
     "tstype": [
       {
         "target": "Type",
-        "value": "Array<(RadiosetDataItem & { value: V; })>|DataProvider<V, D>",
-        "jsdocOverride": true
+        "value": "Array<oj-c.Radioset.RadiosetArrayDataItem<V>>|DataProvider<V, D>",
+        "jsdocOverride": true,
+        "module": {
+          "DataProvider": "ojdataprovider"
+        }
       }
     ]
   },
@@ -593,7 +603,7 @@
     "defaultvalue": null,
     "type": {
       "names": [
-        "any"
+        "string|number|null"
       ]
     },
     "tstype": [
@@ -842,7 +852,7 @@
     "kind": "typedef",
     "longname": "oj-c.Radioset.RadiosetDataItem",
     "scope": "static",
-    "description": "The data item object that represents a radio item in the rendered radioset. The label property is required and\nprovides the text for the radio item.",
+    "description": "An object that represents the data associated with a radio item in a rendered radioset. The label property is required and\nprovides the text for the radio item.",
     "type": {
       "names": [
         "Object"
@@ -897,10 +907,10 @@
   },
   {
     "memberof": "oj-c.Radioset",
-    "id": "oj-c.Radioset.DisplayOptions",
-    "name": "DisplayOptions",
+    "id": "oj-c.Radioset.DisplayOptionsProps",
+    "name": "DisplayOptionsProps",
     "kind": "typedef",
-    "longname": "oj-c.Radioset.DisplayOptions",
+    "longname": "oj-c.Radioset.DisplayOptionsProps",
     "scope": "static",
     "description": "Display options for auxiliary content that determines whether or not it should be displayed.",
     "type": {
@@ -1054,6 +1064,88 @@
             "\"warning\""
           ]
         }
+      }
+    ]
+  },
+  {
+    "memberof": "oj-c.Radioset",
+    "id": "oj-c.Radioset.RadiosetArrayDataItem",
+    "name": "RadiosetArrayDataItem",
+    "kind": "typedef",
+    "longname": "oj-c.Radioset.RadiosetArrayDataItem",
+    "scope": "static",
+    "description": "An object that represents the value and corresponding data associated with a radio item in a rendered radioset.\nThe label property is required and provides the text for the radio element.",
+    "tsgenerictype": {
+      "target": "Type",
+      "value": "<V extends string | number>",
+      "for": "genericTypeParameters"
+    },
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "meta": {
+      "filename": "radioset.tsx",
+      "path": "web/components/oj-c/radioset"
+    },
+    "properties": [
+      {
+        "name": "label",
+        "description": "The value of this required property will provide the text for the radio button's label.",
+        "optional": false,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "assistiveText",
+        "description": "Optional value to provide guidance to the user about the radio item this applies to.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "helpSourceLink",
+        "description": "Optional link to aid the user in the radio item this applies to.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "helpSourceText",
+        "description": "Optional custom text to be rendered for the <code>helpSourceLink</code>.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "value",
+        "optional": false,
+        "type": {
+          "names": [
+            "string|number"
+          ]
+        },
+        "tstype": [
+          {
+            "target": "Type",
+            "value": "V",
+            "jsdocOverride": true,
+            "for": "value"
+          }
+        ]
       }
     ]
   }

@@ -2,17 +2,33 @@ import { JetElement, JetSettableProperties, JetElementCustomEventStrict, JetSetP
 import { GlobalProps } from 'ojs/ojvcomponent';
 import 'ojs/oj-jsx-interfaces';
 import { SelectSingle as PreactSelectSingle } from '@oracle/oraclejet-preact/UNSAFE_SelectSingle';
-import { DisplayOptions, Help, HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
-import { ItemContext } from 'ojs/ojcommontypes';
-import { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
-import { Action, ExtendGlobalProps, ObservedGlobalProps, PropertyChanged, ReadOnlyPropertyChanged, TemplateSlot } from 'ojs/ojvcomponent';
-import { ComponentProps, ComponentType } from 'preact';
-import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
-import { LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
+import type { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
+import { type LayoutColumnSpan } from '@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout';
+import { type DisplayOptions, type Help, type HelpHints } from 'oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText';
+import type { ItemContext } from 'ojs/ojcommontypes';
+import type { DataProvider, Item, TextFilter } from 'ojs/ojdataprovider';
+import type { ImmutableKeySet } from 'ojs/ojkeyset';
+import { type Action, type ExtendGlobalProps, type ObservedGlobalProps, type PropertyChanged, type ReadOnlyPropertyChanged, type TemplateSlot } from 'ojs/ojvcomponent';
+import type { ComponentProps, ComponentType } from 'preact';
 import 'css!oj-c/select-single/select-single-styles.css';
 type PreactSelectSingleProps = ComponentProps<typeof PreactSelectSingle>;
+type DisplayOptionsProps = Omit<DisplayOptions, 'converterHint' | 'validatorHint'>;
 type ItemTemplateContext<K extends string | number, D extends Record<string, any>> = Pick<Parameters<NonNullable<PreactSelectSingleProps['itemRenderer']>>[0], 'searchText'> & {
     item: Item<K, D>;
+};
+export type CollectionTemplateContext<K extends string | number, D extends Record<string, any>> = {
+    data?: DataProvider<K, D> | null;
+    searchText?: string;
+    currentRowOverride?: {
+        rowKey: K;
+    };
+    onCurrentRowChanged: (detail: {
+        rowKey?: K;
+    }) => void;
+    selected: ImmutableKeySet<K>;
+    onRowAction: (detail: {
+        item: Item<K, D>;
+    }) => void;
 };
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type AdvancedSearchActionPayload = Parameters<NonNullable<PreactSelectSingleProps['onAdvancedSearchAction']>>[0];
@@ -23,11 +39,12 @@ type ValueActionPayload<V, D> = {
 };
 type Props<V extends string | number, D extends Record<string, any>> = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     advancedSearch?: PreactSelectSingleProps['advancedSearch'];
+    collectionTemplate?: TemplateSlot<CollectionTemplateContext<V, D>>;
     columnSpan?: LayoutColumnSpan;
     containerReadonly?: boolean;
     data?: DataProvider<V, D> | null;
     disabled?: boolean;
-    displayOptions?: Omit<DisplayOptions, 'converterHint' | 'validatorHint'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     itemTemplate?: TemplateSlot<ItemTemplateContext<V, D>>;
@@ -66,6 +83,7 @@ export interface CSelectSingleElement<V extends string | number, D extends Recor
     setProperty<T extends keyof CSelectSingleElementSettableProperties<V, D>>(property: T, value: CSelectSingleElementSettableProperties<V, D>[T]): void;
     setProperty<T extends string>(property: T, value: JetSetPropertyType<T, CSelectSingleElementSettableProperties<V, D>>): void;
     setProperties(properties: CSelectSingleElementSettablePropertiesLenient<V, D>): void;
+    UNSAFE_focusAndOpenDropdown: () => void;
     _doAdvancedSearchAction: (searchText: string) => void;
     _selectItemByValue: (value: V | null) => Promise<void>;
     blur: () => void;
@@ -106,6 +124,7 @@ export namespace CSelectSingleElement {
     type valueChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['value']>;
     type valueItemChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['valueItem']>;
     type virtualKeyboardChanged<V extends string | number, D extends Record<string, any>> = JetElementCustomEventStrict<CSelectSingleElement<V, D>['virtualKeyboard']>;
+    type RenderCollectionTemplate<V extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<CollectionTemplateContext<V, D>>;
     type RenderItemTemplate<V extends string | number, D extends Record<string, any>> = import('ojs/ojvcomponent').TemplateSlot<ItemTemplateContext<V, D>>;
 }
 export interface CSelectSingleElementEventMap<V extends string | number, D extends Record<string, any>> extends HTMLElementEventMap {

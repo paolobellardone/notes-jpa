@@ -1,7 +1,7 @@
 {
   "name": "tab-bar",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -29,7 +29,7 @@
       "value": []
     },
     "selection": {
-      "type": "any",
+      "type": "string|number",
       "description": "The key of the selected tab",
       "displayName": "Selected Tab",
       "help": "#selection",
@@ -120,6 +120,16 @@
         "bottom"
       ],
       "value": "top"
+    },
+    "truncation": {
+      "type": "string",
+      "description": "The truncation configuration for tab labels.",
+      "displayName": "Truncation",
+      "enumValues": [
+        "none",
+        "progressive"
+      ],
+      "value": "none"
     }
   },
   "events": {
@@ -134,7 +144,7 @@
           "type": "function"
         },
         "key": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     },
@@ -144,7 +154,7 @@
       "help": "#event:remove",
       "detail": {
         "key": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     },
@@ -154,7 +164,7 @@
       "help": "#event:reorder",
       "detail": {
         "reorderedKeys": {
-          "type": "Array<any>"
+          "type": "Array<string|number>"
         }
       }
     },
@@ -164,15 +174,25 @@
       "help": "#event:selectionAction",
       "detail": {
         "previousValue": {
-          "type": "any"
+          "type": "string|number"
         },
         "value": {
-          "type": "any"
+          "type": "string|number"
         }
       }
     }
   },
   "methods": {
+    "_doReorderHelper": {
+      "description": "This is a private method that should only be called by the webelement API.",
+      "params": [
+        {
+          "name": "tabBarKeys",
+          "type": "Array<string|number>"
+        }
+      ],
+      "return": "void"
+    },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
       "help": "#setProperty",
@@ -217,7 +237,7 @@
   },
   "extension": {
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/TabBarWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/TabBarWebElement.html"
     }
   }
 }

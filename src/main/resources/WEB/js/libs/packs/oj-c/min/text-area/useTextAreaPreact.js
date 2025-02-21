@@ -1,7 +1,7 @@
 define(["require", "exports", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators"], function (require, exports, index_1, useDeferredValidators_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useTextAreaPreact = void 0;
+    exports.useTextAreaPreact = useTextAreaPreact;
     function useTextAreaPreact({ autocomplete = 'on', autofocus, converter, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, length, messagesCustom, placeholder, readonly, required, requiredMessageDetail, resizeBehavior, rows, textAlign, userAssistanceDensity, validators, value: propValue, onMessagesCustomChanged, onRawValueChanged, onValueChanged, onValidChanged, ...otherProps }, addBusyState) {
         const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
             labelHint,
@@ -18,7 +18,7 @@ define(["require", "exports", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/
             displayOptions,
             messagesCustom,
             readonly,
-            validators: validators === null ? undefined : validators,
+            validators: (0, index_1.treatNull)(validators, undefined),
             value: propValue,
             onMessagesCustomChanged,
             onRawValueChanged,
@@ -50,5 +50,4 @@ define(["require", "exports", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/
             }
         };
     }
-    exports.useTextAreaPreact = useTextAreaPreact;
 });

@@ -1,7 +1,7 @@
 {
   "name": "select-single",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -35,7 +35,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/SelectSingleWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectSingleWebElement.html"
     }
   },
   "propertyLayout": [
@@ -239,6 +239,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -373,7 +380,7 @@
       }
     },
     "value": {
-      "type": "any",
+      "type": "string|number|null",
       "description": "The value of the component.",
       "displayName": "Value",
       "help": "#value",
@@ -520,6 +527,40 @@
     }
   },
   "slots": {
+    "collectionTemplate": {
+      "description": "The collectionTemplate slot is used to specify the template for rendering the items in the dropdown.",
+      "displayName": "collectionTemplate",
+      "help": "#collectionTemplate",
+      "maxItems": 1,
+      "preferredContent": [
+        "CTableElement"
+      ],
+      "data": {
+        "data": {
+          "type": "DataProvider|null"
+        },
+        "searchText": {
+          "type": "string"
+        },
+        "currentRowOverride": {
+          "type": "object",
+          "properties": {
+            "rowKey": {
+              "type": "string|number"
+            }
+          }
+        },
+        "onCurrentRowChanged": {
+          "type": "function"
+        },
+        "selected": {
+          "type": "object"
+        },
+        "onRowAction": {
+          "type": "function"
+        }
+      }
+    },
     "itemTemplate": {
       "description": "The itemTemplate slot is used to specify the template for rendering each item in the dropdown. See the Help documentation for more information.",
       "displayName": "itemTemplate",
@@ -692,6 +733,9 @@
         }
       ],
       "return": "Promise"
+    },
+    "UNSAFE_focusAndOpenDropdown": {
+      "return": "void"
     },
     "setProperty": {
       "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",

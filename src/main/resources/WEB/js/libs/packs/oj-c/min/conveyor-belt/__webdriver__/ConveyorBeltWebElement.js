@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConveyorBeltWebElement = void 0;
-var ConveyorBeltWebElementBase_1 = require("./ConveyorBeltWebElementBase");
+const ConveyorBeltWebElementBase_1 = require("./ConveyorBeltWebElementBase");
 /**
  * The component WebElement for [oj-c-conveyor-belt](../../../oj-c/docs/oj.ConveyorBelt.html).
  * Do not instantiate this class directly, instead, use

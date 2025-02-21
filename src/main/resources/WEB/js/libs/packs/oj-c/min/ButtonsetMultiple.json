@@ -6,7 +6,7 @@
     "memberof": "oj-c",
     "longname": "oj-c.ButtonsetMultiple",
     "kind": "class",
-    "classdesc": "<h3 id=\"ButtonsetMultipleOverview-section\">\n  JET Buttonset Multiple\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#buttonSetMultipleOverview-section\"></a>\n</h3>\n\n<p>Description: A Buttonset Multiple is a grouping of related buttons where any number of buttons may be selected.\n\n<pre class=\"prettyprint\"><code>&lt;oj-c-buttonset-multiple aria-label=\"Pick Items\" value=\"{{value}}\" items=\"[[items]]\">\n&lt;/oj-c-buttonset-multiple>\n</code></pre>\n\n<h3 id=\"touch-section\">\n  Touch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Push Toggle Button</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Toggle the button.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Enter</kbd> or <kbd>Space</kbd></td>\n      <td>Toggle the focused Button.</td>\n    </tr>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Right Arrow</kbd></td>\n      <td>Move focus to the next enabled Button, wrapping as needed.</td>\n    </tr>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Left Arrow</kbd></td>\n      <td>Move focus to the previous enabled Button, wrapping as needed.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>The application is responsible for applying <code class=\"prettyprint\">aria-label</code> and/or\n<code class=\"prettyprint\">aria-controls</code> attributes like the following to the buttonset element, if applicable per the instructions that follow:\n\n<pre class=\"prettyprint\">\n<code>aria-label=\"Choose beverages.\"\naria-controls=\"myTextEditor\"\n</code></pre>\n\n<p>An <code class=\"prettyprint\">aria-label</code> conveying the \"choose multiple\" semantics should be included for a buttonset-multiple.\n\n<p>The <code class=\"prettyprint\">aria-controls</code> attribute should be included if the buttonset is controlling something else on the page, e.g.\nbold / italic / underline buttons controlling a rich text editor.  If the buttonset is contained in a toolbar, <code class=\"prettyprint\">aria-controls</code>\nshould be placed on the toolbar, not on the buttonsets within the toolbar.\n\n<p>Disabled content: JET supports an accessible luminosity contrast ratio,\nas specified in <a href=\"http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast\">WCAG 2.0 - Section 1.4.3 \"Contrast\"</a>,\nin the themes that are accessible.  (See the \"Theming\" chapter of the JET Developer Guide for more information on which\nthemes are accessible.)  Note that Section 1.4.3 says that text or images of text that are part of an inactive user\ninterface component have no contrast requirement.  Because disabled content may not meet the minimum contrast ratio\nrequired of enabled content, it cannot be used to convey meaningful information.<p>",
+    "classdesc": "<h3 id=\"ButtonsetMultipleOverview-section\">\n  JET Buttonset Multiple\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#buttonSetMultipleOverview-section\"></a>\n</h3>\n\n<p>Description: A Buttonset Multiple is a grouping of related buttons where any number of buttons may be selected.\n\n<pre class=\"prettyprint\"><code>&lt;oj-c-buttonset-multiple aria-label=\"Pick Items\" value=\"{{value}}\" items=\"[[items]]\">\n&lt;/oj-c-buttonset-multiple>\n</code></pre>\n\n<h3 id=\"toolbar-section\">\nToolbar Usage\n</h3>\n<p>Note that oj-c-buttonset-multiple is not intended for usage inside oj-toolbar, it is only\nsupported in oj-c-toolbar.</p>\n\n<h3 id=\"touch-section\">\n  Touch End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#touch-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Gesture</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Push Toggle Button</td>\n      <td><kbd>Tap</kbd></td>\n      <td>Toggle the button.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"keyboard-section\">\n  Keyboard End User Information\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#keyboard-section\"></a>\n</h3>\n\n<table class=\"keyboard-table\">\n  <thead>\n    <tr>\n      <th>Target</th>\n      <th>Key</th>\n      <th>Action</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Enter</kbd> or <kbd>Space</kbd></td>\n      <td>Toggle the focused Button.</td>\n    </tr>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Right Arrow</kbd></td>\n      <td>Move focus to the next enabled Button, wrapping as needed.</td>\n    </tr>\n    <tr>\n      <td>Buttonset Multiple</td>\n      <td><kbd>Left Arrow</kbd></td>\n      <td>Move focus to the previous enabled Button, wrapping as needed.</td>\n    </tr>\n  </tbody>\n</table>\n\n<h3 id=\"a11y-section\">\n  Accessibility\n  <a class=\"bookmarkable-link\" title=\"Bookmarkable Link\" href=\"#a11y-section\"></a>\n</h3>\n\n<p>The application is responsible for applying <code class=\"prettyprint\">aria-label</code> and/or\n<code class=\"prettyprint\">aria-controls</code> attributes like the following to the buttonset element, if applicable per the instructions that follow:\n\n<pre class=\"prettyprint\">\n<code>aria-label=\"Choose beverages.\"\naria-controls=\"myTextEditor\"\n</code></pre>\n\n<p>An <code class=\"prettyprint\">aria-label</code> conveying the \"choose multiple\" semantics should be included for a buttonset-multiple.\n\n<p>The <code class=\"prettyprint\">aria-controls</code> attribute should be included if the buttonset is controlling something else on the page, e.g.\nbold / italic / underline buttons controlling a rich text editor.  If the buttonset is contained in a toolbar, <code class=\"prettyprint\">aria-controls</code>\nshould be placed on the toolbar, not on the buttonsets within the toolbar.\n\n<p>Disabled content: JET supports an accessible luminosity contrast ratio,\nas specified in <a href=\"http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast\">WCAG 2.0 - Section 1.4.3 \"Contrast\"</a>,\nin the themes that are accessible.  (See the \"Theming\" chapter of the JET Developer Guide for more information on which\nthemes are accessible.)  Note that Section 1.4.3 says that text or images of text that are part of an inactive user\ninterface component have no contrast requirement.  Because disabled content may not meet the minimum contrast ratio\nrequired of enabled content, it cannot be used to convey meaningful information.<p>",
     "scope": "static",
     "tagWithoutBrackets": "oj-c-buttonset-multiple",
     "tagWithBrackets": "<oj-c-buttonset-multiple>",
@@ -71,7 +71,7 @@
     "longname": "oj-c.ButtonsetMultiple#items",
     "optional": true,
     "scope": "instance",
-    "description": "<table class=\"props\">\n<tr><th>Type</th><th>Def</th></tr>\n<tr><td>ToggleIcon</td><td>{\ntype?: 'class';\n    class: string;\n  }\n| {\n    type: 'img';\n   src: string;\n  };</td></tr>\n</table>",
+    "description": "Specifies the toggle buttons rendered by the buttonset.",
     "meta": {
       "filename": "buttonset-multiple.tsx",
       "path": "web/components/oj-c/buttonset-multiple"
@@ -321,12 +321,11 @@
   },
   {
     "memberof": "oj-c.ButtonsetMultiple",
-    "id": "oj-c.ButtonsetMultiple#blur",
-    "name": "blur",
+    "id": "oj-c.ButtonsetMultiple#focus",
+    "name": "focus",
     "kind": "function",
-    "longname": "oj-c.ButtonsetMultiple#blur",
-    "description": "blurs the button",
-    "ojhidden": true,
+    "longname": "oj-c.ButtonsetMultiple#focus",
+    "description": "",
     "meta": {
       "filename": "buttonset-multiple.tsx",
       "path": "web/components/oj-c/buttonset-multiple"
@@ -336,7 +335,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -344,12 +343,11 @@
   },
   {
     "memberof": "oj-c.ButtonsetMultiple",
-    "id": "oj-c.ButtonsetMultiple#focus",
-    "name": "focus",
+    "id": "oj-c.ButtonsetMultiple#blur",
+    "name": "blur",
     "kind": "function",
-    "longname": "oj-c.ButtonsetMultiple#focus",
-    "description": "focuses the button",
-    "ojhidden": true,
+    "longname": "oj-c.ButtonsetMultiple#blur",
+    "description": "",
     "meta": {
       "filename": "buttonset-multiple.tsx",
       "path": "web/components/oj-c/buttonset-multiple"
@@ -359,7 +357,7 @@
       {
         "type": {
           "names": [
-            "any"
+            "void"
           ]
         }
       }
@@ -503,6 +501,7 @@
     "properties": [
       {
         "name": "label",
+        "description": "The toggle item label.",
         "optional": false,
         "type": {
           "names": [
@@ -512,6 +511,7 @@
       },
       {
         "name": "value",
+        "description": "The toggle item value.",
         "optional": false,
         "type": {
           "names": [
@@ -521,6 +521,7 @@
       },
       {
         "name": "disabled",
+        "description": "Specifies if the toggle item is disabled (enabled by default).",
         "optional": true,
         "type": {
           "names": [
@@ -530,6 +531,7 @@
       },
       {
         "name": "startIcon",
+        "description": "Optional icon to render at the start of the toggle item.",
         "optional": true,
         "type": {
           "names": [
@@ -539,14 +541,15 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "ToggleIcon",
-            "for": "startIcon",
-            "jsdocOverride": true
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "startIcon"
           }
         ]
       },
       {
         "name": "endIcon",
+        "description": "Optional icon to render at the end of the toggle item.",
         "optional": true,
         "type": {
           "names": [
@@ -556,9 +559,9 @@
         "tstype": [
           {
             "target": "Type",
-            "value": "ToggleIcon",
-            "for": "endIcon",
-            "jsdocOverride": true
+            "value": "{ type?: 'class'; class: string; }|{ type: 'img'; src: string; }",
+            "jsdocOverride": true,
+            "for": "endIcon"
           }
         ]
       }

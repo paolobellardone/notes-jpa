@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findInputMonthMask = exports.InputMonthMaskWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var InputMonthMaskWebElement_1 = require("./InputMonthMaskWebElement");
+exports.InputMonthMaskWebElement = void 0;
+exports.findInputMonthMask = findInputMonthMask;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const InputMonthMaskWebElement_1 = require("./InputMonthMaskWebElement");
 Object.defineProperty(exports, "InputMonthMaskWebElement", { enumerable: true, get: function () { return InputMonthMaskWebElement_1.InputMonthMaskWebElement; } });
 /**
  * Retrieve an instance of [InputMonthMaskWebElement](../classes/InputMonthMaskWebElement.html).
@@ -29,6 +30,5 @@ async function findInputMonthMask(driver, by) {
     }
     return webEl;
 }
-exports.findInputMonthMask = findInputMonthMask;
 (0, oraclejet_webdriver_1.register)('oj-c-input-month-mask', InputMonthMaskWebElement_1.InputMonthMaskWebElement);
 //# sourceMappingURL=index.js.map

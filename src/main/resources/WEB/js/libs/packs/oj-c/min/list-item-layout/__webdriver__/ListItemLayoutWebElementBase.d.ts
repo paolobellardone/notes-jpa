@@ -13,4 +13,11 @@ export declare class ListItemLayoutWebElementBase extends OjWebElement {
      *
      */
     getInset(): Promise<string>;
+    /**
+     * Gets the value of <code>verticalAlignment</code> property.
+     * Default is 'middle' which vertically aligns layout content to center of the row.
+     * @return The value of <code>verticalAlignment</code> property.
+     *
+     */
+    getVerticalAlignment(): Promise<string>;
 }

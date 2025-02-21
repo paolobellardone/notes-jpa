@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findConveyorBelt = exports.ConveyorBeltWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var ConveyorBeltWebElement_1 = require("./ConveyorBeltWebElement");
+exports.ConveyorBeltWebElement = void 0;
+exports.findConveyorBelt = findConveyorBelt;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const ConveyorBeltWebElement_1 = require("./ConveyorBeltWebElement");
 Object.defineProperty(exports, "ConveyorBeltWebElement", { enumerable: true, get: function () { return ConveyorBeltWebElement_1.ConveyorBeltWebElement; } });
 /**
  * Retrieve an instance of [ConveyorBeltWebElement](../classes/ConveyorBeltWebElement.html).
@@ -29,6 +30,5 @@ async function findConveyorBelt(driver, by) {
     }
     return webEl;
 }
-exports.findConveyorBelt = findConveyorBelt;
 (0, oraclejet_webdriver_1.register)('oj-c-conveyor-belt', ConveyorBeltWebElement_1.ConveyorBeltWebElement);
 //# sourceMappingURL=index.js.map

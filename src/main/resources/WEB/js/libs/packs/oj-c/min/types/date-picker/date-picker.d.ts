@@ -19,24 +19,26 @@ type Props = ObservedGlobalProps<'aria-describedby' | 'id'> & {
     todayButton?: 'visible' | 'hidden';
     todayTimeZone?: Intl.DateTimeFormatOptions['timeZone'];
     value?: DateISOStr | null;
+    weekDisplay?: 'none' | 'number';
     width?: Size;
     onValueChanged?: PropertyChanged<DateISOStr | null>;
 };
 export declare const DatePicker: import("preact").ComponentType<import("ojs/ojvcomponent").ExtendGlobalProps<ObservedGlobalProps<"id" | "aria-describedby"> & {
-    dayFormatter?: ((date: CalendarDateRequired) => {
-        state: 'disabled' | 'enabled' | 'restricted';
-    }) | undefined;
-    daysOutsideMonth?: "hidden" | "selectable" | undefined;
-    monthAndYearPicker?: "off" | "on" | undefined;
-    max?: string | null | undefined;
-    maxWidth?: Size | undefined;
-    min?: string | null | undefined;
-    readonly?: boolean | undefined;
-    todayButton?: "hidden" | "visible" | undefined;
-    todayTimeZone?: Intl.DateTimeFormatOptions['timeZone'];
-    value?: string | null | undefined;
-    width?: Size | undefined;
-    onValueChanged?: PropertyChanged<string | null> | undefined;
+    dayFormatter?: (date: CalendarDateRequired) => {
+        state: "disabled" | "enabled" | "restricted";
+    };
+    daysOutsideMonth?: "hidden" | "selectable";
+    monthAndYearPicker?: "on" | "off";
+    max?: DateISOStr | null;
+    maxWidth?: Size;
+    min?: DateISOStr | null;
+    readonly?: boolean;
+    todayButton?: "visible" | "hidden";
+    todayTimeZone?: Intl.DateTimeFormatOptions["timeZone"];
+    value?: DateISOStr | null;
+    weekDisplay?: "none" | "number";
+    width?: Size;
+    onValueChanged?: PropertyChanged<DateISOStr | null>;
 }>>;
 export type DatePickerProps = Props;
 export {};
@@ -60,6 +62,7 @@ export namespace CDatePickerElement {
     type todayButtonChanged = JetElementCustomEventStrict<CDatePickerElement['todayButton']>;
     type todayTimeZoneChanged = JetElementCustomEventStrict<CDatePickerElement['todayTimeZone']>;
     type valueChanged = JetElementCustomEventStrict<CDatePickerElement['value']>;
+    type weekDisplayChanged = JetElementCustomEventStrict<CDatePickerElement['weekDisplay']>;
     type widthChanged = JetElementCustomEventStrict<CDatePickerElement['width']>;
 }
 export interface CDatePickerElementEventMap extends HTMLElementEventMap {
@@ -73,6 +76,7 @@ export interface CDatePickerElementEventMap extends HTMLElementEventMap {
     'todayButtonChanged': JetElementCustomEventStrict<CDatePickerElement['todayButton']>;
     'todayTimeZoneChanged': JetElementCustomEventStrict<CDatePickerElement['todayTimeZone']>;
     'valueChanged': JetElementCustomEventStrict<CDatePickerElement['value']>;
+    'weekDisplayChanged': JetElementCustomEventStrict<CDatePickerElement['weekDisplay']>;
     'widthChanged': JetElementCustomEventStrict<CDatePickerElement['width']>;
 }
 export interface CDatePickerElementSettableProperties extends JetSettableProperties {
@@ -86,6 +90,7 @@ export interface CDatePickerElementSettableProperties extends JetSettablePropert
     todayButton?: ComponentProps<typeof DatePicker>['todayButton'];
     todayTimeZone?: ComponentProps<typeof DatePicker>['todayTimeZone'];
     value?: ComponentProps<typeof DatePicker>['value'];
+    weekDisplay?: ComponentProps<typeof DatePicker>['weekDisplay'];
     width?: ComponentProps<typeof DatePicker>['width'];
 }
 export interface CDatePickerElementSettablePropertiesLenient extends Partial<CDatePickerElementSettableProperties> {
@@ -102,6 +107,7 @@ export interface DatePickerIntrinsicProps extends Partial<Readonly<CDatePickerEl
     ontodayButtonChanged?: (value: CDatePickerElementEventMap['todayButtonChanged']) => void;
     ontodayTimeZoneChanged?: (value: CDatePickerElementEventMap['todayTimeZoneChanged']) => void;
     onvalueChanged?: (value: CDatePickerElementEventMap['valueChanged']) => void;
+    onweekDisplayChanged?: (value: CDatePickerElementEventMap['weekDisplayChanged']) => void;
     onwidthChanged?: (value: CDatePickerElementEventMap['widthChanged']) => void;
 }
 declare global {

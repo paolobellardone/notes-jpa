@@ -1,1 +1,3 @@
-export declare function useVisBusyState(rootRef: preact.RefObject<HTMLElement>, baseDescription: string): () => () => void;
+export declare function useVisBusyState(rootRef: preact.RefObject<HTMLElement>, baseDescription?: string): {
+    addBusyState: (description: string) => () => void;
+};

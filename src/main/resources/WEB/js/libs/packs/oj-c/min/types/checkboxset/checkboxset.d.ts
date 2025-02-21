@@ -12,6 +12,7 @@ import 'css!oj-c/checkboxset/checkboxset-styles.css';
 import { ComponentType } from 'preact';
 type ValidState = 'valid' | 'pending' | 'invalidHidden' | 'invalidShown';
 type PreactCheckboxSetProps = ComponentProps<typeof PreactCheckboxSet>;
+type DisplayOptionsProps = Pick<DisplayOptions, 'messages'>;
 type CheckboxsetArrayDataItem<V extends string | number> = CheckboxsetDataItem & {
     value: V;
 };
@@ -26,7 +27,7 @@ type CheckboxsetProps<V extends string | number, D extends CheckboxsetDataItem> 
     columnSpan?: LayoutColumnSpan;
     disabled?: boolean;
     direction?: PreactCheckboxSetProps['direction'];
-    displayOptions?: Pick<DisplayOptions, 'messages'>;
+    displayOptions?: DisplayOptionsProps;
     help?: Help;
     helpHints?: HelpHints;
     labelEdge?: PreactCheckboxSetProps['labelEdge'];
@@ -46,7 +47,7 @@ type CheckboxsetProps<V extends string | number, D extends CheckboxsetDataItem> 
 };
 declare const Checkboxset: ComponentType<ExtendGlobalProps<CheckboxsetProps<string | number, CheckboxsetDataItem>>>;
 export { Checkboxset };
-export type { CheckboxsetDataItem, CheckboxsetArrayDataItem };
+export type { CheckboxsetDataItem, CheckboxsetArrayDataItem, CheckboxsetProps };
 export interface CCheckboxsetElement<V extends string | number, D extends CheckboxsetDataItem> extends JetElement<CCheckboxsetElementSettableProperties<V, D>>, CCheckboxsetElementSettableProperties<V, D> {
     readonly valid?: Parameters<Required<CheckboxsetProps<V, D>>['onValidChanged']>[0];
     addEventListener<T extends keyof CCheckboxsetElementEventMap<V, D>>(type: T, listener: (this: HTMLElement, ev: CCheckboxsetElementEventMap<V, D>[T]) => any, options?: (boolean | AddEventListenerOptions)): void;

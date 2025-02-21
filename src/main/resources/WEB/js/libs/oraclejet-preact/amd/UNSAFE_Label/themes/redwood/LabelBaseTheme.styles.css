@@ -11,7 +11,7 @@
 }
 :root, .oj-scale-dependent, :root.oj-scale-sm, :root.oj-scale-md, .oj-density-dependent {
   --fontSize__kn3t7f9: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-sm-font-size);
-  --insideEdgePositionTop__kn3t7fa: calc(0.5rem + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
+  --insideEdgePositionTop__kn3t7fa: calc(calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
 }
 .oj-scale-sm, :root.oj-scale-sm {
   --fontSize__kn3t7f9: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-body-md-font-size);

@@ -1,7 +1,8 @@
 define(["require", "exports", "./utils"], function (require, exports, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.validateSync = exports.validateAsync = void 0;
+    exports.validateAsync = validateAsync;
+    exports.validateSync = validateSync;
     function validateSync({ validators, value }) {
         const errors = [];
         for (const validator of validators) {
@@ -17,7 +18,6 @@ define(["require", "exports", "./utils"], function (require, exports, utils_1) {
         }
         return { result: 'success' };
     }
-    exports.validateSync = validateSync;
     function validateAsync({ validators, value }) {
         const doValidate = (validator, value) => {
             try {
@@ -49,5 +49,4 @@ define(["require", "exports", "./utils"], function (require, exports, utils_1) {
             maybeErrorPromises
         };
     }
-    exports.validateAsync = validateAsync;
 });

@@ -120,7 +120,17 @@
       "names": [
         "object|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Converter<number>|null",
+        "jsdocOverride": true,
+        "module": {
+          "Converter": "ojconverter"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputNumber",
@@ -373,6 +383,13 @@
       "filename": "input-number.tsx",
       "path": "web/components/oj-c/input-number"
     },
+    "tsdeprecated": [
+      {
+        "type": "deprecated",
+        "since": "18.0.0",
+        "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+      }
+    ],
     "ojvalues": [
       {
         "name": "truncate",
@@ -410,7 +427,7 @@
     "longname": "oj-c.InputNumber#max",
     "optional": true,
     "scope": "instance",
-    "description": "The maximum allowed value. This number is used in the range validator; if the\n<code class=\"prettyprint\">value</code> is greater than the <code class=\"prettyprint\">max</code>,\nthen the range validator flags an error to the user. The increase button and up arrow\n are disabled when the maximum value is reached.\n<p>\nThe <code class=\"prettyprint\">max</code> must not be less than the\n<code class=\"prettyprint\">min</code>, else an Error is thrown during initialization.\n</p>",
+    "description": "The maximum allowed value. This number is used in the range validator; if the\n<code class=\"prettyprint\">value</code> is greater than the <code class=\"prettyprint\">max</code>,\nthen the range validator flags an error to the user. The increase button and up arrow\nare disabled when the maximum value is reached.\n<p>\nThe <code class=\"prettyprint\">max</code> must not be less than the\n<code class=\"prettyprint\">min</code>, else an Error is thrown during initialization.\n</p>",
     "meta": {
       "filename": "input-number.tsx",
       "path": "web/components/oj-c/input-number"
@@ -429,7 +446,7 @@
     "longname": "oj-c.InputNumber#min",
     "optional": true,
     "scope": "instance",
-    "description": "The minimum allowed value. This number is used in the range validator; if the\n<code class=\"prettyprint\">value</code> is less than the <code class=\"prettyprint\">min</code>,\nthen the range validator flags an error to the user. The decrease button and down arrow\n are disabled when the minimum value is reached.\nThe <code class=\"prettyprint\">min</code> must not be greater than the\n<code class=\"prettyprint\">max</code>, else an Error is thrown during initialization.",
+    "description": "The minimum allowed value. This number is used in the range validator; if the\n<code class=\"prettyprint\">value</code> is less than the <code class=\"prettyprint\">min</code>,\nthen the range validator flags an error to the user. The decrease button and down arrow\nare disabled when the minimum value is reached.\nThe <code class=\"prettyprint\">min</code> must not be greater than the\n<code class=\"prettyprint\">max</code>, else an Error is thrown during initialization.",
     "meta": {
       "filename": "input-number.tsx",
       "path": "web/components/oj-c/input-number"
@@ -788,7 +805,18 @@
       "names": [
         "Array<object>|null"
       ]
-    }
+    },
+    "tstype": [
+      {
+        "target": "Type",
+        "value": "Array<AsyncValidator<number>|Validator<number>>|null",
+        "jsdocOverride": true,
+        "module": {
+          "AsyncValidator": "ojvalidator-async",
+          "Validator": "ojvalidator"
+        }
+      }
+    ]
   },
   {
     "memberof": "oj-c.InputNumber",
@@ -903,7 +931,7 @@
     },
     "type": {
       "names": [
-        "number"
+        "number|null"
       ]
     }
   },

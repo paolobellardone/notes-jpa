@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatePickerWebElementBase = void 0;
-var elements_1 = require("@oracle/oraclejet-webdriver/elements");
+const elements_1 = require("@oracle/oraclejet-webdriver/elements");
 /**
  * This is the base class for oj-c-date-picker WebElement, and is generated from the
  * component's metadata. Do not modify these contents since they'll be replaced
@@ -107,6 +107,15 @@ class DatePickerWebElementBase extends elements_1.OjWebElement {
      */
     getValue() {
         return this.getProperty('value');
+    }
+    /**
+     * Gets the value of <code>weekDisplay</code> property.
+     *
+     * @return The value of <code>weekDisplay</code> property.
+     *
+     */
+    getWeekDisplay() {
+        return this.getProperty('weekDisplay');
     }
     /**
      * Gets the value of <code>width</code> property.

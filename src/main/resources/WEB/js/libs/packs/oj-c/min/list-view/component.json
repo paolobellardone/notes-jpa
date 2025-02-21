@@ -1,7 +1,7 @@
 {
   "name": "list-view",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -32,7 +32,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/ListViewWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/ListViewWebElement.html"
     }
   },
   "propertyLayout": [
@@ -53,12 +53,23 @@
   "since": "15.0.0",
   "properties": {
     "currentItem": {
-      "type": "any",
-      "description": "The item that currently has keyboard focus",
+      "type": "string|number",
+      "description": "The key of the item that currently has keyboard focus",
       "displayName": "Current Item",
       "help": "#currentItem",
       "readOnly": true,
       "writeback": true
+    },
+    "currentItemOverride": {
+      "type": "object",
+      "description": "The key of the item that will have keyboard focus",
+      "displayName": "Current Item Override",
+      "help": "#currentItemOverride",
+      "properties": {
+        "rowKey": {
+          "type": "string|number"
+        }
+      }
     },
     "data": {
       "type": "DataProvider|null",
@@ -182,6 +193,25 @@
             "disabled",
             "enabled"
           ],
+          "value": "disabled"
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "description": "The item option contains a subset of options for items.",
+      "displayName": "Item",
+      "help": "#item",
+      "properties": {
+        "padding": {
+          "type": "string|object",
+          "description": "It controls the padding around the list item",
+          "displayName": "item.padding",
+          "help": "#item.padding",
+          "propertyEditorValues": {
+            "disabled": {},
+            "enabled": {}
+          },
           "value": "disabled"
         }
       }
@@ -404,6 +434,9 @@
       "detail": {
         "value": {
           "type": "string|Array<string>"
+        },
+        "menuSelectionGroupKey": {
+          "type": "string"
         },
         "contextMenuContext": {
           "type": "object",

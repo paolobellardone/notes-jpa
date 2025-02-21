@@ -1,7 +1,7 @@
 define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext"], function (require, exports, UNSAFE_useFormContext_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useMergedFormContext = void 0;
+    exports.useMergedFormContext = useMergedFormContext;
     function useMergedFormContext({ propContainerReadonly, propLabelWrapping, propReadonly, propUserAssistanceDensity }) {
         const formContext = (0, UNSAFE_useFormContext_1.useFormContext)();
         const uadValue = propUserAssistanceDensity ?? formContext.userAssistanceDensity;
@@ -19,5 +19,4 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormCont
             uadValue
         };
     }
-    exports.useMergedFormContext = useMergedFormContext;
 });

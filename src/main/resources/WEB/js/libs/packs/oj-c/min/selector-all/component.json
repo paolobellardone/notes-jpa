@@ -1,7 +1,7 @@
 {
   "name": "selector-all",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -19,7 +19,7 @@
       "module": "oj-c/selectorAll"
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/SelectorAllWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectorAllWebElement.html"
     }
   },
   "help": "oj-c.SelectorAll.html",

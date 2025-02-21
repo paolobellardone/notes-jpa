@@ -1,7 +1,7 @@
 {
   "name": "input-number",
-  "version": "17.0.0",
-  "jetVersion": "^17.0.0",
+  "version": "18.0.1",
+  "jetVersion": "^18.0.1",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -38,7 +38,7 @@
       ]
     },
     "webelement": {
-      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet-1700/cpwdtsdoc/classes/InputNumberWebElement.html"
+      "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/InputNumberWebElement.html"
     }
   },
   "propertyLayout": [
@@ -247,6 +247,13 @@
           "displayName": "Wrap"
         }
       },
+      "status": [
+        {
+          "type": "deprecated",
+          "since": "18.0.0",
+          "description": "Label truncation for 'start' and 'top' aligned labels is no longer recommended by the Redwood Design System. The default for labelWrapping was 'wrap' and that is now the only suggested pattern by UX design for 'start' and 'top' aligned labels. 'inside' aligned labels are always truncated per UX design and are not affected by this property's value."
+        }
+      ],
       "enumValues": [
         "truncate",
         "wrap"
@@ -265,9 +272,9 @@
     },
     "min": {
       "type": "number|null",
-      "description": "The maximum allowed value",
-      "displayName": "Max",
-      "help": "#max"
+      "description": "The minimum allowed value",
+      "displayName": "Min",
+      "help": "#min"
     },
     "messagesCustom": {
       "type": "Array<object>",
@@ -483,7 +490,7 @@
       "writeback": true
     },
     "transientValue": {
-      "type": "number",
+      "type": "number|null",
       "description": "Specifies the transient value of the component",
       "displayName": "Transient Value",
       "help": "#transientValue",

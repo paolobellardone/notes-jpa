@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SplitMenuButtonWebElement = void 0;
-var SplitMenuButtonWebElementBase_1 = require("./SplitMenuButtonWebElementBase");
-var selenium_webdriver_1 = require("selenium-webdriver");
+const SplitMenuButtonWebElementBase_1 = require("./SplitMenuButtonWebElementBase");
+const selenium_webdriver_1 = require("selenium-webdriver");
 /**
  * The component WebElement for [oj-c-split-menu-button](../../../oj-c/docs/oj.SplitMenuButton.html).
  * Do not instantiate this class directly, instead, use

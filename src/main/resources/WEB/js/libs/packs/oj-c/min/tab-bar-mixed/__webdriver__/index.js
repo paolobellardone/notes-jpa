@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findTabBarMixed = exports.TabBarMixedWebElement = void 0;
-var oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
-var TabBarMixedWebElement_1 = require("./TabBarMixedWebElement");
+exports.TabBarMixedWebElement = void 0;
+exports.findTabBarMixed = findTabBarMixed;
+const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
+const TabBarMixedWebElement_1 = require("./TabBarMixedWebElement");
 Object.defineProperty(exports, "TabBarMixedWebElement", { enumerable: true, get: function () { return TabBarMixedWebElement_1.TabBarMixedWebElement; } });
 /**
  * Retrieve an instance of [TabBarMixedWebElement](../classes/TabBarMixedWebElement.html).
@@ -29,6 +30,5 @@ async function findTabBarMixed(driver, by) {
     }
     return webEl;
 }
-exports.findTabBarMixed = findTabBarMixed;
 (0, oraclejet_webdriver_1.register)('oj-c-tab-bar-mixed', TabBarMixedWebElement_1.TabBarMixedWebElement);
 //# sourceMappingURL=index.js.map
