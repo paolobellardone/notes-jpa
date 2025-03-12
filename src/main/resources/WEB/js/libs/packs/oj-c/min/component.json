@@ -1,7 +1,7 @@
 {
   "name": "oj-c",
-  "version": "18.0.1",
-  "jetVersion": "^18.0.1",
+  "version": "18.0.2",
+  "jetVersion": "^18.0.2",
   "type": "mono-pack",
   "displayName": "Oracle JET Core pack",
   "description": "Core Oracle JET components implemented using virtual DOM technology",
@@ -9,7 +9,7 @@
   "license": "https://opensource.org/licenses/UPL",
   "dependencyScope": "runtime",
   "dependencies": {
-    "oj-ref-oraclejet-preact": "18.0.1"
+    "oj-ref-oraclejet-preact": "18.0.2"
   },
   "bundles": {
     "oj-c/corepackbundle": [

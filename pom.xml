@@ -35,13 +35,13 @@
     <parent>
         <groupId>io.helidon.applications</groupId>
         <artifactId>helidon-mp</artifactId>
-        <version>4.1.6</version>
+        <version>4.1.7</version>
         <relativePath />
     </parent>
 
     <groupId>io.helidon.demo</groupId>
     <artifactId>notes-jpa</artifactId>
-    <version>1.4.0</version>
+    <version>1.5.0</version>
     <name>${project.artifactId}</name>
 
     <properties>
@@ -164,6 +164,10 @@
         <dependency>
             <groupId>io.helidon.microprofile</groupId>
             <artifactId>helidon-microprofile-cors</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.microprofile.server</groupId>
+            <artifactId>helidon-microprofile-server</artifactId>
         </dependency>
         <!-- Test-scoped dependencies. -->
         <dependency>
