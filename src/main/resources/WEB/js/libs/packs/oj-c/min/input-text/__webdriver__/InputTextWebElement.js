@@ -4,7 +4,7 @@ exports.InputTextWebElement = void 0;
 const InputTextWebElementBase_1 = require("./InputTextWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-input-text](../../../oj-c/docs/oj.InputText.html).
+ * The component WebElement for [oj-c-input-text](../../jsdocs/oj-c.InputText.html).
  * Do not instantiate this class directly, instead, use
  * [findInputText](../functions/findInputText.html).
  */

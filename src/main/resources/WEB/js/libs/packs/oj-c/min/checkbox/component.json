@@ -1,7 +1,7 @@
 {
   "name": "checkbox",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -262,11 +262,11 @@
   },
   "methods": {
     "blur": {
-      "description": "focuses the input field.",
+      "description": "Blurs the input field.",
       "return": "void"
     },
     "focus": {
-      "description": "blurs the input field.",
+      "description": "Focuses the input field.",
       "return": "void"
     },
     "showMessages": {

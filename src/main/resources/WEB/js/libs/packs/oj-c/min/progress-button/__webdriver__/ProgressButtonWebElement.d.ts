@@ -1,6 +1,6 @@
 import { ProgressButtonWebElementBase } from './ProgressButtonWebElementBase';
 /**
- * The component WebElement for [oj-c-progress-button](../../../oj-c/docs/oj.ProgressButton.html).
+ * The component WebElement for [oj-c-progress-button](../../jsdocs/oj-c.ProgressButton.html).
  * Do not instantiate this class directly, instead, use
  * [findProgressButton](../functions/findProgressButton.html).
  */

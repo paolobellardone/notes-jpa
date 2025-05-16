@@ -1,6 +1,6 @@
 import { CheckboxWebElementBase } from './CheckboxWebElementBase';
 /**
- * The component WebElement for [oj-c-checkbox](../../../oj-c/docs/oj.Checkbox.html).
+ * The component WebElement for [oj-c-checkbox](../../jsdocs/oj-c.Checkbox.html).
  * Do not instantiate this class directly, instead, use
  * [findCheckbox](../functions/findCheckbox.html).
  */

@@ -51,6 +51,10 @@ type AddComponentMessageAction = {
     type: 'ADD_COMPONENT_MESSAGE';
     payload: ComponentMessageItem;
 };
+type AddHiddenMessageAction = {
+    type: 'ADD_HIDDEN_MESSAGE';
+    payload: ComponentMessageItem;
+};
 type UpdatePreviousConverterAction<V, DV> = {
     type: 'UPDATE_PREVIOUS_CONVERTER';
     payload?: Converter<V, DV>;
@@ -75,7 +79,7 @@ type UpdatePreviousValueAction<V> = {
     type: 'UPDATE_PREVIOUS_VALUE';
     payload: Optional<V>;
 };
-type Action<V, DV> = UpdateDisplayValueAction<DV> | UpdateValueAction<V> | UpdateTransientValueAction<V> | UpdateValidAction | UpdateComponentMessagesAction | UpdateCustomMessagesAction | UpdateHiddenMessagesAction | ClearAllMessagesAction | AddComponentMessageAction | ShowHiddenMessagesAction | UpdatePreviousConverterAction<V, DV> | UpdatePreviousDeferredValidatorsAction<V> | UpdatePreviousDisabledAction | UpdatePreviousReadonlyAction | UpdatePreviousValidatorsAction<V> | UpdatePreviousValueAction<V>;
+type Action<V, DV> = AddComponentMessageAction | AddHiddenMessageAction | ClearAllMessagesAction | ShowHiddenMessagesAction | UpdateDisplayValueAction<DV> | UpdateValueAction<V> | UpdateTransientValueAction<V> | UpdateValidAction | UpdateComponentMessagesAction | UpdateCustomMessagesAction | UpdateHiddenMessagesAction | UpdatePreviousConverterAction<V, DV> | UpdatePreviousDeferredValidatorsAction<V> | UpdatePreviousDisabledAction | UpdatePreviousReadonlyAction | UpdatePreviousValidatorsAction<V> | UpdatePreviousValueAction<V>;
 type State<V, DV> = Readonly<{
     customMessages?: ComponentMessageItem[];
     componentMessages: ComponentMessageItem[];
@@ -109,4 +113,5 @@ declare function updatePreviousValidators<V, DV>(dispatch: Dispatch<Action<V, DV
 declare function clearAllMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>, _value: any, { onMessagesCustomChanged }: Callbacks<V, DV>): void;
 declare function showHiddenMessages<V, DV>(dispatch: Dispatch<Action<V, DV>>): void;
 declare function addComponentMessage<V, DV>(dispatch: Dispatch<Action<V, DV>>, message: ComponentMessageItem): void;
-export { reducer, Action, State, addComponentMessage, clearAllMessages, showHiddenMessages, updateComponentMessages, updateCustomMessages, updateDisplayValue, updateHiddenMessages, updatePreviousConverter, updatePreviousDeferredValidators, updatePreviousDisabled, updatePreviousReadonly, updatePreviousValidators, updatePreviousValue, updateTransientValue, updateValidStatus, updateValue };
+declare function addHiddenMessage<V, DV>(dispatch: Dispatch<Action<V, DV>>, message: ComponentMessageItem): void;
+export { reducer, Action, State, addComponentMessage, addHiddenMessage, clearAllMessages, showHiddenMessages, updateComponentMessages, updateCustomMessages, updateDisplayValue, updateHiddenMessages, updatePreviousConverter, updatePreviousDeferredValidators, updatePreviousDisabled, updatePreviousReadonly, updatePreviousValidators, updatePreviousValue, updateTransientValue, updateValidStatus, updateValue };

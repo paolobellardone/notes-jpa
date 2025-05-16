@@ -15,7 +15,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 }
                 return;
             }
-            if (value != null && valueItem != null && valueItem.key === value) {
+            if (value != null && valueItem != null && valueItem.key === value.value) {
                 setValueItem(Object.assign({}, valueItem));
                 return;
             }
@@ -26,9 +26,9 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
             const resolveBusyState = addBusyState('useSyncValueItem: calling fetchByKeys');
             const { isStale } = setStaleIdentity('useSyncValueItem:fetchByKeys');
             try {
-                const fetchResults = await dataProvider.fetchByKeys({ keys: new Set([value]) });
+                const fetchResults = await dataProvider.fetchByKeys({ keys: new Set([value.value]) });
                 if (!isStale()) {
-                    const newValueItems = handleFetchByKeysResults(value, valueItem, fetchResults.results);
+                    const newValueItems = handleFetchByKeysResults(value.value, valueItem, fetchResults.results);
                     setValueItem(newValueItems);
                 }
             }
@@ -66,7 +66,7 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "o
                 }
                 return;
             }
-            if (valueItem.key !== value) {
+            if (valueItem.key !== value?.value) {
                 updateValue(valueItem.key);
                 return;
             }

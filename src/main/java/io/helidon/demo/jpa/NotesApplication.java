@@ -30,10 +30,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.LogManager;
 
+import io.helidon.microprofile.server.Server;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.Application;
-
-import io.helidon.microprofile.server.Server;
 
 /**
  * NotesApplication, a simple Helidon application to implement a set of

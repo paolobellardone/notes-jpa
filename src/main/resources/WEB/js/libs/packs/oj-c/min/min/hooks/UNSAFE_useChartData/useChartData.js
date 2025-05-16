@@ -1,4 +1,4 @@
-define(["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData"], function (require, exports, dataUtil_1, useVisData_1) {
+define(["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData", "preact/hooks"], function (require, exports, dataUtil_1, useVisData_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useChartData = useChartData;
@@ -7,7 +7,17 @@ define(["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData"],
             dataProvider,
             addBusyState
         });
-        const { series, groups } = (0, dataUtil_1.createGroupsAndSeries)(data, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator);
+        const { series, groups } = (0, hooks_1.useMemo)(() => (0, dataUtil_1.createGroupsAndSeries)(data, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator), [
+            data,
+            itemTemplate,
+            seriesTemplate,
+            groupTemplate,
+            itemElementName,
+            seriesElementName,
+            groupElementName,
+            seriesComparator,
+            groupComparator
+        ]);
         const idToDPItemMap = new Map(data.map((item) => [item.key, item.data]));
         const getDataItem = (seriesIndex, groupIndex) => {
             const seriesItems = series[seriesIndex]['items'];

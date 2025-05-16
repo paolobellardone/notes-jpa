@@ -4,7 +4,7 @@ exports.CheckboxWebElement = void 0;
 const CheckboxWebElementBase_1 = require("./CheckboxWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-checkbox](../../../oj-c/docs/oj.Checkbox.html).
+ * The component WebElement for [oj-c-checkbox](../../jsdocs/oj-c.Checkbox.html).
  * Do not instantiate this class directly, instead, use
  * [findCheckbox](../functions/findCheckbox.html).
  */

@@ -674,7 +674,7 @@ define('oj-c/hooks/PRIVATE_useVisData/useVisData',["require", "exports", "preact
     }
 });
 
-define('oj-c/hooks/UNSAFE_useChartData/useChartData',["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData"], function (require, exports, dataUtil_1, useVisData_1) {
+define('oj-c/hooks/UNSAFE_useChartData/useChartData',["require", "exports", "./dataUtil", "../PRIVATE_useVisData/useVisData", "preact/hooks"], function (require, exports, dataUtil_1, useVisData_1, hooks_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.useChartData = useChartData;
@@ -683,7 +683,17 @@ define('oj-c/hooks/UNSAFE_useChartData/useChartData',["require", "exports", "./d
             dataProvider,
             addBusyState
         });
-        const { series, groups } = (0, dataUtil_1.createGroupsAndSeries)(data, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator);
+        const { series, groups } = (0, hooks_1.useMemo)(() => (0, dataUtil_1.createGroupsAndSeries)(data, itemTemplate, seriesTemplate, groupTemplate, itemElementName, seriesElementName, groupElementName, seriesComparator, groupComparator), [
+            data,
+            itemTemplate,
+            seriesTemplate,
+            groupTemplate,
+            itemElementName,
+            seriesElementName,
+            groupElementName,
+            seriesComparator,
+            groupComparator
+        ]);
         const idToDPItemMap = new Map(data.map((item) => [item.key, item.data]));
         const getDataItem = (seriesIndex, groupIndex) => {
             const seriesItems = series[seriesIndex]['items'];
@@ -765,12 +775,21 @@ define('oj-c/utils/PRIVATE_chartUtils/legendUtils',["require", "exports"], funct
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LegendDefaults = void 0;
+    exports.getLegendPosition = getLegendPosition;
     exports.getLegendData = getLegendData;
     exports.getBLACCategoriesItems = getBLACCategoriesItems;
     exports.LegendDefaults = {
         rendered: 'off',
         position: 'auto'
     };
+    function getLegendPosition(w, h) {
+        if (w > h) {
+            return 'end';
+        }
+        else {
+            return 'bottom';
+        }
+    }
     function getLegendData(series) {
         return series.map((chartSeries) => {
             return {
@@ -830,24 +849,6 @@ define('oj-c/hooks/UNSAFE_useVizCategories/useVizCategories',["require", "export
             highlightedIds,
             updateHighlighted
         };
-    }
-});
-
-define('oj-c/hooks/UNSAFE_useLegendPosition/useLegendPosition',["require", "exports", "preact/hooks"], function (require, exports, hooks_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.useLegendPosition = useLegendPosition;
-    function useLegendPosition(rootRef, position) {
-        const [legendPosition, setLegendPosition] = (0, hooks_1.useState)(position === 'auto' ? 'end' : position);
-        (0, hooks_1.useLayoutEffect)(() => {
-            if (position === 'auto' && rootRef.current) {
-                const rootDims = rootRef.current.getBoundingClientRect();
-                if (rootDims.height > rootDims.width) {
-                    setLegendPosition('bottom');
-                }
-            }
-        }, [position, rootRef]);
-        return legendPosition;
     }
 });
 
@@ -1037,7 +1038,7 @@ define('oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu',["require", "exp
 });
 
 
-define('oj-c/area-chart/area-chart',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_VisProgressiveLoader", "@oracle/oraclejet-preact/UNSAFE_LineAreaChart", "@oracle/oraclejet-preact/UNSAFE_VisStatusMessage", "@oracle/oraclejet-preact/UNSAFE_Legend", "@oracle/oraclejet-preact/UNSAFE_ChartWithLegend", "@oracle/oraclejet-preact/hooks/UNSAFE_useVisBusyStateContext", "../hooks/UNSAFE_useVisBusyState/useVisBusyState", "ojs/ojvcomponent", "../hooks/UNSAFE_useChartData/useChartData", "../utils/PRIVATE_chartUtils/events", "../utils/PRIVATE_chartUtils/legendUtils", "../hooks/UNSAFE_useVizCategories/useVizCategories", "../hooks/UNSAFE_useLegendPosition/useLegendPosition", "../utils/PRIVATE_chartUtils/lineAreaUtils", "../utils/PRIVATE_chartUtils/plotAreaUtils", "../utils/PRIVATE_chartUtils/axisUtils", "oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu", "css!oj-c/area-chart/area-chart-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_VisProgressiveLoader_1, UNSAFE_LineAreaChart_1, UNSAFE_VisStatusMessage_1, UNSAFE_Legend_1, UNSAFE_ChartWithLegend_1, UNSAFE_useVisBusyStateContext_1, useVisBusyState_1, ojvcomponent_1, useChartData_1, events_1, legendUtils_1, useVizCategories_1, useLegendPosition_1, lineAreaUtils_1, plotAreaUtils_1, axisUtils_1, useVisContextMenu_1) {
+define('oj-c/area-chart/area-chart',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_VisProgressiveLoader", "@oracle/oraclejet-preact/UNSAFE_LineAreaChart", "@oracle/oraclejet-preact/UNSAFE_VisStatusMessage", "@oracle/oraclejet-preact/UNSAFE_Legend", "@oracle/oraclejet-preact/UNSAFE_ChartWithLegend", "@oracle/oraclejet-preact/hooks/UNSAFE_useVisBusyStateContext", "../hooks/UNSAFE_useVisBusyState/useVisBusyState", "@oracle/oraclejet-preact/hooks/UNSAFE_useLegendPreferredSize", "@oracle/oraclejet-preact/UNSAFE_TrackResizeContainer", "@oracle/oraclejet-preact/hooks/UNSAFE_useUser", "ojs/ojvcomponent", "../hooks/UNSAFE_useChartData/useChartData", "../utils/PRIVATE_chartUtils/events", "../utils/PRIVATE_chartUtils/legendUtils", "../hooks/UNSAFE_useVizCategories/useVizCategories", "../utils/PRIVATE_chartUtils/lineAreaUtils", "../utils/PRIVATE_chartUtils/plotAreaUtils", "../utils/PRIVATE_chartUtils/axisUtils", "oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu", "css!oj-c/area-chart/area-chart-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_VisProgressiveLoader_1, UNSAFE_LineAreaChart_1, UNSAFE_VisStatusMessage_1, UNSAFE_Legend_1, UNSAFE_ChartWithLegend_1, UNSAFE_useVisBusyStateContext_1, useVisBusyState_1, UNSAFE_useLegendPreferredSize_1, UNSAFE_TrackResizeContainer_1, UNSAFE_useUser_1, ojvcomponent_1, useChartData_1, events_1, legendUtils_1, useVizCategories_1, lineAreaUtils_1, plotAreaUtils_1, axisUtils_1, useVisContextMenu_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.AreaChart = void 0;
@@ -1045,44 +1046,76 @@ define('oj-c/area-chart/area-chart',["require", "exports", "preact/jsx-runtime",
     const SELECTION_DEFAULT = [];
     const HIDDEN_DEFAULT = [];
     const LEGEND_DEFAULT = { rendered: 'on', position: 'auto' };
-    function AreaChartComp({ data, hideAndShowBehavior = 'none', orientation = 'vertical', xAxis, yAxis, hoverBehavior = 'none', valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling = 'off', hiddenCategories = HIDDEN_DEFAULT, highlightedCategories = HIGHLIGHTED_DEFAULT, highlightMatch = 'any', selection = SELECTION_DEFAULT, selectionMode = 'none', timeAxisType, stack = 'off', legend = LEGEND_DEFAULT, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, ...props }) {
+    function AreaChartComp({ data, hideAndShowBehavior = 'none', orientation = 'vertical', xAxis, yAxis, hoverBehavior = 'none', valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling = 'off', hiddenCategories = HIDDEN_DEFAULT, highlightedCategories = HIGHLIGHTED_DEFAULT, highlightMatch = 'any', selection = SELECTION_DEFAULT, selectionMode = 'none', timeAxisType, stack = 'off', legend = LEGEND_DEFAULT, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, onSelectionChanged, ...props }) {
         const rootRef = (0, hooks_1.useRef)(null);
+        const { direction } = (0, UNSAFE_useUser_1.useUser)();
+        const isRtl = direction === 'rtl';
         const busyStateContext = (0, useVisBusyState_1.useVisBusyState)(rootRef, 'oj-c-area-chart: ');
         const { series, groups, getDataItem, isLoading, idToDPItemMap } = (0, useChartData_1.useChartData)(data, busyStateContext.addBusyState, itemTemplate, seriesTemplate, groupTemplate, 'oj-c-area-chart-item', 'oj-c-area-chart-series', 'oj-c-area-chart-group', seriesComparator, groupComparator);
         const { majorTick: xMajorTick, ...xAxisRest } = xAxis ?? {};
         const { majorTick: yMajorTick, minorTick: yMinorTick, ...yAxisRest } = yAxis ?? {};
         const { itemDrillHandler, groupDrillHandler, seriesDrillHandler } = (0, events_1.getChartEventsHandler)(series, groups, drilling, props.onOjItemDrill, props.onOjGroupDrill, props.onOjSeriesDrill);
-        const selectionChangeHandler = (detail) => {
-            props.onSelectionChanged?.(detail.ids);
-        };
+        const selectionChangeHandler = (0, hooks_1.useCallback)((detail) => {
+            onSelectionChanged?.(detail.ids);
+        }, [onSelectionChanged]);
         const categoriesItems = (0, legendUtils_1.getBLACCategoriesItems)(series, groups, getDataItem, hoverBehavior, hideAndShowBehavior);
         const { hiddenIds, updateHidden, highlightedIds, updateHighlighted } = (0, useVizCategories_1.useVizCategories)(categoriesItems, (item) => item.categories, hiddenCategories, highlightedCategories, 'any', highlightMatch, props.onHiddenCategoriesChanged, props.onHighlightedCategoriesChanged);
-        const onItemInput = (detail) => {
+        const onItemInput = (0, hooks_1.useCallback)((detail) => {
             if (hoverBehavior === 'none')
                 return;
             const id = (0, events_1.getIdFromDetail)(detail, series, getDataItem);
             updateHighlighted(id);
-        };
-        const legendPosition = (0, useLegendPosition_1.useLegendPosition)(rootRef, legend.position || legendUtils_1.LegendDefaults.position);
-        const isLegendRendered = (legend.rendered || legendUtils_1.LegendDefaults.rendered) != 'off';
+        }, [hoverBehavior, updateHighlighted, series, getDataItem]);
         const legendData = (0, legendUtils_1.getLegendData)(series);
         const isLegendInteractive = hideAndShowBehavior != 'none' || hoverBehavior != 'none' || drilling === 'on';
-        const legendItemActionHandler = (detail) => {
+        const legendItemActionHandler = (0, hooks_1.useCallback)((detail) => {
             if (hideAndShowBehavior != 'none') {
                 updateHidden(detail.itemId);
                 return;
             }
             seriesDrillHandler(detail);
-        };
-        const legendItemInputHandler = (detail) => {
+        }, [hideAndShowBehavior, updateHidden, seriesDrillHandler]);
+        const legendItemInputHandler = (0, hooks_1.useCallback)((detail) => {
             if (hoverBehavior != 'none') {
                 updateHighlighted(detail.itemId);
             }
-        };
+        }, [hoverBehavior, updateHighlighted]);
         const { preactContextMenuConfig } = (0, useVisContextMenu_1.useVisContextMenu)(idToDPItemMap, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection);
-        const chart = series.length > 0 && groups.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_LineAreaChart_1.LineAreaChart, { type: "area", width: "100%", height: "100%", series: series, groups: groups, getDataItem: getDataItem, onItemHover: onItemInput, onItemFocus: onItemInput, drilling: drilling, dragMode: props.dragMode, onItemDrill: itemDrillHandler, onGroupDrill: groupDrillHandler, onSelectionChange: selectionChangeHandler, selectionMode: selectionMode, selectedIds: selectionMode === 'none' ? undefined : selection, orientation: orientation, xAxis: (0, axisUtils_1.getPreactAxisProps)({ ...xAxisRest, timeAxisType }), yAxis: (0, axisUtils_1.getPreactAxisProps)(yAxisRest), highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds, plotArea: (0, plotAreaUtils_1.getPlotArea)(plotArea, yMajorTick, yMinorTick, xMajorTick), hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, isStacked: stack === 'on', valueFormats: (0, lineAreaUtils_1.transformValueFormats)(valueFormats), "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined })) : (!isLoading && ((0, jsx_runtime_1.jsx)(UNSAFE_VisStatusMessage_1.VisNoData, { "aria-label": props['aria-label'], "aria-describedby": props['aria-describedby'], "aria-labelledby": props['aria-labelledby'] })));
-        const chartLegend = isLegendRendered && legendData.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { items: legendData, orientation: legendPosition === 'start' || legendPosition === 'end' ? 'vertical' : 'horizontal', halign: "center", valign: "middle", hideAndShowBehavior: hideAndShowBehavior === 'none' ? 'off' : 'on', hoverBehavior: hoverBehavior, isReadOnly: !isLegendInteractive, highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds.length === 0 ? undefined : hiddenIds, symbolHeight: legend.symbolHeight, symbolWidth: legend.symbolWidth, onItemAction: legendItemActionHandler, onItemHover: legendItemInputHandler, onItemFocus: legendItemInputHandler })) : undefined;
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_VisProgressiveLoader_1.VisProgressiveLoader, { isLoading: isLoading, type: "area", "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], children: (0, jsx_runtime_1.jsx)(UNSAFE_ChartWithLegend_1.ChartWithLegend, { chart: chart, position: legendPosition, maxSize: legend.maxSize, size: legend.size, legend: chartLegend }) }) }) }));
+        const isLegendRendered = (legend.rendered || legendUtils_1.LegendDefaults.rendered) != 'off';
+        const legendSizeRef = (0, hooks_1.useRef)(null);
+        const [isLegendReady, setIsLegendReady] = (0, hooks_1.useState)(false);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_TrackResizeContainer_1.TrackResizeContainer, { width: "100%", height: "100%", children: (_width, _height) => {
+                    const legendPreferredSize = isLegendReady
+                        ? legendSizeRef.current._getPreferredSize(_width, _height)
+                        : undefined;
+                    const legendMaxSize = _width > _height
+                        ? Math.floor(((legendPreferredSize?.width || 0) * 100) / _width)
+                        : Math.floor(((legendPreferredSize?.height || 0) * 100) / _height);
+                    const legendPosition = legend.position != 'auto' ? legend.position : (0, legendUtils_1.getLegendPosition)(_width, _height);
+                    const chart = series.length > 0 && groups.length > 0 && legendPreferredSize ? ((0, jsx_runtime_1.jsx)(UNSAFE_LineAreaChart_1.LineAreaChart, { type: "area", width: legendPreferredSize
+                            ? legendPosition === 'start' || legendPosition === 'end'
+                                ? `${_width - legendPreferredSize.width}px`
+                                : `${_width}px`
+                            : undefined, height: legendPreferredSize
+                            ? legendPosition === 'top' || legendPosition === 'bottom'
+                                ? `${_height - legendPreferredSize.height}px`
+                                : `${_height}px`
+                            : undefined, series: series, groups: groups, getDataItem: getDataItem, onItemHover: onItemInput, onItemFocus: onItemInput, drilling: drilling, dragMode: props.dragMode, onItemDrill: itemDrillHandler, onGroupDrill: groupDrillHandler, onSelectionChange: selectionChangeHandler, selectionMode: selectionMode, selectedIds: selectionMode === 'none' ? undefined : selection, orientation: orientation, xAxis: (0, axisUtils_1.getPreactAxisProps)({ ...xAxisRest, timeAxisType }), yAxis: (0, axisUtils_1.getPreactAxisProps)(yAxisRest), highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds, plotArea: (0, plotAreaUtils_1.getPlotArea)(plotArea, yMajorTick, yMinorTick, xMajorTick), hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, isStacked: stack === 'on', valueFormats: (0, lineAreaUtils_1.transformValueFormats)(valueFormats), "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined })) : (!isLoading && ((0, jsx_runtime_1.jsx)(UNSAFE_VisStatusMessage_1.VisNoData, { "aria-label": props['aria-label'], "aria-describedby": props['aria-describedby'], "aria-labelledby": props['aria-labelledby'] })));
+                    const legendMaxWidth = legendPosition === 'start' || legendPosition === 'end'
+                        ? (legendPreferredSize?.width || _width * 0.3) + 4
+                        : _width;
+                    const legendMaxHeight = legendPosition === 'top' || legendPosition === 'bottom'
+                        ? (legendPreferredSize?.height || _height * 0.3) + 4
+                        : _height;
+                    const chartLegend = isLegendRendered && legendData.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_useLegendPreferredSize_1.LegendRenderedContext.Provider, { value: {
+                            isLegendReady: !isLegendReady ? setIsLegendReady : undefined,
+                            width: legendMaxWidth,
+                            height: legendMaxHeight
+                        }, children: (0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { items: legendData, ref: legendSizeRef, orientation: legendPosition === 'start' || legendPosition === 'end'
+                                ? 'vertical'
+                                : 'horizontal', halign: "center", valign: "center", hideAndShowBehavior: hideAndShowBehavior === 'none' ? 'off' : 'on', hoverBehavior: hoverBehavior, isReadOnly: !isLegendInteractive, highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds.length === 0 ? undefined : hiddenIds, symbolHeight: legend.symbolHeight, symbolWidth: legend.symbolWidth, onItemAction: legendItemActionHandler, onItemHover: legendItemInputHandler, onItemFocus: legendItemInputHandler }) })) : undefined;
+                    return ((0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_VisProgressiveLoader_1.VisProgressiveLoader, { isLoading: isLoading, type: "area", "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], children: (0, jsx_runtime_1.jsx)(UNSAFE_ChartWithLegend_1.ChartWithLegend, { chart: legendMaxSize != undefined ? chart : undefined, position: legendPosition, isRtl: isRtl, legend: chartLegend }) }) }));
+                } }) }));
     }
     exports.AreaChart = (0, ojvcomponent_1.registerCustomElement)('oj-c-area-chart', AreaChartComp, "AreaChart", { "properties": { "data": { "type": "DataProvider|null" }, "seriesComparator": { "type": "function" }, "groupComparator": { "type": "function" }, "stack": { "type": "string", "enumValues": ["off", "on"] }, "drilling": { "type": "string", "enumValues": ["off", "on"] }, "orientation": { "type": "string", "enumValues": ["horizontal", "vertical"] }, "timeAxisType": { "type": "string", "enumValues": ["enabled", "mixedFrequency", "skipGaps"] }, "yAxis": { "type": "object", "properties": { "dataMax": { "type": "number" }, "dataMin": { "type": "number" }, "max": { "type": "number" }, "min": { "type": "number" }, "majorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "minorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "tickLabel": { "type": "object", "properties": { "converter": { "type": "object" }, "rendered": { "type": "string", "enumValues": ["off", "on"] }, "style": { "type": "object" } } }, "viewportMin": { "type": "number" }, "viewportMax": { "type": "number" }, "step": { "type": "number" }, "size": { "type": "number" }, "scale": { "type": "string", "enumValues": ["linear", "log"] }, "title": { "type": "string" }, "titleStyle": { "type": "object" } } }, "xAxis": { "type": "object", "properties": { "majorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "minorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "tickLabel": { "type": "object", "properties": { "converter": { "type": "object|Array<object>" }, "rendered": { "type": "string", "enumValues": ["off", "on"] }, "rotation": { "type": "string", "enumValues": ["auto", "none"] }, "style": { "type": "object" } } }, "viewportMin": { "type": "number" }, "viewportMax": { "type": "number" }, "step": { "type": "number" }, "size": { "type": "number" }, "scale": { "type": "string", "enumValues": ["linear", "log"] }, "title": { "type": "string" }, "titleStyle": { "type": "object" } } }, "plotArea": { "type": "object", "properties": { "backgroundColor": { "type": "string" } } }, "zoomAndScroll": { "type": "string", "enumValues": ["off", "live"] }, "valueFormats": { "type": "object", "properties": { "group": { "type": "object", "properties": { "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } }, "series": { "type": "object", "properties": { "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } }, "value": { "type": "object", "properties": { "converter": { "type": "object" }, "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } } } }, "selectionMode": { "type": "string", "enumValues": ["none", "multiple", "single"] }, "selection": { "type": "Array<any>", "writeback": true }, "hiddenCategories": { "type": "Array<string>", "writeback": true }, "dragMode": { "type": "string", "enumValues": ["pan", "zoom", "select", "off", "user"] }, "highlightedCategories": { "type": "Array<string>", "writeback": true }, "hideAndShowBehavior": { "type": "string", "enumValues": ["none", "withoutRescale", "withRescale"] }, "hoverBehavior": { "type": "string", "enumValues": ["none", "dim"] }, "highlightMatch": { "type": "string", "enumValues": ["all", "any"] }, "legend": { "type": "object", "properties": { "position": { "type": "string", "enumValues": ["auto", "end", "start", "top", "bottom"] }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] }, "maxSize": { "type": "number|string" }, "size": { "type": "number|string" }, "symbolHeight": { "type": "number" }, "symbolWidth": { "type": "number" } } }, "contextMenuConfig": { "type": "object", "properties": { "accessibleLabel": { "type": "string" }, "items": { "type": "function" } } } }, "slots": { "itemTemplate": { "data": {} }, "seriesTemplate": { "data": {} }, "groupTemplate": { "data": {} } }, "events": { "ojViewportChange": {}, "ojItemDrill": {}, "ojGroupDrill": {}, "ojSeriesDrill": {}, "ojContextMenuAction": { "bubbles": true }, "ojContextMenuSelection": { "bubbles": true } }, "extension": { "_WRITEBACK_PROPS": ["selection", "hiddenCategories", "highlightedCategories"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-label", "aria-describedby", "aria-labelledby"] } }, { "hideAndShowBehavior": "none", "orientation": "vertical", "hoverBehavior": "none", "drilling": "off", "hiddenCategories": [], "highlightedCategories": [], "highlightMatch": "any", "selection": [], "selectionMode": "none", "stack": "off", "legend": { "rendered": "on", "position": "auto" } }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
@@ -1199,7 +1232,7 @@ define('oj-c/date-picker',["require", "exports", "oj-c/date-picker/date-picker"]
 });
 
 
-define('oj-c/dialog/dialog',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Dialog", "preact/hooks", "ojs/ojcontext", "css!oj-c/dialog/dialog-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_Dialog_1, hooks_1, Context) {
+define('oj-c/dialog/dialog',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Layer", "@oracle/oraclejet-preact/UNSAFE_Dialog", "preact/hooks", "ojs/ojcontext", "css!oj-c/dialog/dialog-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_Layer_1, UNSAFE_Dialog_1, hooks_1, Context) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Dialog = void 0;
@@ -1220,10 +1253,16 @@ define('oj-c/dialog/dialog',["require", "exports", "preact/jsx-runtime", '@oracl
         const preactRef = (0, hooks_1.useCallback)((elem) => {
             if (rootRef.current) {
                 if (elem) {
+                    const layerElem = elem;
+                    layerElem[UNSAFE_Layer_1.LOGICAL_PARENT] = rootRef.current;
                     rootRef.current[LAYER_CONTENT] = elem;
                 }
                 else {
-                    delete rootRef.current[LAYER_CONTENT];
+                    if (rootRef.current[LAYER_CONTENT]) {
+                        const layerElem = rootRef.current[LAYER_CONTENT];
+                        delete layerElem[UNSAFE_Layer_1.LOGICAL_PARENT];
+                        delete rootRef.current[LAYER_CONTENT];
+                    }
                 }
             }
         }, []);
@@ -1634,6 +1673,7 @@ define('oj-c/hooks/UNSAFE_useEditableValue/reducer',["require", "exports"], func
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.reducer = reducer;
     exports.addComponentMessage = addComponentMessage;
+    exports.addHiddenMessage = addHiddenMessage;
     exports.clearAllMessages = clearAllMessages;
     exports.showHiddenMessages = showHiddenMessages;
     exports.updateComponentMessages = updateComponentMessages;
@@ -1655,6 +1695,33 @@ define('oj-c/hooks/UNSAFE_useEditableValue/reducer',["require", "exports"], func
         const componentMsgs = state.componentMessages;
         const shownMsgs = state.shownMessages;
         switch (action.type) {
+            case 'ADD_COMPONENT_MESSAGE':
+                return {
+                    ...state,
+                    componentMessages: [...componentMsgs, action.payload],
+                    shownMessages: [...shownMsgs, action.payload]
+                };
+            case 'ADD_HIDDEN_MESSAGE':
+                return {
+                    ...state,
+                    hiddenMessages: [...hiddenMsgs, action.payload]
+                };
+            case 'CLEAR_ALL_MESSAGES':
+                return {
+                    ...state,
+                    shownMessages: [],
+                    hiddenMessages: [],
+                    customMessages: [],
+                    componentMessages: []
+                };
+            case 'SHOW_HIDDEN_MESSAGES':
+                return hiddenMsgs.length === 0
+                    ? state
+                    : {
+                        ...state,
+                        hiddenMessages: [],
+                        shownMessages: [...customMsgs, ...componentMsgs, ...hiddenMsgs]
+                    };
             case 'UPDATE_DISPLAY_VALUE':
                 return {
                     ...state,
@@ -1722,28 +1789,6 @@ define('oj-c/hooks/UNSAFE_useEditableValue/reducer',["require", "exports"], func
                     customMessages: action.payload,
                     shownMessages: [...action.payload, ...componentMsgs]
                 };
-            case 'CLEAR_ALL_MESSAGES':
-                return {
-                    ...state,
-                    shownMessages: [],
-                    hiddenMessages: [],
-                    customMessages: [],
-                    componentMessages: []
-                };
-            case 'ADD_COMPONENT_MESSAGE':
-                return {
-                    ...state,
-                    componentMessages: [...componentMsgs, action.payload],
-                    shownMessages: [...shownMsgs, action.payload]
-                };
-            case 'SHOW_HIDDEN_MESSAGES':
-                return hiddenMsgs.length === 0
-                    ? state
-                    : {
-                        ...state,
-                        hiddenMessages: [],
-                        shownMessages: [...customMsgs, ...componentMsgs, ...hiddenMsgs]
-                    };
             default:
                 return state;
         }
@@ -1801,6 +1846,9 @@ define('oj-c/hooks/UNSAFE_useEditableValue/reducer',["require", "exports"], func
     function addComponentMessage(dispatch, message) {
         dispatch({ type: 'ADD_COMPONENT_MESSAGE', payload: message });
     }
+    function addHiddenMessage(dispatch, message) {
+        dispatch({ type: 'ADD_HIDDEN_MESSAGE', payload: message });
+    }
 });
 
 define('oj-c/hooks/UNSAFE_useEditableValue/validationUtils',["require", "exports", "./utils"], function (require, exports, utils_1) {
@@ -1828,24 +1876,32 @@ define('oj-c/hooks/UNSAFE_useEditableValue/validationUtils',["require", "exports
             try {
                 const validateResult = validator.validate(value);
                 if (validateResult instanceof Promise) {
-                    return validateResult.then(() => { }, (error) => (0, utils_1.createMessageFromError)(error));
+                    return validateResult.then(() => { }, (error) => {
+                        return {
+                            message: (0, utils_1.createMessageFromError)(error),
+                            messageDisplayStrategy: error?.messageDisplayStrategy
+                        };
+                    });
                 }
             }
             catch (error) {
-                return (0, utils_1.createMessageFromError)(error);
+                return {
+                    message: (0, utils_1.createMessageFromError)(error),
+                    messageDisplayStrategy: error?.messageDisplayStrategy
+                };
             }
             return;
         };
         const errors = [];
         const maybeErrorPromises = [];
         for (const validator of validators) {
-            const maybeComponentMessageItem = doValidate(validator, value);
-            if (maybeComponentMessageItem !== undefined) {
-                if (maybeComponentMessageItem instanceof Promise) {
-                    maybeErrorPromises.push(maybeComponentMessageItem);
+            const maybeValidatorErrorResult = doValidate(validator, value);
+            if (maybeValidatorErrorResult !== undefined) {
+                if (maybeValidatorErrorResult instanceof Promise) {
+                    maybeErrorPromises.push(maybeValidatorErrorResult);
                 }
                 else {
-                    errors.push(maybeComponentMessageItem);
+                    errors.push(maybeValidatorErrorResult);
                 }
             }
         }
@@ -1880,6 +1936,7 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
             };
         });
         const currentValidRef = (0, hooks_1.useRef)();
+        const componentWasValidRef = (0, hooks_1.useRef)(false);
         const onValidChanged = (0, hooks_1.useCallback)((newValid) => {
             if (newValid !== currentValidRef.current) {
                 currentValidRef.current = newValid;
@@ -1971,7 +2028,7 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
             return conversion;
         }, [_dispatch, normalizeAndParseValue]);
         const fullValidate = (0, hooks_1.useCallback)(async (value, options = {}) => {
-            const { doNotClearMessagesCustom = false } = options;
+            const { doNotClearMessagesCustom = false, forceHiddenMessagesToBeShown = false } = options;
             const hasCustomErrorMessages = doNotClearMessagesCustom && (0, utils_1.hasErrorMessages)(messagesCustom);
             if (doNotClearMessagesCustom) {
                 _dispatch(reducer_1.updateComponentMessages, []);
@@ -1985,44 +2042,79 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
                 _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
                 return true;
             }
-            const errors = [];
+            const shownSyncErrors = [];
+            const hiddenSyncErrors = [];
             const deferredValidate = validateDeferredSync(value);
-            deferredValidate.result === 'failure' && errors.push(...deferredValidate.errors);
+            deferredValidate.result === 'failure' && shownSyncErrors.push(...deferredValidate.errors);
             let nonDeferredValidate = undefined;
             if (value !== null && value !== undefined) {
                 nonDeferredValidate = (0, validationUtils_1.validateAsync)({ validators: validators ?? [], value });
+                nonDeferredValidate.errors.forEach(({ message, messageDisplayStrategy }) => {
+                    if (messageDisplayStrategy === 'displayOnBlur' &&
+                        !componentWasValidRef.current &&
+                        !forceHiddenMessagesToBeShown) {
+                        hiddenSyncErrors.push(message);
+                    }
+                    else {
+                        shownSyncErrors.push(message);
+                    }
+                });
             }
-            errors.push(...(nonDeferredValidate?.errors ?? []));
             const maybeErrorPromises = nonDeferredValidate?.maybeErrorPromises ?? [];
-            if (!errors.length && !maybeErrorPromises.length) {
+            const hasSyncError = shownSyncErrors.length !== 0 || hiddenSyncErrors.length !== 0;
+            if (!hasSyncError && !maybeErrorPromises.length) {
                 _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
                 return true;
             }
-            const hasSyncError = errors.length !== 0;
-            hasSyncError &&
-                _dispatch(reducer_1.updateComponentMessages, errors) &&
+            if (shownSyncErrors.length !== 0) {
+                _dispatch(reducer_1.updateComponentMessages, shownSyncErrors);
                 _dispatch(reducer_1.updateValidStatus, 'invalidShown');
+            }
+            else if (hiddenSyncErrors.length !== 0) {
+                _dispatch(reducer_1.updateHiddenMessages, hiddenSyncErrors);
+                _dispatch(reducer_1.updateValidStatus, 'invalidHidden');
+            }
             if (!maybeErrorPromises.length) {
                 return !hasSyncError;
             }
             !hasSyncError && _dispatch(reducer_1.updateValidStatus, 'pending');
             const resolver = addBusyState?.('running asynchronous validation');
             const { isStale } = setStaleIdentity('useEditableValue-full-validate');
-            let hasAsyncError = false;
+            let hasAsyncShownError = false;
+            let hasAsyncHiddenError = false;
             const asyncValidations = [];
             for (const maybeErrorPromise of maybeErrorPromises) {
                 const asyncValidation = maybeErrorPromise.then((maybeValidationError) => {
                     if (maybeValidationError && !isStale()) {
-                        _dispatch(reducer_1.addComponentMessage, maybeValidationError);
-                        _dispatch(reducer_1.updateValidStatus, 'invalidShown');
-                        hasAsyncError = true;
+                        const { messageDisplayStrategy, message } = maybeValidationError;
+                        if (messageDisplayStrategy === 'displayOnBlur' &&
+                            !componentWasValidRef.current &&
+                            !forceHiddenMessagesToBeShown) {
+                            _dispatch(reducer_1.addHiddenMessage, message);
+                            hasAsyncHiddenError = true;
+                        }
+                        else {
+                            _dispatch(reducer_1.addComponentMessage, message);
+                            hasAsyncShownError = true;
+                        }
                     }
                 });
                 asyncValidations.push(asyncValidation);
             }
             await Promise.all(asyncValidations);
-            if (!hasSyncError && !hasAsyncError && !isStale()) {
-                _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
+            const hasAsyncError = hasAsyncHiddenError || hasAsyncShownError;
+            const hasAnyHiddenErrors = hasAsyncHiddenError || hiddenSyncErrors.length !== 0;
+            const hasAnyShownErrors = hasAsyncShownError || shownSyncErrors.length !== 0;
+            if (!isStale()) {
+                if (!hasSyncError && !hasAsyncError) {
+                    _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
+                }
+                else if (hasAnyShownErrors) {
+                    _dispatch(reducer_1.updateValidStatus, 'invalidShown');
+                }
+                else if (hasAnyHiddenErrors) {
+                    _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'invalidHidden');
+                }
             }
             resolver?.();
             return !hasSyncError && !hasAsyncError;
@@ -2070,6 +2162,9 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
         const onCommitValue = (0, hooks_1.useCallback)(async (value, doCommitOnValid = true) => {
             const validated = await validateValueOnInternalChange(value);
             validated && doCommitOnValid && _dispatch(reducer_1.updateValue, value);
+            if (validated) {
+                componentWasValidRef.current = true;
+            }
             return validated;
         }, [_dispatch, validateValueOnInternalChange]);
         const onCommit = (0, hooks_1.useCallback)(async ({ value }) => {
@@ -2095,7 +2190,7 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
             }
             const newValue = conversion.value;
             const resolver = addBusyState?.('Running component method validate');
-            const validated = await fullValidate(newValue);
+            const validated = await fullValidate(newValue, { forceHiddenMessagesToBeShown: true });
             resolver?.();
             if (validated) {
                 if (newValue !== state.value) {
@@ -2126,6 +2221,12 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
                 _dispatch(reducer_1.updateValidStatus, 'invalidShown');
             }
         }, [_dispatch, state.hiddenMessages]);
+        const clearInteractionFlags = (0, hooks_1.useCallback)(() => {
+            componentWasValidRef.current = false;
+        }, []);
+        const addMessage = (0, hooks_1.useCallback)((message) => {
+            _dispatch(reducer_1.addComponentMessage, message);
+        }, [_dispatch]);
         if (!initialRender.current && state.previousValue !== value) {
             _dispatch(reducer_1.updatePreviousValue, value);
             if (value !== state.value) {
@@ -2200,8 +2301,6 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
         }
         if (initialRender.current) {
             initialRender.current = false;
-        }
-        (0, hooks_1.useEffect)(() => {
             _dispatch(reducer_1.updatePreviousValue, value);
             _dispatch(reducer_1.updatePreviousConverter, converter);
             _dispatch(reducer_1.updatePreviousValidators, validators);
@@ -2223,9 +2322,11 @@ define('oj-c/hooks/UNSAFE_useEditableValue/useEditableValue',["require", "export
                 _dispatch(reducer_1.updateValidStatus, 'valid');
                 refreshDisplayValue(value);
             }
-        }, []);
+        }
         return {
             value: state.value,
+            addMessage,
+            clearInteractionFlags,
             displayValue: state.displayValue,
             formatValue,
             methods: {
@@ -5898,12 +5999,17 @@ define('oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListen
     function cloneValueItem(valueItem) {
         return valueItem instanceof Map ? new Map(valueItem.entries()) : Object.assign({}, valueItem);
     }
+    function isItemContext(value) {
+        if (value == null)
+            return false;
+        return typeof value === 'object' && ['key', 'data'].every((prop) => prop in value);
+    }
     function compareValues(value, valueToCompare) {
         if ((value instanceof Set && valueToCompare instanceof Set) ||
             (value instanceof Map && valueToCompare instanceof Map)) {
             return value.size === valueToCompare.size;
         }
-        if (typeof value === 'object' && typeof valueToCompare === 'object') {
+        if (isItemContext(value) && isItemContext(valueToCompare)) {
             return value.key === valueToCompare.key;
         }
         return value === valueToCompare;
@@ -5996,7 +6102,7 @@ define('oj-c/select-common/UNSAFE_useDataProviderListeners/useDataProviderListen
 define('oj-c/utils/PRIVATE_keyUtils/keySetUtils',["require", "exports", "ojs/ojkeyset"], function (require, exports, ojkeyset_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getFirstKey = exports.isEmpty = exports.keysToKeySet = exports.keySetToKeys = void 0;
+    exports.isEqual = exports.getFirstKey = exports.isEmpty = exports.keysToKeySet = exports.keySetToKeys = void 0;
     const keySetToKeys = (keySet) => {
         if (!keySet) {
             return { all: false, keys: new Set() };
@@ -6045,6 +6151,30 @@ define('oj-c/utils/PRIVATE_keyUtils/keySetUtils',["require", "exports", "ojs/ojk
         return null;
     };
     exports.getFirstKey = getFirstKey;
+    const isEqual = (key1, key2) => {
+        if (key1 === key2) {
+            return true;
+        }
+        if (key1.keys.all !== key2.keys.all) {
+            return false;
+        }
+        const arr1 = key1.keys.all === true
+            ? Array.from(key1.keys.deletedKeys.values())
+            : Array.from(key1.keys.keys.values());
+        const arr2 = key2.keys.all === true
+            ? Array.from(key2.keys.deletedKeys.values())
+            : Array.from(key2.keys.keys.values());
+        if (arr1.length !== arr2.length) {
+            return false;
+        }
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    };
+    exports.isEqual = isEqual;
 });
 
 define('oj-c/select-multiple/useSyncValueAndValueItems',["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "oj-c/select-common/utils/utils", "preact/hooks"], function (require, exports, UNSAFE_logger_1, utils_1, hooks_1) {
@@ -6547,7 +6677,7 @@ define('oj-c/select-single/useSyncValueAndValueItem',["require", "exports", "@or
                 }
                 return;
             }
-            if (value != null && valueItem != null && valueItem.key === value) {
+            if (value != null && valueItem != null && valueItem.key === value.value) {
                 setValueItem(Object.assign({}, valueItem));
                 return;
             }
@@ -6558,9 +6688,9 @@ define('oj-c/select-single/useSyncValueAndValueItem',["require", "exports", "@or
             const resolveBusyState = addBusyState('useSyncValueItem: calling fetchByKeys');
             const { isStale } = setStaleIdentity('useSyncValueItem:fetchByKeys');
             try {
-                const fetchResults = await dataProvider.fetchByKeys({ keys: new Set([value]) });
+                const fetchResults = await dataProvider.fetchByKeys({ keys: new Set([value.value]) });
                 if (!isStale()) {
-                    const newValueItems = handleFetchByKeysResults(value, valueItem, fetchResults.results);
+                    const newValueItems = handleFetchByKeysResults(value.value, valueItem, fetchResults.results);
                     setValueItem(newValueItems);
                 }
             }
@@ -6598,7 +6728,7 @@ define('oj-c/select-single/useSyncValueAndValueItem',["require", "exports", "@or
                 }
                 return;
             }
-            if (valueItem.key !== value) {
+            if (valueItem.key !== value?.value) {
                 updateValue(valueItem.key);
                 return;
             }
@@ -6721,7 +6851,17 @@ define('oj-c/select-single/useSelectSinglePreact',["require", "exports", "@oracl
             filterCriterion,
             hasCollectionTemplate: collectionTemplate !== undefined
         });
-        const [valueToSync, setValueToSync] = (0, hooks_1.useState)(value);
+        const [valueToSync, _setValueToSync] = (0, hooks_1.useState)(value != null ? { value } : value);
+        const setValueToSync = (0, hooks_1.useCallback)((value) => {
+            if (typeof value === 'function') {
+                _setValueToSync((prevValue) => {
+                    const newValue = value(prevValue?.value);
+                    return newValue != null ? { value: newValue } : newValue;
+                });
+                return;
+            }
+            _setValueToSync(value != null ? { value } : value);
+        }, []);
         const [valueItemToSync, setValueItemToSync] = (0, hooks_1.useState)(valueItem);
         (0, hooks_1.useEffect)(() => {
             setValueToSync(value);
@@ -7029,8 +7169,8 @@ define('oj-c/collapsible/collapsible',["require", "exports", "preact/jsx-runtime
                 resolveBusyState.current = undefined;
             }
         };
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_Collapsible_1.Collapsible, { header: header, iconPosition: iconPosition, variant: variant, isExpanded: expanded, isDisabled: disabled, onToggle: toggleHandler, onTransitionEnd: transitionEndHandler, children: (expanded || hasBeenExpanded.current) && children }) }));
-    }, "Collapsible", { "slots": { "": {}, "header": {} }, "properties": { "disabled": { "type": "boolean" }, "expanded": { "type": "boolean", "writeback": true }, "iconPosition": { "type": "string", "enumValues": ["end", "start"] }, "variant": { "type": "string", "enumValues": ["basic", "horizontal-rule"] } }, "events": { "ojBeforeCollapse": { "cancelable": true }, "ojBeforeExpand": { "cancelable": true }, "ojCollapse": {}, "ojExpand": {} }, "extension": { "_WRITEBACK_PROPS": ["expanded"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["id"] } }, { "disabled": false, "expanded": false, "iconPosition": "start", "variant": "basic" }, {
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_Collapsible_1.Collapsible, { header: header, iconPosition: iconPosition, variant: variant, isExpanded: expanded, isDisabled: disabled, onToggle: toggleHandler, onTransitionEnd: transitionEndHandler, "aria-label": props['aria-label'], "aria-labelledby": props['aria-labelledby'], children: (expanded || hasBeenExpanded.current) && children }) }));
+    }, "Collapsible", { "slots": { "": {}, "header": {} }, "properties": { "disabled": { "type": "boolean" }, "expanded": { "type": "boolean", "writeback": true }, "iconPosition": { "type": "string", "enumValues": ["end", "start"] }, "variant": { "type": "string", "enumValues": ["basic", "horizontal-rule"] } }, "events": { "ojBeforeCollapse": { "cancelable": true }, "ojBeforeExpand": { "cancelable": true }, "ojCollapse": {}, "ojExpand": {} }, "extension": { "_WRITEBACK_PROPS": ["expanded"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-label", "aria-labelledby", "id"] } }, { "disabled": false, "expanded": false, "iconPosition": "start", "variant": "basic" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
 });
@@ -7153,7 +7293,7 @@ define('oj-c/meter-bar/meter-bar',["require", "exports", "preact/jsx-runtime", '
         });
         const preactMeterBarAriaLabelledBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-labelledby'], props.labelledBy]);
         const preactMeterBarAriaDescribedBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-describedby'], props.describedBy]);
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: `oj-c-meter-bar-${orientation}${size === 'fit' ? '-fit' : ''}`, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterBar_1.MeterBar, { value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, orientation: orientation, indicatorSize: indicatorSize, baseline: baseline, datatip: props.datatip
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: `oj-c-meter-bar-${orientation}${size === 'fit' ? '-fit' : ''}`, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterBar_1.MeterBar, { isReadonly: readonly, value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, orientation: orientation, indicatorSize: indicatorSize, baseline: baseline, datatip: props.datatip
                         ? props.datatip({
                             value: hoveredVal != undefined ? hoveredVal : value
                         })
@@ -7194,7 +7334,7 @@ define('oj-c/meter-circle/meter-circle',["require", "exports", "preact/jsx-runti
         });
         const preactMeterCircleAriaLabelledBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-labelledby'], props.labelledBy]);
         const preactMeterCircleAriaDescribedBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-describedby'], props.describedBy]);
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: size === 'fit' ? 'oj-c-meter-circle-fit' : undefined, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterCircle_1.MeterCircle, { value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, angleExtent: angleExtent, startAngle: startAngle, indicatorSize: indicatorSize, innerRadius: props.innerRadius, datatip: props.datatip
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: size === 'fit' ? 'oj-c-meter-circle-fit' : undefined, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterCircle_1.MeterCircle, { isReadonly: readonly, value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, angleExtent: angleExtent, startAngle: startAngle, indicatorSize: indicatorSize, innerRadius: props.innerRadius, datatip: props.datatip
                         ? props.datatip({
                             value: hoveredVal != undefined ? hoveredVal : value
                         })
@@ -7214,7 +7354,7 @@ define('oj-c/meter-circle',["require", "exports", "oj-c/meter-circle/meter-circl
 });
 
 
-define('oj-c/line-chart/line-chart',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useVisBusyStateContext", "../hooks/UNSAFE_useVisBusyState/useVisBusyState", "@oracle/oraclejet-preact/UNSAFE_VisProgressiveLoader", "@oracle/oraclejet-preact/UNSAFE_LineAreaChart", "@oracle/oraclejet-preact/UNSAFE_VisStatusMessage", "ojs/ojvcomponent", "../hooks/UNSAFE_useChartData/useChartData", "../utils/PRIVATE_chartUtils/events", "../utils/PRIVATE_chartUtils/legendUtils", "../hooks/UNSAFE_useLegendPosition/useLegendPosition", "../hooks/UNSAFE_useVizCategories/useVizCategories", "@oracle/oraclejet-preact/UNSAFE_Legend", "@oracle/oraclejet-preact/UNSAFE_ChartWithLegend", "../utils/PRIVATE_chartUtils/lineAreaUtils", "oj-c/utils/PRIVATE_chartUtils/plotAreaUtils", "../utils/PRIVATE_chartUtils/axisUtils", "oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu", "css!oj-c/line-chart/line-chart-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_useVisBusyStateContext_1, useVisBusyState_1, UNSAFE_VisProgressiveLoader_1, UNSAFE_LineAreaChart_1, UNSAFE_VisStatusMessage_1, ojvcomponent_1, useChartData_1, events_1, legendUtils_1, useLegendPosition_1, useVizCategories_1, UNSAFE_Legend_1, UNSAFE_ChartWithLegend_1, lineAreaUtils_1, plotAreaUtils_1, axisUtils_1, useVisContextMenu_1) {
+define('oj-c/line-chart/line-chart',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useVisBusyStateContext", "../hooks/UNSAFE_useVisBusyState/useVisBusyState", "@oracle/oraclejet-preact/UNSAFE_VisProgressiveLoader", "@oracle/oraclejet-preact/UNSAFE_LineAreaChart", "@oracle/oraclejet-preact/UNSAFE_VisStatusMessage", "@oracle/oraclejet-preact/hooks/UNSAFE_useLegendPreferredSize", "@oracle/oraclejet-preact/UNSAFE_TrackResizeContainer", "ojs/ojvcomponent", "../hooks/UNSAFE_useChartData/useChartData", "../utils/PRIVATE_chartUtils/events", "../utils/PRIVATE_chartUtils/legendUtils", "../hooks/UNSAFE_useVizCategories/useVizCategories", "@oracle/oraclejet-preact/UNSAFE_Legend", "@oracle/oraclejet-preact/UNSAFE_ChartWithLegend", "../utils/PRIVATE_chartUtils/lineAreaUtils", "oj-c/utils/PRIVATE_chartUtils/plotAreaUtils", "../utils/PRIVATE_chartUtils/axisUtils", "oj-c/hooks/PRIVATE_useVisContextMenu/useVisContextMenu", "css!oj-c/line-chart/line-chart-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, UNSAFE_useVisBusyStateContext_1, useVisBusyState_1, UNSAFE_VisProgressiveLoader_1, UNSAFE_LineAreaChart_1, UNSAFE_VisStatusMessage_1, UNSAFE_useLegendPreferredSize_1, UNSAFE_TrackResizeContainer_1, ojvcomponent_1, useChartData_1, events_1, legendUtils_1, useVizCategories_1, UNSAFE_Legend_1, UNSAFE_ChartWithLegend_1, lineAreaUtils_1, plotAreaUtils_1, axisUtils_1, useVisContextMenu_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LineChart = void 0;
@@ -7234,19 +7374,18 @@ define('oj-c/line-chart/line-chart',["require", "exports", "preact/jsx-runtime",
         };
         const categoriesItems = (0, legendUtils_1.getBLACCategoriesItems)(series, groups, getDataItem, hoverBehavior, hideAndShowBehavior);
         const { hiddenIds, updateHidden, highlightedIds, updateHighlighted } = (0, useVizCategories_1.useVizCategories)(categoriesItems, (item) => item.categories, hiddenCategories, highlightedCategories, 'any', highlightMatch, props.onHiddenCategoriesChanged, props.onHighlightedCategoriesChanged);
-        const onItemInput = (detail) => {
+        const onItemInput = (0, hooks_1.useCallback)((detail) => {
             if (hoverBehavior === 'none')
                 return;
             const id = (0, events_1.getIdFromDetail)(detail, series, getDataItem);
             updateHighlighted(id);
-        };
+        }, [hoverBehavior, updateHighlighted, getDataItem, series]);
         const legendData = (0, legendUtils_1.getLegendData)(series);
         const isLegendRendered = (legend.rendered || legendUtils_1.LegendDefaults.rendered) != 'off';
         const isLegendInteractive = hideAndShowBehavior != 'none' ||
             hoverBehavior != 'none' ||
             drilling === 'on' ||
             drilling === 'seriesOnly';
-        const legendPosition = (0, useLegendPosition_1.useLegendPosition)(rootRef, legend.position || legendUtils_1.LegendDefaults.position);
         const legendItemActionHandler = (detail) => {
             if (hideAndShowBehavior != 'none') {
                 updateHidden(detail.itemId);
@@ -7260,9 +7399,40 @@ define('oj-c/line-chart/line-chart',["require", "exports", "preact/jsx-runtime",
             }
         };
         const { preactContextMenuConfig } = (0, useVisContextMenu_1.useVisContextMenu)(idToDPItemMap, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection);
-        const chart = series.length > 0 && groups.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_LineAreaChart_1.LineAreaChart, { type: "line", width: "100%", height: "100%", series: series, groups: groups, getDataItem: getDataItem, onItemHover: onItemInput, onItemFocus: onItemInput, dragMode: props.dragMode, drilling: drilling !== 'seriesOnly' ? drilling : undefined, onItemDrill: itemDrillHandler, onGroupDrill: groupDrillHandler, onSelectionChange: selectionChangeHandler, selectionMode: selectionMode, selectedIds: selectionMode === 'none' ? undefined : selection, orientation: orientation, xAxis: (0, axisUtils_1.getPreactAxisProps)({ ...xAxisRest, timeAxisType }), yAxis: (0, axisUtils_1.getPreactAxisProps)(yAxisRest), highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds, plotArea: (0, plotAreaUtils_1.getPlotArea)(plotArea, yMajorTick, yMinorTick, xMajorTick), hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, isStacked: stack === 'on', valueFormats: (0, lineAreaUtils_1.transformValueFormats)(valueFormats), "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined })) : (!isLoading && ((0, jsx_runtime_1.jsx)(UNSAFE_VisStatusMessage_1.VisNoData, { "aria-label": props['aria-label'], "aria-describedby": props['aria-describedby'], "aria-labelledby": props['aria-labelledby'] })));
-        const chartLegend = isLegendRendered && legendData.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { items: legendData, orientation: legendPosition === 'start' || legendPosition === 'end' ? 'vertical' : 'horizontal', hideAndShowBehavior: hideAndShowBehavior === 'none' ? 'off' : 'on', hoverBehavior: hoverBehavior, isReadOnly: !isLegendInteractive, highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds.length === 0 ? undefined : hiddenIds, symbolHeight: legend.symbolHeight, symbolWidth: legend.symbolWidth, halign: "center", valign: "middle", onItemAction: legendItemActionHandler, onItemHover: legendItemInputHandler, onItemFocus: legendItemInputHandler })) : undefined;
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_VisProgressiveLoader_1.VisProgressiveLoader, { isLoading: isLoading, type: "line", "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], children: (0, jsx_runtime_1.jsx)(UNSAFE_ChartWithLegend_1.ChartWithLegend, { chart: chart, position: legendPosition, maxSize: legend.maxSize, size: legend.size, legend: chartLegend }) }) }) }));
+        const legendSizeRef = (0, hooks_1.useRef)(null);
+        const [isLegendReady, setIsLegendReady] = (0, hooks_1.useState)(false);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, children: (0, jsx_runtime_1.jsx)(UNSAFE_TrackResizeContainer_1.TrackResizeContainer, { width: "100%", height: "100%", children: (_width, _height) => {
+                    const legendPreferredSize = isLegendReady
+                        ? legendSizeRef.current._getPreferredSize(_width, _height)
+                        : undefined;
+                    const legendMaxSize = _width > _height
+                        ? Math.floor(((legendPreferredSize?.width || 0) * 100) / _width)
+                        : Math.floor(((legendPreferredSize?.height || 0) * 100) / _height);
+                    const legendPosition = legend.position != 'auto' ? legend.position : (0, legendUtils_1.getLegendPosition)(_width, _height);
+                    const chart = series.length > 0 && groups.length > 0 && legendPreferredSize ? ((0, jsx_runtime_1.jsx)(UNSAFE_LineAreaChart_1.LineAreaChart, { type: "line", width: legendPreferredSize
+                            ? legendPosition === 'start' || legendPosition === 'end'
+                                ? `${_width - legendPreferredSize.width}px`
+                                : `${_width}px`
+                            : undefined, height: legendPreferredSize
+                            ? legendPosition === 'top' || legendPosition === 'bottom'
+                                ? `${_height - legendPreferredSize.height}px`
+                                : `${_height}px`
+                            : undefined, series: series, groups: groups, getDataItem: getDataItem, onItemHover: onItemInput, onItemFocus: onItemInput, drilling: drilling === 'seriesOnly' ? 'off' : drilling, dragMode: props.dragMode, onItemDrill: itemDrillHandler, onGroupDrill: groupDrillHandler, onSelectionChange: selectionChangeHandler, selectionMode: selectionMode, selectedIds: selectionMode === 'none' ? undefined : selection, orientation: orientation, xAxis: (0, axisUtils_1.getPreactAxisProps)({ ...xAxisRest, timeAxisType }), yAxis: (0, axisUtils_1.getPreactAxisProps)(yAxisRest), highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds, plotArea: (0, plotAreaUtils_1.getPlotArea)(plotArea, yMajorTick, yMinorTick, xMajorTick), hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, isStacked: stack === 'on', valueFormats: (0, lineAreaUtils_1.transformValueFormats)(valueFormats), "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined })) : (!isLoading && ((0, jsx_runtime_1.jsx)(UNSAFE_VisStatusMessage_1.VisNoData, { "aria-label": props['aria-label'], "aria-describedby": props['aria-describedby'], "aria-labelledby": props['aria-labelledby'] })));
+                    const legendMaxWidth = legendPosition === 'start' || legendPosition === 'end'
+                        ? (legendPreferredSize?.width || _width * 0.3) + 4
+                        : _width;
+                    const legendMaxHeight = legendPosition === 'top' || legendPosition === 'bottom'
+                        ? (legendPreferredSize?.height || _height * 0.3) + 4
+                        : _height;
+                    const chartLegend = isLegendRendered && legendData.length > 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_useLegendPreferredSize_1.LegendRenderedContext.Provider, { value: {
+                            isLegendReady: !isLegendReady ? setIsLegendReady : undefined,
+                            width: legendMaxWidth,
+                            height: legendMaxHeight
+                        }, children: (0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { items: legendData, ref: legendSizeRef, orientation: legendPosition === 'start' || legendPosition === 'end'
+                                ? 'vertical'
+                                : 'horizontal', halign: "center", valign: "center", hideAndShowBehavior: hideAndShowBehavior === 'none' ? 'off' : 'on', hoverBehavior: hoverBehavior, isReadOnly: !isLegendInteractive, highlightedIds: highlightedIds.length === 0 ? undefined : highlightedIds, hiddenIds: hiddenIds.length === 0 ? undefined : hiddenIds, symbolHeight: legend.symbolHeight, symbolWidth: legend.symbolWidth, onItemAction: legendItemActionHandler, onItemHover: legendItemInputHandler, onItemFocus: legendItemInputHandler }) })) : undefined;
+                    return ((0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_VisProgressiveLoader_1.VisProgressiveLoader, { isLoading: isLoading, type: "area", "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], children: (0, jsx_runtime_1.jsx)(UNSAFE_ChartWithLegend_1.ChartWithLegend, { chart: legendMaxSize != undefined ? chart : undefined, position: legendPosition, isRtl: false, legend: chartLegend }) }) }));
+                } }) }));
     }
     exports.LineChart = (0, ojvcomponent_1.registerCustomElement)('oj-c-line-chart', LineChartComp, "LineChart", { "properties": { "groupComparator": { "type": "function" }, "stack": { "type": "string", "enumValues": ["off", "on"] }, "drilling": { "type": "string", "enumValues": ["off", "on", "groupsOnly", "seriesOnly"] }, "orientation": { "type": "string", "enumValues": ["horizontal", "vertical"] }, "timeAxisType": { "type": "string", "enumValues": ["enabled", "mixedFrequency", "skipGaps"] }, "yAxis": { "type": "object", "properties": { "dataMax": { "type": "number" }, "dataMin": { "type": "number" }, "max": { "type": "number" }, "min": { "type": "number" }, "majorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "minorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "tickLabel": { "type": "object", "properties": { "converter": { "type": "object" }, "rendered": { "type": "string", "enumValues": ["off", "on"] }, "style": { "type": "object" } } }, "viewportMin": { "type": "number" }, "viewportMax": { "type": "number" }, "step": { "type": "number" }, "size": { "type": "number" }, "scale": { "type": "string", "enumValues": ["linear", "log"] }, "title": { "type": "string" }, "titleStyle": { "type": "object" } } }, "xAxis": { "type": "object", "properties": { "majorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "minorTick": { "type": "object", "properties": { "lineColor": { "type": "string" }, "lineStyle": { "type": "string", "enumValues": ["dashed", "solid", "dotted"] }, "lineWidth": { "type": "number" }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] } } }, "tickLabel": { "type": "object", "properties": { "converter": { "type": "object|Array<object>" }, "rendered": { "type": "string", "enumValues": ["off", "on"] }, "rotation": { "type": "string", "enumValues": ["auto", "none"] }, "style": { "type": "object" } } }, "viewportMin": { "type": "number" }, "viewportMax": { "type": "number" }, "step": { "type": "number" }, "size": { "type": "number" }, "scale": { "type": "string", "enumValues": ["linear", "log"] }, "title": { "type": "string" }, "titleStyle": { "type": "object" } } }, "plotArea": { "type": "object", "properties": { "backgroundColor": { "type": "string" } } }, "zoomAndScroll": { "type": "string", "enumValues": ["off", "live"] }, "valueFormats": { "type": "object", "properties": { "group": { "type": "object", "properties": { "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } }, "series": { "type": "object", "properties": { "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } }, "value": { "type": "object", "properties": { "converter": { "type": "object" }, "tooltipLabel": { "type": "string" }, "tooltipDisplay": { "type": "string", "enumValues": ["auto", "off"] } } } } }, "seriesComparator": { "type": "function" }, "data": { "type": "DataProvider|null" }, "selectionMode": { "type": "string", "enumValues": ["none", "multiple", "single"] }, "selection": { "type": "Array<any>", "writeback": true }, "dragMode": { "type": "string", "enumValues": ["pan", "zoom", "select", "off", "user"] }, "hiddenCategories": { "type": "Array<string>", "writeback": true }, "highlightedCategories": { "type": "Array<string>", "writeback": true }, "hideAndShowBehavior": { "type": "string", "enumValues": ["none", "withoutRescale", "withRescale"] }, "hoverBehavior": { "type": "string", "enumValues": ["none", "dim"] }, "highlightMatch": { "type": "string", "enumValues": ["all", "any"] }, "legend": { "type": "object", "properties": { "position": { "type": "string", "enumValues": ["auto", "end", "start", "top", "bottom"] }, "rendered": { "type": "string", "enumValues": ["auto", "off", "on"] }, "maxSize": { "type": "number|string" }, "size": { "type": "number|string" }, "symbolHeight": { "type": "number" }, "symbolWidth": { "type": "number" } } }, "contextMenuConfig": { "type": "object", "properties": { "accessibleLabel": { "type": "string" }, "items": { "type": "function" } } } }, "slots": { "itemTemplate": { "data": {} }, "seriesTemplate": { "data": {} }, "groupTemplate": { "data": {} } }, "events": { "ojItemDrill": {}, "ojSeriesDrill": {}, "ojGroupDrill": {}, "ojViewportChange": {}, "ojContextMenuAction": { "bubbles": true }, "ojContextMenuSelection": { "bubbles": true } }, "extension": { "_WRITEBACK_PROPS": ["selection", "hiddenCategories", "highlightedCategories"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-label", "aria-describedby", "aria-labelledby"] } }, { "hideAndShowBehavior": "none", "orientation": "vertical", "hoverBehavior": "none", "drilling": "off", "hiddenCategories": [], "highlightedCategories": [], "highlightMatch": "any", "selection": [], "selectionMode": "none", "stack": "off", "legend": { "rendered": "on", "position": "auto" } }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
@@ -7734,7 +7904,7 @@ define('oj-c/list-view/list-view',["require", "exports", "preact/jsx-runtime", '
             }
         }
         const selectInfo = {
-            selected: listViewProps.selectedKeys,
+            selected: rest.selected,
             selectionMode: listViewProps.selectionMode,
             onSelectedChange: rest.onSelectedChanged
         };
@@ -7999,20 +8169,32 @@ define('oj-c/selector/selector',["require", "exports", "preact/jsx-runtime", '@o
             rowKey = itemKey;
         }
         const selectionInfo = (0, useSelectionContext_1.useSelectionContext)();
-        let keys = undefined;
+        let keys = selectedKeys;
+        let mode = selectionMode;
+        let selectedListener;
         if (selectionInfo) {
-            keys = selectionInfo.selected;
-            onSelectedKeysChanged = selectionInfo.onSelectedChange;
-            if (selectionInfo.selectionMode && selectionInfo.selectionMode !== 'none') {
-                selectionMode = selectionInfo.selectionMode;
+            if (selectionInfo.selected) {
+                keys = selectionInfo.selected;
             }
+            if (selectionInfo.selectionMode !== 'none') {
+                mode = selectionInfo.selectionMode;
+            }
+            selectedListener = selectionInfo.onSelectedChange;
         }
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { children: (0, jsx_runtime_1.jsx)(UNSAFE_Selector_1.Selector, { isPartial: indeterminate, rowKey: rowKey, selectedKeys: keys == null ? (0, keySetUtils_1.keySetToKeys)(selectedKeys) : keys, selectionMode: selectionMode == null ? 'multiple' : selectionMode, "aria-label": otherProps['aria-label'], onChange: (0, hooks_1.useCallback)((detail) => {
+        (0, hooks_1.useLayoutEffect)(() => {
+            if (onSelectedKeysChanged &&
+                selectedKeys &&
+                selectionInfo &&
+                selectionInfo.selected &&
+                !(0, keySetUtils_1.isEqual)(selectionInfo.selected, selectedKeys)) {
+                onSelectedKeysChanged(selectionInfo.selected);
+            }
+        }, [onSelectedKeysChanged, selectionInfo, selectedKeys]);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { children: (0, jsx_runtime_1.jsx)(UNSAFE_Selector_1.Selector, { isPartial: indeterminate, rowKey: rowKey, selectedKeys: (0, keySetUtils_1.keySetToKeys)(keys), selectionMode: mode == null ? 'multiple' : mode, "aria-label": otherProps['aria-label'], onChange: (0, hooks_1.useCallback)((detail) => {
                     const keySet = (0, keySetUtils_1.keysToKeySet)(detail.value);
-                    if (onSelectedKeysChanged) {
-                        onSelectedKeysChanged(keySet);
-                    }
-                }, [onSelectedKeysChanged]) }, rowKey) }));
+                    selectedListener?.(keySet);
+                    onSelectedKeysChanged?.(keySet);
+                }, [selectedListener, onSelectedKeysChanged]) }, rowKey) }));
     };
     exports.Selector = (0, ojvcomponent_1.registerCustomElement)('oj-c-selector', SelectorImpl, "Selector", { "properties": { "rowKey": { "type": "string|number" }, "selectedKeys": { "type": "object", "writeback": true }, "indeterminate": { "type": "boolean" }, "selectionMode": { "type": "string", "enumValues": ["multiple", "single"] } }, "extension": { "_WRITEBACK_PROPS": ["selectedKeys"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-label"] } }, { "indeterminate": false }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
@@ -8384,7 +8566,8 @@ define('oj-c/legend/legend',["require", "exports", "preact/jsx-runtime", '@oracl
         };
         const { preactContextMenuConfig } = (0, useVisContextMenu_1.useVisContextMenu)(idToDPItemMap, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, transformContext);
         const { data: _data, ...otherProps } = props;
-        return preactItems.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { ref: props.linearLegendRef, orientation: orientation, symbolHeight: symbolHeight, valign: valign, halign: halign, symbolWidth: symbolWidth, isReadOnly: !isInteractive, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, items: preactItems, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined, ...otherProps, ...textStyles })) : null;
+        const vAlign = valign === 'middle' ? 'center' : valign;
+        return preactItems.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_Legend_1.Legend, { ref: props.linearLegendRef, orientation: orientation, symbolHeight: symbolHeight, valign: vAlign, halign: halign, symbolWidth: symbolWidth, isReadOnly: !isInteractive, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, items: preactItems, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined, ...otherProps, ...textStyles })) : null;
     };
     exports.LinearLegend = LinearLegend;
     const SectionalLegend = ({ hoverBehavior, hideAndShowBehavior, hiddenCategories, highlightedCategories, onHiddenCategoriesChanged, onHighlightedCategoriesChanged, drilling, itemTemplate, sectionTemplate, textStyle, sectionTitleStyle, orientation, symbolHeight, symbolWidth, valign, halign, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, ...props }) => {
@@ -8449,7 +8632,8 @@ define('oj-c/legend/legend',["require", "exports", "preact/jsx-runtime", '@oracl
         const { preactContextMenuConfig } = (0, useVisContextMenu_1.useVisContextMenu)(idToDPItemMap, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, transformContext);
         const textStyles = (0, utils_1.getTextStyles)(textStyle);
         const sectionTitleStyles = (0, utils_1.getSectionStyles)(sectionTitleStyle);
-        return preactSections.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_SectionalLegend_1.SectionalLegend, { ref: props.sectionalLegendRef, sections: preactSections, orientation: orientation, sectionTitleHAlign: props.sectionTitleHalign, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, valign: valign, halign: halign, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined, ...textStyles, ...sectionTitleStyles })) : null;
+        const vAlign = valign === 'middle' ? 'center' : valign;
+        return preactSections.length !== 0 ? ((0, jsx_runtime_1.jsx)(UNSAFE_SectionalLegend_1.SectionalLegend, { ref: props.sectionalLegendRef, sections: preactSections, orientation: orientation, sectionTitleHAlign: props.sectionTitleHalign, symbolHeight: symbolHeight, symbolWidth: symbolWidth, isReadOnly: !isInteractive, valign: vAlign, halign: halign, hideAndShowBehavior: hideAndShowBehavior, hoverBehavior: hoverBehavior, "aria-label": props['aria-label'], "aria-describedBy": props['aria-describedby'], "aria-labelledBy": props['aria-labelledby'], hiddenIds: isHideShowOn ? hiddenIds : undefined, highlightedIds: isHighlightOn ? highlightedIds : undefined, onItemAction: itemActionHandler, onItemHover: inputHandler, onItemFocus: inputHandler, contextMenuConfig: contextMenuConfig ? preactContextMenuConfig : undefined, ...textStyles, ...sectionTitleStyles })) : null;
     };
     exports.SectionalLegend = SectionalLegend;
 });
@@ -8743,12 +8927,12 @@ define('oj-c/selection-card',["require", "exports", "oj-c/selection-card/selecti
 });
 
 
-define('oj-c/popup/popup',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_Popup", "ojs/ojcontext", "css!oj-c/popup/popup-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, hooks_1, UNSAFE_Popup_1, Context) {
+define('oj-c/popup/popup',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_Popup", "@oracle/oraclejet-preact/UNSAFE_Layer", "ojs/ojcontext", "css!oj-c/popup/popup-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, hooks_1, UNSAFE_Popup_1, UNSAFE_Layer_1, Context) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Popup = void 0;
     const LAYER_CONTENT = Symbol.for('__oj_c_layer_content');
-    exports.Popup = (0, ojvcomponent_1.registerCustomElement)('oj-c-popup', ({ id, opened = false, children, anchor, launcher, placement, collision = 'fit', modality = 'modeless', offset, initialFocus = 'auto', autoDismiss = 'focusLoss', tail = 'none', onOpenedChanged, onOjOpen, onOjBeforeClose, onOjClose, onOjFocus, width, minWidth, maxWidth = 'calc(100vw - 3rem)', height, minHeight, maxHeight = 'calc(100vw - 3rem)', ...otherProps }) => {
+    exports.Popup = (0, ojvcomponent_1.registerCustomElement)('oj-c-popup', ({ id, opened = false, children, anchor, launcher, placement, collision = 'fit', modality = 'modeless', offset, initialFocus = 'auto', autoDismiss = 'focusLoss', tail = 'none', variant = 'standard', onOpenedChanged, onOjOpen, onOjBeforeClose, onOjClose, onOjFocus, width, minWidth, maxWidth = 'calc(100vw - 3rem)', height, minHeight, maxHeight = 'calc(100vh - 3rem)', ...otherProps }) => {
         const rootRef = (0, hooks_1.useRef)(null);
         let defaultPlacement = placement;
         const anchorRef = (0, hooks_1.useRef)(null);
@@ -8765,10 +8949,16 @@ define('oj-c/popup/popup',["require", "exports", "preact/jsx-runtime", '@oracle/
         const preactRef = (0, hooks_1.useCallback)((elem) => {
             if (rootRef.current) {
                 if (elem) {
+                    const layerElem = elem;
+                    layerElem[UNSAFE_Layer_1.LOGICAL_PARENT] = rootRef.current;
                     rootRef.current[LAYER_CONTENT] = elem;
                 }
                 else {
-                    delete rootRef.current[LAYER_CONTENT];
+                    if (rootRef.current[LAYER_CONTENT]) {
+                        const layerElem = rootRef.current[LAYER_CONTENT];
+                        delete layerElem[UNSAFE_Layer_1.LOGICAL_PARENT];
+                        delete rootRef.current[LAYER_CONTENT];
+                    }
                 }
             }
         }, []);
@@ -8906,8 +9096,8 @@ define('oj-c/popup/popup',["require", "exports", "preact/jsx-runtime", '@oracle/
         };
         anchorRef.current = localAnchor;
         launcherRef.current = localLauncher;
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, id: id, children: (0, jsx_runtime_1.jsx)(UNSAFE_Popup_1.Popup, { ref: preactRef, isOpen: opened, anchorRef: anchorRef.current === 'window' ? undefined : anchorRef, launcherRef: launcherRef, placement: placement ?? defaultPlacement, offset: derivedOffset, flipOptions: flipOptions, shiftOptions: shiftOptions, modality: modality, initialFocus: initialFocus, tail: tail, onClose: handleOnClose, onClickOutside: handleOnClickOutside, onTransitionEnd: handleOnTransitionEnd, onFocusSet: handleOnFocus, width: width, minWidth: minWidth, maxWidth: maxWidth, height: height, minHeight: minHeight, maxHeight: maxHeight, "aria-describedby": otherProps['aria-describedby'], "aria-label": otherProps['aria-label'], "aria-labelledby": otherProps['aria-labelledby'], children: children }) }));
-    }, "Popup", { "slots": { "": {} }, "properties": { "opened": { "type": "boolean", "writeback": true }, "launcher": { "type": "string|Element" }, "anchor": { "type": "string|Element|object" }, "placement": { "type": "string", "enumValues": ["center", "end", "start", "top", "bottom", "top-start", "top-end", "top-start-corner", "top-end-corner", "start-top", "start-bottom", "start-top-corner", "start-bottom-corner", "bottom-start", "bottom-end", "bottom-start-corner", "bottom-end-corner", "end-top", "end-bottom", "end-top-corner", "end-bottom-corner"] }, "modality": { "type": "string", "enumValues": ["modal", "modeless"] }, "autoDismiss": { "type": "string", "enumValues": ["none", "focusLoss"] }, "tail": { "type": "string", "enumValues": ["none", "simple"] }, "initialFocus": { "type": "string", "enumValues": ["auto", "none", "popup", "firstFocusable"] }, "offset": { "type": "number|object" }, "collision": { "type": "string", "enumValues": ["none", "flip", "fit", "flipfit", "flipcenter"] }, "width": { "type": "number|string" }, "minWidth": { "type": "number|string" }, "maxWidth": { "type": "number|string" }, "height": { "type": "number|string" }, "minHeight": { "type": "number|string" }, "maxHeight": { "type": "number|string" } }, "events": { "ojOpen": {}, "ojBeforeClose": { "cancelable": true }, "ojClose": {}, "ojFocus": {} }, "extension": { "_WRITEBACK_PROPS": ["opened"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label", "aria-labelledby", "id"] } }, { "opened": false, "collision": "fit", "modality": "modeless", "initialFocus": "auto", "autoDismiss": "focusLoss", "tail": "none", "maxWidth": "calc(100vw - 3rem)", "maxHeight": "calc(100vw - 3rem)" }, {
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, id: id, children: (0, jsx_runtime_1.jsx)(UNSAFE_Popup_1.Popup, { ref: preactRef, isOpen: opened, anchorRef: anchorRef.current === 'window' ? undefined : anchorRef, launcherRef: launcherRef, placement: placement ?? defaultPlacement, offset: derivedOffset, flipOptions: flipOptions, shiftOptions: shiftOptions, modality: modality, initialFocus: initialFocus, tail: tail, variant: variant, onClose: handleOnClose, onClickOutside: handleOnClickOutside, onTransitionEnd: handleOnTransitionEnd, onFocusSet: handleOnFocus, width: width, minWidth: minWidth, maxWidth: maxWidth, height: height, minHeight: minHeight, maxHeight: maxHeight, "aria-describedby": otherProps['aria-describedby'], "aria-label": otherProps['aria-label'], "aria-labelledby": otherProps['aria-labelledby'], children: children }) }));
+    }, "Popup", { "slots": { "": {} }, "properties": { "opened": { "type": "boolean", "writeback": true }, "launcher": { "type": "string|Element" }, "anchor": { "type": "string|Element|object" }, "placement": { "type": "string", "enumValues": ["center", "end", "start", "top", "bottom", "top-start", "top-end", "top-start-corner", "top-end-corner", "start-top", "start-bottom", "start-top-corner", "start-bottom-corner", "bottom-start", "bottom-end", "bottom-start-corner", "bottom-end-corner", "end-top", "end-bottom", "end-top-corner", "end-bottom-corner"] }, "modality": { "type": "string", "enumValues": ["modal", "modeless"] }, "autoDismiss": { "type": "string", "enumValues": ["none", "focusLoss"] }, "tail": { "type": "string", "enumValues": ["none", "simple"] }, "variant": { "type": "string", "enumValues": ["standard", "unstyled"] }, "initialFocus": { "type": "string", "enumValues": ["auto", "none", "popup", "firstFocusable"] }, "offset": { "type": "number|object" }, "collision": { "type": "string", "enumValues": ["none", "flip", "fit", "flipfit", "flipcenter"] }, "width": { "type": "number|string" }, "minWidth": { "type": "number|string" }, "maxWidth": { "type": "number|string" }, "height": { "type": "number|string" }, "minHeight": { "type": "number|string" }, "maxHeight": { "type": "number|string" } }, "events": { "ojOpen": {}, "ojBeforeClose": { "cancelable": true }, "ojClose": {}, "ojFocus": {} }, "extension": { "_WRITEBACK_PROPS": ["opened"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "aria-label", "aria-labelledby", "id"] } }, { "opened": false, "collision": "fit", "modality": "modeless", "initialFocus": "auto", "autoDismiss": "focusLoss", "tail": "none", "variant": "standard", "maxWidth": "calc(100vw - 3rem)", "maxHeight": "calc(100vh - 3rem)" }, {
         '@oracle/oraclejet-preact': translationBundle_1.default
     });
 });
@@ -8920,7 +9110,7 @@ define('oj-c/popup',["require", "exports", "oj-c/popup/popup"], function (requir
 });
 
 
-define('oj-c/drawer-popup/drawer-popup',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "@oracle/oraclejet-preact/UNSAFE_DrawerPopup", "ojs/ojvcomponent", "preact/hooks", "ojs/ojcontext", "css!oj-c/drawer-popup/drawer-popup-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, UNSAFE_DrawerPopup_1, ojvcomponent_1, hooks_1, Context) {
+define('oj-c/drawer-popup/drawer-popup',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "@oracle/oraclejet-preact/UNSAFE_DrawerPopup", "ojs/ojvcomponent", "preact/hooks", "@oracle/oraclejet-preact/UNSAFE_Layer", "ojs/ojcontext", "css!oj-c/drawer-popup/drawer-popup-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, UNSAFE_DrawerPopup_1, ojvcomponent_1, hooks_1, UNSAFE_Layer_1, Context) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.DrawerPopup = void 0;
@@ -8939,10 +9129,16 @@ define('oj-c/drawer-popup/drawer-popup',["require", "exports", "preact/jsx-runti
         const preactRef = (0, hooks_1.useCallback)((elem) => {
             if (rootRef.current) {
                 if (elem) {
+                    const layerElem = elem;
+                    layerElem[UNSAFE_Layer_1.LOGICAL_PARENT] = rootRef.current;
                     rootRef.current[LAYER_CONTENT] = elem;
                 }
                 else {
-                    delete rootRef.current[LAYER_CONTENT];
+                    if (rootRef.current[LAYER_CONTENT]) {
+                        const layerElem = rootRef.current[LAYER_CONTENT];
+                        delete layerElem[UNSAFE_Layer_1.LOGICAL_PARENT];
+                        delete rootRef.current[LAYER_CONTENT];
+                    }
                 }
             }
         }, []);
@@ -9654,7 +9850,7 @@ define('oj-c/card-view/card-view',["require", "exports", "preact/jsx-runtime", '
             }
         }
         const selectInfo = {
-            selected: cardViewProps.selectedKeys,
+            selected: rest.selected,
             selectionMode: cardViewProps.selectionMode,
             onSelectedChange: rest.onSelectedChanged
         };
@@ -10537,6 +10733,15 @@ define('oj-c/toolbar/items-toolbar',["require", "exports", "preact/jsx-runtime",
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ItemsToolbar = void 0;
+    const toMenuItemIcon = (icon) => {
+        return icon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: icon });
+    };
+    const toIconProps = (item) => {
+        return {
+            startIcon: toMenuItemIcon(item.startIcon),
+            endIcon: toMenuItemIcon(item.endIcon)
+        };
+    };
     const ItemsToolbar = ({ items = [], size, chroming, toolbarSelection = {}, onToolbarSelectionChanged, onOjToolbarAction, onOjToolbarSelection }) => {
         const setSelectionValue = (selection, value, key, menuButtonSelection = {}) => {
             let updatedSelection = { ...selection };
@@ -10583,46 +10788,40 @@ define('oj-c/toolbar/items-toolbar',["require", "exports", "preact/jsx-runtime",
         return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: items.map((item) => {
                 switch (item.type) {
                     case 'button': {
-                        const { startIcon, endIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(button_1.Button, { ...props, chroming: itemChroming || chroming, size: size, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                        return ((0, jsx_runtime_1.jsx)(button_1.Button, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction), ...toIconProps(item) }));
                     }
                     case 'menu-button': {
-                        const { startIcon, endIcon, items: menuItems, chroming: itemChroming, ...props } = item;
                         let menuButtonSelection = {};
-                        menuButtonSelection = getMenuButtonSelection(toolbarSelection, menuItems, menuButtonSelection);
-                        return ((0, jsx_runtime_1.jsx)(menu_button_1.MenuButton, { ...props, items: menuItems, chroming: itemChroming || chroming, size: size, onOjMenuAction: getItemActionHandler(''), selection: menuButtonSelection, onOjMenuSelection: (value) => {
+                        menuButtonSelection = getMenuButtonSelection(toolbarSelection, item.items, menuButtonSelection);
+                        return ((0, jsx_runtime_1.jsx)(menu_button_1.MenuButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, items: item.items, suffix: item.suffix, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjMenuAction: getItemActionHandler(''), selection: menuButtonSelection, onOjMenuSelection: (value) => {
                                 onOjToolbarSelection?.({
                                     value: value,
                                     toolbarSelectionGroupKey: ''
                                 });
                             }, onSelectionChanged: (value) => {
                                 onToolbarSelectionChanged?.(setSelectionValue(toolbarSelection, value, '', menuButtonSelection));
-                            }, startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                            }, ...toIconProps(item) }));
                     }
                     case 'split-menu-button': {
-                        return ((0, jsx_runtime_1.jsx)(split_menu_button_1.SplitMenuButton, { size: size, ...item, onOjAction: getItemActionHandler(item.key, item.onAction) }));
+                        return ((0, jsx_runtime_1.jsx)(split_menu_button_1.SplitMenuButton, { size: size, disabled: item.disabled, label: item.label, tooltip: item.tooltip, items: item.items, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction) }));
                     }
                     case 'buttonset-single': {
-                        const { chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(buttonset_single_1.ButtonsetSingle, { chroming: itemChroming || chroming, size: size, ...props, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(buttonset_single_1.ButtonsetSingle, { disabled: item.disabled, display: item.display, items: item.items, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
                             } }));
                     }
                     case 'buttonset-multiple': {
-                        const { chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(buttonset_multiple_1.ButtonsetMultiple, { chroming: itemChroming || chroming, size: size, ...props, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(buttonset_multiple_1.ButtonsetMultiple, { disabled: item.disabled, display: item.display, items: item.items, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
                             } }));
                     }
                     case 'toggle-button': {
-                        const { startIcon, endIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(toggle_button_1.ToggleButton, { chroming: itemChroming || chroming, size: size, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(toggle_button_1.ToggleButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
-                            }, ...props, startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                            }, ...toIconProps(item) }));
                     }
                     case 'progress-button': {
-                        const { startIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(progress_button_1.ProgressButton, { chroming: itemChroming || chroming, size: size, ...props, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }) }));
+                        return ((0, jsx_runtime_1.jsx)(progress_button_1.ProgressButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, isLoading: item.isLoading, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: toMenuItemIcon(item.startIcon) }));
                     }
                     case 'separator':
                         return (0, jsx_runtime_1.jsx)(UNSAFE_Toolbar_1.ToolbarSeparator, {});
@@ -10650,6 +10849,438 @@ define('oj-c/toolbar',["require", "exports", "oj-c/toolbar/toolbar"], function (
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Toolbar = void 0;
     Object.defineProperty(exports, "Toolbar", { enumerable: true, get: function () { return toolbar_1.Toolbar; } });
+});
+
+define('oj-c/editable-value/UNSAFE_useSelectionRangeValidator/SelectionRangeValidatorError',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SelectionRangeValidatorError = void 0;
+    class SelectionRangeValidatorError extends Error {
+        constructor(message) {
+            super(message);
+            this.name = 'SelectionRangeValidatorError';
+            this.messageDisplayStrategy = 'displayOnBlur';
+        }
+    }
+    exports.SelectionRangeValidatorError = SelectionRangeValidatorError;
+});
+
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+define('oj-c/editable-value/UNSAFE_useSelectionRangeValidator/SelectionRangeValidator',["require", "exports", "./SelectionRangeValidatorError"], function (require, exports, SelectionRangeValidatorError_1) {
+    "use strict";
+    var _SelectionRangeValidator_instances, _SelectionRangeValidator_getOverflowErrorDetail, _SelectionRangeValidator_getUnderflowErrorDetail, _SelectionRangeValidator_getExactErrorDetail, _SelectionRangeValidator_getRangeErrorDetail;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.SelectionRangeValidator = void 0;
+    class SelectionRangeValidator {
+        constructor(options) {
+            _SelectionRangeValidator_instances.add(this);
+            if (options.min && options.max && options.min > options.max) {
+                throw new Error('min must be less than max');
+            }
+            this.options = options;
+        }
+        validate(value) {
+            const { max, min } = this.options;
+            const selections = value;
+            const numSelections = selections.length;
+            if (min !== undefined && max === undefined && numSelections < min) {
+                throw new SelectionRangeValidatorError_1.SelectionRangeValidatorError(__classPrivateFieldGet(this, _SelectionRangeValidator_instances, "m", _SelectionRangeValidator_getUnderflowErrorDetail).call(this, min));
+            }
+            if (min === undefined && max !== undefined && numSelections > max) {
+                throw new SelectionRangeValidatorError_1.SelectionRangeValidatorError(__classPrivateFieldGet(this, _SelectionRangeValidator_instances, "m", _SelectionRangeValidator_getOverflowErrorDetail).call(this, max));
+            }
+            if (min !== undefined && max !== undefined && min === max && numSelections !== min) {
+                throw new SelectionRangeValidatorError_1.SelectionRangeValidatorError(__classPrivateFieldGet(this, _SelectionRangeValidator_instances, "m", _SelectionRangeValidator_getExactErrorDetail).call(this, min));
+            }
+            if (min !== undefined &&
+                max !== undefined &&
+                min !== max &&
+                (numSelections < min || numSelections > max)) {
+                throw new SelectionRangeValidatorError_1.SelectionRangeValidatorError(__classPrivateFieldGet(this, _SelectionRangeValidator_instances, "m", _SelectionRangeValidator_getRangeErrorDetail).call(this, min, max));
+            }
+        }
+    }
+    exports.SelectionRangeValidator = SelectionRangeValidator;
+    _SelectionRangeValidator_instances = new WeakSet(), _SelectionRangeValidator_getOverflowErrorDetail = function _SelectionRangeValidator_getOverflowErrorDetail(max) {
+        const { selectionOverflowMessageDetail, defaultSelectionOverflowMessageDetail } = this.options;
+        return selectionOverflowMessageDetail
+            ? selectionOverflowMessageDetail({ max })
+            : defaultSelectionOverflowMessageDetail({ max: max.toString() });
+    }, _SelectionRangeValidator_getUnderflowErrorDetail = function _SelectionRangeValidator_getUnderflowErrorDetail(min) {
+        const { selectionUnderflowMessageDetail, defaultSelectionUnderflowMessageDetail } = this.options;
+        return selectionUnderflowMessageDetail
+            ? selectionUnderflowMessageDetail({ min })
+            : defaultSelectionUnderflowMessageDetail({ min: min.toString() });
+    }, _SelectionRangeValidator_getExactErrorDetail = function _SelectionRangeValidator_getExactErrorDetail(exact) {
+        const { selectionExactMessageDetail, defaultSelectionExactMessageDetail } = this.options;
+        return selectionExactMessageDetail
+            ? selectionExactMessageDetail({ exact })
+            : defaultSelectionExactMessageDetail({ n: exact.toString() });
+    }, _SelectionRangeValidator_getRangeErrorDetail = function _SelectionRangeValidator_getRangeErrorDetail(min, max) {
+        const { selectionRangeMessageDetail, defaultSelectionRangeMessageDetail } = this.options;
+        return selectionRangeMessageDetail
+            ? selectionRangeMessageDetail({ min, max })
+            : defaultSelectionRangeMessageDetail({ min: min.toString(), max: max.toString() });
+    };
+});
+
+define('oj-c/editable-value/UNSAFE_useSelectionRangeValidator/useSelectionRangeValidator',["require", "exports", "preact/hooks", "./SelectionRangeValidator"], function (require, exports, hooks_1, SelectionRangeValidator_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.useSelectionRangeValidator = useSelectionRangeValidator;
+    function useSelectionRangeValidator({ defaultSelectionExactMessageDetail, defaultSelectionOverflowMessageDetail, defaultSelectionRangeMessageDetail, defaultSelectionUnderflowMessageDetail, max, min, selectionExactMessageDetail, selectionOverflowMessageDetail, selectionRangeMessageDetail, selectionUnderflowMessageDetail }) {
+        return (0, hooks_1.useMemo)(() => {
+            const selectionValidator = !min && !max
+                ? null
+                : new SelectionRangeValidator_1.SelectionRangeValidator({
+                    defaultSelectionExactMessageDetail,
+                    defaultSelectionOverflowMessageDetail,
+                    defaultSelectionRangeMessageDetail,
+                    defaultSelectionUnderflowMessageDetail,
+                    max,
+                    min,
+                    selectionExactMessageDetail,
+                    selectionOverflowMessageDetail,
+                    selectionRangeMessageDetail,
+                    selectionUnderflowMessageDetail
+                });
+            return [selectionValidator].filter(Boolean);
+        }, [
+            defaultSelectionExactMessageDetail,
+            defaultSelectionOverflowMessageDetail,
+            defaultSelectionRangeMessageDetail,
+            defaultSelectionUnderflowMessageDetail,
+            max,
+            min,
+            selectionExactMessageDetail,
+            selectionOverflowMessageDetail,
+            selectionRangeMessageDetail,
+            selectionUnderflowMessageDetail
+        ]);
+    }
+});
+
+define('oj-c/rich-checkboxset/useRichCheckboxsetPreact',["require", "exports", "preact/hooks", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle", "oj-c/hooks/UNSAFE_useEditableValue/index", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators", "oj-c/editable-value/UNSAFE_useSelectionRangeValidator/useSelectionRangeValidator"], function (require, exports, hooks_1, UNSAFE_useTranslationBundle_1, index_1, useDeferredValidators_1, useSelectionRangeValidator_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.useRichCheckboxsetPreact = useRichCheckboxsetPreact;
+    function useRichCheckboxsetPreact({ 'aria-describedby': ariaDescribedBy, disabled, displayOptions, labelEdge, labelHint, labelStartWidth, maxSelected, messagesCustom, minSelected, onMessagesCustomChanged, onValidChanged, onValueChanged, readonly, required, requiredMessageDetail: propRequiredMessageDetail, selectionExactMessageDetail, selectionOverflowMessageDetail, selectionRangeMessageDetail, selectionUnderflowMessageDetail, userAssistanceDensity, value: propValue }, addBusyState) {
+        const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
+        const requiredMessageDetail = propRequiredMessageDetail || translations.checkboxSet_requiredMessageDetail?.();
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const selectionRangeValidators = (0, useSelectionRangeValidator_1.useSelectionRangeValidator)({
+            defaultSelectionExactMessageDetail: translations.formControl_selectionExactMessageDetail,
+            defaultSelectionOverflowMessageDetail: translations.formControl_selectionOverflowMessageDetail,
+            defaultSelectionRangeMessageDetail: translations.formControl_selectionRangeMessageDetail,
+            defaultSelectionUnderflowMessageDetail: translations.formControl_selectionUnderflowMessageDetail,
+            max: maxSelected,
+            min: minSelected,
+            selectionExactMessageDetail,
+            selectionOverflowMessageDetail,
+            selectionRangeMessageDetail,
+            selectionUnderflowMessageDetail
+        });
+        const { addMessage, clearInteractionFlags, displayValue, methods, onCommitValue, refreshDisplayValue, textFieldProps } = (0, index_1.useEditableValue)({
+            addBusyState,
+            ariaDescribedBy,
+            defaultDisplayValue: null,
+            deferredValidators,
+            disabled,
+            displayOptions,
+            messagesCustom,
+            onMessagesCustomChanged,
+            onValidChanged,
+            onValueChanged,
+            readonly,
+            validators: selectionRangeValidators,
+            value: propValue
+        });
+        const isInteractedRef = (0, hooks_1.useRef)(false);
+        const isFocusedRef = (0, hooks_1.useRef)(false);
+        const onFocusIn = (0, hooks_1.useCallback)(() => {
+            if (!isFocusedRef.current) {
+                isFocusedRef.current = true;
+            }
+        }, []);
+        const onFocusOut = (0, hooks_1.useCallback)((event) => {
+            if (isFocusedRef.current &&
+                (event.relatedTarget == null ||
+                    !event.currentTarget.contains(event.relatedTarget))) {
+                isFocusedRef.current = false;
+                if (isInteractedRef.current) {
+                    methods.showMessages();
+                }
+                isInteractedRef.current = false;
+                clearInteractionFlags();
+            }
+        }, [clearInteractionFlags, methods]);
+        const onCommitHandler = (0, hooks_1.useCallback)(async ({ value }) => {
+            const valueAsArray = value ? Array.from(value) : null;
+            const numSelected = valueAsArray ? valueAsArray.length : 0;
+            isInteractedRef.current = true;
+            if (maxSelected && numSelected > maxSelected) {
+                return;
+            }
+            await onCommitValue(valueAsArray);
+            refreshDisplayValue(valueAsArray);
+            if (numSelected === maxSelected) {
+                addMessage({
+                    severity: 'info',
+                    detail: translations.formControl_selectionOverflowMessageDetail({
+                        max: maxSelected.toString()
+                    })
+                });
+            }
+        }, [addMessage, onCommitValue, maxSelected, refreshDisplayValue, translations]);
+        return {
+            methods,
+            outerProps: disabled || readonly
+                ? {}
+                : {
+                    onFocusIn,
+                    onFocusOut
+                },
+            richCheckboxsetProps: {
+                'aria-describedby': textFieldProps['aria-describedby'],
+                isRequired: required,
+                isReadonly: readonly,
+                isDisabled: disabled,
+                label: labelHint,
+                labelEdge,
+                labelStartWidth,
+                messages: textFieldProps.messages,
+                onCommit: onCommitHandler,
+                userAssistanceDensity,
+                value: displayValue
+            }
+        };
+    }
+});
+
+
+define('oj-c/rich-checkboxset/rich-checkboxset',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/compat", "preact/hooks", "ojs/ojvcomponent", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "oj-c/hooks/UNSAFE_useMergedFormContext/useMergedFormContext", "ojs/ojcontext", "@oracle/oraclejet-preact/UNSAFE_RichCheckboxSet", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "@oracle/oraclejet-preact/UNSAFE_RichSelectionItem", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "./useRichCheckboxsetPreact", "css!oj-c/rich-checkboxset/rich-checkboxset-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, compat_1, hooks_1, ojvcomponent_1, useAssistiveText_1, useMergedFormContext_1, Context, UNSAFE_RichCheckboxSet_1, UNSAFE_useTabbableMode_1, UNSAFE_useFormContext_1, UNSAFE_RichSelectionItem_1, Layout_1, useRichCheckboxsetPreact_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.RichCheckboxset = void 0;
+    const displayOptionsDefault = {
+        messages: 'display'
+    };
+    const helpDefault = {
+        instruction: ''
+    };
+    const helpHintsDefault = {
+        definition: '',
+        source: ''
+    };
+    const messagesCustomDefault = [];
+    const FunctionalRichCheckboxset = (0, compat_1.forwardRef)(({ columnSpan = 1, containerReadonly: propContainerReadonly, disabled = false, displayOptions = displayOptionsDefault, help = helpDefault, helpHints = helpHintsDefault, id, layout, maxSelected, messagesCustom = messagesCustomDefault, minSelected, options, readonly: propReadonly, required = false, userAssistanceDensity: propUserAssistanceDensity, value = null, ...otherProps }, ref) => {
+        const rootRef = (0, hooks_1.useRef)();
+        const richCheckboxsetRef = (0, hooks_1.useRef)();
+        const hasMin = minSelected != null;
+        const hasMax = maxSelected != null;
+        const hasValue = value != null;
+        if (hasMin && minSelected < 2) {
+            throw new Error('RichCheckboxSet: minSelected should be equal to or greater than 2.');
+        }
+        if (hasMax && maxSelected < 2) {
+            throw new Error('RichCheckboxSet: maxSelected should be equal to or greater than 2.');
+        }
+        const addBusyState = (0, hooks_1.useCallback)((description) => {
+            return rootRef.current
+                ? Context.getContext(rootRef.current)
+                    .getBusyContext()
+                    .addBusyState({ description: `oj-c-rich-checkboxset id=${id} is ${description}` })
+                : () => { };
+        }, [id]);
+        const { containerProps, uadValue, readonlyValue } = (0, useMergedFormContext_1.useMergedFormContext)({
+            propContainerReadonly,
+            propLabelWrapping: 'wrap',
+            propReadonly,
+            propUserAssistanceDensity
+        });
+        const { richCheckboxsetProps, methods, outerProps } = (0, useRichCheckboxsetPreact_1.useRichCheckboxsetPreact)({
+            disabled,
+            displayOptions,
+            readonly: readonlyValue,
+            required,
+            maxSelected,
+            messagesCustom,
+            minSelected,
+            value,
+            userAssistanceDensity: uadValue,
+            ...otherProps
+        }, addBusyState);
+        (0, hooks_1.useImperativeHandle)(ref, () => ({
+            blur: () => richCheckboxsetRef.current?.blur(),
+            focus: () => richCheckboxsetRef.current?.focus(),
+            ...methods
+        }), [methods]);
+        const assistiveTextProps = (0, useAssistiveText_1.useAssistiveText)({
+            displayOptions,
+            help,
+            helpHints,
+            userAssistanceDensity: uadValue
+        });
+        const { value: hookValue, ...richCheckboxsetRest } = richCheckboxsetProps;
+        const memoizedSetValue = (0, hooks_1.useMemo)(() => (hookValue ? new Set(hookValue) : undefined), [hookValue]);
+        const memoizedOptions = (0, hooks_1.useMemo)(() => (options ? [...options] : []), [options]);
+        const hasMaxSelected = hasValue && hasMax && maxSelected === memoizedSetValue?.size;
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, class: Layout_1.layoutSpanStyles.layoutSpanColumn[columnSpan], children: (0, jsx_runtime_1.jsx)(UNSAFE_useFormContext_1.FormContext.Provider, { value: containerProps, children: (0, jsx_runtime_1.jsx)("div", { ...outerProps, children: (0, jsx_runtime_1.jsx)(UNSAFE_RichCheckboxSet_1.RichCheckboxSet, { ...assistiveTextProps, ...richCheckboxsetRest, ref: richCheckboxsetRef, layout: layout, userAssistanceDensity: uadValue, value: memoizedSetValue, children: memoizedOptions.map(({ secondaryText, thumbnailSrc, iconClass, avatar, label, value }) => {
+                            const mediaObj = iconClass
+                                ? { iconClass }
+                                : thumbnailSrc
+                                    ? { thumbnailSrc }
+                                    : avatar
+                                        ? { avatar }
+                                        : {};
+                            const isItemReadonly = readonlyValue || (hasMaxSelected && !memoizedSetValue?.has(value));
+                            return ((0, jsx_runtime_1.jsx)(UNSAFE_RichSelectionItem_1.RichSelectionItem, { isReadonly: isItemReadonly, label: label, secondaryText: secondaryText, value: value, ...mediaObj }, value));
+                        }) }) }) }) }));
+    });
+    const RichCheckboxset = (0, ojvcomponent_1.registerCustomElement)('oj-c-rich-checkboxset', FunctionalRichCheckboxset, "RichCheckboxset", { "properties": { "containerReadonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "columnSpan": { "type": "number" }, "disabled": { "type": "boolean" }, "displayOptions": { "type": "object", "properties": { "messages": { "type": "string", "enumValues": ["none", "display"] } } }, "help": { "type": "object", "properties": { "instruction": { "type": "string" } } }, "helpHints": { "type": "object", "properties": { "definition": { "type": "string" }, "source": { "type": "string" }, "sourceText": { "type": "string" } } }, "labelEdge": { "type": "string", "enumValues": ["none", "start", "top", "inside"], "binding": { "consume": { "name": "containerLabelEdge" } } }, "labelHint": { "type": "string" }, "labelStartWidth": { "type": "number|string", "binding": { "consume": { "name": "labelWidth" } } }, "layout": { "type": "string", "enumValues": ["sm", "md", "xl"] }, "maxSelected": { "type": "number" }, "messagesCustom": { "type": "Array<object>", "writeback": true }, "minSelected": { "type": "number" }, "readonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "required": { "type": "boolean" }, "selectionExactMessageDetail": { "type": "function" }, "selectionOverflowMessageDetail": { "type": "function" }, "selectionRangeMessageDetail": { "type": "function" }, "selectionUnderflowMessageDetail": { "type": "function" }, "userAssistanceDensity": { "type": "string", "enumValues": ["compact", "reflow", "efficient"], "binding": { "consume": { "name": "containerUserAssistanceDensity" } } }, "options": { "type": "Array<object>" }, "requiredMessageDetail": { "type": "string" }, "valid": { "type": "string", "enumValues": ["pending", "valid", "invalidHidden", "invalidShown"], "readOnly": true, "writeback": true }, "value": { "type": "Array<string|number>|null", "writeback": true } }, "extension": { "_WRITEBACK_PROPS": ["messagesCustom", "valid", "value"], "_READ_ONLY_PROPS": ["valid"], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "id"] }, "methods": { "blur": {}, "focus": {}, "showMessages": {}, "reset": {}, "validate": {} } }, { "columnSpan": 1, "disabled": false, "displayOptions": { "messages": "display" }, "help": { "instruction": "" }, "helpHints": { "definition": "", "source": "" }, "messagesCustom": [], "required": false, "value": null }, {
+        '@oracle/oraclejet-preact': translationBundle_1.default
+    }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
+    exports.RichCheckboxset = RichCheckboxset;
+});
+
+define('oj-c/rich-checkboxset',["require", "exports", "oj-c/rich-checkboxset/rich-checkboxset"], function (require, exports, rich_checkboxset_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.RichCheckboxset = void 0;
+    Object.defineProperty(exports, "RichCheckboxset", { enumerable: true, get: function () { return rich_checkboxset_1.RichCheckboxset; } });
+});
+
+define('oj-c/rich-radioset/useRichRadiosetPreact',["require", "exports", "oj-c/editable-value/UNSAFE_useDeferredValidators/useDeferredValidators", "oj-c/hooks/UNSAFE_useEditableValue/index", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslationBundle"], function (require, exports, useDeferredValidators_1, index_1, UNSAFE_useTranslationBundle_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.useRichRadiosetPreact = useRichRadiosetPreact;
+    function useRichRadiosetPreact({ disabled, displayOptions, labelEdge, labelHint, labelStartWidth, layout, messagesCustom, readonly, requiredMessageDetail: propRequiredMessageDetail, required, userAssistanceDensity, value: propValue, onMessagesCustomChanged, onValidChanged, onValueChanged, ...otherProps }, addBusyState) {
+        const translations = (0, UNSAFE_useTranslationBundle_1.useTranslationBundle)('@oracle/oraclejet-preact');
+        const requiredMessageDetail = propRequiredMessageDetail || translations.radio_requiredMessageDetail();
+        const deferredValidators = (0, useDeferredValidators_1.useDeferredValidators)({
+            labelHint,
+            required,
+            requiredMessageDetail
+        });
+        const { value, methods, textFieldProps } = (0, index_1.useEditableValue)({
+            ariaDescribedBy: otherProps['aria-describedby'],
+            deferredValidators,
+            defaultDisplayValue: null,
+            disabled,
+            displayOptions,
+            messagesCustom,
+            readonly,
+            value: propValue,
+            addBusyState,
+            onMessagesCustomChanged,
+            onValidChanged,
+            onValueChanged
+        });
+        return {
+            methods,
+            richRadiosetProps: {
+                'aria-describedby': textFieldProps['aria-describedby'],
+                isRequired: required,
+                isReadonly: readonly,
+                isDisabled: disabled,
+                label: labelHint,
+                labelEdge,
+                labelStartWidth,
+                layout,
+                messages: textFieldProps['messages'],
+                onCommit: textFieldProps['onCommit'],
+                userAssistanceDensity,
+                value
+            }
+        };
+    }
+});
+
+
+define('oj-c/rich-radioset/rich-radioset',["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "preact/hooks", "preact/compat", "ojs/ojvcomponent", "oj-c/editable-value/UNSAFE_useAssistiveText/useAssistiveText", "ojs/ojcontext", "oj-c/hooks/UNSAFE_useMergedFormContext/useMergedFormContext", "@oracle/oraclejet-preact/UNSAFE_RichRadioSet", "@oracle/oraclejet-preact/utils/UNSAFE_styles/Layout", "@oracle/oraclejet-preact/hooks/UNSAFE_useTabbableMode", "@oracle/oraclejet-preact/hooks/UNSAFE_useFormContext", "@oracle/oraclejet-preact/UNSAFE_RichSelectionItem", "./useRichRadiosetPreact", "css!oj-c/rich-radioset/rich-radioset-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, hooks_1, compat_1, ojvcomponent_1, useAssistiveText_1, Context, useMergedFormContext_1, UNSAFE_RichRadioSet_1, Layout_1, UNSAFE_useTabbableMode_1, UNSAFE_useFormContext_1, UNSAFE_RichSelectionItem_1, useRichRadiosetPreact_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.RichRadioset = void 0;
+    const displayOptionsDefault = {
+        messages: 'display'
+    };
+    const helpDefault = {
+        instruction: ''
+    };
+    const helpHintsDefault = {
+        definition: '',
+        source: ''
+    };
+    const messagesCustomDefault = [];
+    const FunctionalRichRadioset = (0, compat_1.forwardRef)(({ id, options, containerReadonly: propContainerReadonly, displayOptions = displayOptionsDefault, help = helpDefault, helpHints = helpHintsDefault, disabled = false, layout, messagesCustom = messagesCustomDefault, columnSpan = 1, readonly: propReadonly, userAssistanceDensity: propUserAssistanceDensity, required = false, value, ...otherProps }, ref) => {
+        const rootRef = (0, hooks_1.useRef)();
+        const richRadiosetRef = (0, hooks_1.useRef)();
+        const addBusyState = (0, hooks_1.useCallback)((description) => {
+            return rootRef.current
+                ? Context.getContext(rootRef.current)
+                    .getBusyContext()
+                    .addBusyState({ description: `oj-c-rich-radioset id=${id} is ${description}` })
+                : () => { };
+        }, [id]);
+        const { containerProps, uadValue, readonlyValue } = (0, useMergedFormContext_1.useMergedFormContext)({
+            propContainerReadonly,
+            propLabelWrapping: 'wrap',
+            propReadonly,
+            propUserAssistanceDensity
+        });
+        const { richRadiosetProps, methods } = (0, useRichRadiosetPreact_1.useRichRadiosetPreact)({
+            displayOptions,
+            readonly: readonlyValue,
+            required,
+            messagesCustom,
+            disabled,
+            value,
+            userAssistanceDensity: uadValue,
+            ...otherProps
+        }, addBusyState);
+        (0, hooks_1.useImperativeHandle)(ref, () => ({
+            blur: () => richRadiosetRef.current?.blur(),
+            focus: () => richRadiosetRef.current?.focus(),
+            ...methods
+        }), [methods]);
+        const { value: hookValue, ...richRadiosetRest } = richRadiosetProps;
+        const assistiveTextProps = (0, useAssistiveText_1.useAssistiveText)({
+            displayOptions,
+            help,
+            helpHints,
+            userAssistanceDensity: uadValue
+        });
+        const memoizedOptions = (0, hooks_1.useMemo)(() => (options ? [...options] : []), [options]);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { id: id, ref: rootRef, class: Layout_1.layoutSpanStyles.layoutSpanColumn[columnSpan], children: (0, jsx_runtime_1.jsx)(UNSAFE_useFormContext_1.FormContext.Provider, { value: containerProps, children: (0, jsx_runtime_1.jsx)(UNSAFE_RichRadioSet_1.RichRadioSet, { ref: richRadiosetRef, ...assistiveTextProps, ...richRadiosetRest, layout: layout, userAssistanceDensity: uadValue, value: hookValue, children: memoizedOptions.map(({ secondaryText, thumbnailSrc, iconClass, avatar, label, value }) => {
+                        const mediaObj = iconClass
+                            ? { iconClass }
+                            : thumbnailSrc
+                                ? { thumbnailSrc }
+                                : avatar
+                                    ? { avatar }
+                                    : {};
+                        return ((0, jsx_runtime_1.jsx)(UNSAFE_RichSelectionItem_1.RichSelectionItem, { label: label, secondaryText: secondaryText, value: value, ...mediaObj }, value));
+                    }) }) }) }));
+    });
+    const RichRadioset = (0, ojvcomponent_1.registerCustomElement)('oj-c-rich-radioset', FunctionalRichRadioset, "RichRadioset", { "properties": { "containerReadonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "columnSpan": { "type": "number" }, "disabled": { "type": "boolean" }, "displayOptions": { "type": "object", "properties": { "messages": { "type": "string", "enumValues": ["none", "display"] } } }, "help": { "type": "object", "properties": { "instruction": { "type": "string" } } }, "helpHints": { "type": "object", "properties": { "definition": { "type": "string" }, "source": { "type": "string" }, "sourceText": { "type": "string" } } }, "labelEdge": { "type": "string", "enumValues": ["none", "start", "top", "inside"], "binding": { "consume": { "name": "containerLabelEdge" } } }, "labelHint": { "type": "string" }, "labelStartWidth": { "type": "number|string", "binding": { "consume": { "name": "labelWidth" } } }, "layout": { "type": "string", "enumValues": ["sm", "md", "xl"] }, "messagesCustom": { "type": "Array<object>", "writeback": true }, "readonly": { "type": "boolean", "binding": { "consume": { "name": "containerReadonly" } } }, "required": { "type": "boolean" }, "userAssistanceDensity": { "type": "string", "enumValues": ["compact", "reflow", "efficient"], "binding": { "consume": { "name": "containerUserAssistanceDensity" } } }, "options": { "type": "Array<object>" }, "requiredMessageDetail": { "type": "string" }, "valid": { "type": "string", "enumValues": ["pending", "valid", "invalidHidden", "invalidShown"], "readOnly": true, "writeback": true }, "value": { "type": "string|number|null", "writeback": true } }, "extension": { "_WRITEBACK_PROPS": ["messagesCustom", "valid", "value"], "_READ_ONLY_PROPS": ["valid"], "_OBSERVED_GLOBAL_PROPS": ["aria-describedby", "id"] }, "methods": { "blur": {}, "focus": {}, "showMessages": {}, "reset": {}, "validate": {} } }, { "displayOptions": { "messages": "display" }, "help": { "instruction": "" }, "helpHints": { "definition": "", "source": "" }, "disabled": false, "messagesCustom": [], "columnSpan": 1, "required": false }, {
+        '@oracle/oraclejet-preact': translationBundle_1.default
+    }, { consume: [UNSAFE_useTabbableMode_1.TabbableModeContext] });
+    exports.RichRadioset = RichRadioset;
+});
+
+define('oj-c/rich-radioset',["require", "exports", "oj-c/rich-radioset/rich-radioset"], function (require, exports, rich_radioset_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.RichRadioset = void 0;
+    Object.defineProperty(exports, "RichRadioset", { enumerable: true, get: function () { return rich_radioset_1.RichRadioset; } });
 });
 
 

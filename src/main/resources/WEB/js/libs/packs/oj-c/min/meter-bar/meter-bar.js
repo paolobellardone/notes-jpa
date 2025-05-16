@@ -21,7 +21,7 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
         });
         const preactMeterBarAriaLabelledBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-labelledby'], props.labelledBy]);
         const preactMeterBarAriaDescribedBy = (0, UNSAFE_stringUtils_1.merge)([props['aria-describedby'], props.describedBy]);
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: `oj-c-meter-bar-${orientation}${size === 'fit' ? '-fit' : ''}`, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterBar_1.MeterBar, { value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, orientation: orientation, indicatorSize: indicatorSize, baseline: baseline, datatip: props.datatip
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { ref: rootRef, class: `oj-c-meter-bar-${orientation}${size === 'fit' ? '-fit' : ''}`, children: (0, jsx_runtime_1.jsx)(UNSAFE_useVisBusyStateContext_1.VisBusyStateContext.Provider, { value: busyStateContext, children: (0, jsx_runtime_1.jsx)(UNSAFE_MeterBar_1.MeterBar, { isReadonly: readonly, value: (hoveredVal != undefined ? hoveredVal : value), step: step, max: max, min: min, size: size, orientation: orientation, indicatorSize: indicatorSize, baseline: baseline, datatip: props.datatip
                         ? props.datatip({
                             value: hoveredVal != undefined ? hoveredVal : value
                         })

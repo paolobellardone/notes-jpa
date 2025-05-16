@@ -1,6 +1,6 @@
 import { InputDateTextWebElementBase } from './InputDateTextWebElementBase';
 /**
- * The component WebElement for [oj-c-input-date-text](../../../oj-c/docs/oj.InputDateText.html).
+ * The component WebElement for [oj-c-input-date-text](../../jsdocs/oj-c.InputDateText.html).
  * Do not instantiate this class directly, instead, use
  * [findInputDateText](../functions/findInputDateText.html).
  */

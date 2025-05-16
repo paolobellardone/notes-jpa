@@ -1,6 +1,6 @@
 import { AvatarWebElementBase } from './AvatarWebElementBase';
 /**
- * The component WebElement for [oj-c-avatar](../../../oj-c/docs/oj.Avatar.html).
+ * The component WebElement for [oj-c-avatar](../../jsdocs/oj-c.Avatar.html).
  * Do not instantiate this class directly, instead, use
  * [findAvatar](../functions/findAvatar.html).
  */

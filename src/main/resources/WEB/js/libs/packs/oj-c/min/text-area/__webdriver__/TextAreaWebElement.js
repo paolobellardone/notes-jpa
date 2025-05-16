@@ -4,7 +4,7 @@ exports.TextAreaWebElement = void 0;
 const TextAreaWebElementBase_1 = require("./TextAreaWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-text-area](../../../oj-c/docs/oj.TextArea.html).
+ * The component WebElement for [oj-c-text-area](../../jsdocs/oj-c.TextArea.html).
  * Do not instantiate this class directly, instead, use
  * [findTextArea](../functions/findTextArea.html).
  */

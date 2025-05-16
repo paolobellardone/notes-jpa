@@ -1061,6 +1061,16 @@
         }
       },
       {
+        "name": "key",
+        "description": "A unique key associated with the toolbar item, only needed for automated testing.",
+        "optional": true,
+        "type": {
+          "names": [
+            "string"
+          ]
+        }
+      },
+      {
         "name": "display",
         "description": "Display just the label, the icons, or all. Label is used as tooltip and should be set in all cases.",
         "optional": true,

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DrawerLayoutWebElement = void 0;
 const DrawerLayoutWebElementBase_1 = require("./DrawerLayoutWebElementBase");
 /**
- * The component WebElement for [oj-c-drawer-layout](../../../oj-c/docs/oj.DrawerLayout.html).
+ * The component WebElement for [oj-c-drawer-layout](../../jsdocs/oj-c.DrawerLayout.html).
  * Do not instantiate this class directly, instead, use
  * [findDrawerLayout](../functions/findDrawerLayout.html).
  */

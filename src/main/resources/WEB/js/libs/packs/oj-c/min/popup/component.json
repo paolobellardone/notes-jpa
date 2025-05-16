@@ -1,7 +1,7 @@
 {
   "name": "popup",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -76,7 +76,7 @@
     "opened": {
       "type": "boolean",
       "description": "Specifies whether the Popup is open.",
-      "displayName": "opened",
+      "displayName": "Opened",
       "help": "#opened",
       "extension": {
         "webelement": {
@@ -93,19 +93,19 @@
     "launcher": {
       "type": "string|Element",
       "description": "Specifies Popup's launcher. After Popup closes, it returns focus to the launcher.",
-      "displayName": "launcher",
+      "displayName": "Launcher",
       "help": "#launcher"
     },
     "anchor": {
       "type": "string|Element|object",
       "description": "Specifies Popup's anchor. Popup is placed relative to its anchor.",
-      "displayName": "anchor",
+      "displayName": "Anchor",
       "help": "#anchor"
     },
     "placement": {
       "type": "string",
       "description": "Specifies the location the popup will appear relative to another element.",
-      "displayName": "placement",
+      "displayName": "Placement",
       "help": "#placement",
       "enumValues": [
         "center",
@@ -134,7 +134,7 @@
     "modality": {
       "type": "string",
       "description": "Specifies modality of the Popup.",
-      "displayName": "modality",
+      "displayName": "Modality",
       "help": "#modality",
       "enumValues": [
         "modal",
@@ -145,7 +145,7 @@
     "autoDismiss": {
       "type": "string",
       "description": "Specifies the auto dismissal behavior.",
-      "displayName": "Auto dismiss",
+      "displayName": "Auto Dismiss",
       "help": "#autoDismiss",
       "enumValues": [
         "none",
@@ -164,10 +164,21 @@
       ],
       "value": "none"
     },
+    "variant": {
+      "type": "string",
+      "description": "Specifies Popup's style variant.",
+      "displayName": "Variant",
+      "help": "#variant",
+      "enumValues": [
+        "standard",
+        "unstyled"
+      ],
+      "value": "standard"
+    },
     "initialFocus": {
       "type": "string",
       "description": "Specifies if the Popup sets focus to its content when initially open.",
-      "displayName": "initialFocus",
+      "displayName": "Initial Focus",
       "help": "#initialFocus",
       "enumValues": [
         "auto",
@@ -180,13 +191,13 @@
     "offset": {
       "type": "number|object",
       "description": "Specifies displacement of the Popup from the anchor element placement along the specified axes.",
-      "displayName": "offset",
+      "displayName": "Offset",
       "help": "#offset"
     },
     "collision": {
       "type": "string",
       "description": "Specifies rule for alternate placement alignment.",
-      "displayName": "collision",
+      "displayName": "Collision",
       "help": "#collision",
       "enumValues": [
         "none",
@@ -200,52 +211,52 @@
     "width": {
       "type": "number|string",
       "description": "Specifies width of the Popup content.",
-      "displayName": "width",
+      "displayName": "Width",
       "help": "#width"
     },
     "minWidth": {
       "type": "number|string",
       "description": "Specifies minWidth of the Popup content.",
-      "displayName": "minWidth",
+      "displayName": "Min Width",
       "help": "#minWidth"
     },
     "maxWidth": {
       "type": "number|string",
       "description": "Specifies maxWidth of the Popup content.",
-      "displayName": "maxWidth",
+      "displayName": "Max Width",
       "help": "#maxWidth",
       "value": "calc(100vw - 3rem)"
     },
     "height": {
       "type": "number|string",
       "description": "Specifies height of the Popup content.",
-      "displayName": "height",
+      "displayName": "Height",
       "help": "#height"
     },
     "minHeight": {
       "type": "number|string",
       "description": "Specifies minHeight of the Popup content.",
-      "displayName": "minHeight",
+      "displayName": "Min Height",
       "help": "#minHeight"
     },
     "maxHeight": {
       "type": "number|string",
       "description": "Specifies maxHeight of the Popup content.",
-      "displayName": "maxHeight",
+      "displayName": "Max Height",
       "help": "#maxHeight",
-      "value": "calc(100vw - 3rem)"
+      "value": "calc(100vh - 3rem)"
     }
   },
   "events": {
     "ojOpen": {
       "description": "Triggered immediately after the popup opens.",
-      "displayName": "open",
+      "displayName": "ojOpen",
       "help": "#event:open"
     },
     "ojBeforeClose": {
       "cancelable": true,
       "description": "Triggered immediately before the popup closes.",
-      "displayName": "beforeClose",
+      "displayName": "ojBeforeClose",
       "help": "#event:beforeClose",
       "detail": {
         "accept": {
@@ -256,12 +267,12 @@
     },
     "ojClose": {
       "description": "Triggered immediately after the popup closes.",
-      "displayName": "close",
+      "displayName": "ojClose",
       "help": "#event:close"
     },
     "ojFocus": {
       "description": "Triggered immediately after the popup receives focus.",
-      "displayName": "onOjFocus",
+      "displayName": "ojFocus",
       "help": "#event:onOjFocus"
     }
   },

@@ -96,7 +96,7 @@ export type AreaChartProps<K, D extends AreaItem<K> | any> = ObservedGlobalProps
     onOjContextMenuAction?: Action<AreaChartContextMenuActionDetail<K, D>> & Bubbles;
     onOjContextMenuSelection?: Action<AreaChartContextMenuSelectionDetail<K, D>> & Bubbles;
 };
-declare function AreaChartComp<K extends string | number, D extends AreaItem<K> | any>({ data, hideAndShowBehavior, orientation, xAxis, yAxis, hoverBehavior, valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling, hiddenCategories, highlightedCategories, highlightMatch, selection, selectionMode, timeAxisType, stack, legend, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, ...props }: AreaChartProps<K, D>): import("preact").JSX.Element;
+declare function AreaChartComp<K extends string | number, D extends AreaItem<K> | any>({ data, hideAndShowBehavior, orientation, xAxis, yAxis, hoverBehavior, valueFormats, plotArea, zoomAndScroll, itemTemplate, seriesTemplate, groupTemplate, seriesComparator, groupComparator, drilling, hiddenCategories, highlightedCategories, highlightMatch, selection, selectionMode, timeAxisType, stack, legend, contextMenuConfig, onOjContextMenuAction, onOjContextMenuSelection, onSelectionChanged, ...props }: AreaChartProps<K, D>): import("preact").JSX.Element;
 export declare const AreaChart: ComponentType<ExtendGlobalProps<ComponentProps<typeof AreaChartComp>>>;
 export {};
 export interface CAreaChartElement<K extends string | number, D extends AreaItem<K> | any> extends JetElement<CAreaChartElementSettableProperties<K, D>>, CAreaChartElementSettableProperties<K, D> {

@@ -4,7 +4,7 @@ exports.InputSensitiveTextWebElement = void 0;
 const InputSensitiveTextWebElementBase_1 = require("./InputSensitiveTextWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-input-sensitive-text](../../../oj-c/docs/oj.InputSensitiveText.html).
+ * The component WebElement for [oj-c-input-sensitive-text](../../jsdocs/oj-c.InputSensitiveText.html).
  * Do not instantiate this class directly, instead, use
  * [findInputSensitiveText](../functions/findInputSensitiveText.html).
  */

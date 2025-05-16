@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConveyorBeltWebElement = void 0;
 const ConveyorBeltWebElementBase_1 = require("./ConveyorBeltWebElementBase");
 /**
- * The component WebElement for [oj-c-conveyor-belt](../../../oj-c/docs/oj.ConveyorBelt.html).
+ * The component WebElement for [oj-c-conveyor-belt](../../jsdocs/oj-c.ConveyorBelt.html).
  * Do not instantiate this class directly, instead, use
  * [findConveyorBelt](../functions/findConveyorBelt.html).
  */

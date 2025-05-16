@@ -1,6 +1,6 @@
 import { SplitMenuButtonWebElementBase } from './SplitMenuButtonWebElementBase';
 /**
- * The component WebElement for [oj-c-split-menu-button](../../../oj-c/docs/oj.SplitMenuButton.html).
+ * The component WebElement for [oj-c-split-menu-button](../../jsdocs/oj-c.SplitMenuButton.html).
  * Do not instantiate this class directly, instead, use
  * [findSplitMenuButton](../functions/findSplitMenuButton.html).
  */
@@ -9,6 +9,10 @@ export declare class SplitMenuButtonWebElement extends SplitMenuButtonWebElement
      * Perform a click on the button action
      */
     click(): Promise<void>;
+    /**
+     * Perform a click on the button
+     */
+    doAction(): Promise<void>;
     /**
      * Helper util
      * */

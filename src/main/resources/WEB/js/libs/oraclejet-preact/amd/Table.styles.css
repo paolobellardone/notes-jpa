@@ -56,6 +56,7 @@
   background-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-surface-selected);
 }
 .Table_backgroundStyles_headerFooterSelected__2dfh9vc {
+  background-color: inherit;
   background-image: 
       linear-gradient(
         var(--oj-c-EXPERIMENTAL-DO-NOT-USE-collection-header-surface-selected),

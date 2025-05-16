@@ -4,7 +4,7 @@ exports.SplitMenuButtonWebElement = void 0;
 const SplitMenuButtonWebElementBase_1 = require("./SplitMenuButtonWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-split-menu-button](../../../oj-c/docs/oj.SplitMenuButton.html).
+ * The component WebElement for [oj-c-split-menu-button](../../jsdocs/oj-c.SplitMenuButton.html).
  * Do not instantiate this class directly, instead, use
  * [findSplitMenuButton](../functions/findSplitMenuButton.html).
  */
@@ -26,6 +26,12 @@ class SplitMenuButtonWebElement extends SplitMenuButtonWebElementBase_1.SplitMen
         // Find the action part of <button> element top element
         const button = await this.findElement(selenium_webdriver_1.By.css('[role=button] span'));
         return button.click();
+    }
+    /**
+     * Perform a click on the button
+     */
+    doAction() {
+        return this.click();
     }
     /**
      * Helper util

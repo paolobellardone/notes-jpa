@@ -1,7 +1,7 @@
 define(["require", "exports", "ojs/ojkeyset"], function (require, exports, ojkeyset_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.getFirstKey = exports.isEmpty = exports.keysToKeySet = exports.keySetToKeys = void 0;
+    exports.isEqual = exports.getFirstKey = exports.isEmpty = exports.keysToKeySet = exports.keySetToKeys = void 0;
     const keySetToKeys = (keySet) => {
         if (!keySet) {
             return { all: false, keys: new Set() };
@@ -50,4 +50,28 @@ define(["require", "exports", "ojs/ojkeyset"], function (require, exports, ojkey
         return null;
     };
     exports.getFirstKey = getFirstKey;
+    const isEqual = (key1, key2) => {
+        if (key1 === key2) {
+            return true;
+        }
+        if (key1.keys.all !== key2.keys.all) {
+            return false;
+        }
+        const arr1 = key1.keys.all === true
+            ? Array.from(key1.keys.deletedKeys.values())
+            : Array.from(key1.keys.keys.values());
+        const arr2 = key2.keys.all === true
+            ? Array.from(key2.keys.deletedKeys.values())
+            : Array.from(key2.keys.keys.values());
+        if (arr1.length !== arr2.length) {
+            return false;
+        }
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] !== arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    };
+    exports.isEqual = isEqual;
 });

@@ -23,24 +23,32 @@ define(["require", "exports", "./utils"], function (require, exports, utils_1) {
             try {
                 const validateResult = validator.validate(value);
                 if (validateResult instanceof Promise) {
-                    return validateResult.then(() => { }, (error) => (0, utils_1.createMessageFromError)(error));
+                    return validateResult.then(() => { }, (error) => {
+                        return {
+                            message: (0, utils_1.createMessageFromError)(error),
+                            messageDisplayStrategy: error?.messageDisplayStrategy
+                        };
+                    });
                 }
             }
             catch (error) {
-                return (0, utils_1.createMessageFromError)(error);
+                return {
+                    message: (0, utils_1.createMessageFromError)(error),
+                    messageDisplayStrategy: error?.messageDisplayStrategy
+                };
             }
             return;
         };
         const errors = [];
         const maybeErrorPromises = [];
         for (const validator of validators) {
-            const maybeComponentMessageItem = doValidate(validator, value);
-            if (maybeComponentMessageItem !== undefined) {
-                if (maybeComponentMessageItem instanceof Promise) {
-                    maybeErrorPromises.push(maybeComponentMessageItem);
+            const maybeValidatorErrorResult = doValidate(validator, value);
+            if (maybeValidatorErrorResult !== undefined) {
+                if (maybeValidatorErrorResult instanceof Promise) {
+                    maybeErrorPromises.push(maybeValidatorErrorResult);
                 }
                 else {
-                    errors.push(maybeComponentMessageItem);
+                    errors.push(maybeValidatorErrorResult);
                 }
             }
         }

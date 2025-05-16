@@ -620,7 +620,7 @@
     "name": "blur",
     "kind": "function",
     "longname": "oj-c.Radioset#blur",
-    "description": "Sets focus on the radioset or the first tabbable radio item.",
+    "description": "Blurs the radioset.",
     "ojhidden": true,
     "meta": {
       "filename": "radioset.tsx",
@@ -643,7 +643,7 @@
     "name": "focus",
     "kind": "function",
     "longname": "oj-c.Radioset#focus",
-    "description": "Blurs the radioset.",
+    "description": "Sets focus on the selected radio button or the first tabbable radio button.",
     "ojhidden": true,
     "meta": {
       "filename": "radioset.tsx",

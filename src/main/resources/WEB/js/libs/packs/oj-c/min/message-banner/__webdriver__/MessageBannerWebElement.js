@@ -5,7 +5,7 @@ const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
 const selenium_webdriver_1 = require("selenium-webdriver");
 const MessageBannerWebElementBase_1 = require("./MessageBannerWebElementBase");
 /**
- * The component WebElement for [oj-c-message-banner](../../../oj-c/docs/oj.MessageBanner.html).
+ * The component WebElement for [oj-c-message-banner](../../jsdocs/oj-c.MessageBanner.html).
  * Do not instantiate this class directly, instead, use
  * [findMessageBanner](../functions/findMessageBanner.html).
  */

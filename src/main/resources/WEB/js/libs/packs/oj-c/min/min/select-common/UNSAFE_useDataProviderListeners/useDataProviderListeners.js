@@ -8,12 +8,17 @@ define(["require", "exports", "@oracle/oraclejet-preact/utils/UNSAFE_logger", "p
     function cloneValueItem(valueItem) {
         return valueItem instanceof Map ? new Map(valueItem.entries()) : Object.assign({}, valueItem);
     }
+    function isItemContext(value) {
+        if (value == null)
+            return false;
+        return typeof value === 'object' && ['key', 'data'].every((prop) => prop in value);
+    }
     function compareValues(value, valueToCompare) {
         if ((value instanceof Set && valueToCompare instanceof Set) ||
             (value instanceof Map && valueToCompare instanceof Map)) {
             return value.size === valueToCompare.size;
         }
-        if (typeof value === 'object' && typeof valueToCompare === 'object') {
+        if (isItemContext(value) && isItemContext(valueToCompare)) {
             return value.key === valueToCompare.key;
         }
         return value === valueToCompare;

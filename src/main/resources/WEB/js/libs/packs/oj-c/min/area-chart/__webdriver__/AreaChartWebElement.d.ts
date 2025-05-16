@@ -1,6 +1,6 @@
 import { AreaChartWebElementBase } from './AreaChartWebElementBase';
 /**
- * The component WebElement for [oj-c-area-chart](../../../oj-c/docs/oj.AreaChart.html).
+ * The component WebElement for [oj-c-area-chart](../../jsdocs/oj-c.AreaChart.html).
  * Do not instantiate this class directly, instead, use
  * [findAreaChart](../functions/findAreaChart.html).
  */

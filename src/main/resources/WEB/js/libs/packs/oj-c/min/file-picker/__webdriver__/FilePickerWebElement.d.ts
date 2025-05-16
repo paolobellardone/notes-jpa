@@ -1,7 +1,7 @@
 import { WebDriver } from 'selenium-webdriver';
 import { FilePickerWebElementBase } from './FilePickerWebElementBase';
 /**
- * The component WebElement for [oj-c-file-picker](../../../oj-c/docs/oj.FilePicker.html).
+ * The component WebElement for [oj-c-file-picker](../../jsdocs/oj-c.FilePicker.html).
  * Do not instantiate this class directly, instead, use
  * [findFilePicker](../functions/findFilePicker.html).
  */

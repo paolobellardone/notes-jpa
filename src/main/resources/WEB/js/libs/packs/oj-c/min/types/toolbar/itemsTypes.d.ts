@@ -21,6 +21,7 @@ type ToolbarButton = {
 type ToolbarMenuButtonProps = Pick<ComponentProps<typeof MenuButton>, 'chroming' | 'disabled' | 'display' | 'items' | 'label' | 'tooltip' | 'suffix'> & ButtonIcons;
 type ToolbarMenuButton = {
     type: 'menu-button';
+    key?: string;
 } & ToolbarMenuButtonProps;
 type ToolbarSplitMenuButtonProps = Pick<ComponentProps<typeof SplitMenuButton>, 'chroming' | 'disabled' | 'items' | 'label' | 'tooltip'>;
 type ToolbarSplitMenuButton = {

@@ -37,15 +37,6 @@ class ToolbarWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('size');
     }
     /**
-     * Gets the value of <code>items</code> property.
-     * Specifies the content to be placed into the toolbar.
-     * @return The value of <code>items</code> property.
-     *
-     */
-    getItems() {
-        return this.getProperty('items');
-    }
-    /**
      * Sets the value of <code>toolbarSelection</code> property.
      * An array containing key/value objects for selection groups.
      * @param toolbarSelection The value to set for <code>toolbarSelection</code>

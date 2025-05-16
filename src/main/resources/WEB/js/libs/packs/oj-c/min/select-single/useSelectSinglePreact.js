@@ -45,7 +45,17 @@ define(["require", "exports", "@oracle/oraclejet-preact/hooks/UNSAFE_useTranslat
             filterCriterion,
             hasCollectionTemplate: collectionTemplate !== undefined
         });
-        const [valueToSync, setValueToSync] = (0, hooks_1.useState)(value);
+        const [valueToSync, _setValueToSync] = (0, hooks_1.useState)(value != null ? { value } : value);
+        const setValueToSync = (0, hooks_1.useCallback)((value) => {
+            if (typeof value === 'function') {
+                _setValueToSync((prevValue) => {
+                    const newValue = value(prevValue?.value);
+                    return newValue != null ? { value: newValue } : newValue;
+                });
+                return;
+            }
+            _setValueToSync(value != null ? { value } : value);
+        }, []);
         const [valueItemToSync, setValueItemToSync] = (0, hooks_1.useState)(valueItem);
         (0, hooks_1.useEffect)(() => {
             setValueToSync(value);

@@ -4,7 +4,7 @@ exports.InputPasswordWebElement = void 0;
 const InputPasswordWebElementBase_1 = require("./InputPasswordWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-input-password](../../../oj-c/docs/oj.InputPassword.html).
+ * The component WebElement for [oj-c-input-password](../../jsdocs/oj-c.InputPassword.html).
  * Do not instantiate this class directly, instead, use
  * [findInputPassword](../functions/findInputPassword.html).
  */

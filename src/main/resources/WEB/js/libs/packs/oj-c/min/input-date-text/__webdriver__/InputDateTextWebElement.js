@@ -4,7 +4,7 @@ exports.InputDateTextWebElement = void 0;
 const InputDateTextWebElementBase_1 = require("./InputDateTextWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-input-date-text](../../../oj-c/docs/oj.InputDateText.html).
+ * The component WebElement for [oj-c-input-date-text](../../jsdocs/oj-c.InputDateText.html).
  * Do not instantiate this class directly, instead, use
  * [findInputDateText](../functions/findInputDateText.html).
  */

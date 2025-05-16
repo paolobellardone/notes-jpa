@@ -2,7 +2,7 @@ import { CardViewWebElementBase } from './CardViewWebElementBase';
 import { SlotProxy } from '@oracle/oraclejet-webdriver';
 /**
 /**
- * The component WebElement for [oj-c-card-view](../../../oj-c/docs/oj.CardView.html).
+ * The component WebElement for [oj-c-card-view](../../jsdocs/oj-c.CardView.html).
  * Do not instantiate this class directly, instead, use
  * [findCardView](../modules.html#findCardView).
  */

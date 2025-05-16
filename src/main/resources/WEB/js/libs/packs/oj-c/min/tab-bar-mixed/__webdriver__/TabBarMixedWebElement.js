@@ -4,7 +4,7 @@ exports.TabBarMixedWebElement = void 0;
 const selenium_webdriver_1 = require("selenium-webdriver");
 const TabBarMixedWebElementBase_1 = require("./TabBarMixedWebElementBase");
 /**
- * The component WebElement for [oj-c-tab-bar-mixed](../../../oj-c/docs/oj.TabBarMixed.html).
+ * The component WebElement for [oj-c-tab-bar-mixed](../../jsdocs/oj-c.TabBarMixed.html).
  * Do not instantiate this class directly, instead, use
  * [findTabBarMixed](../modules.html#findTabBarMixed).
  */

@@ -1,6 +1,6 @@
 import { CheckboxsetWebElementBase } from './CheckboxsetWebElementBase';
 /**
- * The component WebElement for [oj-c-checkboxset](../../../oj-c/docs/oj.Checkboxset.html).
+ * The component WebElement for [oj-c-checkboxset](../../jsdocs/oj-c.Checkboxset.html).
  * Do not instantiate this class directly, instead, use
  * [findCheckboxset](../functions/findCheckboxset.html).
  */

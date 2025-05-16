@@ -1,7 +1,7 @@
 import { WebElement, ISize, IRectangle, Locator, WebElementPromise } from 'selenium-webdriver';
 import { DrawerPopupWebElementBase } from './DrawerPopupWebElementBase';
 /**
- * The component WebElement for [oj-c-drawer-popup](../../../oj-c/docs/oj.DrawerPopup.html).
+ * The component WebElement for [oj-c-drawer-popup](../../jsdocs/oj-c.DrawerPopup.html).
  * Do not instantiate this class directly, instead, use
  * [findDrawerPopup](../functions/findDrawerPopup.html).
  */

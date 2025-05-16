@@ -1,4 +1,4 @@
-define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Dialog", "preact/hooks", "ojs/ojcontext", "css!oj-c/dialog/dialog-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_Dialog_1, hooks_1, Context) {
+define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/translationBundle', "ojs/ojvcomponent", "@oracle/oraclejet-preact/UNSAFE_Layer", "@oracle/oraclejet-preact/UNSAFE_Dialog", "preact/hooks", "ojs/ojcontext", "css!oj-c/dialog/dialog-styles.css"], function (require, exports, jsx_runtime_1, translationBundle_1, ojvcomponent_1, UNSAFE_Layer_1, UNSAFE_Dialog_1, hooks_1, Context) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Dialog = void 0;
@@ -19,10 +19,16 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
         const preactRef = (0, hooks_1.useCallback)((elem) => {
             if (rootRef.current) {
                 if (elem) {
+                    const layerElem = elem;
+                    layerElem[UNSAFE_Layer_1.LOGICAL_PARENT] = rootRef.current;
                     rootRef.current[LAYER_CONTENT] = elem;
                 }
                 else {
-                    delete rootRef.current[LAYER_CONTENT];
+                    if (rootRef.current[LAYER_CONTENT]) {
+                        const layerElem = rootRef.current[LAYER_CONTENT];
+                        delete layerElem[UNSAFE_Layer_1.LOGICAL_PARENT];
+                        delete rootRef.current[LAYER_CONTENT];
+                    }
                 }
             }
         }, []);

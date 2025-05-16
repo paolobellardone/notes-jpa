@@ -15,7 +15,7 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             }
         }
         const selectInfo = {
-            selected: cardViewProps.selectedKeys,
+            selected: rest.selected,
             selectionMode: cardViewProps.selectionMode,
             onSelectedChange: rest.onSelectedChanged
         };

@@ -409,7 +409,7 @@
     "name": "blur",
     "kind": "function",
     "longname": "oj-c.Checkbox#blur",
-    "description": "focuses the input field",
+    "description": "Blurs the input field.",
     "ojhidden": true,
     "meta": {
       "filename": "checkbox.tsx",
@@ -432,7 +432,7 @@
     "name": "focus",
     "kind": "function",
     "longname": "oj-c.Checkbox#focus",
-    "description": "blurs the input field",
+    "description": "Focuses the input field.",
     "ojhidden": true,
     "meta": {
       "filename": "checkbox.tsx",

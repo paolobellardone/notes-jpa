@@ -1,6 +1,6 @@
 import { InputPasswordWebElementBase } from './InputPasswordWebElementBase';
 /**
- * The component WebElement for [oj-c-input-password](../../../oj-c/docs/oj.InputPassword.html).
+ * The component WebElement for [oj-c-input-password](../../jsdocs/oj-c.InputPassword.html).
  * Do not instantiate this class directly, instead, use
  * [findInputPassword](../functions/findInputPassword.html).
  */

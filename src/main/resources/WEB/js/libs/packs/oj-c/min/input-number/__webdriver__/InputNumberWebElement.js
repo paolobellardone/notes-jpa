@@ -4,7 +4,7 @@ exports.InputNumberWebElement = void 0;
 const InputNumberWebElementBase_1 = require("./InputNumberWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-input-number](../../../oj-c/docs/oj.InputNumber.html).
+ * The component WebElement for [oj-c-input-number](../../jsdocs/oj-c.InputNumber.html).
  * Do not instantiate this class directly, instead, use
  * [findInputNumber](../functions/findInputNumber.html).
  */

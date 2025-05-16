@@ -620,4 +620,30 @@ oj-c-progress-button {
 
 oj-c-progress-button[hidden] {
   display: none;
+}oj-c-rich-checkboxset:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-rich-checkboxset {
+  display: inline-block; 
+  box-sizing: border-box; 
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-rich-checkboxset[hidden] {
+  display: none;
+}oj-c-rich-radioset:not(.oj-complete) {
+  visibility: hidden;
+}
+
+oj-c-rich-radioset {
+  display: inline-block; 
+  box-sizing: border-box; 
+  max-width: 100%;
+  width: 100%;
+}
+
+oj-c-rich-radioset[hidden] {
+  display: none;
 }

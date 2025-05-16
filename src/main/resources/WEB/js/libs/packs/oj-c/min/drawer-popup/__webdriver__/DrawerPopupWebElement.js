@@ -4,7 +4,7 @@ exports.DrawerPopupWebElement = void 0;
 const selenium_webdriver_1 = require("selenium-webdriver");
 const DrawerPopupWebElementBase_1 = require("./DrawerPopupWebElementBase");
 /**
- * The component WebElement for [oj-c-drawer-popup](../../../oj-c/docs/oj.DrawerPopup.html).
+ * The component WebElement for [oj-c-drawer-popup](../../jsdocs/oj-c.DrawerPopup.html).
  * Do not instantiate this class directly, instead, use
  * [findDrawerPopup](../functions/findDrawerPopup.html).
  */

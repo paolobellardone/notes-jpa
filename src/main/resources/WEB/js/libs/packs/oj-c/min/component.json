@@ -1,7 +1,7 @@
 {
   "name": "oj-c",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "type": "mono-pack",
   "displayName": "Oracle JET Core pack",
   "description": "Core Oracle JET components implemented using virtual DOM technology",
@@ -9,7 +9,7 @@
   "license": "https://opensource.org/licenses/UPL",
   "dependencyScope": "runtime",
   "dependencies": {
-    "oj-ref-oraclejet-preact": "18.0.2"
+    "oj-ref-oraclejet-preact": "18.1.0"
   },
   "bundles": {
     "oj-c/corepackbundle": [
@@ -78,7 +78,9 @@
       "oj-c/table",
       "oj-c/progress-button",
       "oj-c/skeleton",
-      "oj-c/toolbar"
+      "oj-c/toolbar",
+      "oj-c/rich-checkboxset",
+      "oj-c/rich-radioset"
     ]
   },
   "contents": [
@@ -279,6 +281,12 @@
     },
     {
       "name": "toolbar"
+    },
+    {
+      "name": "rich-checkboxset"
+    },
+    {
+      "name": "rich-radioset"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import { TableWebElementBase } from './TableWebElementBase';
 import { SlotProxy } from '@oracle/oraclejet-webdriver';
 /**
- * The component WebElement for [oj-c-table](../../../oj-c/docs/oj.Table.html).
+ * The component WebElement for [oj-c-table](../../jsdocs/oj-c.Table.html).
  * Do not instantiate this class directly, instead, use
  * [findTable](../functions/findTable.html).
  */

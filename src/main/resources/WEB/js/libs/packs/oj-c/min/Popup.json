@@ -217,6 +217,27 @@
   },
   {
     "memberof": "oj-c.Popup",
+    "id": "oj-c.Popup#variant",
+    "name": "variant",
+    "kind": "member",
+    "longname": "oj-c.Popup#variant",
+    "optional": true,
+    "scope": "instance",
+    "description": "Specifies Popup's style variant. If <code class=\"prettyprint\">unstyled</code> is set, standard styles are not applied.",
+    "meta": {
+      "filename": "popup.tsx",
+      "path": "web/components/oj-c/popup"
+    },
+    "defaultvalue": "\"standard\"",
+    "type": {
+      "names": [
+        "\"standard\"",
+        "\"unstyled\""
+      ]
+    }
+  },
+  {
+    "memberof": "oj-c.Popup",
     "id": "oj-c.Popup#initialFocus",
     "name": "initialFocus",
     "kind": "member",
@@ -397,7 +418,7 @@
       "filename": "popup.tsx",
       "path": "web/components/oj-c/popup"
     },
-    "defaultvalue": "calc(100vw - 3rem)",
+    "defaultvalue": "calc(100vh - 3rem)",
     "type": {
       "names": [
         "number|string"

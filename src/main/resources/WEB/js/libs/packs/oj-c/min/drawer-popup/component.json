@@ -1,7 +1,7 @@
 {
   "name": "drawer-popup",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -125,7 +125,7 @@
     "closeGesture": {
       "type": "string",
       "description": "Specifies whether a gesture closes the drawer.",
-      "displayName": "Close gesture",
+      "displayName": "Close Gesture",
       "help": "#closeGesture",
       "enumValues": [
         "none",
@@ -136,7 +136,7 @@
     "backgroundColor": {
       "type": "string",
       "description": "Specifies background color of the Drawer.",
-      "displayName": "backgroundColor",
+      "displayName": "Background Color",
       "help": "#backgroundColor"
     }
   },
@@ -144,7 +144,7 @@
     "ojBeforeClose": {
       "cancelable": true,
       "description": "Triggered immediately before the drawer closes",
-      "displayName": "Beforeclose",
+      "displayName": "ojBeforeClose",
       "help": "#event:beforeClose",
       "detail": {
         "accept": {
@@ -155,7 +155,7 @@
     },
     "ojClose": {
       "description": "Triggered immediately after the drawer closes",
-      "displayName": "Close",
+      "displayName": "ojClose",
       "help": "#event:close"
     }
   },

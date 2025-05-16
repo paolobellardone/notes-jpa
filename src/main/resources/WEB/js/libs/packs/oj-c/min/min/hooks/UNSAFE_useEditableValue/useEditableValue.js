@@ -22,6 +22,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             };
         });
         const currentValidRef = (0, hooks_1.useRef)();
+        const componentWasValidRef = (0, hooks_1.useRef)(false);
         const onValidChanged = (0, hooks_1.useCallback)((newValid) => {
             if (newValid !== currentValidRef.current) {
                 currentValidRef.current = newValid;
@@ -113,7 +114,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             return conversion;
         }, [_dispatch, normalizeAndParseValue]);
         const fullValidate = (0, hooks_1.useCallback)(async (value, options = {}) => {
-            const { doNotClearMessagesCustom = false } = options;
+            const { doNotClearMessagesCustom = false, forceHiddenMessagesToBeShown = false } = options;
             const hasCustomErrorMessages = doNotClearMessagesCustom && (0, utils_1.hasErrorMessages)(messagesCustom);
             if (doNotClearMessagesCustom) {
                 _dispatch(reducer_1.updateComponentMessages, []);
@@ -127,44 +128,79 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                 _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
                 return true;
             }
-            const errors = [];
+            const shownSyncErrors = [];
+            const hiddenSyncErrors = [];
             const deferredValidate = validateDeferredSync(value);
-            deferredValidate.result === 'failure' && errors.push(...deferredValidate.errors);
+            deferredValidate.result === 'failure' && shownSyncErrors.push(...deferredValidate.errors);
             let nonDeferredValidate = undefined;
             if (value !== null && value !== undefined) {
                 nonDeferredValidate = (0, validationUtils_1.validateAsync)({ validators: validators ?? [], value });
+                nonDeferredValidate.errors.forEach(({ message, messageDisplayStrategy }) => {
+                    if (messageDisplayStrategy === 'displayOnBlur' &&
+                        !componentWasValidRef.current &&
+                        !forceHiddenMessagesToBeShown) {
+                        hiddenSyncErrors.push(message);
+                    }
+                    else {
+                        shownSyncErrors.push(message);
+                    }
+                });
             }
-            errors.push(...(nonDeferredValidate?.errors ?? []));
             const maybeErrorPromises = nonDeferredValidate?.maybeErrorPromises ?? [];
-            if (!errors.length && !maybeErrorPromises.length) {
+            const hasSyncError = shownSyncErrors.length !== 0 || hiddenSyncErrors.length !== 0;
+            if (!hasSyncError && !maybeErrorPromises.length) {
                 _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
                 return true;
             }
-            const hasSyncError = errors.length !== 0;
-            hasSyncError &&
-                _dispatch(reducer_1.updateComponentMessages, errors) &&
+            if (shownSyncErrors.length !== 0) {
+                _dispatch(reducer_1.updateComponentMessages, shownSyncErrors);
                 _dispatch(reducer_1.updateValidStatus, 'invalidShown');
+            }
+            else if (hiddenSyncErrors.length !== 0) {
+                _dispatch(reducer_1.updateHiddenMessages, hiddenSyncErrors);
+                _dispatch(reducer_1.updateValidStatus, 'invalidHidden');
+            }
             if (!maybeErrorPromises.length) {
                 return !hasSyncError;
             }
             !hasSyncError && _dispatch(reducer_1.updateValidStatus, 'pending');
             const resolver = addBusyState?.('running asynchronous validation');
             const { isStale } = setStaleIdentity('useEditableValue-full-validate');
-            let hasAsyncError = false;
+            let hasAsyncShownError = false;
+            let hasAsyncHiddenError = false;
             const asyncValidations = [];
             for (const maybeErrorPromise of maybeErrorPromises) {
                 const asyncValidation = maybeErrorPromise.then((maybeValidationError) => {
                     if (maybeValidationError && !isStale()) {
-                        _dispatch(reducer_1.addComponentMessage, maybeValidationError);
-                        _dispatch(reducer_1.updateValidStatus, 'invalidShown');
-                        hasAsyncError = true;
+                        const { messageDisplayStrategy, message } = maybeValidationError;
+                        if (messageDisplayStrategy === 'displayOnBlur' &&
+                            !componentWasValidRef.current &&
+                            !forceHiddenMessagesToBeShown) {
+                            _dispatch(reducer_1.addHiddenMessage, message);
+                            hasAsyncHiddenError = true;
+                        }
+                        else {
+                            _dispatch(reducer_1.addComponentMessage, message);
+                            hasAsyncShownError = true;
+                        }
                     }
                 });
                 asyncValidations.push(asyncValidation);
             }
             await Promise.all(asyncValidations);
-            if (!hasSyncError && !hasAsyncError && !isStale()) {
-                _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
+            const hasAsyncError = hasAsyncHiddenError || hasAsyncShownError;
+            const hasAnyHiddenErrors = hasAsyncHiddenError || hiddenSyncErrors.length !== 0;
+            const hasAnyShownErrors = hasAsyncShownError || shownSyncErrors.length !== 0;
+            if (!isStale()) {
+                if (!hasSyncError && !hasAsyncError) {
+                    _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'valid');
+                }
+                else if (hasAnyShownErrors) {
+                    _dispatch(reducer_1.updateValidStatus, 'invalidShown');
+                }
+                else if (hasAnyHiddenErrors) {
+                    _dispatch(reducer_1.updateValidStatus, hasCustomErrorMessages ? 'invalidShown' : 'invalidHidden');
+                }
             }
             resolver?.();
             return !hasSyncError && !hasAsyncError;
@@ -212,6 +248,9 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
         const onCommitValue = (0, hooks_1.useCallback)(async (value, doCommitOnValid = true) => {
             const validated = await validateValueOnInternalChange(value);
             validated && doCommitOnValid && _dispatch(reducer_1.updateValue, value);
+            if (validated) {
+                componentWasValidRef.current = true;
+            }
             return validated;
         }, [_dispatch, validateValueOnInternalChange]);
         const onCommit = (0, hooks_1.useCallback)(async ({ value }) => {
@@ -237,7 +276,7 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
             }
             const newValue = conversion.value;
             const resolver = addBusyState?.('Running component method validate');
-            const validated = await fullValidate(newValue);
+            const validated = await fullValidate(newValue, { forceHiddenMessagesToBeShown: true });
             resolver?.();
             if (validated) {
                 if (newValue !== state.value) {
@@ -268,6 +307,12 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                 _dispatch(reducer_1.updateValidStatus, 'invalidShown');
             }
         }, [_dispatch, state.hiddenMessages]);
+        const clearInteractionFlags = (0, hooks_1.useCallback)(() => {
+            componentWasValidRef.current = false;
+        }, []);
+        const addMessage = (0, hooks_1.useCallback)((message) => {
+            _dispatch(reducer_1.addComponentMessage, message);
+        }, [_dispatch]);
         if (!initialRender.current && state.previousValue !== value) {
             _dispatch(reducer_1.updatePreviousValue, value);
             if (value !== state.value) {
@@ -342,8 +387,6 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
         }
         if (initialRender.current) {
             initialRender.current = false;
-        }
-        (0, hooks_1.useEffect)(() => {
             _dispatch(reducer_1.updatePreviousValue, value);
             _dispatch(reducer_1.updatePreviousConverter, converter);
             _dispatch(reducer_1.updatePreviousValidators, validators);
@@ -365,9 +408,11 @@ define(["require", "exports", "preact/hooks", "./converterUtils", "./utils", "oj
                 _dispatch(reducer_1.updateValidStatus, 'valid');
                 refreshDisplayValue(value);
             }
-        }, []);
+        }
         return {
             value: state.value,
+            addMessage,
+            clearInteractionFlags,
             displayValue: state.displayValue,
             formatValue,
             methods: {

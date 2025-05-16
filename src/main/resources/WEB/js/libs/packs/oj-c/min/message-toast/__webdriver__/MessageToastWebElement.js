@@ -5,7 +5,7 @@ const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
 const selenium_webdriver_1 = require("selenium-webdriver");
 const MessageToastWebElementBase_1 = require("./MessageToastWebElementBase");
 /**
- * The component WebElement for [oj-c-message-toast](../../../oj-c/docs/oj.MessageToast.html).
+ * The component WebElement for [oj-c-message-toast](../../jsdocs/oj-c.MessageToast.html).
  * Do not instantiate this class directly, instead, use
  * [findMessageToast](../functions/findMessageToast.html).
  */

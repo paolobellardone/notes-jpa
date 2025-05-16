@@ -1,7 +1,7 @@
 {
   "name": "checkboxset",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -362,11 +362,11 @@
   },
   "methods": {
     "blur": {
-      "description": "Sets focus on the checkboxset or the first tabbable checkbox.",
+      "description": "Blurs the checkboxset.",
       "return": "void"
     },
     "focus": {
-      "description": "Blurs the checkboxset.",
+      "description": "Sets focus on the first tabbable checkbox.",
       "return": "void"
     },
     "showMessages": {

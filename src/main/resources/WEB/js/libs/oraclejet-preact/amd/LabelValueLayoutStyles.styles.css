@@ -32,33 +32,21 @@
 .LabelValueLayoutStyles_labelInnerStyles_startNotPureReadonly__z3rxc57 {
   padding-block-start: calc((var(--height__w6gg1yg) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
 }
-.LabelValueLayoutStyles_labelInnerStyles_startWithNoTopRadioSetUA__z3rxc58 {
-  padding-block-start: calc((var(--rowHeight__11tjnon2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
-}
-.LabelValueLayoutStyles_labelInnerStyles_insideRadioSet__z3rxc59 {
-  padding-block-start: calc((var(--rowHeight__11tjnon2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
-}
-.LabelValueLayoutStyles_labelInnerStyles_startWithNoTopCheckboxSetUA__z3rxc5a {
-  padding-block-start: calc((var(--rowHeight__1qyga5a2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5);
-}
-.LabelValueLayoutStyles_labelInnerStyles_insideCheckboxSet__z3rxc5b {
-  padding-block-start: calc((var(--rowHeight__1qyga5a2) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px));
-}
-.LabelValueLayoutStyles_labelInnerStyles_startWithNoTopFormComponentWrapperUA__z3rxc5c {
+.LabelValueLayoutStyles_labelInnerStyles_startWithoutTopFormComponentWrapperUA__z3rxc58 {
   padding-block-start: calc((calc(calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px))) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1)) * 0.5);
 }
-.LabelValueLayoutStyles_labelInnerStyles_insideFormComponentWrapper__z3rxc5d {
+.LabelValueLayoutStyles_labelInnerStyles_insideFormComponentWrapper__z3rxc59 {
   padding-block-start: calc(
       (calc(calc(9 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem)) + calc(2 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px))) - var(--fontSize__kn3t7f9) * var(--lineHeight__kn3t7f1))*0.5 + var(--oj-c-EXPERIMENTAL-DO-NOT-USE-density-units, 0px)
     );
 }
-.LabelValueLayoutStyles_labelInnerStyles_noWrap__z3rxc5e {
+.LabelValueLayoutStyles_labelInnerStyles_noWrap__z3rxc5a {
   white-space: nowrap;
   overflow-x: hidden;
   overflow-y: hidden;
   text-overflow: ellipsis;
 }
-.LabelValueLayoutStyles_valueSlotStyles__z3rxc5f {
+.LabelValueLayoutStyles_valueSlotStyles__z3rxc5b {
   flex: 1 1 100%;
   width: 100%;
   max-width: 100%;

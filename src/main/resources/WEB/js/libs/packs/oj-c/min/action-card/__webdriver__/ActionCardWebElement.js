@@ -4,7 +4,7 @@ exports.ActionCardWebElement = void 0;
 const ActionCardWebElementBase_1 = require("./ActionCardWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-action-card](../../../oj-c/docs/oj.ActionCard.html).
+ * The component WebElement for [oj-c-action-card](../../jsdocs/oj-c.ActionCard.html).
  * Do not instantiate this class directly, instead, use
  * [findActionCard](../functions/findActionCard.html).
  */

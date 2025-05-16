@@ -5,7 +5,7 @@ const InputDatePickerWebElementBase_1 = require("./InputDatePickerWebElementBase
 const selenium_webdriver_1 = require("selenium-webdriver");
 const UNSAFE_IntlDateTime_1 = require("@oracle/oraclejet-preact/UNSAFE_IntlDateTime");
 /**
- * The component WebElement for [oj-c-input-date-picker](../../../oj-c/docs/oj.InputDatePicker.html).
+ * The component WebElement for [oj-c-input-date-picker](../../jsdocs/oj-c.InputDatePicker.html).
  * Do not instantiate this class directly, instead, use
  * [findInputDatePicker](../functions/findInputDatePicker.html).
  */

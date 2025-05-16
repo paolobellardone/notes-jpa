@@ -8,20 +8,32 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             rowKey = itemKey;
         }
         const selectionInfo = (0, useSelectionContext_1.useSelectionContext)();
-        let keys = undefined;
+        let keys = selectedKeys;
+        let mode = selectionMode;
+        let selectedListener;
         if (selectionInfo) {
-            keys = selectionInfo.selected;
-            onSelectedKeysChanged = selectionInfo.onSelectedChange;
-            if (selectionInfo.selectionMode && selectionInfo.selectionMode !== 'none') {
-                selectionMode = selectionInfo.selectionMode;
+            if (selectionInfo.selected) {
+                keys = selectionInfo.selected;
             }
+            if (selectionInfo.selectionMode !== 'none') {
+                mode = selectionInfo.selectionMode;
+            }
+            selectedListener = selectionInfo.onSelectedChange;
         }
-        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { children: (0, jsx_runtime_1.jsx)(UNSAFE_Selector_1.Selector, { isPartial: indeterminate, rowKey: rowKey, selectedKeys: keys == null ? (0, keySetUtils_1.keySetToKeys)(selectedKeys) : keys, selectionMode: selectionMode == null ? 'multiple' : selectionMode, "aria-label": otherProps['aria-label'], onChange: (0, hooks_1.useCallback)((detail) => {
+        (0, hooks_1.useLayoutEffect)(() => {
+            if (onSelectedKeysChanged &&
+                selectedKeys &&
+                selectionInfo &&
+                selectionInfo.selected &&
+                !(0, keySetUtils_1.isEqual)(selectionInfo.selected, selectedKeys)) {
+                onSelectedKeysChanged(selectionInfo.selected);
+            }
+        }, [onSelectedKeysChanged, selectionInfo, selectedKeys]);
+        return ((0, jsx_runtime_1.jsx)(ojvcomponent_1.Root, { children: (0, jsx_runtime_1.jsx)(UNSAFE_Selector_1.Selector, { isPartial: indeterminate, rowKey: rowKey, selectedKeys: (0, keySetUtils_1.keySetToKeys)(keys), selectionMode: mode == null ? 'multiple' : mode, "aria-label": otherProps['aria-label'], onChange: (0, hooks_1.useCallback)((detail) => {
                     const keySet = (0, keySetUtils_1.keysToKeySet)(detail.value);
-                    if (onSelectedKeysChanged) {
-                        onSelectedKeysChanged(keySet);
-                    }
-                }, [onSelectedKeysChanged]) }, rowKey) }));
+                    selectedListener?.(keySet);
+                    onSelectedKeysChanged?.(keySet);
+                }, [selectedListener, onSelectedKeysChanged]) }, rowKey) }));
     };
     exports.Selector = (0, ojvcomponent_1.registerCustomElement)('oj-c-selector', SelectorImpl, "Selector", { "properties": { "rowKey": { "type": "string|number" }, "selectedKeys": { "type": "object", "writeback": true }, "indeterminate": { "type": "boolean" }, "selectionMode": { "type": "string", "enumValues": ["multiple", "single"] } }, "extension": { "_WRITEBACK_PROPS": ["selectedKeys"], "_READ_ONLY_PROPS": [], "_OBSERVED_GLOBAL_PROPS": ["aria-label"] } }, { "indeterminate": false }, {
         '@oracle/oraclejet-preact': translationBundle_1.default

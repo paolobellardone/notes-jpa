@@ -1,6 +1,6 @@
 import { SelectorAllWebElementBase } from './SelectorAllWebElementBase';
 /**
- * The component WebElement for [oj-c-selector-all](../../../oj-c/docs/oj.SelectorAll.html).
+ * The component WebElement for [oj-c-selector-all](../../jsdocs/oj-c.SelectorAll.html).
  * Do not instantiate this class directly, instead, use
  * [findSelectorAll](../functions/findSelectorAll.html).
  */

@@ -1,4 +1,5 @@
 import { ComponentMessageItem } from '@oracle/oraclejet-preact/UNSAFE_ComponentMessage';
+import { SelectionRangeValidatorError } from 'oj-c/editable-value/UNSAFE_useSelectionRangeValidator/SelectionRangeValidatorError';
 import type AsyncValidator = require('ojs/ojvalidator-async');
 import type Validator = require('ojs/ojvalidator');
 type ValidationSuccess = {
@@ -10,9 +11,13 @@ type ValidationFailure = {
 };
 type ValidationResult = ValidationFailure | ValidationSuccess;
 type ValidatorLike<V> = Validator<V> | AsyncValidator<V>;
+type ValidatorErrorResult = {
+    message: ComponentMessageItem;
+    messageDisplayStrategy: SelectionRangeValidatorError['messageDisplayStrategy'];
+};
 type AsyncValidationResult = {
-    errors: ComponentMessageItem[];
-    maybeErrorPromises: Promise<void | ComponentMessageItem>[];
+    errors: Array<ValidatorErrorResult>;
+    maybeErrorPromises: Array<Promise<void | ValidatorErrorResult>>;
 };
 type ValidateSyncParams<V> = {
     value: V;
@@ -24,4 +29,4 @@ type ValidateAsyncParams<V> = {
 };
 declare function validateSync<V>({ validators, value }: ValidateSyncParams<V>): ValidationResult;
 declare function validateAsync<V>({ validators, value }: ValidateAsyncParams<V>): AsyncValidationResult;
-export { validateAsync, validateSync };
+export { validateAsync, validateSync, type AsyncValidationResult, type ValidatorErrorResult };

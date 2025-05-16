@@ -1,7 +1,7 @@
 import { PopupWebElementBase } from './PopupWebElementBase';
 import { Locator, ISize, WebElementPromise, WebElement, IRectangle } from 'selenium-webdriver';
 /**
- * The component WebElement for [oj-c-popup](../../../oj-c/docs/oj.Popup.html).
+ * The component WebElement for [oj-c-popup](../../jsdocs/oj-c.Popup.html).
  * Do not instantiate this class directly, instead, use
  * [findPopup](../modules.html#findPopup).
  */

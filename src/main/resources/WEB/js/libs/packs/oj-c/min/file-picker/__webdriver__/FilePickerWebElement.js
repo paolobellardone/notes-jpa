@@ -4,7 +4,7 @@ exports.FilePickerWebElement = void 0;
 const FilePickerWebElementBase_1 = require("./FilePickerWebElementBase");
 const file_picker_utils_1 = require("@oracle/oraclejet-webdriver/lib/file-picker-utils");
 /**
- * The component WebElement for [oj-c-file-picker](../../../oj-c/docs/oj.FilePicker.html).
+ * The component WebElement for [oj-c-file-picker](../../jsdocs/oj-c.FilePicker.html).
  * Do not instantiate this class directly, instead, use
  * [findFilePicker](../functions/findFilePicker.html).
  */

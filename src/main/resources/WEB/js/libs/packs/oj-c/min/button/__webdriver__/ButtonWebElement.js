@@ -4,7 +4,7 @@ exports.ButtonWebElement = void 0;
 const ButtonWebElementBase_1 = require("./ButtonWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-button](../../../oj-c/docs/oj.Button.html).
+ * The component WebElement for [oj-c-button](../../jsdocs/oj-c.Button.html).
  * Do not instantiate this class directly, instead, use
  * [findButton](../functions/findButton.html).
  */

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SelectSingleWebElement = void 0;
 const SelectSingleWebElementBase_1 = require("./SelectSingleWebElementBase");
 /**
- * The component WebElement for [oj-c-select-single](../../../oj-c/docs/oj.SelectSingle.html).
+ * The component WebElement for [oj-c-select-single](../../jsdocs/oj-c.SelectSingle.html).
  * Do not instantiate this class directly, instead, use
  * [findSelectSingle](../functions/findSelectSingle.html).
  */

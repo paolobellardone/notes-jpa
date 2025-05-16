@@ -7,7 +7,7 @@ const MENU_ITEM_LOCATION = '#__oj_zorder_container [role=menuitem], #__root_laye
     '#__oj_zorder_container [role=menuitemradio], #__root_layer_host [role=menuitemradio], ' +
     '#__oj_zorder_container [role=menuitemcheckbox], #__root_layer_host [role=menuitemcheckbox]';
 /**
- * The component WebElement for [oj-c-menu-button](../../../oj-c/docs/oj.MenuButton.html).
+ * The component WebElement for [oj-c-menu-button](../../jsdocs/oj-c.MenuButton.html).
  * Do not instantiate this class directly, instead, use
  * [findMenuButton](../functions/findMenuButton.html).
  */

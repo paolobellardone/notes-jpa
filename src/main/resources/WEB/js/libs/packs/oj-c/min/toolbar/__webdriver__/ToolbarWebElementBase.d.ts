@@ -28,13 +28,6 @@ export declare class ToolbarWebElementBase extends OjWebElement {
      */
     getSizeProperty(): Promise<string>;
     /**
-     * Gets the value of <code>items</code> property.
-     * Specifies the content to be placed into the toolbar.
-     * @return The value of <code>items</code> property.
-     *
-     */
-    getItems(): Promise<Array<object>>;
-    /**
      * Sets the value of <code>toolbarSelection</code> property.
      * An array containing key/value objects for selection groups.
      * @param toolbarSelection The value to set for <code>toolbarSelection</code>

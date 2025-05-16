@@ -1,6 +1,6 @@
 import { TabBarMixedWebElementBase } from './TabBarMixedWebElementBase';
 /**
- * The component WebElement for [oj-c-tab-bar-mixed](../../../oj-c/docs/oj.TabBarMixed.html).
+ * The component WebElement for [oj-c-tab-bar-mixed](../../jsdocs/oj-c.TabBarMixed.html).
  * Do not instantiate this class directly, instead, use
  * [findTabBarMixed](../modules.html#findTabBarMixed).
  */

@@ -7,7 +7,7 @@ const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
 const oj_module_proxy_1 = require("@oracle/oraclejet-webdriver/lib/oj-module-proxy");
 /**
 /**
- * The component WebElement for [oj-c-card-view](../../../oj-c/docs/oj.CardView.html).
+ * The component WebElement for [oj-c-card-view](../../jsdocs/oj-c.CardView.html).
  * Do not instantiate this class directly, instead, use
  * [findCardView](../modules.html#findCardView).
  */

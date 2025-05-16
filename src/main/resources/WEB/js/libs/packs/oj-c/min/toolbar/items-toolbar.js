@@ -2,6 +2,15 @@ define(["require", "exports", "preact/jsx-runtime", "@oracle/oraclejet-preact/UN
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.ItemsToolbar = void 0;
+    const toMenuItemIcon = (icon) => {
+        return icon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: icon });
+    };
+    const toIconProps = (item) => {
+        return {
+            startIcon: toMenuItemIcon(item.startIcon),
+            endIcon: toMenuItemIcon(item.endIcon)
+        };
+    };
     const ItemsToolbar = ({ items = [], size, chroming, toolbarSelection = {}, onToolbarSelectionChanged, onOjToolbarAction, onOjToolbarSelection }) => {
         const setSelectionValue = (selection, value, key, menuButtonSelection = {}) => {
             let updatedSelection = { ...selection };
@@ -48,46 +57,40 @@ define(["require", "exports", "preact/jsx-runtime", "@oracle/oraclejet-preact/UN
         return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: items.map((item) => {
                 switch (item.type) {
                     case 'button': {
-                        const { startIcon, endIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(button_1.Button, { ...props, chroming: itemChroming || chroming, size: size, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                        return ((0, jsx_runtime_1.jsx)(button_1.Button, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction), ...toIconProps(item) }));
                     }
                     case 'menu-button': {
-                        const { startIcon, endIcon, items: menuItems, chroming: itemChroming, ...props } = item;
                         let menuButtonSelection = {};
-                        menuButtonSelection = getMenuButtonSelection(toolbarSelection, menuItems, menuButtonSelection);
-                        return ((0, jsx_runtime_1.jsx)(menu_button_1.MenuButton, { ...props, items: menuItems, chroming: itemChroming || chroming, size: size, onOjMenuAction: getItemActionHandler(''), selection: menuButtonSelection, onOjMenuSelection: (value) => {
+                        menuButtonSelection = getMenuButtonSelection(toolbarSelection, item.items, menuButtonSelection);
+                        return ((0, jsx_runtime_1.jsx)(menu_button_1.MenuButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, items: item.items, suffix: item.suffix, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjMenuAction: getItemActionHandler(''), selection: menuButtonSelection, onOjMenuSelection: (value) => {
                                 onOjToolbarSelection?.({
                                     value: value,
                                     toolbarSelectionGroupKey: ''
                                 });
                             }, onSelectionChanged: (value) => {
                                 onToolbarSelectionChanged?.(setSelectionValue(toolbarSelection, value, '', menuButtonSelection));
-                            }, startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                            }, ...toIconProps(item) }));
                     }
                     case 'split-menu-button': {
-                        return ((0, jsx_runtime_1.jsx)(split_menu_button_1.SplitMenuButton, { size: size, ...item, onOjAction: getItemActionHandler(item.key, item.onAction) }));
+                        return ((0, jsx_runtime_1.jsx)(split_menu_button_1.SplitMenuButton, { size: size, disabled: item.disabled, label: item.label, tooltip: item.tooltip, items: item.items, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction) }));
                     }
                     case 'buttonset-single': {
-                        const { chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(buttonset_single_1.ButtonsetSingle, { chroming: itemChroming || chroming, size: size, ...props, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(buttonset_single_1.ButtonsetSingle, { disabled: item.disabled, display: item.display, items: item.items, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
                             } }));
                     }
                     case 'buttonset-multiple': {
-                        const { chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(buttonset_multiple_1.ButtonsetMultiple, { chroming: itemChroming || chroming, size: size, ...props, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(buttonset_multiple_1.ButtonsetMultiple, { disabled: item.disabled, display: item.display, items: item.items, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
                             } }));
                     }
                     case 'toggle-button': {
-                        const { startIcon, endIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(toggle_button_1.ToggleButton, { chroming: itemChroming || chroming, size: size, value: toolbarSelection[item.key], onValueChanged: (value) => {
+                        return ((0, jsx_runtime_1.jsx)(toggle_button_1.ToggleButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, chroming: item.chroming || chroming, size: size, value: toolbarSelection[item.key], "data-oj-private-key": item.key, onValueChanged: (value) => {
                                 getSelectionChanges(toolbarSelection, item.key, value);
-                            }, ...props, startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }), endIcon: endIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: endIcon }) }));
+                            }, ...toIconProps(item) }));
                     }
                     case 'progress-button': {
-                        const { startIcon, chroming: itemChroming, ...props } = item;
-                        return ((0, jsx_runtime_1.jsx)(progress_button_1.ProgressButton, { chroming: itemChroming || chroming, size: size, ...props, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: startIcon && (0, jsx_runtime_1.jsx)(menu_item_icon_1.MenuItemIcon, { icon: startIcon }) }));
+                        return ((0, jsx_runtime_1.jsx)(progress_button_1.ProgressButton, { disabled: item.disabled, display: item.display, label: item.label, tooltip: item.tooltip, isLoading: item.isLoading, chroming: item.chroming || chroming, size: size, "data-oj-private-key": item.key, onOjAction: getItemActionHandler(item.key, item.onAction), startIcon: toMenuItemIcon(item.startIcon) }));
                     }
                     case 'separator':
                         return (0, jsx_runtime_1.jsx)(UNSAFE_Toolbar_1.ToolbarSeparator, {});

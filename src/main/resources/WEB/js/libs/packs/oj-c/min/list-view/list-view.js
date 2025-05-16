@@ -38,7 +38,7 @@ define(["require", "exports", "preact/jsx-runtime", '@oracle/oraclejet-preact/tr
             }
         }
         const selectInfo = {
-            selected: listViewProps.selectedKeys,
+            selected: rest.selected,
             selectionMode: listViewProps.selectionMode,
             onSelectedChange: rest.onSelectedChanged
         };

@@ -1,6 +1,6 @@
 import { InputDatePickerWebElementBase } from './InputDatePickerWebElementBase';
 /**
- * The component WebElement for [oj-c-input-date-picker](../../../oj-c/docs/oj.InputDatePicker.html).
+ * The component WebElement for [oj-c-input-date-picker](../../jsdocs/oj-c.InputDatePicker.html).
  * Do not instantiate this class directly, instead, use
  * [findInputDatePicker](../functions/findInputDatePicker.html).
  */

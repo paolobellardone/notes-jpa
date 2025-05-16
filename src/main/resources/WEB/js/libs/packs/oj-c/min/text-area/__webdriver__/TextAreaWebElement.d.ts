@@ -1,6 +1,6 @@
 import { TextAreaWebElementBase } from './TextAreaWebElementBase';
 /**
- * The component WebElement for [oj-c-text-area](../../../oj-c/docs/oj.TextArea.html).
+ * The component WebElement for [oj-c-text-area](../../jsdocs/oj-c.TextArea.html).
  * Do not instantiate this class directly, instead, use
  * [findTextArea](../functions/findTextArea.html).
  */

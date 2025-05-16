@@ -7,7 +7,7 @@ import 'css!oj-c/collapsible/collapsible-styles.css';
 export type CollapsibleToggleDetail = {
     target: EventTarget | null;
 };
-export type Props = ObservedGlobalProps<'id'> & {
+export type Props = ObservedGlobalProps<'aria-label' | 'aria-labelledby' | 'id'> & {
     children: ComponentChildren;
     disabled?: boolean;
     expanded?: boolean;

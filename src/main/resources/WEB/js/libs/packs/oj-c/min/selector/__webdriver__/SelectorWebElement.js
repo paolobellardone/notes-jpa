@@ -4,7 +4,7 @@ exports.SelectorWebElement = void 0;
 const selenium_webdriver_1 = require("selenium-webdriver");
 const SelectorWebElementBase_1 = require("./SelectorWebElementBase");
 /**
- * The component WebElement for [oj-c-selector](../../../oj-c/docs/oj.Selector.html).
+ * The component WebElement for [oj-c-selector](../../jsdocs/oj-c.Selector.html).
  * Do not instantiate this class directly, instead, use
  * [findSelector](../functions/findSelector.html).
  */

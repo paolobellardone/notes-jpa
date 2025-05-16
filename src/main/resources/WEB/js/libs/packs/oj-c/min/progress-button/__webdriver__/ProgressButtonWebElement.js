@@ -4,7 +4,7 @@ exports.ProgressButtonWebElement = void 0;
 const ProgressButtonWebElementBase_1 = require("./ProgressButtonWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-progress-button](../../../oj-c/docs/oj.ProgressButton.html).
+ * The component WebElement for [oj-c-progress-button](../../jsdocs/oj-c.ProgressButton.html).
  * Do not instantiate this class directly, instead, use
  * [findProgressButton](../functions/findProgressButton.html).
  */

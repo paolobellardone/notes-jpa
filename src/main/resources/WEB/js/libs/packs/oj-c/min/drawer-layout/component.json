@@ -1,7 +1,7 @@
 {
   "name": "drawer-layout",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -67,7 +67,7 @@
     "startOpened": {
       "type": "boolean",
       "description": "Specifies whether the Drawer is open.",
-      "displayName": "startOpened",
+      "displayName": "Start Opened",
       "help": "#startOpened",
       "writeback": true,
       "value": false
@@ -75,7 +75,7 @@
     "endOpened": {
       "type": "boolean",
       "description": "Specifies whether the Drawer is open.",
-      "displayName": "endOpened",
+      "displayName": "End Opened",
       "help": "#endOpened",
       "writeback": true,
       "value": false
@@ -83,7 +83,7 @@
     "bottomOpened": {
       "type": "boolean",
       "description": "Specifies whether the Drawer is open.",
-      "displayName": "bottomOpened",
+      "displayName": "Bottom Opened",
       "help": "#bottomOpened",
       "writeback": true,
       "value": false
@@ -91,7 +91,7 @@
     "startDisplay": {
       "type": "string",
       "description": "Specifies display mode of the Start drawer.",
-      "displayName": "startDisplay",
+      "displayName": "Start Display",
       "help": "#startDisplay",
       "enumValues": [
         "auto",
@@ -103,7 +103,7 @@
     "endDisplay": {
       "type": "string",
       "description": "Specifies display mode of the End drawer.",
-      "displayName": "endDisplay",
+      "displayName": "End Display",
       "help": "#endDisplay",
       "enumValues": [
         "auto",
@@ -115,7 +115,7 @@
     "bottomDisplay": {
       "type": "string",
       "description": "Specifies display mode of the Start drawer.",
-      "displayName": "bottomDisplay",
+      "displayName": "Bottom Display",
       "help": "#bottomDisplay",
       "enumValues": [
         "auto",
@@ -129,7 +129,7 @@
     "ojBeforeClose": {
       "cancelable": true,
       "description": "Triggered immediately before the drawer closes",
-      "displayName": "Beforeclose",
+      "displayName": "ojBeforeclose",
       "help": "#event:beforeClose",
       "detail": {
         "accept": {
@@ -148,7 +148,7 @@
     },
     "ojClose": {
       "description": "Triggered immediately after the drawer closes",
-      "displayName": "Close",
+      "displayName": "ojClose",
       "help": "#event:close",
       "detail": {
         "edge": {

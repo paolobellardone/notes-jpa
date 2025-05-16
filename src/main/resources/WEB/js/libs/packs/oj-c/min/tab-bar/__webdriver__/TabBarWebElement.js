@@ -4,7 +4,7 @@ exports.TabBarWebElement = void 0;
 const selenium_webdriver_1 = require("selenium-webdriver");
 const TabBarWebElementBase_1 = require("./TabBarWebElementBase");
 /**
- * The component WebElement for [oj-c-tab-bar](../../../oj-c/docs/oj.TabBar.html).
+ * The component WebElement for [oj-c-tab-bar](../../jsdocs/oj-c.TabBar.html).
  * Do not instantiate this class directly, instead, use
  * [findTabBar](../functions/findTabBar.html).
  */

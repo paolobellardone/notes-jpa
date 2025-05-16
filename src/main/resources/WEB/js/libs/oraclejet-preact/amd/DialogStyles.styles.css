@@ -6,6 +6,12 @@
   border-style: solid;
   border-color: var(--borderColor__9f8o6i2);
 }
+.DialogStyles_baseStyle__54385j0:focus-visible {
+  outline-style: dotted;
+  outline-width: 1px;
+  outline-offset: 1px;
+  outline-color: var(--oj-c-EXPERIMENTAL-DO-NOT-USE-border-keyboard-focus);
+}
 .DialogStyles_baseStyleDesktop__54385j1 {
   width: 600px;
   min-width: 200px;
@@ -98,6 +104,7 @@
   overflow-x: auto;
   overflow-y: auto;
   box-sizing: border-box;
+  height: 100%;
   padding-top: var(--bodyPaddingTop__9f8o6ie);
   padding-right: var(--bodyPaddingHorizontal__9f8o6ig);
   padding-bottom: var(--bodyPaddingBottom__9f8o6if);

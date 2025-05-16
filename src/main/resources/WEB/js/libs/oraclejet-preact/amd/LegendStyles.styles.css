@@ -43,8 +43,6 @@
 }
 .LegendStyles_baseLegendVerticalItem__v4wnzs7 {
   max-width: 100%;
-  width: -moz-max-content;
-  width: max-content;
 }
 .LegendStyles_baseLegendPaddingBottom__v4wnzs8 {
   padding-bottom: calc(0.4 * var(--oj-c-EXPERIMENTAL-DO-NOT-USE-size-units, 0.25rem));
@@ -141,7 +139,7 @@
 .LegendStyles_topVAlign__v4wnzsr {
   align-items: start;
 }
-.LegendStyles_middleVAlign__v4wnzss {
+.LegendStyles_centerVAlign__v4wnzss {
   align-items: center;
 }
 .LegendStyles_bottomVAlign__v4wnzst {

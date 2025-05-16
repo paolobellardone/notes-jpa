@@ -56,6 +56,13 @@ export declare class PopupWebElementBase extends OjWebElement {
      */
     getTail(): Promise<string>;
     /**
+     * Gets the value of <code>variant</code> property.
+     * Specifies Popup's style variant.
+     * @return The value of <code>variant</code> property.
+     *
+     */
+    getVariant(): Promise<string>;
+    /**
      * Gets the value of <code>initialFocus</code> property.
      * Specifies if the Popup sets focus to its content when initially open.
      * @return The value of <code>initialFocus</code> property.

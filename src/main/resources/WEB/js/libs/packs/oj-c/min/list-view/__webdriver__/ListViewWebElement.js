@@ -7,7 +7,7 @@ const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
 const oj_module_proxy_1 = require("@oracle/oraclejet-webdriver/lib/oj-module-proxy");
 const contextMenuUtils_1 = require("./contextMenuUtils");
 /**
- * The component WebElement for [oj-c-list-view](../../../oj-c/docs/oj.ListView.html).
+ * The component WebElement for [oj-c-list-view](../../jsdocs/oj-c.ListView.html).
  * Do not instantiate this class directly, instead, use
  * [findListView](../functions/findListView.html).
  */

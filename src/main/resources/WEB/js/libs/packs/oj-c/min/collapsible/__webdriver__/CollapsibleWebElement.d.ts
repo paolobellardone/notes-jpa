@@ -1,6 +1,6 @@
 import { CollapsibleWebElementBase } from './CollapsibleWebElementBase';
 /**
- * The component WebElement for [oj-c-collapsible](../../../oj-c/docs/oj.Collapsible.html).
+ * The component WebElement for [oj-c-collapsible](../../jsdocs/oj-c.Collapsible.html).
  * Do not instantiate this class directly, instead, use
  * [findCollapsible](../functions/findCollapsible.html).
  */

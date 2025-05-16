@@ -276,6 +276,7 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-scrim: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-190), 0.4);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0), 0.08);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0), 0.12);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-drop-active: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-40));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-0));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
@@ -487,6 +488,7 @@
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-scrim: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-200), 0.4);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-hover: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.08);
   --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-inverse-active: rgba(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20), 0.16);
+  --oj-c-EXPERIMENTAL-DO-NOT-USE-overlay-drop-active: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-brand-40));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral0: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-10));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral10: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-20));
   --oj-c-EXPERIMENTAL-DO-NOT-USE-page-background-neutral20: rgb(var(--oj-c-EXPERIMENTAL-DO-NOT-USE-palette-neutral-30));

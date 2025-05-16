@@ -2,12 +2,21 @@ define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.LegendDefaults = void 0;
+    exports.getLegendPosition = getLegendPosition;
     exports.getLegendData = getLegendData;
     exports.getBLACCategoriesItems = getBLACCategoriesItems;
     exports.LegendDefaults = {
         rendered: 'off',
         position: 'auto'
     };
+    function getLegendPosition(w, h) {
+        if (w > h) {
+            return 'end';
+        }
+        else {
+            return 'bottom';
+        }
+    }
     function getLegendData(series) {
         return series.map((chartSeries) => {
             return {

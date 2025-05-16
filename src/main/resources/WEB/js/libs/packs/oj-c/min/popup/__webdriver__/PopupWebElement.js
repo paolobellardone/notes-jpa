@@ -4,7 +4,7 @@ exports.PopupWebElement = void 0;
 const PopupWebElementBase_1 = require("./PopupWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-popup](../../../oj-c/docs/oj.Popup.html).
+ * The component WebElement for [oj-c-popup](../../jsdocs/oj-c.Popup.html).
  * Do not instantiate this class directly, instead, use
  * [findPopup](../modules.html#findPopup).
  */

@@ -1,6 +1,6 @@
 import { SelectSingleWebElementBase } from './SelectSingleWebElementBase';
 /**
- * The component WebElement for [oj-c-select-single](../../../oj-c/docs/oj.SelectSingle.html).
+ * The component WebElement for [oj-c-select-single](../../jsdocs/oj-c.SelectSingle.html).
  * Do not instantiate this class directly, instead, use
  * [findSelectSingle](../functions/findSelectSingle.html).
  */

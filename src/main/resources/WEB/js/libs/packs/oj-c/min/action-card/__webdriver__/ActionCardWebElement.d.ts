@@ -1,6 +1,6 @@
 import { ActionCardWebElementBase } from './ActionCardWebElementBase';
 /**
- * The component WebElement for [oj-c-action-card](../../../oj-c/docs/oj.ActionCard.html).
+ * The component WebElement for [oj-c-action-card](../../jsdocs/oj-c.ActionCard.html).
  * Do not instantiate this class directly, instead, use
  * [findActionCard](../functions/findActionCard.html).
  */

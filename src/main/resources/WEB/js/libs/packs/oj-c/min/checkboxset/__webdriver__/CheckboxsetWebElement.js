@@ -4,7 +4,7 @@ exports.CheckboxsetWebElement = void 0;
 const CheckboxsetWebElementBase_1 = require("./CheckboxsetWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-checkboxset](../../../oj-c/docs/oj.Checkboxset.html).
+ * The component WebElement for [oj-c-checkboxset](../../jsdocs/oj-c.Checkboxset.html).
  * Do not instantiate this class directly, instead, use
  * [findCheckboxset](../functions/findCheckboxset.html).
  */

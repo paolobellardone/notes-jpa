@@ -1,6 +1,6 @@
 import { SelectionCardWebElementBase } from './SelectionCardWebElementBase';
 /**
- * The component WebElement for [oj-c-selection-card](../../../oj-c/docs/oj.SelectionCard.html).
+ * The component WebElement for [oj-c-selection-card](../../jsdocs/oj-c.SelectionCard.html).
  * Do not instantiate this class directly, instead, use
  * [findSelectionCard](../functions/findSelectionCard.html).
  */

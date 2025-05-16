@@ -1,6 +1,6 @@
 import { MenuButtonWebElementBase } from './MenuButtonWebElementBase';
 /**
- * The component WebElement for [oj-c-menu-button](../../../oj-c/docs/oj.MenuButton.html).
+ * The component WebElement for [oj-c-menu-button](../../jsdocs/oj-c.MenuButton.html).
  * Do not instantiate this class directly, instead, use
  * [findMenuButton](../functions/findMenuButton.html).
  */

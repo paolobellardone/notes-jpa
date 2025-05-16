@@ -3,6 +3,9 @@ import { ItemContext } from 'ojs/ojcommontypes';
 import { DataProvider } from 'ojs/ojdataprovider';
 import { Dispatch, StateUpdater } from 'preact/hooks';
 type Value<K> = Optional<K>;
+type WrappedValue<K> = Value<{
+    value: K;
+}>;
 type ValueItem<K, D> = Optional<ItemContext<K, D>>;
 export type UseSyncValueAndValueItemProps<K, D> = {
     addBusyState: (desc?: string) => () => void;
@@ -11,7 +14,7 @@ export type UseSyncValueAndValueItemProps<K, D> = {
     setIsLoading: Dispatch<StateUpdater<boolean>>;
     setValue: (value: Value<K>) => void;
     setValueItem: (value: ValueItem<K, D>) => void;
-    value?: Value<K>;
+    value?: WrappedValue<K>;
     valueItem?: ValueItem<K, D>;
     validateValueOnExternalChange: (value: Value<K>) => boolean;
 };

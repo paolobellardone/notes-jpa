@@ -6,7 +6,7 @@ const selenium_webdriver_1 = require("selenium-webdriver");
 const oraclejet_webdriver_1 = require("@oracle/oraclejet-webdriver");
 const oj_module_proxy_1 = require("@oracle/oraclejet-webdriver/lib/oj-module-proxy");
 /**
- * The component WebElement for [oj-c-table](../../../oj-c/docs/oj.Table.html).
+ * The component WebElement for [oj-c-table](../../jsdocs/oj-c.Table.html).
  * Do not instantiate this class directly, instead, use
  * [findTable](../functions/findTable.html).
  */

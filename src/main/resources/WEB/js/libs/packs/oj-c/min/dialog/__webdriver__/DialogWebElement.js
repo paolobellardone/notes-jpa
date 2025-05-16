@@ -4,7 +4,7 @@ exports.DialogWebElement = void 0;
 const selenium_webdriver_1 = require("selenium-webdriver");
 const DialogWebElementBase_1 = require("./DialogWebElementBase");
 /**
- * The component WebElement for [oj-c-dialog](../../../oj-c/docs/oj.Dialog.html).
+ * The component WebElement for [oj-c-dialog](../../jsdocs/oj-c.Dialog.html).
  * Do not instantiate this class directly, instead, use
  * [findDialog](../functions/findDialog.html).
  */

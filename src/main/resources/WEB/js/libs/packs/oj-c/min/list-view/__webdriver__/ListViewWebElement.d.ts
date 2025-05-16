@@ -2,7 +2,7 @@ import { ListViewWebElementBase } from './ListViewWebElementBase';
 import { SlotProxy } from '@oracle/oraclejet-webdriver';
 import { doContextMenuAction as MenuUtilsDoContextMenuAction, doContextMenuGroupAction as MenuUtilsDoContextMenuGroupAction } from './contextMenuUtils';
 /**
- * The component WebElement for [oj-c-list-view](../../../oj-c/docs/oj.ListView.html).
+ * The component WebElement for [oj-c-list-view](../../jsdocs/oj-c.ListView.html).
  * Do not instantiate this class directly, instead, use
  * [findListView](../functions/findListView.html).
  */

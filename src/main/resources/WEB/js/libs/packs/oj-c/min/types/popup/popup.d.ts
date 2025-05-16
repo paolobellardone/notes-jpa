@@ -4,7 +4,7 @@ import 'ojs/oj-jsx-interfaces';
 import { ExtendGlobalProps, PropertyChanged, Action, CancelableAction, ObservedGlobalProps } from 'ojs/ojvcomponent';
 import { ComponentChildren, ComponentType } from 'preact';
 import 'css!oj-c/popup/popup-styles.css';
-import { InitialFocus, Tail, Modality, PopupPlacement } from '@oracle/oraclejet-preact/UNSAFE_Popup';
+import { InitialFocus, Tail, Modality, PopupPlacement, Variant } from '@oracle/oraclejet-preact/UNSAFE_Popup';
 import { Coords, Offset } from '@oracle/oraclejet-preact/UNSAFE_Floating';
 import { Size } from '@oracle/oraclejet-preact/utils/UNSAFE_size';
 type PositionCollision = 'none' | 'flip' | 'fit' | 'flipfit' | 'flipcenter';
@@ -17,6 +17,7 @@ export type Props = ObservedGlobalProps<'aria-describedby' | 'aria-label' | 'ari
     modality?: Modality;
     autoDismiss?: 'none' | 'focusLoss';
     tail?: Tail;
+    variant?: Variant;
     initialFocus?: InitialFocus;
     offset?: Offset;
     collision?: PositionCollision;
@@ -69,6 +70,7 @@ export namespace CPopupElement {
     type openedChanged = JetElementCustomEventStrict<CPopupElement['opened']>;
     type placementChanged = JetElementCustomEventStrict<CPopupElement['placement']>;
     type tailChanged = JetElementCustomEventStrict<CPopupElement['tail']>;
+    type variantChanged = JetElementCustomEventStrict<CPopupElement['variant']>;
     type widthChanged = JetElementCustomEventStrict<CPopupElement['width']>;
 }
 export interface CPopupElementEventMap extends HTMLElementEventMap {
@@ -91,6 +93,7 @@ export interface CPopupElementEventMap extends HTMLElementEventMap {
     'openedChanged': JetElementCustomEventStrict<CPopupElement['opened']>;
     'placementChanged': JetElementCustomEventStrict<CPopupElement['placement']>;
     'tailChanged': JetElementCustomEventStrict<CPopupElement['tail']>;
+    'variantChanged': JetElementCustomEventStrict<CPopupElement['variant']>;
     'widthChanged': JetElementCustomEventStrict<CPopupElement['width']>;
 }
 export interface CPopupElementSettableProperties extends JetSettableProperties {
@@ -109,6 +112,7 @@ export interface CPopupElementSettableProperties extends JetSettableProperties {
     opened: Props['opened'];
     placement?: Props['placement'];
     tail?: Props['tail'];
+    variant?: Props['variant'];
     width?: Props['width'];
 }
 export interface CPopupElementSettablePropertiesLenient extends Partial<CPopupElementSettableProperties> {
@@ -135,6 +139,7 @@ export interface PopupIntrinsicProps extends Partial<Readonly<CPopupElementSetta
     onopenedChanged?: (value: CPopupElementEventMap['openedChanged']) => void;
     onplacementChanged?: (value: CPopupElementEventMap['placementChanged']) => void;
     ontailChanged?: (value: CPopupElementEventMap['tailChanged']) => void;
+    onvariantChanged?: (value: CPopupElementEventMap['variantChanged']) => void;
     onwidthChanged?: (value: CPopupElementEventMap['widthChanged']) => void;
 }
 declare global {

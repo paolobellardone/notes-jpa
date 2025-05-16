@@ -1,6 +1,6 @@
 import { ButtonWebElementBase } from './ButtonWebElementBase';
 /**
- * The component WebElement for [oj-c-button](../../../oj-c/docs/oj.Button.html).
+ * The component WebElement for [oj-c-button](../../jsdocs/oj-c.Button.html).
  * Do not instantiate this class directly, instead, use
  * [findButton](../functions/findButton.html).
  */

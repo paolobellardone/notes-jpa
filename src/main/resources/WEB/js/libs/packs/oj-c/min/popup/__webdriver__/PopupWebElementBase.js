@@ -73,6 +73,15 @@ class PopupWebElementBase extends elements_1.OjWebElement {
         return this.getProperty('tail');
     }
     /**
+     * Gets the value of <code>variant</code> property.
+     * Specifies Popup's style variant.
+     * @return The value of <code>variant</code> property.
+     *
+     */
+    getVariant() {
+        return this.getProperty('variant');
+    }
+    /**
      * Gets the value of <code>initialFocus</code> property.
      * Specifies if the Popup sets focus to its content when initially open.
      * @return The value of <code>initialFocus</code> property.

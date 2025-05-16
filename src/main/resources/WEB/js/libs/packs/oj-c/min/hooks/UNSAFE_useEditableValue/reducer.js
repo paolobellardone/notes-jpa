@@ -3,6 +3,7 @@ define(["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.reducer = reducer;
     exports.addComponentMessage = addComponentMessage;
+    exports.addHiddenMessage = addHiddenMessage;
     exports.clearAllMessages = clearAllMessages;
     exports.showHiddenMessages = showHiddenMessages;
     exports.updateComponentMessages = updateComponentMessages;
@@ -24,6 +25,33 @@ define(["require", "exports"], function (require, exports) {
         const componentMsgs = state.componentMessages;
         const shownMsgs = state.shownMessages;
         switch (action.type) {
+            case 'ADD_COMPONENT_MESSAGE':
+                return {
+                    ...state,
+                    componentMessages: [...componentMsgs, action.payload],
+                    shownMessages: [...shownMsgs, action.payload]
+                };
+            case 'ADD_HIDDEN_MESSAGE':
+                return {
+                    ...state,
+                    hiddenMessages: [...hiddenMsgs, action.payload]
+                };
+            case 'CLEAR_ALL_MESSAGES':
+                return {
+                    ...state,
+                    shownMessages: [],
+                    hiddenMessages: [],
+                    customMessages: [],
+                    componentMessages: []
+                };
+            case 'SHOW_HIDDEN_MESSAGES':
+                return hiddenMsgs.length === 0
+                    ? state
+                    : {
+                        ...state,
+                        hiddenMessages: [],
+                        shownMessages: [...customMsgs, ...componentMsgs, ...hiddenMsgs]
+                    };
             case 'UPDATE_DISPLAY_VALUE':
                 return {
                     ...state,
@@ -91,28 +119,6 @@ define(["require", "exports"], function (require, exports) {
                     customMessages: action.payload,
                     shownMessages: [...action.payload, ...componentMsgs]
                 };
-            case 'CLEAR_ALL_MESSAGES':
-                return {
-                    ...state,
-                    shownMessages: [],
-                    hiddenMessages: [],
-                    customMessages: [],
-                    componentMessages: []
-                };
-            case 'ADD_COMPONENT_MESSAGE':
-                return {
-                    ...state,
-                    componentMessages: [...componentMsgs, action.payload],
-                    shownMessages: [...shownMsgs, action.payload]
-                };
-            case 'SHOW_HIDDEN_MESSAGES':
-                return hiddenMsgs.length === 0
-                    ? state
-                    : {
-                        ...state,
-                        hiddenMessages: [],
-                        shownMessages: [...customMsgs, ...componentMsgs, ...hiddenMsgs]
-                    };
             default:
                 return state;
         }
@@ -169,5 +175,8 @@ define(["require", "exports"], function (require, exports) {
     }
     function addComponentMessage(dispatch, message) {
         dispatch({ type: 'ADD_COMPONENT_MESSAGE', payload: message });
+    }
+    function addHiddenMessage(dispatch, message) {
+        dispatch({ type: 'ADD_HIDDEN_MESSAGE', payload: message });
     }
 });

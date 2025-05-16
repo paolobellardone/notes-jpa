@@ -43,7 +43,8 @@
 }
 .LabelStyles_insideNonReadonly__t9j3mr7 {
   position: absolute;
-  inset-inline: var(--textToEdgePadding__w6gg1y9);
+  max-width: calc(100% - 2 * var(--textToEdgePadding__w6gg1y9));
+  inset-inline-start: var(--textToEdgePadding__w6gg1y9);
   top: calc(var(--insideEdgeHeight__w6gg1yh)/ 2);
   transform: translateY(-50%);
   transition-property: all;

@@ -1,11 +1,11 @@
 {
   "name": "oj-c",
-  "version": "18.0.2",
+  "version": "18.1.0",
   "components": {
     "oj-c-area-chart": {
       "name": "area-chart",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -16,7 +16,7 @@
       "description": "An area chart displays information graphically using lines and filled areas, making relationships among the data easier to understand.",
       "displayName": "Area Chart",
       "main": "oj-c/area-chart",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.AreaChart.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.AreaChart.html",
       "status": [
         {
           "type": "candidate",
@@ -1868,8 +1868,8 @@
     },
     "oj-c-area-chart-item": {
       "name": "area-chart-item",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -1881,7 +1881,7 @@
       "description": "The oj-c-area-chart-item element is used to declare item properties",
       "displayName": "AreaChartItem",
       "main": "oj-c/area-chart-item",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.AreaChartItem.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.AreaChartItem.html",
       "status": [
         {
           "type": "candidate",
@@ -2028,8 +2028,8 @@
     },
     "oj-c-area-chart-series": {
       "name": "area-chart-series",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2041,7 +2041,7 @@
       "description": "The oj-c-area-chart-series element is used to declare series properties in the seriesTemplate",
       "displayName": "AreaChartSeries",
       "main": "oj-c/area-chart-series",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.AreaChartSeries.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.AreaChartSeries.html",
       "status": [
         {
           "type": "candidate",
@@ -2183,8 +2183,8 @@
     },
     "oj-c-area-chart-group": {
       "name": "area-chart-group",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2196,7 +2196,7 @@
       "description": "The oj-c-area-chart-group element is used to declare group properties in the groupTemplate",
       "displayName": "AreaChartGroup",
       "main": "oj-c/area-chart-group",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.AreaChartGroup.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.AreaChartGroup.html",
       "status": [
         {
           "type": "candidate",
@@ -2281,8 +2281,8 @@
     },
     "oj-c-date-picker": {
       "name": "date-picker",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2292,7 +2292,7 @@
       ],
       "description": "A DatePicker is a calendar interface that allows users to select a single date.",
       "displayName": "DatePicker",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.DatePicker.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.DatePicker.html",
       "main": "oj-c/date-picker",
       "extension": {
         "catalog": {
@@ -2481,8 +2481,8 @@
     },
     "oj-c-dialog": {
       "name": "dialog",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2492,7 +2492,7 @@
       ],
       "description": "A Dialog is a floating window that typically contains a header, content and footer area. A Dialog is typically modal and centered in viewport.",
       "displayName": "Dialog",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Dialog.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Dialog.html",
       "main": "oj-c/dialog",
       "status": [
         {
@@ -2533,7 +2533,7 @@
         "cancelBehavior": {
           "type": "string",
           "description": "Specifies the cancel behavior of the Dialog. Note that the cancelBehavior applies to both automatic and user-defined headers.",
-          "displayName": "Cancel behavior",
+          "displayName": "Cancel Behavior",
           "help": "#cancelBehavior",
           "propertyEditorValues": {
             "icon": {
@@ -2559,13 +2559,13 @@
         "dialogTitle": {
           "type": "string",
           "description": "Specifies title if header slot is not defined (custom header).",
-          "displayName": "dialogTitle",
+          "displayName": "Dialog Title",
           "help": "#dialogTitle"
         },
         "dragAffordance": {
           "type": "string",
           "description": "Specifies whether the Dialog is draggable.",
-          "displayName": "dragAffordance",
+          "displayName": "Drag Affordance",
           "help": "#dragAffordance",
           "propertyEditorValues": {
             "none": {
@@ -2586,7 +2586,7 @@
         "headerDecoration": {
           "type": "string",
           "description": "Specifies whether decorative stripe at the top is present.",
-          "displayName": "headerDecoration",
+          "displayName": "Header Decoration",
           "help": "#headerDecoration",
           "propertyEditorValues": {
             "on": {
@@ -2607,13 +2607,13 @@
         "launcher": {
           "type": "string|Element",
           "description": "Specifies Dialog's launcher. After Dialog closes, it returns focus to the launcher.",
-          "displayName": "launcher",
+          "displayName": "Launcher",
           "help": "#launcher"
         },
         "modality": {
           "type": "string",
           "description": "Specifies modality of the Dialog.",
-          "displayName": "modality",
+          "displayName": "Modality",
           "help": "#modality",
           "propertyEditorValues": {
             "modal": {
@@ -2634,7 +2634,7 @@
         "opened": {
           "type": "boolean",
           "description": "Specifies whether the Dialog is open.",
-          "displayName": "opened",
+          "displayName": "Opened",
           "help": "#opened",
           "extension": {
             "webelement": {
@@ -2651,7 +2651,7 @@
         "resizeBehavior": {
           "type": "string",
           "description": "Specifies whether the Dialog is resizable.",
-          "displayName": "resizeBehavior",
+          "displayName": "Resize Behavior",
           "help": "#resizeBehavior",
           "propertyEditorValues": {
             "none": {
@@ -2672,13 +2672,13 @@
         "anchor": {
           "type": "string|Element|object",
           "description": "Specifies Dialog's anchor. Dialog is placed relative to its anchor. If not specified, it is placed relative to window.",
-          "displayName": "anchor",
+          "displayName": "Anchor",
           "help": "#anchor"
         },
         "placement": {
           "type": "string",
           "description": "Specifies the location the dialog will appear relative to another element. If not specified, the default dialog position is \"center\" on desktop and \"bottom-start\" on phone.",
-          "displayName": "placement",
+          "displayName": "Placement",
           "help": "#placement",
           "enumValues": [
             "center",
@@ -2699,56 +2699,56 @@
         "offset": {
           "type": "number|object",
           "description": "Specifies displacement of the Dialog from the anchor element placement along the specified axes. The offset object consists of mainAxis and crossAxis properties. The direction in which these propertie are applied depends on the current value of the position property. If a number is used, it represents the main axis. The <code>mainAxis</code> property represents the distance between the Popup and the anchor. The <code>crossAxis</code> property represents the deviation in the opposite axis to the main axis - the skidding between the Popup and the anchor.",
-          "displayName": "offset",
+          "displayName": "Offset",
           "help": "#offset"
         },
         "width": {
           "type": "number|string",
           "description": "Specifies width of the Dialog.",
-          "displayName": "minWidth",
-          "help": "#minWidth"
+          "displayName": "Width",
+          "help": "#width"
         },
         "minWidth": {
           "type": "number|string",
           "description": "Specifies minWidth of the Dialog.",
-          "displayName": "minWidth",
+          "displayName": "Min Width",
           "help": "#minWidth"
         },
         "maxWidth": {
           "type": "number|string",
           "description": "Specifies maxWidth of the Dialog.",
-          "displayName": "maxWidth",
+          "displayName": "Max Width",
           "help": "#maxWidth"
         },
         "height": {
           "type": "number|string",
           "description": "Specifies height of the Dialog.",
-          "displayName": "height",
+          "displayName": "Height",
           "help": "#height"
         },
         "minHeight": {
           "type": "number|string",
           "description": "Specifies minHeight of the Dialog.",
-          "displayName": "minHeight",
+          "displayName": "Min Height",
           "help": "#minHeight"
         },
         "maxHeight": {
           "type": "number|string",
           "description": "Specifies maxHeight of the Dialog.",
-          "displayName": "maxHeight",
+          "displayName": "Max Height",
           "help": "#maxHeight"
         }
       },
       "events": {
         "ojOpen": {
           "description": "Triggered immediately after the Dialog opens.",
-          "displayName": "open",
+          "displayName": "ojOpen",
           "help": "#event:open"
         },
         "ojBeforeClose": {
           "cancelable": true,
           "description": "Triggered immediately before the Dialog closes. Call <code class=\"prettyprint\">event.preventDefault()</code> in the event listener to veto the event synchronously, which prevents the Dialog from closing. Call <code class=\"prettyprint\">event.detail.accept(Promise.reject());</code> in the event listener to veto the event asynchronously, which prevents the Dialog from closing.",
-          "displayName": "beforeClose",
+          "displayName": "ojBeforeClose",
           "help": "#event:beforeClose",
           "detail": {
             "accept": {
@@ -2759,42 +2759,42 @@
         },
         "ojClose": {
           "description": "Triggered immediately after the Dialog closes.",
-          "displayName": "close",
+          "displayName": "ojClose",
           "help": "#event:close"
         },
         "ojFocus": {
           "description": "Triggered immediately after the Dialog receives focus.",
-          "displayName": "onOjFocus",
+          "displayName": "ojFocus",
           "help": "#event:onOjFocus"
         },
         "ojDragStart": {
           "description": "Triggered immediately before the Dialog moves.",
-          "displayName": "onOjDragStart",
+          "displayName": "ojDragStart",
           "help": "#event:onOjDragStart"
         },
         "ojDragMove": {
           "description": "Triggered when the Dialog moves.",
-          "displayName": "onOjDragMove",
+          "displayName": "ojDragMove",
           "help": "#event:onOjDragMove"
         },
         "ojDragEnd": {
           "description": "Triggered immediately after the Dialog stops moving.",
-          "displayName": "onOjDragEnd",
+          "displayName": "ojDragEnd",
           "help": "#event:onOjDragEnd"
         },
         "ojResizeStart": {
           "description": "Triggered immediately before the Dialog resizes.",
-          "displayName": "onOjResizeStart",
+          "displayName": "ojResizeStart",
           "help": "#event:onOjResizeStart"
         },
         "ojResize": {
           "description": "Triggered when the Dialog resizes.",
-          "displayName": "onOjResize",
+          "displayName": "ojResize",
           "help": "#event:onOjResize"
         },
         "ojResizeEnd": {
           "description": "Triggered immediately after the Dialog stops resizing.",
-          "displayName": "onOjResizeEnd",
+          "displayName": "ojResizeEnd",
           "help": "#event:onOjResizeEnd"
         }
       },
@@ -2844,8 +2844,8 @@
     },
     "oj-c-highlight-text": {
       "name": "highlight-text",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2855,7 +2855,7 @@
       ],
       "displayName": "Highlight Text",
       "description": "A Highlight Text renders text with highlighting applied.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.HighlightText.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.HighlightText.html",
       "main": "oj-c/highlight-text",
       "extension": {
         "catalog": {
@@ -2954,8 +2954,8 @@
     },
     "oj-c-input-number": {
       "name": "input-number",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -2965,7 +2965,7 @@
       ],
       "displayName": "InputNumber",
       "description": "An input number allows the user to enter a number value.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputNumber.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputNumber.html",
       "main": "oj-c/input-number",
       "status": [
         {
@@ -3550,8 +3550,8 @@
     },
     "oj-c-input-password": {
       "name": "input-password",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -3561,7 +3561,7 @@
       ],
       "displayName": "InputPassword",
       "description": "An input password allows the user to enter a password.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputPassword.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputPassword.html",
       "main": "oj-c/input-password",
       "extension": {
         "catalog": {
@@ -4077,8 +4077,8 @@
     },
     "oj-c-input-sensitive-text": {
       "name": "input-sensitive-text",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -4088,7 +4088,7 @@
       ],
       "displayName": "InputSensitiveText",
       "description": "An Input Sensitive Text displays a field that allows a user to enter sensitive text that will be masked.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputSensitiveText.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputSensitiveText.html",
       "main": "oj-c/input-sensitive-text",
       "status": [
         {
@@ -4665,8 +4665,8 @@
     },
     "oj-c-input-text": {
       "name": "input-text",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -4676,7 +4676,7 @@
       ],
       "displayName": "InputText",
       "description": "An input text allows the user to enter a text value.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputText.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputText.html",
       "main": "oj-c/input-text",
       "extension": {
         "catalog": {
@@ -5287,8 +5287,8 @@
     },
     "oj-c-message-toast": {
       "name": "message-toast",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -5298,7 +5298,7 @@
       ],
       "displayName": "MessageToast",
       "description": "Toast messages are short, noncritical, auto-dismissible messages that communicate non-disruptive contextual messages.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.MessageToast.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.MessageToast.html",
       "main": "oj-c/message-toast",
       "extension": {
         "catalog": {
@@ -5547,8 +5547,8 @@
     },
     "oj-c-select-multiple": {
       "name": "select-multiple",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -5558,7 +5558,7 @@
       ],
       "displayName": "SelectMultiple",
       "description": "A select multiple is a dropdown list that supports multiple selections and search filtering.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.SelectMultiple.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.SelectMultiple.html",
       "main": "oj-c/select-multiple",
       "extension": {
         "catalog": {
@@ -6255,8 +6255,8 @@
     },
     "oj-c-select-single": {
       "name": "select-single",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -6266,7 +6266,7 @@
       ],
       "displayName": "SelectSingle",
       "description": "A select single is a dropdown list that supports single selection and search filtering.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.SelectSingle.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.SelectSingle.html",
       "main": "oj-c/select-single",
       "status": [
         {
@@ -7037,8 +7037,8 @@
     },
     "oj-c-text-area": {
       "name": "text-area",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -7048,7 +7048,7 @@
       ],
       "displayName": "TextArea",
       "description": "A text area allows the user to enter a multi-line text value.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.TextArea.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.TextArea.html",
       "main": "oj-c/text-area",
       "extension": {
         "catalog": {
@@ -7574,8 +7574,8 @@
     },
     "oj-c-progress-bar": {
       "name": "progress-bar",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -7585,7 +7585,7 @@
       ],
       "description": "A progress bar allows the user to visualize the progression of an extended computer operation.",
       "displayName": "Progress Bar",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ProgressBar.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ProgressBar.html",
       "main": "oj-c/progress-bar",
       "status": [
         {
@@ -7714,8 +7714,8 @@
     },
     "oj-c-progress-circle": {
       "name": "progress-circle",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -7725,7 +7725,7 @@
       ],
       "description": "A progress circle allows the user to visualize the progression of an extended computer operation.",
       "displayName": "Progress Circle",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ProgressCircle.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ProgressCircle.html",
       "main": "oj-c/progress-circle",
       "status": [
         {
@@ -7859,8 +7859,8 @@
     },
     "oj-c-avatar": {
       "name": "avatar",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -7870,7 +7870,7 @@
       ],
       "description": "An avatar represents a person or entity as initials or an image.",
       "displayName": "Avatar",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Avatar.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Avatar.html",
       "main": "oj-c/avatar",
       "status": [
         {
@@ -8103,8 +8103,8 @@
     },
     "oj-c-button": {
       "name": "button",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -8114,7 +8114,7 @@
       ],
       "description": "Buttons direct users to initiate or take actions and work with a single tap, click, or keystroke.",
       "displayName": "Button",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Button.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Button.html",
       "main": "oj-c/button",
       "extension": {
         "catalog": {
@@ -8377,8 +8377,8 @@
     },
     "oj-c-rating-gauge": {
       "name": "rating-gauge",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -8389,7 +8389,7 @@
       "description": "Rating gauges are typically used to display or accept user feedback on a product or service.",
       "displayName": "Rating Gauge",
       "main": "oj-c/rating-gauge",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.RatingGauge.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.RatingGauge.html",
       "status": [
         {
           "type": "supersedes",
@@ -8630,8 +8630,8 @@
     },
     "oj-c-collapsible": {
       "name": "collapsible",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -8641,7 +8641,7 @@
       ],
       "description": "A collapsible displays a header that can be expanded to show its content.",
       "displayName": "Collapsible",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Collapsible.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Collapsible.html",
       "main": "oj-c/collapsible",
       "status": [
         {
@@ -8846,8 +8846,8 @@
     },
     "oj-c-file-picker": {
       "name": "file-picker",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -8857,7 +8857,7 @@
       ],
       "description": "A file picker displays a clickable dropzone for selecting files from the device storage.",
       "displayName": "File Picker",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.FilePicker.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.FilePicker.html",
       "main": "oj-c/file-picker",
       "status": [
         {
@@ -9099,8 +9099,8 @@
     },
     "oj-c-meter-bar": {
       "name": "meter-bar",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -9111,7 +9111,7 @@
       "description": "A Meter bar displays information graphically in a rectangular bar, highlighting a specific metric value's progress in relation to its min, max, or thresholds.",
       "displayName": "Meter Bar",
       "main": "oj-c/meter-bar",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.MeterBar.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.MeterBar.html",
       "status": [
         {
           "type": "supersedes",
@@ -9301,192 +9301,7 @@
                   "properties": {
                     "color": {
                       "type": "string",
-                      "propertyEditorValues": {
-                        "transparent": {},
-                        "inherit": {},
-                        "initial": {},
-                        "-moz-initial": {},
-                        "revert": {},
-                        "revert-layer": {},
-                        "unset": {},
-                        "aliceblue": {},
-                        "antiquewhite": {},
-                        "aqua": {},
-                        "aquamarine": {},
-                        "azure": {},
-                        "beige": {},
-                        "bisque": {},
-                        "black": {},
-                        "blanchedalmond": {},
-                        "blue": {},
-                        "blueviolet": {},
-                        "brown": {},
-                        "burlywood": {},
-                        "cadetblue": {},
-                        "chartreuse": {},
-                        "chocolate": {},
-                        "coral": {},
-                        "cornflowerblue": {},
-                        "cornsilk": {},
-                        "crimson": {},
-                        "cyan": {},
-                        "darkblue": {},
-                        "darkcyan": {},
-                        "darkgoldenrod": {},
-                        "darkgray": {},
-                        "darkgreen": {},
-                        "darkgrey": {},
-                        "darkkhaki": {},
-                        "darkmagenta": {},
-                        "darkolivegreen": {},
-                        "darkorange": {},
-                        "darkorchid": {},
-                        "darkred": {},
-                        "darksalmon": {},
-                        "darkseagreen": {},
-                        "darkslateblue": {},
-                        "darkslategray": {},
-                        "darkslategrey": {},
-                        "darkturquoise": {},
-                        "darkviolet": {},
-                        "deeppink": {},
-                        "deepskyblue": {},
-                        "dimgray": {},
-                        "dimgrey": {},
-                        "dodgerblue": {},
-                        "firebrick": {},
-                        "floralwhite": {},
-                        "forestgreen": {},
-                        "fuchsia": {},
-                        "gainsboro": {},
-                        "ghostwhite": {},
-                        "gold": {},
-                        "goldenrod": {},
-                        "gray": {},
-                        "green": {},
-                        "greenyellow": {},
-                        "grey": {},
-                        "honeydew": {},
-                        "hotpink": {},
-                        "indianred": {},
-                        "indigo": {},
-                        "ivory": {},
-                        "khaki": {},
-                        "lavender": {},
-                        "lavenderblush": {},
-                        "lawngreen": {},
-                        "lemonchiffon": {},
-                        "lightblue": {},
-                        "lightcoral": {},
-                        "lightcyan": {},
-                        "lightgoldenrodyellow": {},
-                        "lightgray": {},
-                        "lightgreen": {},
-                        "lightgrey": {},
-                        "lightpink": {},
-                        "lightsalmon": {},
-                        "lightseagreen": {},
-                        "lightskyblue": {},
-                        "lightslategray": {},
-                        "lightslategrey": {},
-                        "lightsteelblue": {},
-                        "lightyellow": {},
-                        "lime": {},
-                        "limegreen": {},
-                        "linen": {},
-                        "magenta": {},
-                        "maroon": {},
-                        "mediumaquamarine": {},
-                        "mediumblue": {},
-                        "mediumorchid": {},
-                        "mediumpurple": {},
-                        "mediumseagreen": {},
-                        "mediumslateblue": {},
-                        "mediumspringgreen": {},
-                        "mediumturquoise": {},
-                        "mediumvioletred": {},
-                        "midnightblue": {},
-                        "mintcream": {},
-                        "mistyrose": {},
-                        "moccasin": {},
-                        "navajowhite": {},
-                        "navy": {},
-                        "oldlace": {},
-                        "olive": {},
-                        "olivedrab": {},
-                        "orange": {},
-                        "orangered": {},
-                        "orchid": {},
-                        "palegoldenrod": {},
-                        "palegreen": {},
-                        "paleturquoise": {},
-                        "palevioletred": {},
-                        "papayawhip": {},
-                        "peachpuff": {},
-                        "peru": {},
-                        "pink": {},
-                        "plum": {},
-                        "powderblue": {},
-                        "purple": {},
-                        "rebeccapurple": {},
-                        "red": {},
-                        "rosybrown": {},
-                        "royalblue": {},
-                        "saddlebrown": {},
-                        "salmon": {},
-                        "sandybrown": {},
-                        "seagreen": {},
-                        "seashell": {},
-                        "sienna": {},
-                        "silver": {},
-                        "skyblue": {},
-                        "slateblue": {},
-                        "slategray": {},
-                        "slategrey": {},
-                        "snow": {},
-                        "springgreen": {},
-                        "steelblue": {},
-                        "tan": {},
-                        "teal": {},
-                        "thistle": {},
-                        "tomato": {},
-                        "turquoise": {},
-                        "violet": {},
-                        "wheat": {},
-                        "white": {},
-                        "whitesmoke": {},
-                        "yellow": {},
-                        "yellowgreen": {},
-                        "ActiveBorder": {},
-                        "ActiveCaption": {},
-                        "AppWorkspace": {},
-                        "Background": {},
-                        "ButtonFace": {},
-                        "ButtonHighlight": {},
-                        "ButtonShadow": {},
-                        "ButtonText": {},
-                        "CaptionText": {},
-                        "GrayText": {},
-                        "Highlight": {},
-                        "HighlightText": {},
-                        "InactiveBorder": {},
-                        "InactiveCaption": {},
-                        "InactiveCaptionText": {},
-                        "InfoBackground": {},
-                        "InfoText": {},
-                        "Menu": {},
-                        "MenuText": {},
-                        "Scrollbar": {},
-                        "ThreeDDarkShadow": {},
-                        "ThreeDFace": {},
-                        "ThreeDHighlight": {},
-                        "ThreeDLightShadow": {},
-                        "ThreeDShadow": {},
-                        "Window": {},
-                        "WindowFrame": {},
-                        "WindowText": {},
-                        "currentcolor": {}
-                      }
+                      "format": "color"
                     },
                     "fontSize": {
                       "type": "string"
@@ -9646,8 +9461,8 @@
     },
     "oj-c-meter-circle": {
       "name": "meter-circle",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -9658,7 +9473,7 @@
       "description": "A Meter circle displays information graphically in a circular bar, highlighting a specific metric value's progress in relation to its min, max, or thresholds.",
       "displayName": "Meter circle",
       "main": "oj-c/meter-circle",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Metercircle.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Metercircle.html",
       "status": [
         {
           "type": "supersedes",
@@ -9850,192 +9665,7 @@
                   "properties": {
                     "color": {
                       "type": "string",
-                      "propertyEditorValues": {
-                        "transparent": {},
-                        "inherit": {},
-                        "initial": {},
-                        "-moz-initial": {},
-                        "revert": {},
-                        "revert-layer": {},
-                        "unset": {},
-                        "aliceblue": {},
-                        "antiquewhite": {},
-                        "aqua": {},
-                        "aquamarine": {},
-                        "azure": {},
-                        "beige": {},
-                        "bisque": {},
-                        "black": {},
-                        "blanchedalmond": {},
-                        "blue": {},
-                        "blueviolet": {},
-                        "brown": {},
-                        "burlywood": {},
-                        "cadetblue": {},
-                        "chartreuse": {},
-                        "chocolate": {},
-                        "coral": {},
-                        "cornflowerblue": {},
-                        "cornsilk": {},
-                        "crimson": {},
-                        "cyan": {},
-                        "darkblue": {},
-                        "darkcyan": {},
-                        "darkgoldenrod": {},
-                        "darkgray": {},
-                        "darkgreen": {},
-                        "darkgrey": {},
-                        "darkkhaki": {},
-                        "darkmagenta": {},
-                        "darkolivegreen": {},
-                        "darkorange": {},
-                        "darkorchid": {},
-                        "darkred": {},
-                        "darksalmon": {},
-                        "darkseagreen": {},
-                        "darkslateblue": {},
-                        "darkslategray": {},
-                        "darkslategrey": {},
-                        "darkturquoise": {},
-                        "darkviolet": {},
-                        "deeppink": {},
-                        "deepskyblue": {},
-                        "dimgray": {},
-                        "dimgrey": {},
-                        "dodgerblue": {},
-                        "firebrick": {},
-                        "floralwhite": {},
-                        "forestgreen": {},
-                        "fuchsia": {},
-                        "gainsboro": {},
-                        "ghostwhite": {},
-                        "gold": {},
-                        "goldenrod": {},
-                        "gray": {},
-                        "green": {},
-                        "greenyellow": {},
-                        "grey": {},
-                        "honeydew": {},
-                        "hotpink": {},
-                        "indianred": {},
-                        "indigo": {},
-                        "ivory": {},
-                        "khaki": {},
-                        "lavender": {},
-                        "lavenderblush": {},
-                        "lawngreen": {},
-                        "lemonchiffon": {},
-                        "lightblue": {},
-                        "lightcoral": {},
-                        "lightcyan": {},
-                        "lightgoldenrodyellow": {},
-                        "lightgray": {},
-                        "lightgreen": {},
-                        "lightgrey": {},
-                        "lightpink": {},
-                        "lightsalmon": {},
-                        "lightseagreen": {},
-                        "lightskyblue": {},
-                        "lightslategray": {},
-                        "lightslategrey": {},
-                        "lightsteelblue": {},
-                        "lightyellow": {},
-                        "lime": {},
-                        "limegreen": {},
-                        "linen": {},
-                        "magenta": {},
-                        "maroon": {},
-                        "mediumaquamarine": {},
-                        "mediumblue": {},
-                        "mediumorchid": {},
-                        "mediumpurple": {},
-                        "mediumseagreen": {},
-                        "mediumslateblue": {},
-                        "mediumspringgreen": {},
-                        "mediumturquoise": {},
-                        "mediumvioletred": {},
-                        "midnightblue": {},
-                        "mintcream": {},
-                        "mistyrose": {},
-                        "moccasin": {},
-                        "navajowhite": {},
-                        "navy": {},
-                        "oldlace": {},
-                        "olive": {},
-                        "olivedrab": {},
-                        "orange": {},
-                        "orangered": {},
-                        "orchid": {},
-                        "palegoldenrod": {},
-                        "palegreen": {},
-                        "paleturquoise": {},
-                        "palevioletred": {},
-                        "papayawhip": {},
-                        "peachpuff": {},
-                        "peru": {},
-                        "pink": {},
-                        "plum": {},
-                        "powderblue": {},
-                        "purple": {},
-                        "rebeccapurple": {},
-                        "red": {},
-                        "rosybrown": {},
-                        "royalblue": {},
-                        "saddlebrown": {},
-                        "salmon": {},
-                        "sandybrown": {},
-                        "seagreen": {},
-                        "seashell": {},
-                        "sienna": {},
-                        "silver": {},
-                        "skyblue": {},
-                        "slateblue": {},
-                        "slategray": {},
-                        "slategrey": {},
-                        "snow": {},
-                        "springgreen": {},
-                        "steelblue": {},
-                        "tan": {},
-                        "teal": {},
-                        "thistle": {},
-                        "tomato": {},
-                        "turquoise": {},
-                        "violet": {},
-                        "wheat": {},
-                        "white": {},
-                        "whitesmoke": {},
-                        "yellow": {},
-                        "yellowgreen": {},
-                        "ActiveBorder": {},
-                        "ActiveCaption": {},
-                        "AppWorkspace": {},
-                        "Background": {},
-                        "ButtonFace": {},
-                        "ButtonHighlight": {},
-                        "ButtonShadow": {},
-                        "ButtonText": {},
-                        "CaptionText": {},
-                        "GrayText": {},
-                        "Highlight": {},
-                        "HighlightText": {},
-                        "InactiveBorder": {},
-                        "InactiveCaption": {},
-                        "InactiveCaptionText": {},
-                        "InfoBackground": {},
-                        "InfoText": {},
-                        "Menu": {},
-                        "MenuText": {},
-                        "Scrollbar": {},
-                        "ThreeDDarkShadow": {},
-                        "ThreeDFace": {},
-                        "ThreeDHighlight": {},
-                        "ThreeDLightShadow": {},
-                        "ThreeDShadow": {},
-                        "Window": {},
-                        "WindowFrame": {},
-                        "WindowText": {},
-                        "currentcolor": {}
-                      }
+                      "format": "color"
                     },
                     "fontSize": {
                       "type": "string"
@@ -10238,8 +9868,8 @@
     },
     "oj-c-line-chart": {
       "name": "line-chart",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -10250,7 +9880,7 @@
       "description": "A line chart displays information graphically using data points connected by straight or curved lines, making relationships among the data easier to understand.",
       "displayName": "Line Chart",
       "main": "oj-c/line-chart",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LineChart.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LineChart.html",
       "status": [
         {
           "type": "candidate",
@@ -12144,8 +11774,8 @@
     },
     "oj-c-line-chart-item": {
       "name": "line-chart-item",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -12157,7 +11787,7 @@
       "description": "The oj-c-line-chart-item element is used to declare item properties",
       "displayName": "LineChartItem",
       "main": "oj-c/line-chart-item",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LineChartItem.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LineChartItem.html",
       "status": [
         {
           "type": "candidate",
@@ -12304,8 +11934,8 @@
     },
     "oj-c-line-chart-series": {
       "name": "line-chart-series",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -12317,7 +11947,7 @@
       "description": "The oj-c-line-chart-series element is used to declare series properties in the seriesTemplate",
       "displayName": "LineChartSeries",
       "main": "oj-c/line-chart-series",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LineChartSeries.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LineChartSeries.html",
       "status": [
         {
           "type": "candidate",
@@ -12476,8 +12106,8 @@
     },
     "oj-c-line-chart-group": {
       "name": "line-chart-group",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -12489,7 +12119,7 @@
       "description": "The oj-c-line-chart-group element is used to declare group properties in the groupTemplate",
       "displayName": "LineChartGroup",
       "main": "oj-c/line-chart-group",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LineChartGroup.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LineChartGroup.html",
       "status": [
         {
           "type": "candidate",
@@ -12574,8 +12204,8 @@
     },
     "oj-c-list-item-layout": {
       "name": "list-item-layout",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -12586,7 +12216,7 @@
       "description": "A List Item Layout represents layout used for list view item elements.",
       "displayName": "List Item Layout",
       "main": "oj-c/list-item-layout",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ListItemLayout.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ListItemLayout.html",
       "status": [
         {
           "type": "supersedes",
@@ -12734,8 +12364,8 @@
     },
     "oj-c-list-view": {
       "name": "list-view",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -12745,7 +12375,7 @@
       ],
       "displayName": "List View",
       "description": "A list view displays data items as a list or a grid with highly interactive features.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ListView.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ListView.html",
       "main": "oj-c/list-view",
       "status": [
         {
@@ -13290,8 +12920,8 @@
     },
     "oj-c-split-menu-button": {
       "name": "split-menu-button",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -13301,7 +12931,7 @@
       ],
       "description": "A Split Menu Button combines a push button and menu button.",
       "displayName": "Split Menu Button",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.SplitMenuButton.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.SplitMenuButton.html",
       "main": "oj-c/split-menu-button",
       "status": [
         {
@@ -13630,8 +13260,8 @@
     },
     "oj-c-selector": {
       "name": "selector",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -13652,7 +13282,7 @@
           "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectorWebElement.html"
         }
       },
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Selector.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Selector.html",
       "since": "15.0.0",
       "status": [
         {
@@ -13752,8 +13382,8 @@
     },
     "oj-c-selector-all": {
       "name": "selector-all",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -13774,7 +13404,7 @@
           "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SelectorAllWebElement.html"
         }
       },
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.SelectorAll.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.SelectorAll.html",
       "since": "15.0.0",
       "status": [
         {
@@ -13852,8 +13482,8 @@
     },
     "oj-c-input-date-text": {
       "name": "input-date-text",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -13863,7 +13493,7 @@
       ],
       "displayName": "InputDateText",
       "description": "An input date text allows the user to enter a date value.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputDateText.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputDateText.html",
       "main": "oj-c/input-date-text",
       "status": [
         {
@@ -14374,8 +14004,8 @@
     },
     "oj-c-input-date-mask": {
       "name": "input-date-mask",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -14385,7 +14015,7 @@
       ],
       "displayName": "InputDateMask",
       "description": "An input date mask field allows a user to individually edit, step, or spin the values of the month, day, and year fields of a calendar date.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputDateMask.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputDateMask.html",
       "main": "oj-c/input-date-mask",
       "status": [
         {
@@ -14868,8 +14498,8 @@
     },
     "oj-c-legend": {
       "name": "legend",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -14880,7 +14510,7 @@
       "description": "A legend displays an interactive description of symbols, colors, etc., used in graphical information representations.",
       "displayName": "Legend",
       "main": "oj-c/legend",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Legend.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Legend.html",
       "status": [
         {
           "type": "candidate",
@@ -15355,8 +14985,8 @@
     },
     "oj-c-legend-item": {
       "name": "legend-item",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -15368,7 +14998,7 @@
       "description": "The oj-c-legend-item element is used to declare properties for legend items.",
       "displayName": "LegendItem",
       "main": "oj-c/legend-item",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LegendItem.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LegendItem.html",
       "status": [
         {
           "type": "candidate",
@@ -15626,8 +15256,8 @@
     },
     "oj-c-legend-section": {
       "name": "legend-section",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -15639,7 +15269,7 @@
       "description": "The oj-c-legend-section element is used to declare properties for legend sections.",
       "displayName": "LegendSection",
       "main": "oj-c/legend-section",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LegendSection.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LegendSection.html",
       "status": [
         {
           "type": "candidate",
@@ -15716,8 +15346,8 @@
     },
     "oj-c-tag-cloud": {
       "name": "tag-cloud",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -15728,7 +15358,7 @@
       "description": "A tag cloud is an interactive data visualization of textual data, where the importance of each tagged word or phrase is represented by font size or color.",
       "displayName": "Tag Cloud",
       "main": "oj-c/tag-cloud",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.TagCloud.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.TagCloud.html",
       "status": [
         {
           "type": "candidate",
@@ -16009,8 +15639,8 @@
     },
     "oj-c-tag-cloud-item": {
       "name": "tag-cloud-item",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -16022,7 +15652,7 @@
       "description": "The oj-c-tag-cloud-item element is used to declare properties for tag cloud items",
       "displayName": "TagCloudItem",
       "main": "oj-c/tag-cloud-item",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.TagCloudItem.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.TagCloudItem.html",
       "status": [
         {
           "type": "candidate",
@@ -16120,8 +15750,8 @@
     },
     "oj-c-message-banner": {
       "name": "message-banner",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -16132,7 +15762,7 @@
       "description": "Message Banners are brief, moderately disruptive, semi-permanent messages that help communicate relevant and useful information.",
       "displayName": "Message Banner",
       "main": "oj-c/message-banner",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.MessageBanner.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.MessageBanner.html",
       "extension": {
         "catalog": {
           "category": "Controls"
@@ -16396,8 +16026,8 @@
     },
     "oj-c-radioset": {
       "name": "radioset",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -16407,7 +16037,7 @@
       ],
       "description": "A radio set allows the user to select one option from a set of mutually exclusive options.",
       "displayName": "Radioset",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Radioset.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Radioset.html",
       "main": "oj-c/radioset",
       "status": [
         {
@@ -16759,11 +16389,11 @@
       },
       "methods": {
         "blur": {
-          "description": "Sets focus on the radioset or the first tabbable radio item.",
+          "description": "Blurs the radioset.",
           "return": "void"
         },
         "focus": {
-          "description": "Blurs the radioset.",
+          "description": "Sets focus on the selected radio button or the first tabbable radio button.",
           "return": "void"
         },
         "showMessages": {
@@ -16823,8 +16453,8 @@
     },
     "oj-c-action-card": {
       "name": "action-card",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -16834,7 +16464,7 @@
       ],
       "description": "An Action Card is an actionable container rendering related information",
       "displayName": "Action Card",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ActionCard.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ActionCard.html",
       "main": "oj-c/action-card",
       "status": [
         {
@@ -16933,8 +16563,8 @@
     },
     "oj-c-selection-card": {
       "name": "selection-card",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -17032,8 +16662,8 @@
     },
     "oj-c-checkbox": {
       "name": "checkbox",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -17043,7 +16673,7 @@
       ],
       "displayName": "Checkbox",
       "description": "Checkbox is a single standalone checkbox control. It represents a boolean value.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Checkbox.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Checkbox.html",
       "main": "oj-c/checkbox",
       "status": [
         {
@@ -17294,11 +16924,11 @@
       },
       "methods": {
         "blur": {
-          "description": "focuses the input field.",
+          "description": "Blurs the input field.",
           "return": "void"
         },
         "focus": {
-          "description": "blurs the input field.",
+          "description": "Focuses the input field.",
           "return": "void"
         },
         "showMessages": {
@@ -17358,8 +16988,8 @@
     },
     "oj-c-checkboxset": {
       "name": "checkboxset",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -17369,7 +16999,7 @@
       ],
       "displayName": "Checkboxset",
       "description": "A checkbox set allows the user to select one or more options from a set.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Checkboxset.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Checkboxset.html",
       "main": "oj-c/checkboxset",
       "status": [
         {
@@ -17720,11 +17350,11 @@
       },
       "methods": {
         "blur": {
-          "description": "Sets focus on the checkboxset or the first tabbable checkbox.",
+          "description": "Blurs the checkboxset.",
           "return": "void"
         },
         "focus": {
-          "description": "Blurs the checkboxset.",
+          "description": "Sets focus on the first tabbable checkbox.",
           "return": "void"
         },
         "showMessages": {
@@ -17784,8 +17414,8 @@
     },
     "oj-c-popup": {
       "name": "popup",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -17795,7 +17425,7 @@
       ],
       "description": "A popup temporarily 'pops up' content in the foreground.",
       "displayName": "Popup",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Popup.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Popup.html",
       "main": "oj-c/popup",
       "status": [
         {
@@ -17860,7 +17490,7 @@
         "opened": {
           "type": "boolean",
           "description": "Specifies whether the Popup is open.",
-          "displayName": "opened",
+          "displayName": "Opened",
           "help": "#opened",
           "extension": {
             "webelement": {
@@ -17877,19 +17507,19 @@
         "launcher": {
           "type": "string|Element",
           "description": "Specifies Popup's launcher. After Popup closes, it returns focus to the launcher.",
-          "displayName": "launcher",
+          "displayName": "Launcher",
           "help": "#launcher"
         },
         "anchor": {
           "type": "string|Element|object",
           "description": "Specifies Popup's anchor. Popup is placed relative to its anchor.",
-          "displayName": "anchor",
+          "displayName": "Anchor",
           "help": "#anchor"
         },
         "placement": {
           "type": "string",
           "description": "Specifies the location the popup will appear relative to another element.",
-          "displayName": "placement",
+          "displayName": "Placement",
           "help": "#placement",
           "enumValues": [
             "center",
@@ -17918,7 +17548,7 @@
         "modality": {
           "type": "string",
           "description": "Specifies modality of the Popup.",
-          "displayName": "modality",
+          "displayName": "Modality",
           "help": "#modality",
           "enumValues": [
             "modal",
@@ -17929,7 +17559,7 @@
         "autoDismiss": {
           "type": "string",
           "description": "Specifies the auto dismissal behavior.",
-          "displayName": "Auto dismiss",
+          "displayName": "Auto Dismiss",
           "help": "#autoDismiss",
           "enumValues": [
             "none",
@@ -17948,10 +17578,21 @@
           ],
           "value": "none"
         },
+        "variant": {
+          "type": "string",
+          "description": "Specifies Popup's style variant.",
+          "displayName": "Variant",
+          "help": "#variant",
+          "enumValues": [
+            "standard",
+            "unstyled"
+          ],
+          "value": "standard"
+        },
         "initialFocus": {
           "type": "string",
           "description": "Specifies if the Popup sets focus to its content when initially open.",
-          "displayName": "initialFocus",
+          "displayName": "Initial Focus",
           "help": "#initialFocus",
           "enumValues": [
             "auto",
@@ -17964,13 +17605,13 @@
         "offset": {
           "type": "number|object",
           "description": "Specifies displacement of the Popup from the anchor element placement along the specified axes.",
-          "displayName": "offset",
+          "displayName": "Offset",
           "help": "#offset"
         },
         "collision": {
           "type": "string",
           "description": "Specifies rule for alternate placement alignment.",
-          "displayName": "collision",
+          "displayName": "Collision",
           "help": "#collision",
           "enumValues": [
             "none",
@@ -17984,52 +17625,52 @@
         "width": {
           "type": "number|string",
           "description": "Specifies width of the Popup content.",
-          "displayName": "width",
+          "displayName": "Width",
           "help": "#width"
         },
         "minWidth": {
           "type": "number|string",
           "description": "Specifies minWidth of the Popup content.",
-          "displayName": "minWidth",
+          "displayName": "Min Width",
           "help": "#minWidth"
         },
         "maxWidth": {
           "type": "number|string",
           "description": "Specifies maxWidth of the Popup content.",
-          "displayName": "maxWidth",
+          "displayName": "Max Width",
           "help": "#maxWidth",
           "value": "calc(100vw - 3rem)"
         },
         "height": {
           "type": "number|string",
           "description": "Specifies height of the Popup content.",
-          "displayName": "height",
+          "displayName": "Height",
           "help": "#height"
         },
         "minHeight": {
           "type": "number|string",
           "description": "Specifies minHeight of the Popup content.",
-          "displayName": "minHeight",
+          "displayName": "Min Height",
           "help": "#minHeight"
         },
         "maxHeight": {
           "type": "number|string",
           "description": "Specifies maxHeight of the Popup content.",
-          "displayName": "maxHeight",
+          "displayName": "Max Height",
           "help": "#maxHeight",
-          "value": "calc(100vw - 3rem)"
+          "value": "calc(100vh - 3rem)"
         }
       },
       "events": {
         "ojOpen": {
           "description": "Triggered immediately after the popup opens.",
-          "displayName": "open",
+          "displayName": "ojOpen",
           "help": "#event:open"
         },
         "ojBeforeClose": {
           "cancelable": true,
           "description": "Triggered immediately before the popup closes.",
-          "displayName": "beforeClose",
+          "displayName": "ojBeforeClose",
           "help": "#event:beforeClose",
           "detail": {
             "accept": {
@@ -18040,12 +17681,12 @@
         },
         "ojClose": {
           "description": "Triggered immediately after the popup closes.",
-          "displayName": "close",
+          "displayName": "ojClose",
           "help": "#event:close"
         },
         "ojFocus": {
           "description": "Triggered immediately after the popup receives focus.",
-          "displayName": "onOjFocus",
+          "displayName": "ojFocus",
           "help": "#event:onOjFocus"
         }
       },
@@ -18095,8 +17736,8 @@
     },
     "oj-c-drawer-popup": {
       "name": "drawer-popup",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -18106,7 +17747,7 @@
       ],
       "description": "A Drawer Popup is a panel that slides into the viewport.",
       "displayName": "Drawer Popup",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.DrawerPopup.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.DrawerPopup.html",
       "main": "oj-c/drawer-popup",
       "status": [
         {
@@ -18220,7 +17861,7 @@
         "closeGesture": {
           "type": "string",
           "description": "Specifies whether a gesture closes the drawer.",
-          "displayName": "Close gesture",
+          "displayName": "Close Gesture",
           "help": "#closeGesture",
           "enumValues": [
             "none",
@@ -18231,7 +17872,7 @@
         "backgroundColor": {
           "type": "string",
           "description": "Specifies background color of the Drawer.",
-          "displayName": "backgroundColor",
+          "displayName": "Background Color",
           "help": "#backgroundColor"
         }
       },
@@ -18239,7 +17880,7 @@
         "ojBeforeClose": {
           "cancelable": true,
           "description": "Triggered immediately before the drawer closes",
-          "displayName": "Beforeclose",
+          "displayName": "ojBeforeClose",
           "help": "#event:beforeClose",
           "detail": {
             "accept": {
@@ -18250,7 +17891,7 @@
         },
         "ojClose": {
           "description": "Triggered immediately after the drawer closes",
-          "displayName": "Close",
+          "displayName": "ojClose",
           "help": "#event:close"
         }
       },
@@ -18300,8 +17941,8 @@
     },
     "oj-c-drawer-layout": {
       "name": "drawer-layout",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -18311,7 +17952,7 @@
       ],
       "description": "A Drawer Layout adds expandable side contents (drawers) alongside some primary content.",
       "displayName": "Drawer Layout",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.DrawerLayout.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.DrawerLayout.html",
       "main": "oj-c/drawer-layout",
       "status": [
         {
@@ -18367,7 +18008,7 @@
         "startOpened": {
           "type": "boolean",
           "description": "Specifies whether the Drawer is open.",
-          "displayName": "startOpened",
+          "displayName": "Start Opened",
           "help": "#startOpened",
           "writeback": true,
           "value": false
@@ -18375,7 +18016,7 @@
         "endOpened": {
           "type": "boolean",
           "description": "Specifies whether the Drawer is open.",
-          "displayName": "endOpened",
+          "displayName": "End Opened",
           "help": "#endOpened",
           "writeback": true,
           "value": false
@@ -18383,7 +18024,7 @@
         "bottomOpened": {
           "type": "boolean",
           "description": "Specifies whether the Drawer is open.",
-          "displayName": "bottomOpened",
+          "displayName": "Bottom Opened",
           "help": "#bottomOpened",
           "writeback": true,
           "value": false
@@ -18391,7 +18032,7 @@
         "startDisplay": {
           "type": "string",
           "description": "Specifies display mode of the Start drawer.",
-          "displayName": "startDisplay",
+          "displayName": "Start Display",
           "help": "#startDisplay",
           "enumValues": [
             "auto",
@@ -18403,7 +18044,7 @@
         "endDisplay": {
           "type": "string",
           "description": "Specifies display mode of the End drawer.",
-          "displayName": "endDisplay",
+          "displayName": "End Display",
           "help": "#endDisplay",
           "enumValues": [
             "auto",
@@ -18415,7 +18056,7 @@
         "bottomDisplay": {
           "type": "string",
           "description": "Specifies display mode of the Start drawer.",
-          "displayName": "bottomDisplay",
+          "displayName": "Bottom Display",
           "help": "#bottomDisplay",
           "enumValues": [
             "auto",
@@ -18429,7 +18070,7 @@
         "ojBeforeClose": {
           "cancelable": true,
           "description": "Triggered immediately before the drawer closes",
-          "displayName": "Beforeclose",
+          "displayName": "ojBeforeclose",
           "help": "#event:beforeClose",
           "detail": {
             "accept": {
@@ -18448,7 +18089,7 @@
         },
         "ojClose": {
           "description": "Triggered immediately after the drawer closes",
-          "displayName": "Close",
+          "displayName": "ojClose",
           "help": "#event:close",
           "detail": {
             "edge": {
@@ -18508,8 +18149,8 @@
     },
     "oj-c-form-layout": {
       "name": "form-layout",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -18519,7 +18160,7 @@
       ],
       "displayName": "Form Layout",
       "description": "A form layout manages the layout of labels and fields in a form.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.FormLayout.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.FormLayout.html",
       "main": "oj-c/form-layout",
       "status": [
         {
@@ -18821,8 +18462,8 @@
     },
     "oj-c-labelled-link": {
       "name": "labelled-link",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -18832,7 +18473,7 @@
       ],
       "displayName": "LabelledLink",
       "description": "The Labelled Link component displays a readonly field that has a link for its content.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.LabelledLink.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.LabelledLink.html",
       "main": "oj-c/labelled-link",
       "status": [
         {
@@ -19123,8 +18764,8 @@
     },
     "oj-c-menu-button": {
       "name": "menu-button",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -19134,7 +18775,7 @@
       ],
       "description": "A menu button launches a menu when clicked.",
       "displayName": "Menu Button",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.MenuButton.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.MenuButton.html",
       "main": "oj-c/menu-button",
       "extension": {
         "catalog": {
@@ -19458,8 +19099,8 @@
     },
     "oj-c-input-month-mask": {
       "name": "input-month-mask",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -19469,7 +19110,7 @@
       ],
       "displayName": "InputMonthMask",
       "description": "An input month mask field allows a user to individually edit, step, or spin the values of the month and year fields.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputMonthMask.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputMonthMask.html",
       "main": "oj-c/input-month-mask",
       "status": [
         {
@@ -19968,8 +19609,8 @@
     },
     "oj-c-tab-bar": {
       "name": "tab-bar",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -19979,7 +19620,7 @@
       ],
       "description": "A tab bar allows navigation between different content sections.",
       "displayName": "Tab Bar",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.TabBar.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.TabBar.html",
       "main": "oj-c/tab-bar",
       "status": [
         {
@@ -20211,8 +19852,8 @@
     },
     "oj-c-tab-bar-mixed": {
       "name": "tab-bar-mixed",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -20222,7 +19863,7 @@
       ],
       "description": "A navigation component that enables horizontal navigation between distinct content with a mixture of static and dynamic tabs.",
       "displayName": "Tab Bar Mixed",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.TabBarMixed.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.TabBarMixed.html",
       "main": "oj-c/tab-bar-mixed",
       "status": [
         {
@@ -20456,8 +20097,8 @@
     },
     "oj-c-card-view": {
       "name": "card-view",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -20467,7 +20108,7 @@
       ],
       "displayName": "Card View",
       "description": "A CardView displays data items as a grid with highly interactive features.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.CardView.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.CardView.html",
       "main": "oj-c/card-view",
       "status": [
         {
@@ -20792,8 +20433,8 @@
     },
     "oj-c-conveyor-belt": {
       "name": "conveyor-belt",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -20804,7 +20445,7 @@
       "displayName": "Conveyor Belt",
       "description": "A conveyor belt manages overflow for its child elements and allows scrolling among them.",
       "main": "oj-c/conveyor-belt",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ConveyorBelt.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ConveyorBelt.html",
       "status": [
         {
           "type": "supersedes",
@@ -20973,8 +20614,8 @@
     },
     "oj-c-input-date-picker": {
       "name": "input-date-picker",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -20984,7 +20625,7 @@
       ],
       "displayName": "InputDatePicker",
       "description": "An input date picker allows users to enter or select a single date using a calendar interface.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.InputDatePicker.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.InputDatePicker.html",
       "main": "oj-c/input-date-picker",
       "status": [
         {
@@ -21567,8 +21208,8 @@
     },
     "oj-c-drag-handle": {
       "name": "drag-handle",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -21578,7 +21219,7 @@
       ],
       "displayName": "Drag Handle",
       "description": "A drag handle is a draggable icon used in components with reorder features.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.DragHandle.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.DragHandle.html",
       "main": "oj-c/drag-handle",
       "status": [
         {
@@ -21649,8 +21290,8 @@
     },
     "oj-c-toggle-button": {
       "name": "toggle-button",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -21660,7 +21301,7 @@
       ],
       "description": "Toggle Buttons allow users to switch between states when clicked or tapped.",
       "displayName": "Toggle Button",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ToggleButton.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ToggleButton.html",
       "main": "oj-c/toggle-button",
       "extension": {
         "catalog": {
@@ -21877,8 +21518,8 @@
     },
     "oj-c-buttonset-single": {
       "name": "buttonset-single",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -21888,7 +21529,7 @@
       ],
       "description": "A Buttonset Single allows a user to select the state of one or more related options.",
       "displayName": "Buttonset Single",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ButtonsetSingle.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ButtonsetSingle.html",
       "main": "oj-c/buttonset-single",
       "extension": {
         "catalog": {
@@ -22110,8 +21751,8 @@
     },
     "oj-c-buttonset-multiple": {
       "name": "buttonset-multiple",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -22121,7 +21762,7 @@
       ],
       "description": "A Buttonset Multiple allows a user to select the states of one or more related options.",
       "displayName": "Buttonset Multiple",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ButtonsetMultiple.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ButtonsetMultiple.html",
       "main": "oj-c/buttonset-multiple",
       "extension": {
         "catalog": {
@@ -22343,8 +21984,8 @@
     },
     "oj-c-table": {
       "name": "table",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -22354,7 +21995,7 @@
       ],
       "displayName": "Table",
       "description": "A table displays data items in a tabular format with highly interactive features.",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Table.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Table.html",
       "main": "oj-c/table",
       "status": [
         {
@@ -23094,8 +22735,8 @@
     },
     "oj-c-progress-button": {
       "name": "progress-button",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -23105,7 +22746,7 @@
       ],
       "description": "A Progress button represents button-level initiation.",
       "displayName": "Progress Button",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.ProgressButton.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.ProgressButton.html",
       "main": "oj-c/progress-button",
       "since": "17.1.0",
       "status": [
@@ -23352,8 +22993,8 @@
     },
     "oj-c-skeleton": {
       "name": "skeleton",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -23374,7 +23015,7 @@
           "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/SkeletonWebElement.html"
         }
       },
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Skeleton.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Skeleton.html",
       "since": "18.0.0",
       "status": [
         {
@@ -23446,8 +23087,8 @@
     },
     "oj-c-toolbar": {
       "name": "toolbar",
-      "version": "18.0.2",
-      "jetVersion": "^18.0.2",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
       "pack": "oj-c",
       "type": "composite",
       "dependencyScope": "runtime",
@@ -23457,7 +23098,7 @@
       ],
       "description": "A toolbar displays a strip of control elements such as buttons and menu buttons, often grouped by separators.",
       "displayName": "Toolbar",
-      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18/reference-api/oj-c.Toolbar.html",
+      "help": "https://docs.oracle.com/en/middleware/developer-tools/jet/18.1/reference-api/oj-c.Toolbar.html",
       "main": "oj-c/toolbar",
       "since": "18.0.0",
       "status": [
@@ -23533,6 +23174,277 @@
           "description": "Specifies the content to be placed into the toolbar.",
           "displayName": "items",
           "help": "#items",
+          "extension": {
+            "webelement": {
+              "exceptionStatus": [
+                {
+                  "type": "unsupported",
+                  "since": "18.0.5",
+                  "description": "Stop 'items' property test adapter generation based upon metadata, and instead use override to freeze the API."
+                }
+              ]
+            },
+            "vbdt": {
+              "pi": {
+                "events": {
+                  "suggestions": [
+                    {
+                      "type": "component",
+                      "name": "ojMenuAction",
+                      "mappings": [
+                        {
+                          "variableName": "menuItemKey",
+                          "expression": "{{$event.detail.key}}",
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "itemProperties": {
+                "type": {
+                  "description": "Specifies the type of the toolbar item.",
+                  "type": "string",
+                  "required": true,
+                  "enumValues": [
+                    "button",
+                    "menu-button",
+                    "split-menu-button",
+                    "buttonset-single",
+                    "buttonset-multiple",
+                    "toggle-button",
+                    "progress-button",
+                    "separator"
+                  ],
+                  "propertyEditorValues": {
+                    "button": {
+                      "displayName": "Button"
+                    },
+                    "menu-button": {
+                      "displayName": "Menu Button"
+                    },
+                    "split-menu-button": {
+                      "displayName": "Split Menu Button"
+                    },
+                    "buttonset-single": {
+                      "displayName": "Buttonset Single"
+                    },
+                    "buttonset-multiple": {
+                      "displayName": "Buttonset Multiple"
+                    },
+                    "toggle-button": {
+                      "displayName": "Toggle Button"
+                    },
+                    "progress-button": {
+                      "displayName": "Progress Button"
+                    },
+                    "separator": {
+                      "displayName": "Separator"
+                    }
+                  }
+                },
+                "chroming": {
+                  "description": "Indicates in what states the item has variants in background and border.",
+                  "type": "string",
+                  "enumValues": [
+                    "solid",
+                    "borderless",
+                    "outlined",
+                    "ghost",
+                    "callToAction",
+                    "danger"
+                  ],
+                  "propertyEditorValues": {
+                    "solid": {
+                      "description": "Valid for Button, Menu Button, Split Menu Button, and Progress Button items."
+                    },
+                    "borderless": {
+                      "description": "Valid for Button, Menu Button, Buttonset, Toggle Button, and Progress Button items."
+                    },
+                    "outlined": {
+                      "description": "Valid for Button, Menu Button, Split Menu Button, Buttonset, Toggle Button, and Progress Button items."
+                    },
+                    "ghost": {
+                      "description": "Valid for Button and Menu Button items."
+                    },
+                    "callToAction": {
+                      "description": "Valid for Button, Split Menu Button, and Progress Button items."
+                    },
+                    "danger": {
+                      "description": "Valid for Button items."
+                    }
+                  }
+                },
+                "disabled": {
+                  "description": "Specifies whether the item should be disabled.",
+                  "type": "boolean"
+                },
+                "display": {
+                  "description": "Display just the labels, the icons, or all (not supported for Split Menu Button items).",
+                  "type": "string",
+                  "enumValues": [
+                    "all",
+                    "labels",
+                    "icons"
+                  ]
+                },
+                "endIcon": {
+                  "description": "Optional icon to show at the end position of an item (not supported for Split Menu Button nor Buttonset items).",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enumValues": [
+                        "class",
+                        "img"
+                      ]
+                    },
+                    "class": {
+                      "type": "string"
+                    },
+                    "src": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "isLoading": {
+                  "description": "Specifies if progress should be shown (only valid for Progress Button items).",
+                  "type": "boolean"
+                },
+                "items": {
+                  "description": "Specifies the content for Menu Button, Split Menu Button, and Buttonset items. See the Help documentation for more information.",
+                  "type": "Array<object>",
+                  "properties": {
+                    "disabled": {
+                      "description": "Specifies if the menu item or buttonset toggle item is disabled.",
+                      "type": "boolean"
+                    },
+                    "endIcon": {
+                      "description": "Optional icon to show at the end position of a top-level menu item or of a buttonset toggle item (not supported for submenu items).",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enumValues": [
+                            "class",
+                            "img"
+                          ]
+                        },
+                        "class": {
+                          "type": "string"
+                        },
+                        "src": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "items": {
+                      "description": "Specifies submenu or select menu content. See the Help documentation for more information.",
+                      "type": "Array<object>"
+                    },
+                    "key": {
+                      "description": "A unique key associated with the menu item.",
+                      "type": "string"
+                    },
+                    "label": {
+                      "description": "Text to show in the menu item or the buttonset toggle item.",
+                      "type": "string",
+                      "translatable": true
+                    },
+                    "onAction": {
+                      "description": "An optional callback function associated with a top-level menu item (not supported for submenu items).",
+                      "type": "function"
+                    },
+                    "startIcon": {
+                      "description": "Optional icon to show at the start position of a top-level menu item or a buttonset toggle item (not supported for submenu items).",
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enumValues": [
+                            "class",
+                            "img"
+                          ]
+                        },
+                        "class": {
+                          "type": "string"
+                        },
+                        "src": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "type": {
+                      "description": "Specifies the type of the menu item (not supported for buttonset toggle items).",
+                      "type": "string",
+                      "enumValues": [
+                        "item",
+                        "submenu",
+                        "selectsingle",
+                        "selectmultiple",
+                        "separator"
+                      ]
+                    },
+                    "value": {
+                      "description": "The value associated with a buttonset toggle item (not supported for menu items).",
+                      "type": "string"
+                    },
+                    "variant": {
+                      "description": "Specifies the behavior of a top-level menu item (not supported for submenu items nor buttonset toggle items).",
+                      "type": "string",
+                      "enumValues": [
+                        "standard",
+                        "destructive"
+                      ]
+                    }
+                  }
+                },
+                "key": {
+                  "description": "A unique key associated with the item (not supported for Menu Button items, and required for all other items).",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "Text to show in the item (not supported for Buttonset items, and required for all other items).",
+                  "type": "string",
+                  "translatable": true
+                },
+                "onAction": {
+                  "description": "A callback function associated with the item (only valid for Button, Split Menu Button, and Progress Button items).",
+                  "type": "function"
+                },
+                "startIcon": {
+                  "description": "Optional icon to show at the start position of an item (not supported for Split Menu Button nor Buttonset items).",
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enumValues": [
+                        "class",
+                        "img"
+                      ]
+                    },
+                    "class": {
+                      "type": "string"
+                    },
+                    "src": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "suffix": {
+                  "description": "Optional suffix appended to menu label to indicate last selection (only valid for Menu Button items).",
+                  "type": "string",
+                  "translatable": true
+                },
+                "tooltip": {
+                  "description": "Optional override text for the default tooltip that renders the label when in icon mode (not supported for Buttonset items).",
+                  "type": "string",
+                  "translatable": true
+                }
+              }
+            }
+          },
           "value": []
         },
         "toolbarSelection": {
@@ -23624,6 +23536,783 @@
             }
           ],
           "return": "void"
+        }
+      }
+    },
+    "oj-c-rich-checkboxset": {
+      "name": "rich-checkboxset",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
+      "pack": "oj-c",
+      "type": "composite",
+      "dependencyScope": "runtime",
+      "license": "https://opensource.org/licenses/UPL",
+      "implements": [
+        "CRichCheckboxsetElement"
+      ],
+      "description": "A rich checkbox set allows the user to select one or more options from a set of rich options.",
+      "displayName": "RichCheckboxset",
+      "main": "oj-c/rich-checkboxset",
+      "status": [
+        {
+          "type": "candidate",
+          "since": "18.1.0"
+        }
+      ],
+      "propertyLayout": [
+        {
+          "propertyGroup": "common",
+          "items": [
+            "disabled",
+            "labelHint",
+            "direction",
+            "placeholder",
+            "readonly",
+            "required"
+          ]
+        },
+        {
+          "propertyGroup": "data",
+          "items": [
+            "options",
+            "value"
+          ]
+        }
+      ],
+      "since": "18.1.0",
+      "properties": {
+        "containerReadonly": {
+          "type": "boolean",
+          "description": "Specifies whether an ancestor container, like oj-c-form-layout, is readonly.",
+          "displayName": "Container Readonly",
+          "help": "#containerReadonly",
+          "binding": {
+            "consume": {
+              "name": "containerReadonly"
+            }
+          }
+        },
+        "columnSpan": {
+          "type": "number",
+          "description": "Specifies how many columns this component should span.",
+          "displayName": "Column Span",
+          "help": "#columnSpan",
+          "value": 1
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Specifies whether the component is disabled.",
+          "displayName": "Disabled",
+          "value": false
+        },
+        "displayOptions": {
+          "type": "object",
+          "description": "Display options for auxiliary content that describes whether or not it should be displayed.",
+          "displayName": "Display Options",
+          "properties": {
+            "messages": {
+              "type": "string",
+              "enumValues": [
+                "none",
+                "display"
+              ],
+              "value": "display"
+            }
+          }
+        },
+        "help": {
+          "type": "object",
+          "description": "Form component help information.",
+          "displayName": "Help",
+          "properties": {
+            "instruction": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        },
+        "helpHints": {
+          "type": "object",
+          "description": "The helpHints object contains a definition property, sourceText property, and a source property.",
+          "displayName": "Help Hints",
+          "properties": {
+            "definition": {
+              "type": "string",
+              "value": ""
+            },
+            "source": {
+              "type": "string",
+              "value": ""
+            },
+            "sourceText": {
+              "type": "string"
+            }
+          }
+        },
+        "labelEdge": {
+          "type": "string",
+          "description": "Specifies how the label is positioned for the component",
+          "displayName": "Label Edge",
+          "propertyEditorValues": {
+            "inside": {
+              "description": "The label will be placed on top of the rich checkboxset, but is smaller than 'top' option.",
+              "displayName": "Inside"
+            },
+            "none": {
+              "description": "The rich checkboxset will not create a label, but instead set the aria-label property on the rich checkboxset.",
+              "displayName": "None"
+            },
+            "start": {
+              "description": "The label will be placed before the start of the rich checkboxset.",
+              "displayName": "Start"
+            },
+            "top": {
+              "description": "The label will be placed on top of the rich checkboxset.",
+              "displayName": "Top"
+            }
+          },
+          "enumValues": [
+            "none",
+            "start",
+            "top",
+            "inside"
+          ],
+          "binding": {
+            "consume": {
+              "name": "containerLabelEdge"
+            }
+          }
+        },
+        "labelHint": {
+          "type": "string",
+          "description": "Represents a hint for rendering a label on the component.",
+          "displayName": "Label Hint",
+          "required": true,
+          "translatable": true
+        },
+        "labelStartWidth": {
+          "type": "number|string",
+          "description": "The width of the label when labelEdge is 'start'.",
+          "displayName": "Label Start Width",
+          "help": "#labelStartWidth",
+          "binding": {
+            "consume": {
+              "name": "labelWidth"
+            }
+          }
+        },
+        "layout": {
+          "type": "string",
+          "description": "Specifies the layout of the cards and media.",
+          "displayName": "Layout",
+          "enumValues": [
+            "sm",
+            "md",
+            "xl"
+          ]
+        },
+        "maxSelected": {
+          "type": "number",
+          "description": "The maximum number of items to select. If defined, it must be greater than or equal to 2.",
+          "displayName": "Max Selected"
+        },
+        "messagesCustom": {
+          "type": "Array<object>",
+          "description": "List of custom component messages",
+          "displayName": "Messages Custom",
+          "extension": {
+            "vbdt": {
+              "itemProperties": {
+                "summary": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enumValues": [
+                    "error",
+                    "confirmation",
+                    "info",
+                    "warning"
+                  ]
+                }
+              }
+            }
+          },
+          "writeback": true,
+          "value": []
+        },
+        "minSelected": {
+          "type": "number",
+          "description": "The minimal number of items to select. If defined, it must be greater than or equal to 2.",
+          "displayName": "Min Selected"
+        },
+        "readonly": {
+          "type": "boolean",
+          "description": "Whether the component is readonly",
+          "displayName": "Readonly",
+          "binding": {
+            "consume": {
+              "name": "containerReadonly"
+            }
+          }
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Specifies whether or not the component is required.",
+          "displayName": "Required",
+          "help": "#required",
+          "value": false
+        },
+        "selectionExactMessageDetail": {
+          "type": "function",
+          "description": "Overrides the default Selection Exact message.",
+          "displayName": "Selection Exact Message Detail",
+          "help": "#selectionExactMessageDetail",
+          "translatable": true
+        },
+        "selectionOverflowMessageDetail": {
+          "type": "function",
+          "description": "Overrides the default Selection Overflow message.",
+          "displayName": "Selection Overflow Message Detail",
+          "help": "#selectionOverflowMessageDetail",
+          "translatable": true
+        },
+        "selectionRangeMessageDetail": {
+          "type": "function",
+          "description": "Overrides the default Selection Range message.",
+          "displayName": "Selection Range Message Detail",
+          "help": "#selectionRangeMessageDetail",
+          "translatable": true
+        },
+        "selectionUnderflowMessageDetail": {
+          "type": "function",
+          "description": "Overrides the default Selection Underflow message.",
+          "displayName": "Selection Underflow Message Detail",
+          "help": "#selectionUnderflowMessageDetail",
+          "translatable": true
+        },
+        "userAssistanceDensity": {
+          "type": "string",
+          "description": "Specifies the density of the form component's user assistance presentation.",
+          "displayName": "User Assistance Density",
+          "help": "#userAssistanceDensity",
+          "propertyEditorValues": {
+            "reflow": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with no reserved space.",
+              "displayName": "Reflow"
+            },
+            "efficient": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
+              "displayName": "Efficient"
+            },
+            "compact": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
+              "displayName": "Compact"
+            }
+          },
+          "enumValues": [
+            "compact",
+            "reflow",
+            "efficient"
+          ],
+          "binding": {
+            "consume": {
+              "name": "containerUserAssistanceDensity"
+            }
+          }
+        },
+        "options": {
+          "type": "Array<object>",
+          "description": "An array of data items that returns the option items for the Rich Checkboxset.",
+          "displayName": "Options",
+          "help": "#options"
+        },
+        "requiredMessageDetail": {
+          "type": "string",
+          "description": "Overrides the default Required error message.",
+          "displayName": "Required Message Detail",
+          "help": "#requiredMessageDetail",
+          "translatable": true
+        },
+        "valid": {
+          "type": "string",
+          "description": "Specifies whether the component is in a valid state",
+          "displayName": "Valid",
+          "help": "#valid",
+          "propertyEditorValues": {
+            "valid": {
+              "description": "The component is valid",
+              "displayName": "Valid"
+            },
+            "pending": {
+              "description": "The component is waiting for the validation state to be determined. The 'pending' state is set at the start of the convert/validate process.",
+              "displayName": "Pending"
+            },
+            "invalidHidden": {
+              "description": "The component has invalid messages hidden and no invalid messages showing. An invalid message is one with severity 'error'.",
+              "displayName": "Invalid Hidden"
+            },
+            "invalidShown": {
+              "description": "The component has invalid messages showing. An invalid message is one with severity 'error'.",
+              "displayName": "Invalid Shown"
+            }
+          },
+          "enumValues": [
+            "pending",
+            "valid",
+            "invalidHidden",
+            "invalidShown"
+          ],
+          "readOnly": true,
+          "writeback": true
+        },
+        "value": {
+          "type": "Array<string|number>|null",
+          "description": "The value of the component.",
+          "displayName": "Value",
+          "help": "#value",
+          "writeback": true,
+          "value": null
+        }
+      },
+      "methods": {
+        "blur": {
+          "description": "Blurs the rich checkboxset.",
+          "return": "void"
+        },
+        "focus": {
+          "description": "Sets focus on the first tabbable checkbox card.",
+          "return": "void"
+        },
+        "showMessages": {
+          "description": "Takes all deferred messages and shows them.",
+          "return": "void"
+        },
+        "reset": {
+          "description": "Resets the component by clearing all messages.",
+          "return": "void"
+        },
+        "validate": {
+          "description": "If enabled, validates the component's display value.",
+          "return": "Promise"
+        },
+        "setProperty": {
+          "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+          "help": "#setProperty",
+          "params": [
+            {
+              "name": "property",
+              "description": "The property name to set. Supports dot notation for subproperty access.",
+              "type": "string"
+            },
+            {
+              "name": "value",
+              "description": "The new value to set the property to.",
+              "type": "any"
+            }
+          ],
+          "return": "void"
+        },
+        "getProperty": {
+          "description": "Retrieves the value of a property or a subproperty.",
+          "help": "#getProperty",
+          "params": [
+            {
+              "name": "property",
+              "description": "The property name to get. Supports dot notation for subproperty access.",
+              "type": "string"
+            }
+          ],
+          "return": "any"
+        },
+        "setProperties": {
+          "description": "Performs a batch set of properties.",
+          "help": "#setProperties",
+          "params": [
+            {
+              "name": "properties",
+              "description": "An object containing the property and value pairs to set.",
+              "type": "object"
+            }
+          ],
+          "return": "void"
+        }
+      },
+      "extension": {
+        "webelement": {
+          "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/RichCheckboxsetWebElement.html"
+        }
+      }
+    },
+    "oj-c-rich-radioset": {
+      "name": "rich-radioset",
+      "version": "18.1.0",
+      "jetVersion": "^18.1.0",
+      "pack": "oj-c",
+      "type": "composite",
+      "dependencyScope": "runtime",
+      "license": "https://opensource.org/licenses/UPL",
+      "implements": [
+        "CRichRadiosetElement"
+      ],
+      "description": "A rich radio set allows the user to select one option from a set of mutually exclusive rich options.",
+      "displayName": "RichRadioset",
+      "main": "oj-c/rich-radioset",
+      "status": [
+        {
+          "type": "candidate",
+          "since": "18.1.0"
+        }
+      ],
+      "propertyLayout": [
+        {
+          "propertyGroup": "common",
+          "items": [
+            "disabled",
+            "labelHint",
+            "direction",
+            "placeholder",
+            "readonly",
+            "required"
+          ]
+        },
+        {
+          "propertyGroup": "data",
+          "items": [
+            "options",
+            "value"
+          ]
+        }
+      ],
+      "since": "18.1.0",
+      "properties": {
+        "containerReadonly": {
+          "type": "boolean",
+          "description": "Specifies whether an ancestor container, like oj-c-form-layout, is readonly.",
+          "displayName": "Container Readonly",
+          "help": "#containerReadonly",
+          "binding": {
+            "consume": {
+              "name": "containerReadonly"
+            }
+          }
+        },
+        "columnSpan": {
+          "type": "number",
+          "description": "Specifies how many columns this component should span.",
+          "displayName": "Column Span",
+          "help": "#columnSpan",
+          "value": 1
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Specifies whether the component is disabled.",
+          "displayName": "Disabled",
+          "value": false
+        },
+        "displayOptions": {
+          "type": "object",
+          "description": "Display options for auxiliary content that describes whether or not it should be displayed.",
+          "displayName": "Display Options",
+          "properties": {
+            "messages": {
+              "type": "string",
+              "enumValues": [
+                "none",
+                "display"
+              ],
+              "value": "display"
+            }
+          }
+        },
+        "help": {
+          "type": "object",
+          "description": "Form component help information.",
+          "displayName": "Help",
+          "properties": {
+            "instruction": {
+              "type": "string",
+              "value": ""
+            }
+          }
+        },
+        "helpHints": {
+          "type": "object",
+          "description": "The helpHints object contains a definition property, sourceText property, and a source property.",
+          "displayName": "Help Hints",
+          "properties": {
+            "definition": {
+              "type": "string",
+              "value": ""
+            },
+            "source": {
+              "type": "string",
+              "value": ""
+            },
+            "sourceText": {
+              "type": "string"
+            }
+          }
+        },
+        "labelEdge": {
+          "type": "string",
+          "description": "Specifies how the label is positioned for the component",
+          "displayName": "Label Edge",
+          "propertyEditorValues": {
+            "inside": {
+              "description": "The label will be placed on top of the rich radioset, but is smaller than 'top' option.",
+              "displayName": "Inside"
+            },
+            "none": {
+              "description": "The rich radioset will not create a label, but instead set the aria-label property on the rich radioset.",
+              "displayName": "None"
+            },
+            "start": {
+              "description": "The label will be placed before the start of the rich radioset.",
+              "displayName": "Start"
+            },
+            "top": {
+              "description": "The label will be placed on top of the rich radioset.",
+              "displayName": "Top"
+            }
+          },
+          "enumValues": [
+            "none",
+            "start",
+            "top",
+            "inside"
+          ],
+          "binding": {
+            "consume": {
+              "name": "containerLabelEdge"
+            }
+          }
+        },
+        "labelHint": {
+          "type": "string",
+          "description": "Represents a hint for rendering a label on the component.",
+          "displayName": "Label Hint",
+          "required": true,
+          "translatable": true
+        },
+        "labelStartWidth": {
+          "type": "number|string",
+          "description": "The width of the label when labelEdge is 'start'.",
+          "displayName": "Label Start Width",
+          "help": "#labelStartWidth",
+          "binding": {
+            "consume": {
+              "name": "labelWidth"
+            }
+          }
+        },
+        "layout": {
+          "type": "string",
+          "description": "Specifies the layout of the cards and media.",
+          "displayName": "Layout",
+          "enumValues": [
+            "sm",
+            "md",
+            "xl"
+          ]
+        },
+        "messagesCustom": {
+          "type": "Array<object>",
+          "description": "List of custom component messages",
+          "displayName": "Messages Custom",
+          "extension": {
+            "vbdt": {
+              "itemProperties": {
+                "summary": {
+                  "type": "string"
+                },
+                "detail": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enumValues": [
+                    "error",
+                    "confirmation",
+                    "info",
+                    "warning"
+                  ]
+                }
+              }
+            }
+          },
+          "writeback": true,
+          "value": []
+        },
+        "readonly": {
+          "type": "boolean",
+          "description": "Whether the component is readonly",
+          "displayName": "Readonly",
+          "binding": {
+            "consume": {
+              "name": "containerReadonly"
+            }
+          }
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Specifies whether or not the component is required.",
+          "displayName": "Required",
+          "help": "#required",
+          "value": false
+        },
+        "userAssistanceDensity": {
+          "type": "string",
+          "description": "Specifies the density of the form component's user assistance presentation.",
+          "displayName": "User Assistance Density",
+          "help": "#userAssistanceDensity",
+          "propertyEditorValues": {
+            "reflow": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with no reserved space.",
+              "displayName": "Reflow"
+            },
+            "efficient": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
+              "displayName": "Efficient"
+            },
+            "compact": {
+              "description": "Help and hints are shown above the field. Messages and required are shown inline under the field with reserved space.",
+              "displayName": "Compact"
+            }
+          },
+          "enumValues": [
+            "compact",
+            "reflow",
+            "efficient"
+          ],
+          "binding": {
+            "consume": {
+              "name": "containerUserAssistanceDensity"
+            }
+          }
+        },
+        "options": {
+          "type": "Array<object>",
+          "description": "An array of data items that returns the option items for the Rich Radioset.",
+          "displayName": "Options",
+          "help": "#options"
+        },
+        "requiredMessageDetail": {
+          "type": "string",
+          "description": "Overrides the default Required error message.",
+          "displayName": "Required Message Detail",
+          "help": "#requiredMessageDetail",
+          "translatable": true
+        },
+        "valid": {
+          "type": "string",
+          "description": "Specifies whether the component is in a valid state",
+          "displayName": "Valid",
+          "help": "#valid",
+          "propertyEditorValues": {
+            "valid": {
+              "description": "The component is valid",
+              "displayName": "Valid"
+            },
+            "pending": {
+              "description": "The component is waiting for the validation state to be determined. The 'pending' state is set at the start of the convert/validate process.",
+              "displayName": "Pending"
+            },
+            "invalidHidden": {
+              "description": "The component has invalid messages hidden and no invalid messages showing. An invalid message is one with severity 'error'.",
+              "displayName": "Invalid Hidden"
+            },
+            "invalidShown": {
+              "description": "The component has invalid messages showing. An invalid message is one with severity 'error'.",
+              "displayName": "Invalid Shown"
+            }
+          },
+          "enumValues": [
+            "pending",
+            "valid",
+            "invalidHidden",
+            "invalidShown"
+          ],
+          "readOnly": true,
+          "writeback": true
+        },
+        "value": {
+          "type": "string|number|null",
+          "description": "The value of the component.",
+          "displayName": "Value",
+          "help": "#value",
+          "writeback": true
+        }
+      },
+      "methods": {
+        "blur": {
+          "description": "Blurs the rich radioset.",
+          "return": "void"
+        },
+        "focus": {
+          "description": "Sets focus on the selected radio card or the first tabbable radio card.",
+          "return": "void"
+        },
+        "showMessages": {
+          "description": "Takes all deferred messages and shows them.",
+          "return": "void"
+        },
+        "reset": {
+          "description": "Resets the component by clearing all messages.",
+          "return": "void"
+        },
+        "validate": {
+          "description": "If enabled, validates the component's display value.",
+          "return": "Promise"
+        },
+        "setProperty": {
+          "description": "Sets a property or a single subproperty for complex properties and notifies the component of the change, triggering a corresponding event.",
+          "help": "#setProperty",
+          "params": [
+            {
+              "name": "property",
+              "description": "The property name to set. Supports dot notation for subproperty access.",
+              "type": "string"
+            },
+            {
+              "name": "value",
+              "description": "The new value to set the property to.",
+              "type": "any"
+            }
+          ],
+          "return": "void"
+        },
+        "getProperty": {
+          "description": "Retrieves the value of a property or a subproperty.",
+          "help": "#getProperty",
+          "params": [
+            {
+              "name": "property",
+              "description": "The property name to get. Supports dot notation for subproperty access.",
+              "type": "string"
+            }
+          ],
+          "return": "any"
+        },
+        "setProperties": {
+          "description": "Performs a batch set of properties.",
+          "help": "#setProperties",
+          "params": [
+            {
+              "name": "properties",
+              "description": "An object containing the property and value pairs to set.",
+              "type": "object"
+            }
+          ],
+          "return": "void"
+        }
+      },
+      "extension": {
+        "webelement": {
+          "docUrl": "https://www.oracle.com/webfolder/technetwork/jet/cpwdtsdoc/classes/RichRadiosetWebElement.html"
         }
       }
     }

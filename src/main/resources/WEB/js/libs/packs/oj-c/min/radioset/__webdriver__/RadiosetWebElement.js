@@ -4,7 +4,7 @@ exports.RadiosetWebElement = void 0;
 const RadiosetWebElementBase_1 = require("./RadiosetWebElementBase");
 const selenium_webdriver_1 = require("selenium-webdriver");
 /**
- * The component WebElement for [oj-c-radioset](../../../oj-c/docs/oj.Radioset.html).
+ * The component WebElement for [oj-c-radioset](../../jsdocs/oj-c.Radioset.html).
  * Do not instantiate this class directly, instead, use
  * [findRadioset](../functions/findRadioset.html).
  */

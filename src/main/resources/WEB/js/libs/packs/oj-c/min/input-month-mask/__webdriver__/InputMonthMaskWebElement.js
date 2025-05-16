@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.InputMonthMaskWebElement = void 0;
 const InputMonthMaskWebElementBase_1 = require("./InputMonthMaskWebElementBase");
 /**
- * The component WebElement for [oj-c-input-month-mask](../../../oj-c/docs/oj.InputMonthMask.html).
+ * The component WebElement for [oj-c-input-month-mask](../../jsdocs/oj-c.InputMonthMask.html).
  * Do not instantiate this class directly, instead, use
  * [findInputMonthMask](../modules.html#findInputMonthMask).
  */

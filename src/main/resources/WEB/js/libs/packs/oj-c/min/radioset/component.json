@@ -1,7 +1,7 @@
 {
   "name": "radioset",
-  "version": "18.0.2",
-  "jetVersion": "^18.0.2",
+  "version": "18.1.0",
+  "jetVersion": "^18.1.0",
   "pack": "oj-c",
   "type": "composite",
   "dependencyScope": "runtime",
@@ -363,11 +363,11 @@
   },
   "methods": {
     "blur": {
-      "description": "Sets focus on the radioset or the first tabbable radio item.",
+      "description": "Blurs the radioset.",
       "return": "void"
     },
     "focus": {
-      "description": "Blurs the radioset.",
+      "description": "Sets focus on the selected radio button or the first tabbable radio button.",
       "return": "void"
     },
     "showMessages": {

@@ -1,7 +1,7 @@
 import { WebElement, ISize, IRectangle, Locator, WebElementPromise } from 'selenium-webdriver';
 import { DialogWebElementBase } from './DialogWebElementBase';
 /**
- * The component WebElement for [oj-c-dialog](../../../oj-c/docs/oj.Dialog.html).
+ * The component WebElement for [oj-c-dialog](../../jsdocs/oj-c.Dialog.html).
  * Do not instantiate this class directly, instead, use
  * [findDialog](../functions/findDialog.html).
  */

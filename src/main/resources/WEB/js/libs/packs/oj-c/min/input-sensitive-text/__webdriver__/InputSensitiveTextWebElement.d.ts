@@ -1,6 +1,6 @@
 import { InputSensitiveTextWebElementBase } from './InputSensitiveTextWebElementBase';
 /**
- * The component WebElement for [oj-c-input-sensitive-text](../../../oj-c/docs/oj.InputSensitiveText.html).
+ * The component WebElement for [oj-c-input-sensitive-text](../../jsdocs/oj-c.InputSensitiveText.html).
  * Do not instantiate this class directly, instead, use
  * [findInputSensitiveText](../functions/findInputSensitiveText.html).
  */
